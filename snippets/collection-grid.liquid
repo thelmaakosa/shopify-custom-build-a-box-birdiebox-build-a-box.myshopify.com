@@ -1,0 +1,444 @@
+
+<!-- BEGIN USF -->
+{% comment %}
+- collection: Liquid 'collection' or 'search' object
+- items: Paginated 'collection.products' or 'search.results' list. Cannot be pulled from the the 'collection' object passed in above
+- grid_style
+- quick_shop_enable
+{% endcomment %}
+
+{% liquid
+  if collection.products
+      assign count = collection.products_count
+      assign count_label = 'collections.general.items_with_count'
+  endif
+
+  if collection.results
+      assign count = collection.results_count
+      assign count_label = 'general.search.result_count'
+  endif
+
+  assign current_filter_size = 0
+  for filter in filters
+    assign current_filter_size = current_filter_size | plus: filter.active_values.size
+  endfor
+%}
+
+  {%- style -%}
+    .collection-content .grid__item--sidebar {
+      display: none;
+    }
+    .collection-content .grid__item--content {
+      width: 100% !important;
+    }
+  {%- endstyle -%}
+<div class="collection-grid__wrapper"></div>
+
+  <div class="collection-filter" style="display:none">
+    <div class="collection-filter__inner">
+      <div class="collection-filter__item collection-filter__item--drawer">
+        <button
+          type="button"
+          class="collection-filter__btn text-link"
+        >
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-filter" viewBox="0 0 64 64"><path d="M48 42h10">.</path><path d="M48 42a5 5 0 1 1-5-5 5 5 0 0 1 5 5z"/><path d="M7 42h31">.</path><path d="M16 22H6">.</path><path d="M16 22a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><path d="M57 22H26">.</path></svg>
+          {{ 'collections.filters.title_tags' | t }}
+          {%- if current_filter_size > 0 -%}
+            ({{ current_filter_size }})
+          {%- endif -%}
+        </button>
+      </div>
+
+      <div class="collection-filter__item collection-filter__item--count small--hide">
+        {{ count_label | t: count: count }}
+      </div>
+
+      <div class="collection-filter__item collection-filter__item--right">
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <div class="collection-filter__sort small--hide">
+          <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+          <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+            <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>{{ 'collections.sorting.title' | t }}</option>
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        {%- liquid
+          assign productGridView = grid_style
+          if cart.attributes.product_view != blank
+            assign productGridView = cart.attributes.product_view
+          endif
+        -%}
+
+        <ul class="no-bullets inline-list text-right">
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'large' %} is-active{% endif %}" data-view="large" title="{{ 'collections.general.large' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-large" viewBox="0 0 35 35"><path d="M0 0h35v35H0z"/></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.large' | t }}</span>
+          </button></li>
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'small' %} is-active{% endif %}" data-view="small" title="{{ 'collections.general.small' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-small" viewBox="0 0 35 35"><path d="M0 0h15v15H0zM20 0h15v15H20zM0 20h15v15H0zM20 20h15v15H20z"/></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.small' | t }}</span>
+          </button></li>
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'list' %} is-active{% endif %}" data-view="list" title="{{ 'collections.general.list' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-list" viewBox="0 0 35 35"><g id="Layer_2" data-name="Layer 2"><path d="M0 0h35v8H0zM0 13h35v8H0zM0 27h35v8H0z"/></g></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.list' | t }}</span>
+          </button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="collection-mobile-filters medium-up--hide">
+      <div class="collection-mobile-filters__holder" id="CollectionInlineFilterWrap"></div>
+    </div>
+  </div>
+
+  <script>
+  window._usfGlobalSettings = {
+    quick_add_enable: {{ settings.quick_add_enable | json }},
+    quick_shop_enable: {{ settings.quick_shop_enable | json }},
+    product_grid_image_size: {{ settings.product_grid_image_size | json }},
+    product_grid_image_fill: {{ settings.product_grid_image_fill | json }},
+    product_hover_image: {{ settings.product_hover_image | json }},
+    collection_color_swatches: {{ settings.collection_color_swatches | json }},
+    vendor_enable: {{ settings.vendor_enable | json }},
+    superscript_decimals: {{ settings.superscript_decimals | json }},
+    product_save_amount: {{ settings.product_save_amount | json }},
+    product_save_type: {{ settings.product_save_type | json }},
+    enable_swatches: {{ settings.enable_swatches | json }},
+  };
+  window._usfProductGridView = {{ productGridView | json }};
+  window._usfQuickShopText = {{ 'products.general.quick_shop' | t | json }};
+  window._usfAddToCartText = {{ 'products.product.add_to_cart' | t | json }};
+  window._usfSoldOutText = {{ 'products.product.sold_out' | t | json }};
+  window._usfSaleText = {{ 'products.general.sale' | t | json }};
+  window._usfSwatchTrigger = {{ 'products.general.color_swatch_trigger' | t | downcase | json }};
+  window._usfRegularPrice = {{ 'products.general.regular_price' | t | json }};
+  window._usfSalePrice = {{ 'products.general.sale_price' | t | json }};
+  window._usf_money_format = {{ shop.money_format | json }};
+  window._usfFromText = {{ 'products.general.from_text_html' | t | json }};
+  window._usfSaveHtml =  {{ 'products.general.save_html' | t | json }};
+  window._usfCloseModalText = {{ 'general.accessibility.close_modal' | t | json | json }};
+  </script>
+  
+  <style>
+#usf_container{
+    visibility:hidden;
+}
+</style>
+<div id="usf_container"></div>
+<div class="usf-skeleton-container">
+	<style>              
+	  @media (max-width: 749px){
+		.usf-mobile-hidden{
+		  display: none !important;
+		}
+		.usf-skeleton-container .usf-sr-config__mobile-filters-wrapper{
+		  display: flex;
+		  width: 100%;
+		  flex-wrap: wrap;
+		}
+		.usf-skeleton-container .usf-filters, 
+		.usf-skeleton-container .usf-sr-config__mobile-filters-wrapper .usf-c-select{
+		  height: 49px;
+		  border: 1px solid #ededed;
+		  width: 50%;
+		  border-left: none;
+		  display: flex !important;
+		  align-items: center;
+		}
+		.usf-skeleton-container .usf-filters{
+		  border-left: 1px solid #ededed;
+		}
+
+		.usf-skeleton-container .usf-results{
+		  height: 400px;
+		  margin-left: -20px;
+		  display: flex;
+		  flex-wrap: wrap;
+		}
+		.usf-skeleton-container .usf-sr-config{
+		  display: flex;
+		  align-items: center;
+		  justify-content: space-between;
+		  margin-top: 13px;
+		  flex-wrap: wrap;
+		}
+		
+		.usf-skeleton-container .usf-sr-summary:before{
+		  margin: 0 !important;
+		  width: 100px !important;
+		}
+		.usf-skeleton-container .usf-views:before{
+		  margin: 0 !important;
+		  width: 50px !important;
+		  margin-left: auto !important;
+		}
+		.usf-skeleton-container .usf-grid__item{
+		  width: 50%;
+		  padding-left: 20px;
+		}
+		.usf-skeleton-container .usf-sr-summary, 
+		.usf-skeleton-container .usf-views{
+		  margin: 30px 0 20px 0;
+		  display: block;
+		  width: 50%;
+		}
+		
+		.usf-skeleton-container .usf-filters:before,
+		.usf-skeleton-container .usf-c-select:before{
+		  margin: 30px;
+		}
+	  }
+	  
+	  .usf-skeleton-container .usf-filters:before,
+	  .usf-skeleton-container .usf-c-select:before,
+	  .usf-skeleton-container .usf-sr-summary:before,
+	  .usf-skeleton-container .usf-views:before,
+	  .usf-skeleton-container .usf-facet .usf-title:before,
+	  .usf-skeleton-container .usf-facet .usf-body:before,
+	  .usf-skeleton-container .usf-facet .usf-body:after              
+	  {
+		content:'';
+		display: block;
+		background-color: #0000000b;
+		-webkit-animation: usf-skeleton-animation 2.3s infinite;
+		animation: usf-skeleton-animation 2.3s infinite;
+		height: 10px;
+		border-radius: 10px;
+		width: 100%;                
+	  }
+	  
+	  @keyframes usf-skeleton-animation {
+		0% {
+			opacity: 1
+		}
+
+		50% {
+			opacity: .5
+		}
+
+		100% {
+			opacity: 1
+		}
+	  }
+	  
+	  @media (min-width: 750px){
+		.usf-skeleton-container .usf-desktop-hidden{
+		  display: none !important;
+		}
+		.usf-skeleton-container .usf-facet .usf-title,
+		.usf-skeleton-container .usf-facet .usf-body,
+		.usf-skeleton-container .usf-c-select
+		{
+		  display: block !important;
+		}              
+	  
+		.usf-skeleton-container .usf-sr-config__mobile-filters-wrapper{
+		  display: none;
+		}
+		
+		.usf-skeleton-container .usf-facets{
+		  display: block;
+		  width: 23%;
+		  float: left;
+		  margin-top: 17px;
+		}
+		
+		.usf-skeleton-container .usf-sr-container {
+		  width: 77%;
+		  float: left;
+		  padding-left: 30px;
+		  margin-top: 17px;
+		}
+		
+		.usf-skeleton-container .usf-sr-config{
+		  display: flex;
+		}
+		
+		.usf-skeleton-container .usf-sr-config > .usf-c-select{
+		  width: 200px;
+		}
+		
+		.usf-skeleton-container .usf-sr-summary{
+		  width: 100%;
+		}
+		.usf-skeleton-container .usf-sr-summary:before{
+		  margin: auto;
+		  width: 200px;
+		}
+		.usf-skeleton-container .usf-views:before{
+		}
+		.usf-skeleton-container .usf-grid__item{
+		  width: 50%;
+		  padding-left: 20px;
+		}
+		.usf-skeleton-container .usf-views{
+		  display: block;
+		  width: 50px;
+		}
+		
+		.usf-skeleton-container .usf-sr-container{
+		  min-height: 700px;
+		}
+	  }  
+	  
+	  .usf-skeleton-container .usf-facet{
+		margin-bottom: 40px;
+	  }
+	  
+	  .usf-skeleton-container .usf-facet .usf-title:before{                
+		margin-bottom: 25px;
+		width: 70%;
+	  }
+	  
+	  .usf-skeleton-container .usf-facet .usf-body:before,
+	  .usf-skeleton-container .usf-facet .usf-body:after
+	  {
+		margin-bottom: 16px;
+	  }
+	</style>
+  
+	<div class="usf-facets usf-mobile-hidden">
+	  <div class="usf-facet">
+		<div class="usf-title"></div>
+		<div class="usf-body"></div>                
+	  </div>
+	  <div class="usf-facet">
+		<div class="usf-title"></div>
+		<div class="usf-body"></div>
+	  </div>
+	</div>
+	<div class="usf-sr-container">
+	  <div class="usf-sr-config">
+		<div class="usf-sr-config__mobile-filters-wrapper">
+		  <div class="usf-filters"></div>
+		  <div class="usf-c-select"></div>
+		</div>
+		<div class="usf-views usf-mobile-hidden"></div>
+		<span class="usf-sr-summary"></span>
+		<div class="usf-views usf-desktop-hidden"></div>
+		<div class="usf-c-select usf-mobile-hidden"></div>
+	  </div>
+	  <div class="usf-results usf-grid">
+		<div class="usf-grid__item"></div>
+		<div class="usf-grid__item"></div>
+		<div class="usf-grid__item"></div>
+		<div class="usf-grid__item"></div>
+	  </div>
+	</div>       
+</div>
+</div>
+<!-- END USF -->
+
+{% comment %}USF
+{% comment %}
+- collection: Liquid 'collection' or 'search' object
+- items: Paginated 'collection.products' or 'search.results' list. Cannot be pulled from the the 'collection' object passed in above
+- grid_style
+- quick_shop_enable
+{% endcomment %}
+
+{% liquid
+  if collection.products
+      assign count = collection.products_count
+      assign count_label = 'collections.general.items_with_count'
+  endif
+
+  if collection.results
+      assign count = collection.results_count
+      assign count_label = 'general.search.result_count'
+  endif
+
+  assign current_filter_size = 0
+  for filter in filters
+    assign current_filter_size = current_filter_size | plus: filter.active_values.size
+  endfor
+%}
+
+<div class="collection-grid__wrapper"></div>
+
+  <div class="collection-filter">
+    <div class="collection-filter__inner">
+      <div class="collection-filter__item collection-filter__item--drawer">
+        <button
+          type="button"
+          class="collection-filter__btn text-link"
+        >
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-filter" viewBox="0 0 64 64"><path d="M48 42h10">.</path><path d="M48 42a5 5 0 1 1-5-5 5 5 0 0 1 5 5z"/><path d="M7 42h31">.</path><path d="M16 22H6">.</path><path d="M16 22a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><path d="M57 22H26">.</path></svg>
+          {{ 'collections.filters.title_tags' | t }}
+          {%- if current_filter_size > 0 -%}
+            ({{ current_filter_size }})
+          {%- endif -%}
+        </button>
+      </div>
+
+      <div class="collection-filter__item collection-filter__item--count small--hide">
+        {{ count_label | t: count: count }}
+      </div>
+
+      <div class="collection-filter__item collection-filter__item--right">
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <div class="collection-filter__sort small--hide">
+          <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+          <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+            <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>{{ 'collections.sorting.title' | t }}</option>
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        {%- liquid
+          assign productGridView = grid_style
+          if cart.attributes.product_view != blank
+            assign productGridView = cart.attributes.product_view
+          endif
+        -%}
+
+        <ul class="no-bullets inline-list text-right">
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'large' %} is-active{% endif %}" data-view="large" title="{{ 'collections.general.large' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-large" viewBox="0 0 35 35"><path d="M0 0h35v35H0z"/></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.large' | t }}</span>
+          </button></li>
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'small' %} is-active{% endif %}" data-view="small" title="{{ 'collections.general.small' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-small" viewBox="0 0 35 35"><path d="M0 0h15v15H0zM20 0h15v15H20zM0 20h15v15H0zM20 20h15v15H20z"/></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.small' | t }}</span>
+          </button></li>
+          <li><button type="button" class="grid-view-btn{% if productGridView == 'list' %} is-active{% endif %}" data-view="list" title="{{ 'collections.general.list' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-list" viewBox="0 0 35 35"><g id="Layer_2" data-name="Layer 2"><path d="M0 0h35v8H0zM0 13h35v8H0zM0 27h35v8H0z"/></g></svg>
+            <span class="icon__fallback-text">{{ 'collections.general.list' | t }}</span>
+          </button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="collection-mobile-filters medium-up--hide">
+      <div class="collection-mobile-filters__holder" id="CollectionInlineFilterWrap"></div>
+    </div>
+  </div>
+
+  {%- if items == blank -%}
+    <div class="index-section">{{ 'collections.general.no_matches' | t }}</div>
+  {%- endif -%}
+
+  <div
+    class="new-grid product-grid collection-grid"
+    data-view="{{ productGridView }}"
+    data-scroll-to
+  >
+    {%- for item in items -%}
+      {%- if item.object_type == 'product' -%}
+        {%- render 'product-grid-item', product: item -%}
+
+        {%- if quick_shop_enable -%}
+            {%- render 'quick-shop-modal', product: item -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- render 'search-grid-item', item: item -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+USF{% endcomment %}

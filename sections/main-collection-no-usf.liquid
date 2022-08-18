@@ -1,0 +1,199 @@
+{%- liquid
+  assign show_sidebar = true
+  assign total_tags = 0
+
+  if section.settings.enable_sidebar == false or collection.filters.size == 0
+    assign show_sidebar = false
+  endif
+-%}
+
+<div
+  id="CollectionAjaxResult"
+  class="collection-content"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template"
+  data-collection-template="true"
+>
+  <div id="CollectionAjaxContent">
+    <div class="page-width">
+      {%- liquid
+        assign paginate_by = 40
+
+        assign current_filter_size = 0
+        for filter in collection.filters
+          assign current_filter_size = current_filter_size | plus: filter.active_values.size
+        endfor
+      -%}
+
+      {%- paginate collection.products by paginate_by -%}
+      <div class="grid">
+        <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+          {%- render 'collection-grid-no-usf-filters',
+            collection: collection,
+            enable_sidebar: section.settings.enable_sidebar,
+            enable_color_swatches: section.settings.enable_color_swatches,
+            tags_combine: section.settings.tags_combine,
+            enable_sort: section.settings.enable_sort,
+            collapse_filters: section.settings.collapse_filters
+          -%}
+        </div>
+        <div class="grid__item medium-up--four-fifths grid__item--content">
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+            {%- when 'collection_description' -%}
+              {%- if collection.description != blank and current_filter_size == 0 -%}
+              <div class="rte rte--collection-desc" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ collection.description }}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- when 'subcollections' -%}
+              {%- if paginate.current_page == 1 and current_filter_size == 0 -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- render 'subcollections' -%}
+                </div>
+              {%- endif -%}
+            {%- when 'product_grid' -%}
+
+
+              <div {{ block.shopify_attributes }}>
+                {%- render 'collection-grid-no-usf'
+                  collection: collection,
+                  items: collection.products,
+                  grid_style: block.settings.grid_style,
+                  quick_shop_enable: settings.quick_shop_enable
+                -%}
+              </div>
+
+
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- liquid
+        if paginate.pages > 1
+          render 'pagination', paginate: paginate
+        endif
+      -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</div>
+
+{%- if show_sidebar == false -%}
+  {% comment %}
+    Disable sidebar & filter features
+  {% endcomment %}
+  {%- style -%}
+    .collection-content .grid__item--sidebar {
+      display: none;
+    }
+    .collection-content .grid__item--content {
+      width: 100% !important;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CollectionPage",
+  {% if collection.description != blank %}
+    "description": {{ collection.description | strip_html | json }},
+  {% endif %}
+  {% if page_image %}
+    {% assign image_size = page_image.width | append: 'x' %}
+    "image": {
+      "@type": "ImageObject",
+      "height": {{ page_image.height | json }},
+      "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+      "width": {{ page_image.width | json }}
+    },
+  {% endif %}
+  "name": {{ collection.title | json }}
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Product grid",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Filtering and sorting"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sidebar",
+        "label": "Enable filter",
+        "default": true,
+        "info": "Allow your customers to filter collections and search results by product availability, price, color, and more. [Customize filters](/admin/menus)"
+      },
+      {
+        "type": "checkbox",
+        "id": "collapse_filters",
+        "label": "Collapse filters",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_color_swatches",
+        "label": "Enable color swatches",
+        "info": "[View setup instructions](https://archetypethemes.co/blogs/expanse/how-do-i-set-up-color-swatches)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sort",
+        "label": "Show sort options",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection_description",
+        "name": "Collection description",
+        "limit": 1
+      },
+      {
+        "type": "product_grid",
+        "name": "Products",
+        "settings": [
+          {
+            "type": "select",
+            "id": "grid_style",
+            "label": "Default product layout",
+            "default": "small",
+            "options": [
+              {
+                "value": "large",
+                "label": "Large grid"
+              },
+              {
+                "value": "small",
+                "label": "Small grid"
+              },
+              {
+                "value": "list",
+                "label": "List"
+              }
+            ]
+          }
+        ],
+        "limit": 1
+      },
+      {
+        "type": "subcollections",
+        "name": "Subcollections",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Links to collections from your menu will appear here. [Learn more](https://archetypethemes.co/blogs/expanse/how-do-i-create-subcollections)"
+          }
+        ],
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}
