@@ -2,6 +2,8 @@
 $("#bxp-bldr-order_details").appendTo(".bxp-bldr-current .bxp-bldr-col-lg-4");
 $("#bxp-bldr-bottom-wizard .bxp-bldr-forward").clone().addClass("predefined-btn").appendTo(".bxp-bldr-wizard-step .bxp-bldr-col-lg-4");
 
+
+
 //  Next button function
 $(".predefined-btn").click(function(){
   $("#bxp-bldr-bottom-wizard .bxp-bldr-forward").click();
@@ -101,3 +103,6 @@ $(".bxp-filter-price").change(function(){
   })
 })
 
+// Filter rearrange
+var target = $(".bxp-sort-by").parents(".bxp-bldr-wizard-step[data-index=1] .bxp-bldr-justify-content-center");
+$(".bxp-sort-by").parents(".bxp-bldr-col-md-4.bxp-bldr-col-lg-3.bxp-mt-15").appendTo(target);
