@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+
+    <select name="skills" multiple="" class="label ui selection fluid dropdown">
+      <option value="">All</option>
+      <option value="1">Change Methodology</option>
+      <option value="2">Cognitive Computing & AI</option>
+      <option value="3">Connectivity & Collaboration</option>
+      <option value="4">Culture in Action</option>
+      <option value="5">Future of Work</option>
+      <option value="6">HR Transformation</option>
+      <option value="7">Human-centered Design</option>
+      <option value="8">Machine Learning & AI</option>
+      <option value="9">Operational Effectiveness</option>
+      <option value="10">Operational Excellence</option>
+      <option value="11">Organizational Change</option>
+    </select>
+<br><br>
+<div class="ui button">
+    Clear Filters
+</div>
+
+<style>
+
+@media only screen and (max-width: 767px) {
+    .ui.selection.dropdown .menu {
+/*      max-height: 8.01428571rem; /* + 1.335714285 to 9.349999995rem */
+/*      max-height: 9.349999995rem; /* Adds a half */
+        max-height: 16.02857142rem; /* Double size */
+    }
+}
+@media only screen and (min-width: 768px) {
+    .ui.selection.dropdown .menu {
+/*         max-height: 10.68571429rem; /* + 1.3357142863 to 12.0214285763rem */
+      max-height: 12.0214285763rem;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .ui.selection.dropdown .menu {
+      max-height: 16.02857143rem; /* + 1.3357142858 to 17.3642857158rem */
+    }
+}
+@media only screen and (min-width: 1920px) {
+    .ui.selection.dropdown .menu {
+        max-height: 21.37142857rem; /* + 1.3357142856 to 22.7071428556rem */
+    }
+}
+</style>
+
+<script>
+$('.label.ui.dropdown')
+  .dropdown();
+
+$('.no.label.ui.dropdown')
+  .dropdown({
+  useLabels: false
+});
+
+$('.ui.button').on('click', function () {
+  $('.ui.dropdown')
+    .dropdown('restore defaults')
+})
+
+</script>
+
+

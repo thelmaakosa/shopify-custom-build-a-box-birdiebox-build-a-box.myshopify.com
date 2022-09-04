@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.js"></script>
+
+<div class="wrap">
+
+	<!-- Begin Multiple Dropdown -->
+		<select id="foo_select" class="dropdown" form="foo_form" multiple data-placeholder="Click to select an option...">
+			<option value="null">First option</option>
+			<option value="null">Second option</option>
+			<option value="null">Third option</option>
+			<option value="null">Fourth option</option>
+			<option value="null">Fifth option</option>
+		</select>
+	<!-- End Multiple Dropdown -->
+
+</div><!-- .wrap -->
+
+<style>
+
+.chosen-container {
+  font-size: 1rem;
+}
+.chosen-container .chosen-single,
+.chosen-container .chosen-drop {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.chosen-container-active.chosen-with-drop .chosen-single,
+.chosen-container-active .chosen-choices {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.chosen-container-active .chosen-results .highlighted {
+  background: #21759b;
+}
+</style>
+
+<script>
+/**
+ * Chosen: Multiple Dropdown
+ */
+ window.WDS_Chosen_Multiple_Dropdown = {};
+( function( window, $, that ) {
+
+	// Constructor.
+	that.init = function() {
+		that.cache();
+
+		if ( that.meetsRequirements ) {
+			that.bindEvents();
+		}
+	};
+
+	// Cache all the things.
+	that.cache = function() {
+		that.$c = {
+			window: $(window),
+			theDropdown: $( '.dropdown' ),
+		};
+	};
+
+	// Combine all events.
+	that.bindEvents = function() {
+		that.$c.window.on( 'load', that.applyChosen );
+	};
+
+	// Do we meet the requirements?
+	that.meetsRequirements = function() {
+		return that.$c.theDropdown.length;
+	};
+
+	// Apply the Chosen.js library to a dropdown.
+	// https://harvesthq.github.io/chosen/options.html
+	that.applyChosen = function() {
+		that.$c.theDropdown.chosen({
+			inherit_select_classes: true,
+			width: '300px',
+		});
+	};
+
+	// Engage!
+	$( that.init );
+
+})( window, jQuery, window.WDS_Chosen_Multiple_Dropdown );
+</script>
