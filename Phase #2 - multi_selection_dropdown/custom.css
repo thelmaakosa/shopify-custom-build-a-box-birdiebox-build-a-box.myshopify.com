@@ -1,4 +1,22 @@
 /* Build a box */
+  /*  Step box  */
+  .bxp-bldr-row.bxp-step-box.bxp-flex{
+    padding: 0;
+  }
+  .bxp-bldr-row.bxp-step-box.bxp-flex>div{
+    padding: 20px;
+  }
+  .bxp-bldr-row.bxp-step-box.bxp-flex .bxp-bldr-col-lg-4{
+    border-left: 1px solid rgba(202,202,202,1);
+  }
+  .bxp-bldr-row.bxp-step-box.bxp-flex .bxp-reset{
+    margin-top: -12px;
+  }
+  .bxp-summary-container{
+    border: 1px solid #ddd;
+  }
+
+
   .bxp-bldr-step #bxp-bldr-order_details, .bxp-bldr-step #bxp-bldr-price_total{
     padding: 0;
     padding-bottom: 30px;
@@ -35,93 +53,16 @@
   }
   .bxp-styled-select{
     overflow: inherit !important;  
+    height: auto !important;
   }
-
-/* Multi-select */
-  .chosen-container {
-    font-size: 1rem;
+  .bxp-bldr-form-control{
+    height: auto !important;
   }
-  .chosen-container .chosen-single,
-  .chosen-container .chosen-drop {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .chosen-container-active.chosen-with-drop .chosen-single,
-  .chosen-container-active .chosen-choices {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .chosen-container-active .chosen-results .highlighted {
-    background: #21759b;
-  }
+  button.bxp-bldr-forward.predefined-btn{
+    background: rgba(28,213,193,1);
+  }    
 
-
-
-/* .select_box_area {
-  position: relative;
-  display: inline-block;
+/* Collection page */
+.grid-product__image-wrap{
+  background: #f1f1f1;
 }
-.select_box_area p {
-  margin-bottom: 0px;
-  padding: 10px 15px;
-  line-height: 24px;
-  padding-right: 30px;
-  cursor: pointer;
-}
-.select_box_area p em {
-  position: absolute;
-  right: 15px;
-  top: 13px;
-  font-size: 20px;
-  transition: all 0.3s linear;
-}
-.select_box_area p em.angle-up {
-  transform: rotate(180deg);
-}
-.select_box_area p .option {
-  position: relative;
-  display: inline-block;
-  padding-right: 15px;
-}
-.select_box_area p .option::after {
-  content: ",";
-  position: absolute;
-  right: 5px;
-  top: 0;
-}
-.select_box_area p .option:last-of-type {
-  padding-right: 0px;
-}
-.select_box_area p .option:last-of-type::after {
-  display: none;
-}
-
-.filter_list {
-  padding: 0px;
-  border: 1px solid #999999;
-  border-top: none;
-  display: none;
-}
-.filter_list li {
-  list-style: none;
-}
-.filter_list li label {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 0px;
-  font-size: 14px;
-  cursor: pointer;
-}
-.filter_list li input[type=checkbox] {
-  margin-right: 5px;
-}
-.filter_list li + li {
-  border-top: 1px solid #999999;
-}
-
-.custom-select {
-  display: none;
-} */

@@ -1,0 +1,696 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+   replace:'\/','/' | 
+   replace:'%20',' ' | 
+   replace:'\u0026','&'
+-%}
+
+{%- assign builderId = '' -%} 
+{%- assign prods = '' -%}
+{%- assign collection = '' -%}
+{%- assign bxpTheme = 'full' -%}
+{%- assign pDisplay = 'product' -%}
+{%- assign useLightbox = 'false' -%}
+{%- assign showCarousel = 'false' -%}
+{%- assign tagsOnly = 'false' -%}
+{%- assign showQty = 'false' -%}
+{%- assign preSelect = 'false' -%}
+{%- assign colSize = '3' -%}
+{%- assign pageLimit = 48 -%}
+{%- assign pageQuerystring = pageUrl | split:'?' | last -%}
+{%- assign parts = pageQuerystring | split:'&' -%}
+{%- for part in parts -%}
+	{%- assign keyAndValue = part | split:'=' -%}
+
+	{%- if keyAndValue[0] == 'builder' -%}
+		{%- assign builderId = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'products' -%}
+		{%- assign prods = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'collection' -%}
+		{%- assign collection = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'bxptheme' -%}
+		{%- assign bxpTheme = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'display' -%}
+		{%- assign pDisplay = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'cols' -%}
+		{%- assign colSize = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'limit' and keyAndValue[0] != "" -%}
+		{%- assign pageLimit = keyAndValue[1] | plus: 0 -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'lightbox' -%}
+		{%- assign useLightbox = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'showCarousel' -%}
+		{%- assign showCarousel = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'qty' -%}
+		{%- assign showQty = keyAndValue[1] -%}
+	{%- endif -%}
+	{%- if keyAndValue[0] == 'pre' -%}
+		{%- assign preSelect = keyAndValue[1] -%}
+	{%- endif -%}
+{%- endfor -%}
+
+{% paginate collections[collection].products by pageLimit %}
+
+  {%- if bxpTheme == 'full' -%}
+      {%- if pDisplay == "product" -%}
+        {%- capture productLayout -%}
+          {%- for product in collections[collection].products -%}
+            {% assign escapedTitle = product.title | escape %}
+            {%- capture collectionList -%}
+                {%- for c in product.collections -%}
+                    {{ c.id }}{%- if forloop.last == false -%},{%- endif%}
+                {%- endfor -%}
+            {%- endcapture -%}
+            {%- assign colls = collectionList | strip | strip_newlines | remove: " " -%}
+            {%- if product.variants.size > 1 -%}
+                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{escapedTitle}}" data-collections="{{ product.collections }}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item">
+                        <input data-weight="0.00" data-qty="1" data-price="0.00" data-label="{{escapedTitle}}" input="input_{{product.id}}" product-id="{{product.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required" data-display="product"/>
+                        <label>
+                            <div class="bxp-qty-num"></div>
+                            <div id="bxp-select_{{product.id}}_owl">
+                                <div class="bxp-owl-carousel bxp-owl-theme">
+                                    {% if showCarousel == 'true' %}
+                                        {%- if useLightbox == 'false' -%}
+                                            {%- for image in product.images -%}
+                                                <div class="bxp-owl-item">
+                                                    <img 
+                                                        data-src="{{image.src | img_url: '300x'}}" 
+                                                        alt="{{image.alt}}" 
+                                                        class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                        data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                    />
+                                                </div>
+                                            {%- endfor -%}
+                                        {%- else -%}
+                                            {%- for image in product.images -%}
+                                                <div class="bxp-owl-item">
+                                                    <a image="{{image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                        <img 
+                                                            data-src="{{image.src | img_url: '300x'}}" 
+                                                            alt="{{image.alt}}" 
+                                                            class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                            data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                        />
+                                                    </a>
+                                                </div>
+                                            {%- endfor -%}
+                                        {%- endif -%}
+                                    {% else %}
+                                        <div class="bxp-owl-item">
+                                            <img 
+                                                data-src="{{product.featured_image.src | img_url: '300x'}}" 
+                                                alt="{{product.title}}" 
+                                                class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                data-srcset="{{product.featured_image.src | img_url: '500x'}} 500w,{{product.featured_image.src | img_url: '700x'}} 700w,{{product.featured_image.src | img_url: '800x'}} 800w"
+                                            />
+                                        </div>
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                            <div id="bxp-select_{{product.id}}_fig" class="bxp-sel-figure">
+                                <img id="bxp-select_{{product.id}}_img" src="{{product.featured_image.src | img_url: '300x'}}" alt="{{escapedTitle}}" class="bxp-bldr-img-fluid"/>
+                            </div>
+                            {%- if showQty == 'true' -%}
+                            <div class="bldr-dark-btn">
+                                <span class="bxp-bldr-qty-down">-</span>
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{product.price | money}}</span>
+                                <span class="bxp-bldr-qty-up">+</span>
+                            </div>
+                            {%- else -%}
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{product.price | money}}</span>
+                            {%- endif -%}
+                            <strong>{{product.title}}</strong>
+                            <select class="bxp-bldr-form-control bxp-mt-10" img="{{product.featured_image.src | img_url: '300x'}}" name="bxp-select_{{product.id}}" id="bxp-select_{{product.id}}">
+                                {%- if product.options.size > 1 -%}
+                                    {%- assign label = "{{translate_select}}..." -%}
+                                {%- else -%}
+                                    {%- capture label -%}{{translate_choose}} {{product.options.first}}...{%- endcapture -%}
+                                {%- endif -%}
+                                <option value="">{{label}}</option>
+                                {%- if product.images.size > 0 -%}
+                                    {%- assign useImage = product.featured_image.src | img_url: '300x' -%}
+                                {%- else -%}
+                                    {%- assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' -%}
+                                {%- endif -%}
+                                {%- for variant in product.variants -%} 
+                                    {% assign variantTitle = variant.title | downcase %} 
+                                    {% if variantTitle contains "default title" %}
+                                        {%- assign title = product.title | escape -%}
+                                    {%- else -%}
+                                        {%- assign title = product.title | append: " - " | append: variant.title | escape -%}
+                                    {%- endif -%}
+                                    {%- if variant.image.src -%}
+                                        {%- assign useImage = variant.image.src | img_url: '300x' -%}
+                                    {%- endif -%} 
+                                    {%- if variant.available or variant.inventory_policy == 'continue' -%}
+                                        {%- if variant.inventory_management == 'shopify' -%}
+                                            {%- assign inventory = variant.inventory_quantity -%}
+                                        {%- else -%}
+                                            {%- assign inventory = 999999 -%}
+                                        {%- endif -%}
+                                        {% if variant.inventory_policy == 'continue' %}
+                                            {%- assign inventory = 999999 -%}
+                                        {%- endif -%}
+                                    <option data-label="{{title}}" weight="{{ variant.weight| weight_with_unit }}" inventory="{{inventory}}" img="{{useImage}}" price="{{ variant.price | money_without_currency }}" value="{{variant.id}}">{{variant.title}} - {{variant.price | money}}</option>
+                                    {%- else -%}
+                                    <option disabled img="{{useImage}}" price="{{variant.price | money_without_currency}}" value="{{variant.id}}">{{translate_soldOut}} - {{variant.title}} - {{variant.price | money}}</option>
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            </select>
+                            <button class="bxp-deselect">X</button>
+                        </label>
+                    </div>
+                </div>
+            {% else %}
+                {% if product.images.size > 0 %}
+                    {% assign useImage = product.featured_image.src %}
+                    {% assign useMaster = product.featured_image.src | img_url: '800x' %}
+                    {% assign useImageId = product.featured_image.id %}
+                {% else %}
+                    {% assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                    {% assign useMaster = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                {% endif %}
+                {% assign variant = product.variants | first %}
+                {% assign variantTitle = variant.title | downcase %} 
+                {% if variantTitle contains "default title" %}
+                    {%- assign title = product.title | escape -%}
+                {%- else -%}
+                    {%- assign title = product.title | append: " - " | append: variant.title | escape -%}
+                {%- endif -%}
+                {%- if variant.image.src -%}
+                    {%- assign useImage = variant.image.src -%}
+                    {%- assign useMaster = variant.image.src | img_url: '800x' -%}
+                    {%- assign useImageId = variant.image.id -%}
+                {%- endif -%} 
+                {%- if variant.inventory_management == 'shopify' -%}
+                    {%- assign inventory = variant.inventory_quantity -%}
+                {%- else -%}
+                    {%- assign inventory = 999999 -%}
+                {%- endif -%}
+                {% if variant.inventory_policy == 'continue' %}
+                    {%- assign inventory = 999999 -%}
+                {%- endif -%}
+
+                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{ product.collections }}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item">
+                        {%- if product.available -%}
+                        <input data-weight="{{ variant.weight| weight_with_unit }}" inventory="{{inventory}}" data-qty="1" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
+                        {%- endif -%}
+                        <label for="{{variant.id}}">
+                            <div class="bxp-qty-num"></div>
+                            <div class="bxp-owl-carousel bxp-owl-theme">
+                                <div class="bxp-owl-item">
+                                    {%- if useLightbox == 'false' -%}
+                                        <img 
+                                            data-src="{{useImage | img_url: '300x' }}" 
+                                            alt="{{title}}" 
+                                            class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                            data-srcset="{{useImage | img_url: '500x'}} 500w,{{useImage | img_url: '700x'}} 700w,{{useImage | img_url: '800x'}} 800w"
+                                        />
+                                    {%- else -%}
+                                        <a href="#" image="{{useMaster}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                            <img 
+                                                data-src="{{ useImage | img_url: '300x' }}" 
+                                                alt="{{title}}" 
+                                                class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                data-srcset="{{useImage | img_url: '500x'}} 500w,{{useImage | img_url: '700x'}} 700w,{{useImage | img_url: '800x'}} 800w"
+                                            />
+                                        </a>
+                                    {%- endif -%}
+                                </div>
+                                {% if showCarousel == 'true' %}
+                                    {%- for image in product.images -%}
+                                        {%- if useImageId != image.id -%}
+                                            <div class="bxp-owl-item">
+                                                {%- if useLightbox == 'false' -%}
+                                                <img 
+                                                    data-src="{{image.src | img_url: '300x'}}" 
+                                                    alt="{{image.alt}}" 
+                                                    class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                    data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                />
+                                                {%- else -%}
+                                                    <a image="{{image.src | img_url: '800x'}}">
+                                                        <img 
+                                                            data-src="{{image.src | img_url: '300x'}}" 
+                                                            alt="{{image.alt}}" 
+                                                            class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                            data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                        />
+                                                    </a>
+                                                {%- endif -%}
+                                            </div>
+                                        {%- endif -%}
+                                    {%- endfor -%}
+                                {%- endif -%}
+                            </div>
+                            {%- if variant.available or variant.inventory_policy == 'continue' -%}
+                                {%- if showQty == 'true' -%}
+                                <div class="bldr-dark-btn">
+                                    <span class="bxp-bldr-qty-down">-</span>
+                                    <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                    <span class="bxp-bldr-qty-up">+</span>
+                                </div>
+                                {%- else -%}
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                {%- endif -%}
+                            {%- else -%}
+                                <span class="bxp-bldr-sold_out">{{translate_soldOut}}</span>
+                            {%- endif -%}
+                            <strong>{{title}}</strong>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+          {% endfor %}
+        {%- endcapture -%}
+      {%- else -%}
+        {%- capture productLayout -%}
+          {%- for product in collections[collection].products -%}
+                {% capture collectionList %}
+                    {% for c in product.collections %}
+                        {{ c.id }}{% if forloop.last == false %},{% endif%}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign colls = collectionList | strip | strip_newlines | remove: " " %}
+              {%- for variant in product.variants -%}
+                    {% assign variantTitle = variant.title | downcase %} 
+                {% if variantTitle contains "default title" %}
+                    {% assign title = product.title | escape %}
+                {% else %}
+                    {% assign title = product.title | append: " - " | append: variant.title | escape %}
+                {% endif %}
+                {% assign image = variant.image.src %}
+                {% if image %}
+                    {% assign useImage = variant.image.src %}
+                    {% assign useMaster = variant.image.src | img_url: '800x' %}
+                    {% assign useImageId = variant.image.id %}
+                {% else %}
+                    {% if product.images.size > 0 %}
+                        {% assign useImage = product.featured_image.src %}
+                        {% assign useMaster = product.featured_image.src | img_url: '800x' %}
+                        {% assign useImageId = product.featured_image.id %}
+                    {% else %}
+                        {% assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                        {% assign useMaster = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                    {% endif %}
+                {% endif %} 
+                {% if variant.inventory_management == 'shopify' %}
+                    {% assign inventory = variant.inventory_quantity %}
+                {% else %}
+                    {% assign inventory = 999999 %}
+                {% endif %}
+                {% if variant.inventory_policy == 'continue' %}
+                    {%- assign inventory = 999999 -%}
+                {%- endif -%}
+                  <div class="bxp-bldr-col-md-{{colSize}} bxp-filt-sort" data-hide="{{productHideIf}}" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item">
+                      {% if variant.available or variant.inventory_policy == 'continue' %}
+                      <input data-pre="{{preSelect}}" data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="{{qty}}" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
+                      {% endif %}
+                      <label for="{{variant.id}}">
+                        <div class="bxp-qty-num"></div>
+                        <div class="bxp-owl-carousel bxp-owl-theme">
+                          <div class="bxp-owl-item">
+                            {% if useLightbox == 'false' %}
+                            <img 
+                                 data-src="{{useImage | img_url: '300x'}}" 
+                                 alt="{{title}}" 
+                                 class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                 data-srcset="{{useImage | img_url: '500x'}} 500w,{{useImage | img_url: '700x'}} 700w,{{useImage | img_url: '800x'}} 800w"
+                                 />
+                            {% else %}
+                            <div class="bxp-overlay-icon"><span class='bxp-icon'></span></div>
+                            <a href="#" image="{{useMaster}}" title-strip="{{ product.description | strip_html | escape }}" title-desc="{{ product.description | escape }}">
+                              <img 
+                                   data-src="{{useImage | img_url: '300x'}}" 
+                                   alt="{{title}}" 
+                                   class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                   data-srcset="{{useImage | img_url: '500x'}} 500w,{{useImage | img_url: '700x'}} 700w,{{useImage | img_url: '800x'}} 800w"
+                                   />
+                            </a>
+                            {% endif %}
+                          </div>
+                          {% if showCarousel == 'true' %}
+                          {%- for image in product.images -%}
+                          {% if useImageId != image.id %}
+                          <div class="bxp-owl-item">
+                            {% if useLightbox == 'false' %}
+                            <img 
+                                 data-src="{{image.src | img_url: '300x'}}" 
+                                 alt="{{image.alt}}" 
+                                 class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                 data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                 />
+                            {% else %}
+                            <div class="bxp-overlay-icon"><span class='bxp-icon'></span></div>
+                            <a href="#" image="{{image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                              <img 
+                                   data-src="{{image.src | img_url: '300x'}}" 
+                                   alt="{{image.alt}}" 
+                                   class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                   data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                   />
+                            </a>
+                            {% endif %}
+                          </div>
+                          {% endif %}
+                          {%- endfor -%}
+                          {% endif %}
+                        </div>
+                        {% if variant.available %}
+                        {% if showQty == 'true' %}
+                        <div class="bldr-dark-btn">
+                          <span class="bxp-bldr-qty-down">-</span>
+                          <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                          <span class="bxp-bldr-qty-up">+</span>
+                        </div>
+                        {% else %}
+                        <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                        {% endif %}
+                        {% else %}
+                        <span class="bxp-bldr-sold_out">{{translate_soldOut}}</span>
+                        {% endif %}
+                        <strong>{{title}}</strong>
+                      </label>
+                    </div>
+                  </div>
+              {%- endfor -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+      {%- endif -%}
+  {%- else -%}
+      {%- if pDisplay == "product" -%}
+        {%- capture productLayout -%}
+			{%- for product in collections[collection].products -%}
+				{% capture collectionList %}
+                    {% for c in product.collections %}
+                        {{ c.id }}{% if forloop.last == false %},{% endif%}
+                    {% endfor %}
+                {% endcapture %}
+
+                {% assign colls = collectionList | strip | strip_newlines | remove: " " %}
+                {% if product.variants.size > 1 %}
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{product.title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                        <input data-weight="0.00" data-qty="1" data-price="0.00" data-label="{{product.title}}" input="input_{{product.id}}" product-id="{{product.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required" data-display="product"/>
+                        <label>
+                            <div class="bxp-qty-num"></div>
+                            <figure id="bxp-select_{{product.id}}_owl">
+                                <div class="bxp-owl-carousel bxp-owl-theme">
+                                    {% if showCarousel == 'true' %}
+                                        {%- for image in product.images -%}
+                                            <div class="bxp-owl-item">
+                                                {% if useLightbox == 'false' %}
+                                                    <img 
+                                                        data-src="{{image.src | img_url: '300x'}}" 
+                                                        alt="{{image.alt}}" 
+                                                        class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                        data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                    />
+                                                {% else %}
+                                                    <a href="#" image="{{image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                        <img 
+                                                            data-src="{{image.src | img_url: '300x'}}" 
+                                                            alt="{{image.alt}}" 
+                                                            class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                            data-srcset="{{image.src | img_url: '500x'}} 500w,{{image.src | img_url: '700x'}} 700w,{{image.src | img_url: '800x'}} 800w"
+                                                        />
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        {%- endfor -%}
+                                    {% else %}
+                                    <div class="bxp-owl-item">
+                                        {% if useLightbox == 'false' %}
+                                            <img 
+                                                data-src="{{product.featured_image.src | img_url: '300x'}}" 
+                                                alt="{{product.title}}" 
+                                                class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                data-srcset="{{product.featured_image.src | img_url: '500x'}} 500w,{{product.featured_image.src | img_url: '700x'}} 700w,{{product.featured_image.src | img_url: '800x'}} 800w"
+                                            />
+                                        {% else %}
+                                            <a image="{{product.featured_image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                <img 
+                                                    data-src="{{product.featured_image.src | img_url: '300x'}}" 
+                                                    alt="{{product.title}}" 
+                                                    class="bxp-bldr-img-fluid owl-lazy bxp-lazyload"
+                                                    data-srcset="{{product.featured_image.src | img_url: '500x'}} 500w,{{product.featured_image.src | img_url: '700x'}} 700w,{{product.featured_image.src | img_url: '800x'}} 800w"
+                                                />
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </figure>
+                            <figure id="bxp-select_{{product.id}}_fig" class="bxp-sel-figure">
+                                <img id="bxp-select_{{product.id}}_img" src="{{product.featured_image.src | img_url: '300x'}}" alt="{{product.title}}" class="bxp-bldr-img-fluid"/>
+                            </figure>
+                            {% if showQty == 'true' %}
+                            <div class="bldr-dark-btn">
+                                <span class="bxp-bldr-qty-down">-</span>
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{product.price | money}}</span>
+                                <span class="bxp-bldr-qty-up">+</span>
+                            </div>
+                            {% else %}
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{product.price | money}}</span>
+                            {% endif %}
+                            <strong>{{product.title}}</strong>
+                            {% assign pDesc = product.description | strip_html | truncatewords: 28 %}
+                            <span id="less_{{product.id}}">{{ pDesc }} {% if pDesc contains '...' %}<a class="bxp-read-more" href="#this" onclick="bxpReadMore('{{product.id}}');">{{translate_readMore}}</a>{% endif %}</span>
+                            <span id="more_{{product.id}}" class="bxp-hide-desc">{{product.description | strip_html }}</span>
+                            <select class="bxp-bldr-form-control" img="{{product.featured_image.src | img_url: '300x'}}" name="bxp-select_{{product.id}}" id="bxp-select_{{product.id}}">
+                                {% if product.options.size > 1 %}
+                                    {% assign label = "{{translate_select}}..."  %}
+                                {% else %}
+                                    {% assign label = "{{translate_choose}} " | append: product.options.first | append: "..." %}
+                                {% endif %}
+                                <option value="">{{label}}</option>
+                                {% if product.images.size > 0 %}
+                                    {% assign useImage = product.featured_image.src | img_url: '300x' %}
+                                {% else %}
+                                    {% assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                                {% endif %}
+                                {%- for variant in product.variants -%}  
+                                    {% assign variantTitle = variant.title | downcase %} 
+                                    {% if variantTitle contains "default title" %}
+                                        {% assign title = product.title %}
+                                    {% else %}
+                                        {% assign title = product.title | append: " - " | append: variant.title %}
+                                    {% endif %}
+                                    {% if variant.image.src %}
+                                        {% assign useImage = variant.image.src | img_url: '300x' %}
+                                    {% endif %} 
+                                    {% if variant.available or variant.inventory_policy == 'continue' %}
+                                        {% if variant.inventory_management == 'shopify' %}
+                                            {% assign inventory = variant.inventory_quantity %}
+                                        {% else %}
+                                            {% assign inventory = 999999 %}
+                                        {% endif %}
+                                        {% if variant.inventory_policy == 'continue' %}
+                                            {%- assign inventory = 999999 -%}
+                                        {%- endif -%}
+                                    <option data-label="{{title}}" weight="{{ variant.weight| weight_with_unit }}" inventory="{{inventory}}" img="{{useImage}}" price="{{ variant.price | money_without_currency }}" value="{{variant.id}}">{{variant.title}} - {{variant.price | money}}</option>
+                                    {% else %}
+                                    <option disabled img="{{useImage}}" price="{{variant.price | money_without_currency}}" value="{{variant.id}}">{{translate_soldOut}} - {{variant.title}} - {{variant.price | money}}</option>
+                                    {% endif %}
+                                {%- endfor -%}
+                            </select>
+                            <button class="bxp-deselect">X</button>
+                        </label>
+                    </div> 
+                {% else %}
+                    {% if product.images.size > 0 %}
+                        {% assign useImage = product.featured_image.src | img_url: '300x' %}
+                        {% assign useMaster = product.featured_image.src | img_url: '800x' %}
+                        {% assign useImageId = product.featured_image.id %}
+                    {% else %}
+                        {% assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                        {% assign useMaster = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                    {% endif %}
+                    {% assign variant = product.variants | first %}
+                    {% assign variantTitle = variant.title | downcase %} 
+                    {% if variantTitle contains "default title" %}
+                        {% assign title = product.title %}
+                    {% else %}
+                        {% assign title = product.title | append: " - " | append: variant.title %}
+                    {% endif %}
+                    {% if variant.image.src %}
+                        {% assign useImage = variant.image.src | img_url: '300x' %}
+                        {% assign useMaster = variant.image.src | img_url: '800x' %}
+                        {% assign useImageId = variant.image.id %}
+                    {% endif %} 
+                    {% if variant.inventory_management == 'shopify' %}
+                        {% assign inventory = variant.inventory_quantity %}
+                    {% else %}
+                        {% assign inventory = 999999 %}
+                    {% endif %}
+                    {% if variant.inventory_policy == 'continue' %}
+                        {%- assign inventory = 999999 -%}
+                    {%- endif -%}
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                        {% if variant.available or variant.inventory_policy == 'continue' %}
+                            <input data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="1" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
+                        {% endif %}
+                        <label for="{{variant.id}}">
+                            <div class="bxp-qty-num"></div>
+                            <figure>
+                                <div class="bxp-owl-carousel bxp-owl-theme">
+                                    <div class="bxp-owl-item">
+                                        {% if useLightbox == 'false' %}
+                                            <img data-src="{{useImage}}" alt="{{title}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                        {% else %}
+                                            <a href="#" image="{{useMaster}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                <img data-src="{{useImage}}" alt="{{title}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    {%- for image in product.images -%}
+                                        {% if useImageId != image.id %}
+                                            <div class="bxp-owl-item">
+                                                {% if useLightbox == 'false' %}
+                                                    <img data-src="{{image.src | img_url: '300x'}}" alt="{{image.alt}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                                {% else %}
+                                                    <a href="#" image="{{image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                        <img src="{{image.src | img_url: '300x'}}" alt="{{image.alt}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {%- endfor -%}
+                                </div>
+                            </figure>
+                            {% if variant.available %}
+                                {% if showQty == 'true' %}
+                                <div class="bldr-dark-btn">
+                                    <span class="bxp-bldr-qty-down">-</span>
+                                    <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                    <span class="bxp-bldr-qty-up">+</span>
+                                </div>
+                                {% else %}
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="bxp-bldr-sold_out">{{translate_soldOut}}</span>
+                            {% endif %}
+                            <strong>{{title}}</strong>
+                            {% assign pDesc = product.description | strip_html | truncatewords: 28 %}
+                            <span id="less_{{product.id}}">{{ pDesc }} {% if pDesc contains '...' %}<a class="bxp-read-more" href="#this" onclick="bxpReadMore('{{product.id}}');">{{translate_readMore}}</a>{% endif %}</span>
+                            <span id="more_{{product.id}}" class="bxp-hide-desc">{{product.description | strip_html }}</span>
+                        </label>
+                    </div>
+                {% endif %}
+			{%- endfor -%}
+        {%- endcapture -%}
+      {%- else -%}
+        {%- capture productLayout -%}
+			{%- for product in collections[collection].products -%}
+				{% capture collectionList %}
+                    {% for c in product.collections %}
+                        {{ c.id }}{% if forloop.last == false %},{% endif%}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign colls = collectionList | strip | strip_newlines | remove: " " %}
+
+                {%- for variant in product.variants -%}  
+
+                    {% assign variantTitle = variant.title | downcase %} 
+                    {% if variantTitle contains "default title" %}
+                        {% assign title = product.title %}
+                    {% else %}
+                        {% assign title = product.title | append: " - " | append: variant.title %}
+                    {% endif %}
+                    {% assign image = variant.image.src %}
+                    {% if image %}
+                        {% assign useImage = variant.image.src | img_url: '300x' %}
+                        {% assign useMaster = variant.image.src | img_url: '800x' %}
+                        {% assign useImageId = variant.image.id %}
+                    {% else %}
+                        {% if product.images.size > 0 %}
+                            {% assign useImage = product.featured_image.src | img_url: '300x' %}
+                            {% assign useMaster = product.featured_image.src | img_url: '800x' %}
+                            {% assign useImageId = product.featured_image.id %}
+                        {% else %}
+                            {% assign useImage = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                            {% assign useMaster = 'https://builder-front.boxup.io/img/placeholder.png' %}
+                        {% endif %}
+                    {% endif %} 
+                    {% if variant.inventory_management == 'shopify' %}
+                        {% assign inventory = variant.inventory_quantity %}
+                    {% else %}
+                        {% assign inventory = 999999 %}
+                    {% endif %}
+                    {% if variant.inventory_policy == 'continue' %}
+                        {%- assign inventory = 999999 -%}
+                    {%- endif -%}
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                        {% if variant.available or variant.inventory_policy == 'continue' %}
+                            <input data-pre="{{preSelect}}" data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="{{qty}}" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
+                        {% endif %}
+                        <label for="{{variant.id}}">
+                            <div class="bxp-qty-num"></div>
+                            <figure>
+                                <div class="bxp-owl-carousel bxp-owl-theme">
+                                    <div class="bxp-owl-item">
+                                        {% if useLightbox == 'false' %}
+                                            <img data-src="{{useImage}}" alt="{{title}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                        {% else %}
+                                            <a href="#" image="{{useMaster}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                <img data-src="{{useImage}}" alt="{{title}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    {% if showCarousel == 'true' %}
+                                        {%- for image in product.images -%}
+                                            {% if useImageId != image.id %}
+                                                <div class="bxp-owl-item">
+                                                    {% if useLightbox == 'false' %}
+                                                        <img data-src="{{image.src | img_url: '300x'}}" alt="{{image.alt}}" class="bxp-bldr-img-fluid owl-lazy"/> 
+                                                    {% else %}
+                                                        <a href="#" image="{{image.src | img_url: '800x'}}" title-strip="{{ product.description | strip_html }}" title-desc="{{ product.description | escape }}">
+                                                            <img data-src="{{image.src | img_url: '300x'}}" alt="{{image.alt}}" class="bxp-bldr-img-fluid owl-lazy"/>
+                                                        </a>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {%- endfor -%}
+                                    {% endif %}
+                                </div>
+                            </figure>
+                            {% if variant.available %}
+                                {% if showQty == 'true' %}
+                                <div class="bldr-dark-btn">
+                                    <span class="bxp-bldr-qty-down">-</span>
+                                    <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                    <span class="bxp-bldr-qty-up">+</span>
+                                </div>
+                                {% else %}
+                                <span class="bxp-bldr-item_price"><span class="bxp-bldr-add-text"></span> {{variant.price | money}}</span>
+                                {% endif %}
+                            {% else %}
+                            <span class="bxp-bldr-sold_out">{{translate_soldOut}}</span>
+                            {% endif %}
+                            <strong>{{title}}</strong>
+                            {% assign pDesc = product.description | strip_html | truncatewords: 28 %}
+                            <span id="less_{{variant.id}}">{{ pDesc }} {% if pDesc contains '...' %}<a class="bxp-read-more" href="#this" onclick="bxpReadMore('{{variant.id}}');">{{translate_readMore}}</a>{% endif %}</span>
+                            <span id="more_{{variant.id}}" class="bxp-hide-desc">{{product.description | strip_html }}</span>
+                        </label>
+                    </div>
+                {% endfor %}
+			{%- endfor -%}
+        {%- endcapture -%}
+      {%- endif -%}
+  {%- endif -%}
+
+{%- endpaginate -%}
+
+{{productLayout}}
