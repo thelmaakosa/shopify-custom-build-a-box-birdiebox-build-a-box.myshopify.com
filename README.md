@@ -3,9 +3,13 @@ Custom Build a Box Page for birdiebox-build-a-box.myshopify.com
 
 # Code files
 theme.liquid
+
 custom-js.js
+
 custom.css
+
 boxup-pagination.liquid
+
 product.boxbuilder.liquid
 
 # Shopify App
