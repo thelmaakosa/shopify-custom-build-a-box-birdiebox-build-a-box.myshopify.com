@@ -125,6 +125,22 @@
     </div>
   </div>
 
+  {% if thumbnail_height == 'fixed' %}
+    {% style %}
+      .product__photos-{{ section_id }} .product__thumbs:not(.product__thumbs--below) {
+        min-height: 400px;
+        max-height: 400px;
+      }
+
+      @media screen and (max-width: 798px) {
+        .product__photos-{{ section_id }} .product__thumbs:not(.product__thumbs--below) {
+          min-height: 300px;
+          max-height: 300px;
+        }
+      }
+    {% endstyle %}
+  {% endif %}
+
   <script type="application/json" id="ModelJson-{{ section_id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>

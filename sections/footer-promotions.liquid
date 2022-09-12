@@ -98,123 +98,123 @@
 {%- endif -%}
 
 {% schema %}
-  {
-    "name": "Footer promotions",
-    "max_blocks": 3,
-    "class": "index-section--footer",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "hide_homepage",
-        "label": "Do not show on home page"
-      },
-      {
-        "type": "select",
-        "id": "image_size",
-        "label": "Force image size",
-        "default": "square",
-        "options": [
-          {
-            "value": "natural",
-            "label": "Natural"
-          },
-          {
-            "value": "square",
-            "label": "Square (1:1)"
-          },
-          {
-            "value": "landscape",
-            "label": "Landscape (4:3)"
-          },
-          {
-            "value": "portrait",
-            "label": "Portrait (2:3)"
-          },
-          {
-            "value": "wide",
-            "label": "Wide (16:9)"
-          }
-        ]
-      }
-    ],
-    "blocks": [
-      {
-        "type": "promotion",
-        "name": "Column",
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "enable_image",
-            "label": "Show image",
-            "default": true
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Site-wide promotion"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>"
-          },
-          {
-            "type": "text",
-            "id": "button_label",
-            "label": "Button label",
-            "default": "Optional button"
-          },
-          {
-            "type": "url",
-            "id": "button_link",
-            "label": "Link"
-          },
-          {
-            "type": "select",
-            "id": "color_scheme",
-            "label": "Color scheme",
-            "default": "none",
-            "options": [
-              {
-                "value": "none",
-                "label": "None"
-              },
-              {
-                "value": "1",
-                "label": "1"
-              },
-              {
-                "value": "2",
-                "label": "2"
-              },
-              {
-                "value": "3",
-                "label": "3"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "default": {
-      "blocks": [
+{
+  "name": "t:sections.footer-promotions.name",
+  "max_blocks": 3,
+  "class": "index-section--footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_homepage",
+      "label": "t:sections.footer-promotions.settings.hide_homepage.label"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:sections.footer-promotions.settings.image_size.label",
+      "default": "square",
+      "options": [
         {
-          "type": "promotion"
+          "value": "natural",
+          "label": "t:sections.footer-promotions.settings.image_size.options.natural.label"
         },
         {
-          "type": "promotion"
+          "value": "square",
+          "label": "t:sections.footer-promotions.settings.image_size.options.square.label"
         },
         {
-          "type": "promotion"
+          "value": "landscape",
+          "label": "t:sections.footer-promotions.settings.image_size.options.landscape.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.footer-promotions.settings.image_size.options.portrait.label"
+        },
+        {
+          "value": "wide",
+          "label": "t:sections.footer-promotions.settings.image_size.options.wide.label"
         }
       ]
     }
+  ],
+  "blocks": [
+    {
+      "type": "promotion",
+      "name": "t:sections.footer-promotions.blocks.column.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_image",
+          "label": "t:sections.footer-promotions.blocks.column.settings.enable_image.label",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.footer-promotions.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer-promotions.blocks.column.settings.title.label",
+          "default": "Site-wide promotion"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.footer-promotions.blocks.column.settings.text.label",
+          "default": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.footer-promotions.blocks.column.settings.button_label.label",
+          "default": "Optional button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.footer-promotions.blocks.column.settings.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "label": "t:sections.footer-promotions.blocks.column.settings.color_scheme.label",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.footer-promotions.blocks.column.settings.color_scheme.options.none.label"
+            },
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "promotion"
+      },
+      {
+        "type": "promotion"
+      },
+      {
+        "type": "promotion"
+      }
+    ]
   }
+}
 {% endschema %}

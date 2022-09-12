@@ -39,9 +39,9 @@
     {%- endstyle -%}
 
     {%- if template == 'index' -%}
-      <h1 class="site-header__logo">
+      <h1 class="site-header__logo" {{ block.shopify_attributes }}>
     {%- else -%}
-      <div class="h1 site-header__logo">
+      <div class="h1 site-header__logo" {{ block.shopify_attributes }}>
     {%- endif -%}
 
     {%- if block.settings.logo -%}

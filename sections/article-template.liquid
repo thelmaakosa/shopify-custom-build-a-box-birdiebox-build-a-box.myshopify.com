@@ -192,39 +192,39 @@
 </script>
 
 {% schema %}
-  {
-    "name": "Article pages",
-    "class": "blog-layout__main",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "blog_capitalize_first",
-        "label": "Capitalize first letter",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_tags",
-        "label": "Show tags",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_comments",
-        "label": "Show comment count",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author"
-      }
-    ]
-  }
+{
+  "name": "t:sections.article-template.name",
+  "class": "blog-layout__main",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_capitalize_first",
+      "label": "t:sections.article-template.settings.blog_capitalize_first.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "t:sections.article-template.settings.blog_show_tags.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "t:sections.article-template.settings.blog_show_date.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_comments",
+      "label": "t:sections.article-template.settings.blog_show_comments.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "t:sections.article-template.settings.blog_show_author.label"
+    }
+  ]
+}
 {% endschema %}

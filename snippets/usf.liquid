@@ -1,7 +1,7 @@
 <script>window._usfTheme={
-    id:131551068404,
+    id:129708032155,
     name:"Expanse",
-    version:"2.5.2",
+    version:"3.1.0",
     vendor:"Archetype Themes",
     applied:1,
     assetUrl:"{{ 'usf-boot.js' | asset_url }}"
@@ -9,5 +9,10 @@
 window._usfCustomerTags = {{ customer.tags | json }};
 window._usfCollectionId = {{ collection.id | json }};
 window._usfCollectionDefaultSort = {{ collection.default_sort_by | json }};
-window.usf = { settings: {{ shop.metafields.usf.settings }} };</script>
+window._usfLocale = {{ request.locale.iso_code | json | downcase }};
+window._usfRootUrl = {{ routes.root_url | json }};
+window.usf = {
+  settings: {{ shop.metafields.usf.settings }}
+}
+</script>
 <script src="{{ 'usf-boot.js' | asset_url }}" async></script>

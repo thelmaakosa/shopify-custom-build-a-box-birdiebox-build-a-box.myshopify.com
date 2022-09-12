@@ -169,7 +169,6 @@
                               assign filter_range_max = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.'
                             endif
                           %}
-                          
                           <div
                             class="price-range"
                             data-min-value="{{ filter_min_value }}"
@@ -197,93 +196,12 @@
                               readonly>
                           </div>
                       {%- endcase -%}
-                        
                     </div>
                   </div>
                 </div>
               </div>
             {%- endfor -%}
           </form>
-            {% comment %} custom price filter {% endcomment %}
-            <div class="collection-sidebar__group--5">
-                <div class="collection-sidebar__group">
-                    <button type="button" class="custom-price-filter-btn" style="padding-left: 0;">
-                        <span class="collapsible-trigger__layout collapsible-trigger__layout--inline">
-                            <span style="font-weight: 700; font-size: calc(var(--typeBaseSize) + 3px); padding: 5px 15px 5px 0;">Price</span>
-                            <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
-                                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16"><path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path></svg>
-                            </span>
-                        </span>
-                    </button>
-                    <div class="tag-container" >
-                    {% comment %} <div class="" style="height:auto;"> {% endcomment %}
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="0-25" filter-min=0 filter-max=25>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$0 - $25</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="25-50" filter-min=25 filter-max=50>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$25 - $50</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="50-75" filter-min=50 filter-max=75>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$50 - $75</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="50-75" filter-min=75 filter-max=100>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$75 - $100</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="50-75" filter-min=100 filter-max=125>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$100 - $125</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="50-75" filter-min=125 filter-max=150>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$125 - $150</span> 
-                                </span>
-                            </label>
-                        </div>
-                        <div class="custom-price-container">
-                            <label class="">
-                                <input type="checkbox" class="" style=";" name="" value="50-75" filter-min=150>
-                                <span class="tag__checkbox"></span>
-                                <span>
-                                    <span class="">$150+</span> 
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% comment %} End custom price filter {% endcomment %}
         {%- endif -%}
 
       </div>
@@ -346,5 +264,3 @@
     }
   {%- endstyle -%}
 {%- endunless -%}
-
-    

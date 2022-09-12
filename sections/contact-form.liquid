@@ -66,62 +66,64 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Contact form",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "All submissions are sent to the customer email address of your store. [Learn more](https://help.shopify.com/en/manual/using-themes/change-the-layout/add-contact-form#view-contact-form-submissions)."
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "default": "Contact us"
-      },
-      {
-        "type": "richtext",
-        "id": "text",
-        "label": "Text"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_phone",
-        "label": "Add phone number field"
-      },
-      {
-        "type": "checkbox",
-        "id": "narrow_column",
-        "label": "Narrow column",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "default": "1",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          }
-        ]
-      }
-    ],
-    "presets": [{
-      "name": "Contact form"
-    }]
-  }
+{
+  "name": "t:sections.contact-form.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.contact-form.settings.content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.contact-form.settings.title.label",
+      "default": "Contact us"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.contact-form.settings.text.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "t:sections.contact-form.settings.show_phone.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "narrow_column",
+      "label": "t:sections.contact-form.settings.narrow_column.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.contact-form.settings.color_scheme.label",
+      "default": "1",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.contact-form.settings.color_scheme.options.none.label"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.contact_form.name"
+    }
+  ]
+}
 {% endschema %}

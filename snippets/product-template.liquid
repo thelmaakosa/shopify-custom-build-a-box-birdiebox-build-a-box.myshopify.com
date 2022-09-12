@@ -25,6 +25,30 @@
   endcase
 -%}
 
+{%- liquid
+  assign connect_to_sizechart = false
+
+  for block in section.blocks
+    if block.type == 'size_chart'
+      assign sizechart_index = forloop.index0
+      assign next_block_index = sizechart_index | plus: 1
+      assign variant_block = section.blocks[next_block_index]
+
+      if variant_block.type == 'variant_picker' and variant_block.settings.picker_type == 'button' and product.has_only_default_variant == false
+        for option in product.options_with_values
+          assign size_trigger = 'products.general.size_trigger' | t | downcase
+          assign downcased_option = option.name | downcase
+
+          if downcased_option contains size_trigger
+            assign connect_to_sizechart = true
+          endif
+        endfor
+      endif
+
+    endif
+  endfor
+-%}
+
 <div id="ProductSection-{{ section_id }}-{{ product.id }}"
   class="product-section"
   data-section-id="{{ section_id }}"
@@ -99,6 +123,7 @@
               product_zoom_enable: product_zoom_enable,
               product_zoom_size: product_zoom_size,
               thumbnail_arrows: thumbnail_arrows,
+              thumbnail_height: thumbnail_height,
               thumbnail_position: thumbnail_position,
               video_looping: video_looping,
               video_style: video_style
@@ -120,7 +145,7 @@
                   {%- when '@app' -%}
                     {% render block %}
                   {%- when 'separator' -%}
-                    <div class="product-block"><hr></div>
+                    <div class="product-block" {{ block.shopify_attributes }}><hr></div>
                   {%- when 'text' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       {{ block.settings.text }}
@@ -240,6 +265,26 @@
                         </div>
                       </div>
                     </div>
+                  {%- when 'size_chart' -%}
+                    {% if connect_to_sizechart == false %}
+                      {%- capture size_chart_title -%}
+                        {{ 'products.general.size_chart' | t }}<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-size-chart" viewBox="0 0 64 64"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M22.39 33.53c-7.46 0-13.5-3.9-13.5-8.72s6-8.72 13.5-8.72 13.5 3.9 13.5 8.72a12 12 0 0 1-.22 1.73"/><ellipse cx="22.39" cy="24.81" rx="3.28" ry="2.12"/><path class="a" d="M8.89 24.81V38.5c0 7.9 6.4 9.41 14.3 9.41h31.92V33.53H22.39M46.78 33.53v7.44M38.65 33.53v7.44M30.52 33.53v7.44M22.39 33.53v7.44"/></svg>
+                      {%- endcapture -%}
+
+                      <div class="size-chart__standalone" {{ block.shopify_attributes }}>
+                        {%- render
+                          'tool-tip-trigger',
+                          title: size_chart_title,
+                          content: block.settings.size_chart.content,
+                          context: 'size-chart'
+                        -%}
+                        {% style %}
+                          tool-tip-trigger {
+                            font-weight: 800;
+                          }
+                        {% endstyle %}
+                      </div>
+                    {% endif %}
                   {%- when 'variant_picker' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       {%- unless product.has_only_default_variant -%}
@@ -269,7 +314,9 @@
                               forloop: forloop,
                               variant_labels: block.settings.variant_labels,
                               is_color: is_color,
-                              color_option_index: color_option_index
+                              color_option_index: color_option_index,
+                              connect_to_sizechart: connect_to_sizechart,
+                              sizechart_index: sizechart_index
                             -%}
                           {%- else -%}
                             {%- render 'variant-dropdown',

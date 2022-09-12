@@ -36,46 +36,47 @@
 {%- if section.settings.divider -%}</div>{%- endif -%}
 
 {% schema %}
-  {
-    "name": "Collection list",
-    "class": "index-section",
-    "max_blocks": 18,
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "Popular categories"
-      },
-      {
-        "type": "checkbox",
-        "id": "divider",
-        "label": "Show section divider",
-        "default": false
-      }
-    ],
-    "blocks": [
-      {
-        "type": "collection",
-        "name": "Collection",
-        "settings": [
-          {
-            "id": "collection",
-            "type": "collection",
-            "label": "Collection",
-            "info": "Image source can be adjusted under Theme Settings > Collection Tiles"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "info": "Defaults to collection title"
-          }
-        ]
-      }
-    ],
-    "presets": [{
-      "name": "Collection list",
+{
+  "name": "t:sections.featured-collections.name",
+  "class": "index-section",
+  "max_blocks": 18,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.featured-collections.settings.title.label",
+      "default": "Popular categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:sections.featured-collections.settings.divider.label",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "t:sections.featured-collections.blocks.collection.name",
+      "settings": [
+        {
+          "id": "collection",
+          "type": "collection",
+          "label": "t:sections.featured-collections.blocks.collection.settings.collection.label",
+          "info": "t:sections.featured-collections.blocks.collection.settings.collection.info"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.featured-collections.blocks.collection.settings.title.label",
+          "info": "t:sections.featured-collections.blocks.collection.settings.title.info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-collections.presets.collection_list.name",
       "blocks": [
         {
           "type": "collection"
@@ -96,6 +97,7 @@
           "type": "collection"
         }
       ]
-    }]
-  }
+    }
+  ]
+}
 {% endschema %}

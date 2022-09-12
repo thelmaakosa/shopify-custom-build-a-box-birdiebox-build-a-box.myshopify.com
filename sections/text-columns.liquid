@@ -73,132 +73,132 @@
 {%- if section.settings.divider -%}</div>{%- endif -%}
 
 {% schema %}
-  {
-    "name": "Text columns with images",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading"
-      },
-      {
-        "type": "select",
-        "id": "align_text",
-        "label": "Alignment",
-        "default": "left",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Centered"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "divider",
-        "label": "Show section divider",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "default": "none",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          }
-        ]
-      }
-    ],
-    "blocks": [
-      {
-        "type": "text_block",
-        "name": "Column",
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "enable_image",
-            "label": "Show image",
-            "default": true
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "range",
-            "id": "image_width",
-            "label": "Image width",
-            "default": 650,
-            "min": 60,
-            "max": 650,
-            "step": 10,
-            "unit": "px"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Example title"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.</p>"
-          },
-          {
-            "type": "text",
-            "id": "button_label",
-            "label": "Button label",
-            "default": "Optional button"
-          },
-          {
-            "type": "url",
-            "id": "button_link",
-            "label": "Link"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Text columns with images",
-        "blocks": [
-          {
-            "type": "text_block"
-          },
-          {
-            "type": "text_block"
-          },
-          {
-            "type": "text_block"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.text-columns.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.text-columns.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "t:sections.text-columns.settings.align_text.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.text-columns.settings.align_text.options.left.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.text-columns.settings.align_text.options.center.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.text-columns.settings.align_text.options.right.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:sections.text-columns.settings.divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.text-columns.settings.color_scheme.label",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.text-columns.settings.color_scheme.options.none.label"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "t:sections.text-columns.blocks.column.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_image",
+          "label": "t:sections.text-columns.blocks.column.settings.enable_image.label",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.text-columns.blocks.column.settings.image.label"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "t:sections.text-columns.blocks.column.settings.image_width.label",
+          "default": 650,
+          "min": 60,
+          "max": 650,
+          "step": 10,
+          "unit": "px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.text-columns.blocks.column.settings.title.label",
+          "default": "Example title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.text-columns.blocks.column.settings.text.label",
+          "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.text-columns.blocks.column.settings.button_label.label",
+          "default": "Optional button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.text-columns.blocks.column.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text-columns.presets.text_columns_with_images.name",
+      "blocks": [
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

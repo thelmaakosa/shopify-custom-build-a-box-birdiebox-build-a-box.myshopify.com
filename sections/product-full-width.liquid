@@ -43,123 +43,123 @@
 {%- endif -%}
 
 {% schema %}
-  {
-    "name": "Full-width details",
-    "class": "product-full-width",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "For product lines with long descriptions, we recommend placing your Description and Tabs within this section."
-      },
-      {
-        "type": "checkbox",
-        "id": "max_width",
-        "label": "Optimize for readability",
-        "info": "Applies a maximum width",
-        "default": true
-      }
-    ],
-    "blocks": [
-      {
-        "type": "@app"
-      },
-      {
-        "type": "description",
-        "name": "Description",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "is_tab",
-            "label": "Show as tab"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "Text",
-        "settings": [
-          {
-            "type": "text",
-            "id": "text",
-            "default": "Text block",
-            "label": "Text"
-          }
-        ]
-      },
-      {
-        "type": "tab",
-        "name": "Tab",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Shipping information"
-          },
-          {
-            "type": "richtext",
-            "id": "content",
-            "label": "Tab content",
-            "default": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>"
-          },
-          {
-            "type": "page",
-            "id": "page",
-            "label": "Tab content from page"
-          }
-        ]
-      },
-      {
-        "type": "share",
-        "name": "Share on social",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "paragraph",
-            "content": "Choose which platforms to share to in global theme settings"
-          }
-        ]
-      },
-      {
-        "type": "separator",
-        "name": "Separator"
-      },
-      {
-        "type": "contact",
-        "name": "Contact form",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "paragraph",
-            "content": "All submissions are sent to the customer email address of your store. [Learn more](https://help.shopify.com/en/manual/using-themes/change-the-layout/add-contact-form#view-contact-form-submissions)."
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Ask a question"
-          },
-          {
-            "type": "checkbox",
-            "id": "phone",
-            "label": "Add phone number field"
-          }
-        ]
-      },
-      {
-        "type": "custom",
-        "name": "HTML",
-        "settings": [
-          {
-            "type": "liquid",
-            "id": "code",
-            "label": "HTML",
-            "default": "<h4>Custom code block</h4><p>Use this advanced section to add custom HTML, app scripts, or liquid.</p>",
-            "info": "Supports Liquid"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.product-full-width.name",
+  "class": "product-full-width",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.product-full-width.settings.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "max_width",
+      "label": "t:sections.product-full-width.settings.max_width.label",
+      "info": "t:sections.product-full-width.settings.max_width.info",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "description",
+      "name": "t:sections.product-full-width.blocks.description.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_tab",
+          "label": "t:sections.product-full-width.blocks.description.settings.is_tab.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.product-full-width.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "t:sections.product-full-width.blocks.text.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "t:sections.product-full-width.blocks.tab.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.product-full-width.blocks.tab.settings.title.label",
+          "default": "Shipping information"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.product-full-width.blocks.tab.settings.content.label",
+          "default": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "t:sections.product-full-width.blocks.tab.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "share",
+      "name": "t:sections.product-full-width.blocks.share_on_social.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.product-full-width.blocks.share_on_social.settings.content"
+        }
+      ]
+    },
+    {
+      "type": "separator",
+      "name": "t:sections.product-full-width.blocks.separator.name"
+    },
+    {
+      "type": "contact",
+      "name": "t:sections.product-full-width.blocks.contact_form.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.product-full-width.blocks.contact_form.settings.content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.product-full-width.blocks.contact_form.settings.title.label",
+          "default": "Ask a question"
+        },
+        {
+          "type": "checkbox",
+          "id": "phone",
+          "label": "t:sections.product-full-width.blocks.contact_form.settings.phone.label"
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "name": "t:sections.product-full-width.blocks.html.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "code",
+          "label": "t:sections.product-full-width.blocks.html.settings.code.label",
+          "default": "<h4>Custom code block</h4><p>Use this advanced section to add custom HTML, app scripts, or liquid.</p>",
+          "info": "t:sections.product-full-width.blocks.html.settings.code.info"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

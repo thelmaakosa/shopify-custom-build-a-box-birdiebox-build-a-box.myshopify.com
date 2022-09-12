@@ -1,1 +1,16 @@
-{"sections":{"1652970045c95b7603":{"type":"rich-text","blocks":{"16529700452b44a68f-0":{"type":"heading","disabled":true,"settings":{"title":"Rich text"}},"16529700452b44a68f-1":{"type":"text","settings":{"enlarge_text":false,"text":"<p>Once your order is placed, a customer service rep will follow-up with a virtual proof prior to fulfilling the order. <\/p>"}}},"block_order":["16529700452b44a68f-0","16529700452b44a68f-1"],"settings":{"align_text":"center","narrow_column":true,"color_scheme":"1","divider":false}},"main":{"type":"main-cart","settings":{}},"recently-viewed":{"type":"recently-viewed","settings":{}}},"order":["1652970045c95b7603","main","recently-viewed"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {}
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recently-viewed"
+  ]
+}

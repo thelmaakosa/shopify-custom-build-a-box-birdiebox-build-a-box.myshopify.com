@@ -116,58 +116,58 @@
 
 USF{% endcomment %}
 {% schema %}
-  {
-    "name": "Search page",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Filtering and sorting"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_sidebar",
-        "label": "Enable filter",
-        "default": true,
-        "info": "Allow your customers to filter collections and search results by product availability, price, color, and more. [Customize filters](/admin/menus)"
-      },
-      {
-        "type": "checkbox",
-        "id": "collapse_filters",
-        "label": "Collapse filters",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_color_swatches",
-        "label": "Enable color swatches",
-        "info": "[View setup instructions](https://archetypethemes.co/blogs/expanse/how-do-i-set-up-color-swatches)"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_sort",
-        "label": "Show sort options",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "grid_style",
-        "label": "Default product layout",
-        "default": "small",
-        "options": [
-          {
-            "value": "large",
-            "label": "Large grid"
-          },
-          {
-            "value": "small",
-            "label": "Small grid"
-          },
-          {
-            "value": "list",
-            "label": "List"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.main-search.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-search.settings.header_filtering_and_sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sidebar",
+      "label": "t:sections.main-search.settings.enable_sidebar.label",
+      "default": true,
+      "info": "t:sections.main-search.settings.enable_sidebar.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_filters",
+      "label": "t:sections.main-search.settings.collapse_filters.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_color_swatches",
+      "label": "t:sections.main-search.settings.enable_color_swatches.label",
+      "info": "t:sections.main-search.settings.enable_color_swatches.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sort",
+      "label": "t:sections.main-search.settings.enable_sort.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "grid_style",
+      "label": "t:sections.main-search.settings.grid_style.label",
+      "default": "small",
+      "options": [
+        {
+          "value": "large",
+          "label": "t:sections.main-search.settings.grid_style.options.large.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-search.settings.grid_style.options.small.label"
+        },
+        {
+          "value": "list",
+          "label": "t:sections.main-search.settings.grid_style.options.list.label"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

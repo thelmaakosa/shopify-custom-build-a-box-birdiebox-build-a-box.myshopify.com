@@ -203,118 +203,118 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Header",
-    "class": "header-section",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "main_menu_link_list",
-        "label": "Navigation",
-        "default": "main-menu"
-      },
-      {
-        "type": "select",
-        "id": "main_menu_alignment",
-        "label": "Layout",
-        "default": "below",
-        "options": [
-          {
-            "value": "below",
-            "label": "Logo left, menu below"
-          },
-          {
-            "value": "left",
-            "label": "Logo left, menu left"
-          },
-          {
-            "value": "left-center",
-            "label": "Logo left, menu center"
-          },
-          {
-            "value": "center",
-            "label": "Logo center, menu below"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "mega_products",
-        "label": "Show first product in mega menus",
-        "info": "[Learn more](https://archetypethemes.co/blogs/expanse/how-do-i-create-a-mega-menu)",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "header_sticky",
-        "label": "Enable sticky header",
-        "default": true,
-        "info": "Recommended"
-      },
-      {
-        "type": "checkbox",
-        "id": "header_footer_menu",
-        "label": "Show footer content on mobile menu",
-        "default": true,
-        "info": "Recommended"
-      },
-      {
-        "type": "checkbox",
-        "id": "sticky_index",
-        "label": "Overlay header over home page",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "sticky_collection",
-        "label": "Overlay header over collection",
-        "info": "(if collection image is enabled)",
-        "default": false
-      }
-    ],
-    "blocks": [
-      {
-        "type": "logo",
-        "name": "Logo",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "logo",
-            "label": "Logo"
-          },
-          {
-            "type": "image_picker",
-            "id": "logo-inverted",
-            "label": "White logo",
-            "info": "Used when on top of an image"
-          },
-          {
-            "type": "range",
-            "id": "desktop_logo_width",
-            "label": "Desktop logo width",
-            "default": 200,
-            "min": 100,
-            "max": 400,
-            "step": 10,
-            "unit": "px"
-          },
-          {
-            "type": "range",
-            "id": "mobile_logo_width",
-            "label": "Mobile logo width",
-            "default": 140,
-            "min": 60,
-            "max": 200,
-            "step": 10,
-            "unit": "px",
-            "info": "Set as a max-width, may appear smaller"
-          }
-        ]
-      }
-    ],
-    "default": {
-      "settings": {}
+{
+  "name": "t:sections.header.name",
+  "class": "header-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu_link_list",
+      "label": "t:sections.header.settings.main_menu_link_list.label",
+      "default": "main-menu"
+    },
+    {
+      "type": "select",
+      "id": "main_menu_alignment",
+      "label": "t:sections.header.settings.main_menu_alignment.label",
+      "default": "below",
+      "options": [
+        {
+          "value": "below",
+          "label": "t:sections.header.settings.main_menu_alignment.options.below.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.header.settings.main_menu_alignment.options.left.label"
+        },
+        {
+          "value": "left-center",
+          "label": "t:sections.header.settings.main_menu_alignment.options.left-center.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.header.settings.main_menu_alignment.options.center.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "mega_products",
+      "label": "t:sections.header.settings.mega_products.label",
+      "info": "t:sections.header.settings.mega_products.info",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "header_sticky",
+      "label": "t:sections.header.settings.header_sticky.label",
+      "default": true,
+      "info": "t:sections.header.settings.header_sticky.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_footer_menu",
+      "label": "t:sections.header.settings.header_footer_menu.label",
+      "default": true,
+      "info": "t:sections.header.settings.header_footer_menu.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_index",
+      "label": "t:sections.header.settings.sticky_index.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_collection",
+      "label": "t:sections.header.settings.sticky_collection.label",
+      "info": "t:sections.header.settings.sticky_collection.info",
+      "default": false
     }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "t:sections.header.blocks.logo.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "t:sections.header.blocks.logo.settings.logo.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo-inverted",
+          "label": "t:sections.header.blocks.logo.settings.logo-inverted.label",
+          "info": "t:sections.header.blocks.logo.settings.logo-inverted.info"
+        },
+        {
+          "type": "range",
+          "id": "desktop_logo_width",
+          "label": "t:sections.header.blocks.logo.settings.desktop_logo_width.label",
+          "default": 200,
+          "min": 100,
+          "max": 400,
+          "step": 10,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_logo_width",
+          "label": "t:sections.header.blocks.logo.settings.mobile_logo_width.label",
+          "default": 140,
+          "min": 60,
+          "max": 200,
+          "step": 10,
+          "unit": "px",
+          "info": "t:sections.header.blocks.logo.settings.mobile_logo_width.info"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {}
   }
+}
 {% endschema %}

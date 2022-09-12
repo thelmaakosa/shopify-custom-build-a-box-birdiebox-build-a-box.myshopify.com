@@ -1,4 +1,10 @@
 <div class="page-width page-width--narrow page-content">
+  <header class="section-header">
+    <h1 class="section-header__title">
+      {{ page.title | escape }}
+    </h1>
+  </header>
+
   <div class="rte rte--nomargin">
     {{ page.content }}
   </div>
@@ -6,7 +12,7 @@
 
 {% schema %}
 {
-  "name": "Page",
+  "name": "t:sections.main-page.name",
   "tag": "section"
 }
 {% endschema %}

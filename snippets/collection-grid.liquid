@@ -190,6 +190,12 @@
 		.usf-skeleton-container .usf-c-select:before{
 		  margin: 30px;
 		}
+		
+		.usf-skeleton-container .usf-sr-container{
+		  width: 100%;
+		  padding: 0;
+		  float: none;
+		}
 	  }
 	  
 	  .usf-skeleton-container .usf-filters:before,
@@ -357,7 +363,7 @@
   endfor
 %}
 
-<div class="collection-grid__wrapper"></div>
+<div class="collection-grid__wrapper">
 
   <div class="collection-filter">
     <div class="collection-filter__inner">
@@ -417,6 +423,7 @@
     <div class="collection-mobile-filters medium-up--hide">
       <div class="collection-mobile-filters__holder" id="CollectionInlineFilterWrap"></div>
     </div>
+
   </div>
 
   {%- if items == blank -%}
@@ -441,4 +448,5 @@
     {%- endfor -%}
   </div>
 </div>
+
 USF{% endcomment %}

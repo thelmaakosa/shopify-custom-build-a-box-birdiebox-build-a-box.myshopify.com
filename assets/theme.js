@@ -821,7 +821,7 @@ lazySizesConfig.expFactor = 4;
       this.originalSelectorId = options.originalSelectorId;
       this.enableHistoryState = options.enableHistoryState;
       this.currentlySelectedValues = this._getCurrentOptions();
-      this.currentVariant = this._getVariantFromOptions(this.currentlySelectedValues);
+      this.currentVariant = this._getVariantFromOptions();
   
       this.container.querySelectorAll(this.singleOptionSelector).forEach(el => {
         el.addEventListener('change', this._onSelectChange.bind(this));
@@ -857,50 +857,87 @@ lazySizesConfig.expFactor = 4;
         return result;
       },
   
-      _getVariantFromOptions: function(lastSelectedOption) {
-        const currentlySelectedOptions = this._getCurrentOptions();
-        const variants = this.variants;
-        // 1. Find the variant that matches all current selected options + is available
-        const availableAndMatchAllSelected = variants.find(variant => {
-          return currentlySelectedOptions.every(({value, index}) => {
-            return variant[index] === value;
-          }) && variant.available;
-        });
-  
-        // 2. Find a variant that is available and matches last selected option
-        const availableAndMatchesLastSelected = lastSelectedOption && variants.find(variant => {
-          return variant[lastSelectedOption.index] === lastSelectedOption.value && variant.available
-        });
-  
-        // 3. Find a variant that matches the current selection but is not available (aka Sold Out)
-        const matchesAllSelected = variants.find(variant => {
-          return currentlySelectedOptions.every(({value, index}) => {
-            return variant[index] === value;
-          });
-        });
-  
-        // 4. Find a variant that matches the last selected option but is not available (aka Sold Out)
-        const anyMatchesLastSelected = lastSelectedOption && variants.find((variant) => {
-          return variant[lastSelectedOption.index] === lastSelectedOption.value
-        });
-  
-        return availableAndMatchAllSelected || availableAndMatchesLastSelected || matchesAllSelected || anyMatchesLastSelected || null;
+      // Pull the number out of the option index name, e.g. 'option1' -> 1
+      _numberFromOptionKey: function(key) {
+        return parseInt(key.substr(-1));
       },
   
-      _updateInputState: function (variant) {
+      // Options should be ordered from highest to lowest priority. Make sure that priority
+      // is represented using weighted values when finding best match
+      _getWeightedOptionMatchCount: function(variant) {
+        return this._getCurrentOptions().reduce((count, {value, index}) => {
+          const optionIndex = this._numberFromOptionKey(index);
+          const weightedCount = 4 - optionIndex; // The lower the index, the better the match we have
+          return variant[index] === value ? count + weightedCount : count;
+        },0)
+      },
+  
+      _getFullMatch(needsToBeAvailable) {
+        const currentlySelectedOptions = this._getCurrentOptions();
+        const variants = this.variants;
+  
+        return variants.find(variant => {
+          const isMatch = currentlySelectedOptions.every(({value, index}) => {
+            return variant[index] === value;
+          });
+  
+          if (needsToBeAvailable) {
+            return isMatch && variant.available;
+          } else {
+            return isMatch;
+          }
+        });
+      },
+  
+      // Find a variant that is available and best matches last selected option
+      _getClosestAvailableMatch: function(lastSelectedOption) {
+        if (!lastSelectedOption) return null;
+  
+        const currentlySelectedOptions = this._getCurrentOptions();
+        const variants = this.variants;
+  
+        const potentialAvailableMatches = lastSelectedOption && variants.filter(variant => {
+          return currentlySelectedOptions
+            .filter(
+              // Only match based selected options that are equal and preceeding the last selected option
+              ({value, index}) => this._numberFromOptionKey(index) <= this._numberFromOptionKey(lastSelectedOption.index)
+            ).every(({value, index}) => {
+              // Variant needs to have options that match the current and preceeding selection options
+              return variant[index] === value;
+            }) && variant.available
+        });
+  
+        return potentialAvailableMatches.reduce((bestMatch, variant) => {
+          // If this is the first potential match we've found, store it as the best match
+          if (bestMatch === null) return variant;
+  
+          // If this is not the first potential match, compare the number of options our current best match has in common
+          // compared to the next contender.
+          const bestMatchCount = this._getWeightedOptionMatchCount(bestMatch, lastSelectedOption);
+          const newCount = this._getWeightedOptionMatchCount(variant, lastSelectedOption);
+  
+          return newCount > bestMatchCount ? variant : bestMatch;
+        }, null);
+      },
+  
+      _getVariantFromOptions: function(lastSelectedOption) {
+        const availableFullMatch = this._getFullMatch(true);
+        const closestAvailableMatch = this._getClosestAvailableMatch(lastSelectedOption);
+        const fullMatch = this._getFullMatch(false);
+  
+        return availableFullMatch || closestAvailableMatch || fullMatch || null;
+      },
+  
+      _updateInputState: function (variant, el) {
         return (input) => {
+          if (variant === null) return;
+  
           const index = input.dataset.index;
           const value = input.value;
           const type = input.getAttribute('type');
   
           if (type === 'radio' || type === 'checkbox') {
-            if (variant === null) {
-              if (el !== input) {
-                input.checked = false;
-              }
-            } else {
-              input.checked = variant[index] === value
-            }
+            input.checked = variant[index] === value
           }
         }
       },
@@ -915,7 +952,7 @@ lazySizesConfig.expFactor = 4;
         });
   
         // Update DOM option input states based on the variant that was found
-        optionSelectElements.forEach(this._updateInputState(variant))
+        optionSelectElements.forEach(this._updateInputState(variant, srcElement))
   
         // Make sure our currently selected values are up to date after updating state of DOM
         const currentlySelectedValues = this.currentlySelectedValues = this._getCurrentOptions();
@@ -2376,7 +2413,7 @@ lazySizesConfig.expFactor = 4;
   
       // Disable the page transition feature on some links
       // by adding class `js-no-transition`
-      document.querySelectorAll('a[href^="mailto:"], a[href^="#"], a[target="_blank"], a[href*="youtube.com/watch"], a[href*="youtu.be/"], a[download]').forEach(el => {
+      document.querySelectorAll('a.hero__slide-link, a[href^="mailto:"], a[href^="#"], a[target="_blank"], a[href*="youtube.com/watch"], a[href*="youtu.be/"], a[download]').forEach(el => {
         el.classList.add('js-no-transition');
       });
   
@@ -2402,115 +2439,6 @@ lazySizesConfig.expFactor = 4;
       });
     }
   };
-  
-  theme.parallaxSections = {};
-  
-  theme.Parallax = (function() {
-    var speed = 0.85;
-    var reset = false;
-  
-    function parallax(container, args) {
-      this.isInit = false;
-      this.isVisible = false;
-      this.container = container;
-      this.image = container.querySelector('.parallax-image');
-      this.namespace = args.namespace;
-      this.desktopOnly = args.desktopOnly;
-  
-      if (!this.container || !this.image) {
-        return;
-      }
-  
-      // If set for desktop only, setup listeners for disabling
-      // on mobile and re-enabling on desktop
-      if (this.desktopOnly) {
-        document.addEventListener('matchSmall', function() {
-          this.destroy();
-        }.bind(this));
-  
-        document.addEventListener('unmatchSmall', function() {
-          this.init(true);
-        }.bind(this));
-      }
-  
-      this.init(this.desktopOnly);
-    }
-  
-    parallax.prototype = Object.assign({}, parallax.prototype, {
-      init: function(desktopOnly) {
-        // Reset in case initialized again
-        if (this.isInit) {
-          this.destroy();
-        }
-  
-        this.isInit = true;
-  
-        // Do not setup scroll event if on mobile
-        if (desktopOnly && theme.config.bpSmall) {
-          return;
-        }
-  
-        // Set position on page load
-        this.setSizes();
-        this.scrollHandler();
-  
-        var observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            this.isVisible = entry.isIntersecting;
-            if (this.isVisible) {
-              window.on('scroll' + this.namespace, this.onScroll.bind(this));
-            } else {
-              window.off('scroll' + this.namespace);
-            }
-          });
-        }, {rootMargin: '200px 0px 200px 0px'});
-  
-        observer.observe(this.container);
-  
-        window.on('resize' + this.namespace, theme.utils.debounce(250, this.setSizes.bind(this)));
-  
-        document.addEventListener('shopify:section:reorder', theme.utils.debounce(250, this.onReorder.bind(this)));
-      },
-  
-      onScroll: function() {
-        if (!this.isVisible) {
-          return;
-        }
-  
-        // If a scroll event finds Shopify's review app,
-        // update parallax scroll positions because of page reflows
-        if (window.SPR && !reset) {
-          this.setSizes();
-          reset = true;
-        }
-  
-        requestAnimationFrame(this.scrollHandler.bind(this));
-      },
-  
-      scrollHandler: function() {
-        var shiftDistance = (window.scrollY - this.elTop) * speed;
-        this.image.style.transform = 'translate3d(0, ' + shiftDistance + 'px, 0)';
-      },
-  
-      setSizes: function() {
-        var rect = this.container.getBoundingClientRect();
-        this.elTop = rect.top + window.scrollY;
-      },
-  
-      onReorder: function() {
-        this.setSizes();
-        this.onScroll();
-      },
-  
-      destroy: function() {
-        this.image.style.transform = 'none';
-        window.off('scroll' + this.namespace);
-        window.off('resize' + this.namespace);
-      }
-    });
-  
-    return parallax;
-  })();
   
   if (typeof window.noUiSlider === 'undefined') {
     throw new Error('theme.PriceRange is missing vendor noUiSlider: // =require vendor/nouislider.js');
@@ -3217,11 +3145,9 @@ lazySizesConfig.expFactor = 4;
       },
   
       // Create a list of all options. If any variant exists and is in stock with that option, it's considered available
-      createAvailableOptionsTree(variants, currentlySelectedValues, selectedVariant, lastSelectedIndex, lastSelectedValue) {
+      createAvailableOptionsTree(variants, currentlySelectedValues) {
         // Reduce variant array into option availability tree
         return variants.reduce((options, variant) => {
-  
-          const numberOfOptionTypes = variant.options.length;
   
           // Check each option group (e.g. option1, option2, option3) of the variant
           Object.keys(options).forEach(index => {
@@ -3236,27 +3162,27 @@ lazySizesConfig.expFactor = 4;
               options[index].push(entry);
             }
   
-            // Check how many selected option values match a variant
-            const countVariantOptionsThatMatchCurrent = currentlySelectedValues.reduce((count, {value, index}) => {
-              return variant[index] === value ? count + 1 : count;
-            },0)
+            const currentOption1 = currentlySelectedValues.find(({value, index}) => index === 'option1')
+            const currentOption2 = currentlySelectedValues.find(({value, index}) => index === 'option2')
   
-            // Only enable an option if an available variant matches all but one current selected value
-            if (countVariantOptionsThatMatchCurrent >= currentlySelectedValues.length - 1) {
-              entry.soldOut = entry.soldOut && variant.available ? false : entry.soldOut;
-            }
-  
-            // Make sure if a variant is non-existant or sold out, disable currently selected option
-            if (
-              (!selectedVariant || !selectedVariant.available)
-              && currentlySelectedValues.find((option) => option.value === entry.value && index === option.index)
-            ) {
-                entry.soldOut = true;
-            }
-  
-            // Option1 inputs should always remain enabled based on all available variants
-            if (index === 'option1') {
-              entry.soldOut = entry.soldOut && variant.available ? false : entry.soldOut;
+            switch (index) {
+              case 'option1':
+                // Option1 inputs should always remain enabled based on all available variants
+                entry.soldOut = entry.soldOut && variant.available ? false : entry.soldOut;
+                break;
+              case 'option2':
+                // Option2 inputs should remain enabled based on available variants that match first option group
+                if (currentOption1 && variant['option1'] === currentOption1.value) {
+                  entry.soldOut = entry.soldOut && variant.available ? false : entry.soldOut;
+                }
+              case 'option3':
+                // Option 3 inputs should remain enabled based on available variants that match first and second option group
+                if (
+                  currentOption1 && variant['option1'] === currentOption1.value
+                  && currentOption2 && variant['option2'] === currentOption2.value
+                ) {
+                  entry.soldOut = entry.soldOut && variant.available ? false : entry.soldOut;
+                }
             }
           })
   
@@ -3286,13 +3212,6 @@ lazySizesConfig.expFactor = 4;
         // sold out or unavailable (not a combo set as purchasable)
         const valuesToManage = this.createAvailableOptionsTree(this.variantsObject, currentlySelectedValues, variant, lastSelectedIndex, lastSelectedValue)
   
-        // Disable all options to start.
-        // If coming from a variant change event, do not disable
-        // options inside current index group
-        this.container.querySelectorAll('.variant-input-wrap').forEach(group => {
-          this.disableVariantGroup(group);
-        });
-  
         // Loop through all option levels and send each
         // value w/ args to function that determines to show/hide/enable/disable
         for (var [option, values] of Object.entries(valuesToManage)) {
@@ -3300,16 +3219,16 @@ lazySizesConfig.expFactor = 4;
         }
       },
   
-      manageOptionState: function(option, values, selectedValue) {
+      manageOptionState: function(option, values) {
         var group = this.container.querySelector('.variant-input-wrap[data-index="'+ option +'"]');
   
         // Loop through each option value
         values.forEach(obj => {
-          this.enableVariantOption(group, obj, selectedValue);
+          this.enableVariantOption(group, obj);
         });
       },
   
-      enableVariantOption: function(group, obj, selectedValue) {
+      enableVariantOption: function(group, obj) {
         // Selecting by value so escape it
         var value = obj.value.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1');
   
@@ -3534,12 +3453,10 @@ lazySizesConfig.expFactor = 4;
       super();
       this.el = this;
       this.toolTipContent = this.querySelector('[data-tool-tip-content]');
-  
       this.init();
     }
   
     init() {
-      //Create and dispatch customEvent
       const toolTipOpen = new CustomEvent('tooltip:open', {
         detail: {
           context: this.dataset.toolTip,
@@ -3556,6 +3473,180 @@ lazySizesConfig.expFactor = 4;
   }
   
   customElements.define('tool-tip-trigger', ToolTipTrigger);
+  
+  /*============================================================================
+    NewsletterReminder
+  ==============================================================================*/
+  
+  class NewsletterReminder extends HTMLElement {
+    constructor() {
+      super();
+      this.closeBtn = this.querySelector('[data-close-button]');
+      this.popupTrigger = this.querySelector('[data-message]');
+  
+      this.id = this.dataset.sectionId;
+      this.newsletterId = `NewsletterPopup-${ this.id }`;
+      this.cookie = Cookies.get(`newsletter-${this.id}`);
+      this.cookieName = `newsletter-${this.id}`;
+      this.secondsBeforeShow = this.dataset.delaySeconds;
+      this.expiry = parseInt(this.dataset.delayDays);
+      this.modal = new theme.Modals(`NewsletterPopup-${this.newsletterId}`, 'newsletter-popup-modal');
+  
+      this.init();
+    }
+  
+    init() {
+      document.addEventListener('shopify:block:select', (evt) => {
+        if (evt.detail.sectionId === this.id) {
+          this.show(0, true)
+        }
+      });
+  
+      document.addEventListener('shopify:block:deselect', (evt) => {
+        if (evt.detail.sectionId === this.id) {
+          this.hide();
+        }
+      });
+  
+      document.addEventListener(`modalOpen.${this.newsletterId}`, () => this.hide());
+      document.addEventListener(`modalClose.${this.newsletterId}`, () => this.show());
+      document.addEventListener(`newsletter:openReminder`, () => this.show(0));
+  
+      this.closeBtn.addEventListener('click', () => {
+        this.hide();
+        Cookies.set(this.cookieName, 'opened', { path: '/', expires: this.expiry });
+      });
+  
+      this.popupTrigger.addEventListener('click', () => {
+        const reminderOpen = new CustomEvent('reminder:openNewsletter', { bubbles: true });
+        this.dispatchEvent(reminderOpen);
+  
+        this.hide();
+      });
+    }
+  
+    show(time = this.secondsBeforeShow, forceOpen = false) {
+      const reminderAppeared = (sessionStorage.getItem('reminderAppeared') === 'true');
+  
+      if (!reminderAppeared) {
+        setTimeout(() => {
+          this.dataset.enabled = 'true';
+          sessionStorage.setItem('reminderAppeared', true);
+        }, time * 1000);
+      }
+    }
+  
+    hide() {
+      this.dataset.enabled = 'false';
+    }
+  }
+  
+  customElements.define('newsletter-reminder', NewsletterReminder);
+  
+  /*============================================================================
+    ParallaxImage
+  ==============================================================================*/
+  
+  class ParallaxImage extends HTMLElement {
+    constructor() {
+      super();
+      this.parallaxImage = this.querySelector('[data-parallax-image]');
+      this.windowInnerHeight = window.innerHeight;
+      this.isActive = false;
+      this.timeout = null;
+      this.directionMap = {
+        right: 0,
+        top: 90,
+        left: 180,
+        bottom: 270
+      }
+      this.directionMultipliers = {
+        0: [  1,  0 ],
+        90: [  0, -1 ],
+        180: [ -1,  0 ],
+        270: [  0,  1 ]
+      }
+  
+      this.init();
+      window.addEventListener('scroll', () => this.scrollHandler());
+    }
+  
+    getParallaxInfo() {
+      const { width, height, top } = this.parallaxImage.getBoundingClientRect();
+      let element = this.parallaxImage;
+      let multipliers;
+      let { angle, movement } = element.dataset;
+  
+      let movementPixels = angle === 'top' ? Math.ceil(height * (parseFloat(movement) / 100)) : Math.ceil(width * (parseFloat(movement) / 100));
+  
+      // angle has shorthands "top", "left", "bottom" and "right"
+      // nullish coalescing. using `||` here would fail for `0`
+      angle = this.directionMap[angle] ?? parseFloat(angle);
+  
+      // fallback if undefined
+      // NaN is the only value that doesn't equal itself
+      if (angle !== angle) angle = 270; // move to bottom (default parallax effect)
+      if (movementPixels !== movementPixels) movementPixels = 100; // 100px
+  
+      // check if angle is located in top half and/or left half
+      angle %= 360;
+      if (angle < 0) angle += 360
+  
+      const toLeft = angle > 90 && angle < 270;
+      const toTop  = angle < 180;
+  
+      element.style[toLeft ? 'left' : 'right'] = 0;
+      element.style[toTop  ? 'top' : 'bottom'] = 0;
+  
+      // if it's not a perfectly horizontal or vertical movement, get cos and sin
+      if (angle % 90) {
+        const radians = angle * Math.PI / 180
+        multipliers = [ Math.cos(radians), Math.sin(radians) * -1 ] // only sin has to be inverted
+      } else {
+        multipliers = this.directionMultipliers[angle];
+      }
+  
+      // increase width and height according to movement and multipliers
+      if (multipliers[0]) element.style.width  = `calc(100% + ${movementPixels * Math.abs(multipliers[0])}px)`;
+      if (multipliers[1]) element.style.height = `calc(100% + ${movementPixels * Math.abs(multipliers[1])}px)`;
+  
+      return {
+        element,
+        movementPixels,
+        multipliers,
+        top,
+        height
+      }
+    }
+  
+    init() {
+      const { element, movementPixels, multipliers, top, height } = this.getParallaxInfo();;
+  
+      const scrolledInContainer = this.windowInnerHeight - top;
+      const scrollArea = this.windowInnerHeight + height;
+      const progress = scrolledInContainer / scrollArea;
+  
+      if (progress > -0.1 && progress < 1.1) {
+        const position = Math.min(Math.max(progress, 0), 1) * movementPixels;
+        element.style.transform = `translate3d(${position * multipliers[0]}px, ${position * multipliers[1]}px, 0)`;
+      }
+  
+      if (this.isActive) requestAnimationFrame(this.init.bind(this));
+    }
+  
+    scrollHandler() {
+      if (this.isActive) {
+        clearTimeout(this.timeout);
+      } else {
+        this.isActive = true;
+        requestAnimationFrame(this.init.bind(this));
+      }
+  
+      this.timeout = setTimeout(() => this.isActive = false, 20);
+    }
+  }
+  
+  customElements.define('parallax-image', ParallaxImage);
   
 
   theme.announcementBar = (function() {
@@ -5602,11 +5693,13 @@ lazySizesConfig.expFactor = 4;
     return Map;
   })();
   
-  theme.NewsletterPopup = (function() {
+  theme.NewsletterPopup = (function () {
     function NewsletterPopup(container) {
       this.container = container;
       var sectionId = this.container.getAttribute('data-section-id');
+  
       this.cookieName = 'newsletter-' + sectionId;
+      this.cookie = Cookies.get(this.cookieName);
   
       if (!container) {
         return;
@@ -5625,8 +5718,9 @@ lazySizesConfig.expFactor = 4;
       this.data = {
         secondsBeforeShow: container.dataset.delaySeconds,
         daysBeforeReappear: container.dataset.delayDays,
-        cookie: Cookies.get(this.cookieName),
-        testMode: container.dataset.testMode
+        hasReminder: container.dataset.hasReminder,
+        testMode: container.dataset.testMode,
+        isEnabled: container.dataset.enabled
       };
   
       this.modal = new theme.Modals('NewsletterPopup-' + sectionId, 'newsletter-popup-modal');
@@ -5634,7 +5728,7 @@ lazySizesConfig.expFactor = 4;
       // Set cookie if optional button is clicked
       var btn = container.querySelector('.popup-cta a');
       if (btn) {
-        btn.addEventListener('click', function(){
+        btn.addEventListener('click', function () {
           this.closePopup(true);
         }.bind(this));
       }
@@ -5652,22 +5746,35 @@ lazySizesConfig.expFactor = 4;
   
       document.addEventListener('modalClose.' + container.id, this.closePopup.bind(this));
   
-      if (!this.data.cookie || this.data.testMode === 'true') {
+      if (!this.cookie && this.data.isEnabled === 'true') {
         this.initPopupDelay();
       }
+  
+      // Open modal if triggered by newsletter reminder
+      document.addEventListener('reminder:openNewsletter', () => {
+        this.modal.open();
+      });
     }
   
     NewsletterPopup.prototype = Object.assign({}, NewsletterPopup.prototype, {
-      initPopupDelay: function() {
-        if (Shopify && Shopify.designMode) {
+      initPopupDelay: function () {
+        if (this.data.testMode === 'true') {
           return;
         }
-        setTimeout(function() {
-          this.modal.open();
+        setTimeout(function () {
+          const newsletterAppeared = (sessionStorage.getItem('newsletterAppeared') === 'true');
+          if (newsletterAppeared) {
+            const openReminder = new CustomEvent('newsletter:openReminder', { bubbles: true });
+            this.container.dispatchEvent(openReminder);
+          } else {
+            this.modal.open();
+            sessionStorage.setItem('newsletterAppeared', true);
+          }
+  
         }.bind(this), this.data.secondsBeforeShow * 1000);
       },
   
-      closePopup: function(success) {
+      closePopup: function (success) {
         // Remove a cookie in case it was set in test mode
         if (this.data.testMode === 'true') {
           Cookies.remove(this.cookieName, { path: '/' });
@@ -5675,19 +5782,34 @@ lazySizesConfig.expFactor = 4;
         }
   
         var expiry = success ? 200 : this.data.daysBeforeReappear;
-        Cookies.set(this.cookieName, 'opened', { path: '/', expires: expiry });
+        var hasReminder = (this.data.hasReminder === 'true');
+        var reminderAppeared = (sessionStorage.getItem('reminderAppeared') === 'true');
+  
+        if (hasReminder && reminderAppeared) {
+          Cookies.set(this.cookieName, 'opened', { path: '/', expires: expiry });
+        } else if(!hasReminder) {
+          Cookies.set(this.cookieName, 'opened', { path: '/', expires: expiry });
+        }
       },
   
-      onLoad: function() {
+      onLoad: function () {
         this.modal.open();
       },
   
-      onSelect: function() {
+      onSelect: function () {
         this.modal.open();
       },
   
-      onDeselect: function() {
+      onDeselect: function () {
         this.modal.close();
+      },
+  
+      onBlockSelect: function () {
+        this.modal.close();
+      },
+  
+      onBlockDeselect: function () {
+        this.modal.open();
       }
     });
   
@@ -5907,10 +6029,7 @@ lazySizesConfig.expFactor = 4;
           return;
         }
   
-        var id = section.dataset.productId;
-        var limit = section.dataset.limit;
-  
-        var url = this.url + '?section_id=product-recommendations&limit='+ limit +'&product_id=' + id;
+        var url = this.url;
   
         // When section his hidden and shown, make sure it starts empty
         if (Shopify.designMode) {
@@ -6022,15 +6141,6 @@ lazySizesConfig.expFactor = 4;
         } else {
           // Add loaded class to first slide
           slides[0].classList.add('is-selected');
-        }
-  
-        if (this.container.hasAttribute('data-parallax')) {
-          // Create new parallax for each slideshow image
-          this.container.querySelectorAll(selectors.parallaxContainer).forEach(function(el, i) {
-            new theme.Parallax(el, {
-              namespace: this.namespace + '-parallax-' + i
-            });
-          }.bind(this));
         }
       },
   
@@ -6235,10 +6345,6 @@ lazySizesConfig.expFactor = 4;
 
   theme.BackgroundImage = (function() {
   
-    var selectors = {
-      parallaxContainer: '.parallax-container'
-    };
-  
     function backgroundImage(container) {
       this.container = container;
       if (!container) {
@@ -6257,24 +6363,6 @@ lazySizesConfig.expFactor = 4;
     backgroundImage.prototype = Object.assign({}, backgroundImage.prototype, {
       init: function() {
         theme.loadImageSection(this.container);
-  
-        if (this.container.dataset && this.container.dataset.parallax) {
-          var parallaxContainer = this.container.querySelector(selectors.parallaxContainer);
-          var args = {
-            namespace: this.namespace + '-parallax',
-            desktopOnly: true
-          };
-  
-          theme.parallaxSections[this.namespace] = new theme.Parallax(parallaxContainer, args);
-        }
-      },
-  
-      onUnload: function(evt) {
-        if (!this.container) { return }
-        if (theme.parallaxSections[this.namespace] && typeof theme.parallaxSections[this.namespace].destroy === 'function') {
-          theme.parallaxSections[this.namespace].destroy();
-        }
-        delete theme.parallaxSections[this.namespace];
       }
     });
   
@@ -6293,14 +6381,6 @@ lazySizesConfig.expFactor = 4;
           this.checkIfNeedReload();
         }
         theme.loadImageSection(heroImageContainer);
-  
-        if (container.dataset && container.dataset.parallax) {
-          var parallaxContainer = container.querySelector('.parallax-container');
-          var args = {
-            namespace: this.namespace + '-parallax'
-          };
-          theme.parallaxSections[this.namespace] = new theme.Parallax(parallaxContainer, args);
-        }
       } else if (theme.settings.overlayHeader) {
         theme.headerNav.disableOverlayHeader();
       }
@@ -6322,13 +6402,6 @@ lazySizesConfig.expFactor = 4;
           if (!header.classList.contains('header-wrapper--overlay')) {
             location.reload();
           }
-        }
-      },
-  
-      onUnload: function() {
-        if (theme.parallaxSections[this.namespace]) {
-          theme.parallaxSections[this.namespace].destroy();
-          delete theme.parallaxSections[this.namespace];
         }
       }
     });
@@ -7991,6 +8064,11 @@ lazySizesConfig.expFactor = 4;
         }
   
         this.flickity = new theme.Slideshow(this.cache.mainSlider, mainSliderArgs);
+  
+        // Ensure we resize the slider to avoid reflow issues
+        setTimeout(() => {
+          this.flickity.resize();
+        }, 100);
       },
   
       onSliderInit: function(slide) {

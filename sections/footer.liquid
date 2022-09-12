@@ -1,3 +1,18 @@
+{%- if section.settings.show_newsletter -%}
+  <div class="footer__section footer__section--border">
+    <div class="page-width">
+      <div class="footer__newsletter">
+        {%- if section.settings.newsletter_richtext != blank -%}
+          <div class="footer__subscribe rte rte--nomargin">
+            {{ section.settings.newsletter_richtext }}
+          </div>
+        {%- endif -%}
+
+        {%- render 'newsletter-form', section_id: section.id, snippet_context: 'footer' -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
 
 {% comment %}
   Main navigation is copied here with JS for mobile users
@@ -55,160 +70,160 @@
 </footer>
 
 {% schema %}
-  {
-    "name": "Footer",
-    "max_blocks": 12,
-    "settings": [
-      {
-        "type": "header",
-        "content": "Newsletter"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_newsletter",
-        "label": "Show newsletter signup",
-        "info": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1).",
-        "default": true
-      },
-      {
-        "type": "richtext",
-        "id": "newsletter_richtext",
-        "label": "Text",
-        "default": "<p>Subscribe today to hear first about our sales</p>"
-      },
-      {
-        "type": "header",
-        "content": "Additional footer content"
-      },
-      {
-        "type": "checkbox",
-        "id": "footer_main_menu",
-        "label": "Repeat main menu on mobile",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_copyright",
-        "label": "Show copyright"
-      },
-      {
-        "type": "text",
-        "id": "copyright_text",
-        "label": "Additional copyright text"
-      },
-      {
-        "type": "link_list",
-        "id": "policies_menu",
-        "label": "Policies menu",
-        "info": "This menu will only show top-level links"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "payment",
-        "name": "Payments and localization",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "show_payment_icons",
-            "label": "Show payment icons",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_locale_selector",
-            "label": "Show language selector",
-            "info": "To add a language, go to your [language settings.](/admin/settings/languages)",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_currency_selector",
-            "label": "Show currency selector",
-            "info": "To add a currency, go to your [currency settings.](/admin/settings/payments)",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_currency_flags",
-            "label": "Show currency flags",
-            "default": true
-          }
-        ]
-      },
-      {
-        "type": "menu",
-        "name": "Navigation",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "info": "Defaults to menu title"
-          },
-          {
-            "type": "link_list",
-            "id": "menu",
-            "label": "Choose a menu",
-            "default": "footer",
-            "info": "This menu will only show top-level links"
-          },
-          {
-            "type": "checkbox",
-            "id": "enable_account_link",
-            "label": "Add 'My account' link if customer accounts enabled"
-          }
-        ]
-      },
-      {
-        "type": "contact",
-        "name": "Contact and social",
-        "settings": [
-          {
-            "type": "header",
-            "content": "Contact"
-          },
-          {
-            "type": "text",
-            "id": "phone",
-            "label": "Phone number"
-          },
-          {
-            "type": "page",
-            "id": "contact",
-            "label": "Contact page"
-          },
-          {
-            "type": "page",
-            "id": "chat",
-            "label": "Chat link"
-          },
-          {
-            "type": "header",
-            "content": "Social"
-          },
-          {
-            "type": "checkbox",
-            "id": "enable_social",
-            "label": "Show social accounts",
-            "default": true
-          }
-        ]
-      }
-    ],
-    "default": {
-      "settings": {},
-      "blocks": [
+{
+  "name": "t:sections.footer.name",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header_newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "t:sections.footer.settings.show_newsletter.label",
+      "info": "t:sections.footer.settings.show_newsletter.info",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_richtext",
+      "label": "t:sections.footer.settings.newsletter_richtext.label",
+      "default": "<p>Subscribe today to hear first about our sales</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header_additional_footer_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "footer_main_menu",
+      "label": "t:sections.footer.settings.footer_main_menu.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "t:sections.footer.settings.show_copyright.label"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "t:sections.footer.settings.copyright_text.label"
+    },
+    {
+      "type": "link_list",
+      "id": "policies_menu",
+      "label": "t:sections.footer.settings.policies_menu.label",
+      "info": "t:sections.footer.settings.policies_menu.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "payment",
+      "name": "t:sections.footer.blocks.payments_and_localization.name",
+      "limit": 1,
+      "settings": [
         {
-          "type": "menu",
-          "settings": {}
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "label": "t:sections.footer.blocks.payments_and_localization.settings.show_payment_icons.label",
+          "default": true
         },
         {
-          "type": "payment",
-          "settings": {}
+          "type": "checkbox",
+          "id": "show_locale_selector",
+          "label": "t:sections.footer.blocks.payments_and_localization.settings.show_locale_selector.label",
+          "info": "t:sections.footer.blocks.payments_and_localization.settings.show_locale_selector.info",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_currency_selector",
+          "label": "t:sections.footer.blocks.payments_and_localization.settings.show_currency_selector.label",
+          "info": "t:sections.footer.blocks.payments_and_localization.settings.show_currency_selector.info",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_currency_flags",
+          "label": "t:sections.footer.blocks.payments_and_localization.settings.show_currency_flags.label",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "t:sections.footer.blocks.navigation.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.navigation.settings.title.label",
+          "info": "t:sections.footer.blocks.navigation.settings.title.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.footer.blocks.navigation.settings.menu.label",
+          "default": "footer",
+          "info": "t:sections.footer.blocks.navigation.settings.menu.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_account_link",
+          "label": "t:sections.footer.blocks.navigation.settings.enable_account_link.label"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "t:sections.footer.blocks.contact_and_social.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.footer.blocks.contact_and_social.settings.header_contact"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "t:sections.footer.blocks.contact_and_social.settings.phone.label"
+        },
+        {
+          "type": "page",
+          "id": "contact",
+          "label": "t:sections.footer.blocks.contact_and_social.settings.contact.label"
+        },
+        {
+          "type": "page",
+          "id": "chat",
+          "label": "t:sections.footer.blocks.contact_and_social.settings.chat.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.footer.blocks.contact_and_social.settings.header_social"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_social",
+          "label": "t:sections.footer.blocks.contact_and_social.settings.enable_social.label",
+          "default": true
         }
       ]
     }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "menu",
+        "settings": {}
+      },
+      {
+        "type": "payment",
+        "settings": {}
+      }
+    ]
   }
+}
 {% endschema %}

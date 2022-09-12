@@ -12,37 +12,37 @@
 {% endif %}
 
 {% schema %}
-  {
-    "name": "Back to collection",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "This section will only appear when you are on a product page that was reached through a collection"
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "default": "2",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.collection-return.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.collection-return.settings.content"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.collection-return.settings.color_scheme.label",
+      "default": "2",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.collection-return.settings.color_scheme.options.none.label"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

@@ -25,7 +25,7 @@
     {%- liquid
       assign default_text = 'products.product.add_to_cart' | t
       assign button_text = 'products.product.add_to_cart' | t
-      if template == 'product.preorder'
+      if template contains 'preorder'
         assign default_text = 'products.product.preorder' | t
         assign button_text = 'products.product.preorder' | t
       endif

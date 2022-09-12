@@ -88,77 +88,78 @@
 {%- if section.settings.divider -%}</div>{%- endif -%}
 
 {% schema %}
-  {
-    "name": "FAQ",
-    "class": "index-section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "FAQs"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "rich-text",
-        "name": "Rich text",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "Rich text"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
-          },
-          {
-            "type": "select",
-            "id": "align_text",
-            "label": "Text alignment",
-            "default": "left",
-            "options": [
-              {
-                "value": "left",
-                "label": "Left"
-              },
-              {
-                "value": "center",
-                "label": "Centered"
-              },
-              {
-                "value": "right",
-                "label": "Right"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "question",
-        "name": "Question",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Question",
-            "default": "Frequently asked question"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
-          }
-        ]
-      }
-    ],
-    "presets": [{
-      "name": "FAQ",
+{
+  "name": "t:sections.faq.name",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.faq.settings.title.label",
+      "default": "FAQs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "rich-text",
+      "name": "t:sections.faq.blocks.rich_text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.faq.blocks.rich_text.settings.title.label",
+          "default": "Rich text"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.faq.blocks.rich_text.settings.text.label",
+          "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
+        },
+        {
+          "type": "select",
+          "id": "align_text",
+          "label": "t:sections.faq.blocks.rich_text.settings.align_text.label",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.faq.blocks.rich_text.settings.align_text.options.left.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.faq.blocks.rich_text.settings.align_text.options.center.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.faq.blocks.rich_text.settings.align_text.options.right.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "t:sections.faq.blocks.question.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.faq.blocks.question.settings.title.label",
+          "default": "Frequently asked question"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.faq.blocks.question.settings.text.label",
+          "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faq.presets.faq.name",
       "blocks": [
         {
           "type": "question"
@@ -167,6 +168,7 @@
           "type": "question"
         }
       ]
-    }]
-  }
+    }
+  ]
+}
 {% endschema %}

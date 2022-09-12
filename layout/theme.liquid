@@ -14,7 +14,7 @@
   <link rel="dns-prefetch" href="https://maps.googleapis.com">
   <link rel="dns-prefetch" href="https://maps.gstatic.com">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+  
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
   {%- endif -%}
@@ -33,6 +33,8 @@
 
   {%- render 'font-face' -%}
   {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+
   {%- render 'css-variables' -%}
 
   {%- liquid
@@ -91,28 +93,37 @@
       quickView: {{ settings.quick_shop_enable }},
       quickAdd: {{ settings.quick_add_enable }},
       themeName: 'Expanse',
-      themeVersion: "2.5.2"
+      themeVersion: "3.1.0"
     };
   </script>
 
+  
+  {% include 'meteor-menu', load: 'head' %}
   {{ content_for_header }}
-{% render 'usf' %}
+  {% render 'usf' %}
 
 
   <script src="{{ 'vendor-scripts-v2.js' | asset_url | split: '?' | first }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'custom-js.js' | asset_url }}" defer="defer"></script>
 
 
   {%- if request.page_type contains 'customers/' -%}
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
   {%- endif -%}
-{{ 'storeifyapps-formbuilder-styles.css' | asset_url | stylesheet_tag }}
-{% render 'wsg-custom' %}
 
- {% render 'giftship' %} 
+  {% if request.design_mode %}
+    <script src="https://api.archetypethemes.co/design-mode.js" defer="defer"></script>
+  {% endif %}
+  
+  {% comment %} Multi-select dropdown {% endcomment %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+  {% comment %} End {% endcomment %}
 </head>
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-transitions="{{ settings.animate_page_transitions }}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
+  {{ page.title }}
 
   {% if settings.animate_page_transitions %}
     <script type="text/javascript">window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>
@@ -124,6 +135,7 @@
     <div class="transition-body">
       {%- section 'toolbar' -%}
       {%- section 'header' -%}
+      {%- section 'newsletter-popup' -%}
 
       <main class="main-content" id="MainContent">
         {{ content_for_layout }}
@@ -134,8 +146,6 @@
     </div>
   </div>
 
-  {%- section 'newsletter-popup' -%}
-
   {%- liquid
     render 'video-modal'
     render 'photoswipe-template'
@@ -145,8 +155,5 @@
     render 'tool-tip'
   -%}
   <div id="ProductModals"></div>
-  {{ 'storeifyapps-formbuilder-script.js' | asset_url | script_tag }}
-  <script src="{{ 'custom-js.js' | asset_url }}" defer="defer"></script>
-
 </body>
 </html>

@@ -17,13 +17,14 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Recently viewed",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Recently viewed products are only visible when browsing outside of the editor"
-      }
-    ]
-  }
+{
+  "name": "t:sections.recently-viewed.name",
+  "class": "recently-viewed__section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.recently-viewed.settings.content"
+    }
+  ]
+}
 {% endschema %}

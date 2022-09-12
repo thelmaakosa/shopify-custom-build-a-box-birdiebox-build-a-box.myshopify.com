@@ -28,7 +28,7 @@
       {%- paginate collection.products by paginate_by -%}
       <div class="grid">
         <div class="grid__item medium-up--one-fifth grid__item--sidebar">
-          {%- render 'collection-grid-no-usf-filters',
+          {%- render 'collection-grid-filters',
             collection: collection,
             enable_sidebar: section.settings.enable_sidebar,
             enable_color_swatches: section.settings.enable_color_swatches,
@@ -43,7 +43,7 @@
             {%- case block.type -%}
             {%- when 'collection_description' -%}
               {%- if collection.description != blank and current_filter_size == 0 -%}
-              <div class="rte rte--collection-desc" {{ block.shopify_attributes }}>
+                <div class="rte rte--collection-desc" {{ block.shopify_attributes }}>
                   <div class="enlarge-text">
                     {{ collection.description }}
                   </div>
@@ -117,83 +117,83 @@
 </script>
 
 {% schema %}
-  {
-    "name": "Product grid",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Filtering and sorting"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_sidebar",
-        "label": "Enable filter",
-        "default": true,
-        "info": "Allow your customers to filter collections and search results by product availability, price, color, and more. [Customize filters](/admin/menus)"
-      },
-      {
-        "type": "checkbox",
-        "id": "collapse_filters",
-        "label": "Collapse filters",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_color_swatches",
-        "label": "Enable color swatches",
-        "info": "[View setup instructions](https://archetypethemes.co/blogs/expanse/how-do-i-set-up-color-swatches)"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_sort",
-        "label": "Show sort options",
-        "default": true
-      }
-    ],
-    "blocks": [
-      {
-        "type": "collection_description",
-        "name": "Collection description",
-        "limit": 1
-      },
-      {
-        "type": "product_grid",
-        "name": "Products",
-        "settings": [
-          {
-            "type": "select",
-            "id": "grid_style",
-            "label": "Default product layout",
-            "default": "small",
-            "options": [
-              {
-                "value": "large",
-                "label": "Large grid"
-              },
-              {
-                "value": "small",
-                "label": "Small grid"
-              },
-              {
-                "value": "list",
-                "label": "List"
-              }
-            ]
-          }
-        ],
-        "limit": 1
-      },
-      {
-        "type": "subcollections",
-        "name": "Subcollections",
-        "settings": [
-          {
-            "type": "paragraph",
-            "content": "Links to collections from your menu will appear here. [Learn more](https://archetypethemes.co/blogs/expanse/how-do-i-create-subcollections)"
-          }
-        ],
-        "limit": 1
-      }
-    ]
-  }
+{
+  "name": "t:sections.main-collection.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header_filtering_and_sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sidebar",
+      "label": "t:sections.main-collection.settings.enable_sidebar.label",
+      "default": true,
+      "info": "t:sections.main-collection.settings.enable_sidebar.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_filters",
+      "label": "t:sections.main-collection.settings.collapse_filters.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_color_swatches",
+      "label": "t:sections.main-collection.settings.enable_color_swatches.label",
+      "info": "t:sections.main-collection.settings.enable_color_swatches.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sort",
+      "label": "t:sections.main-collection.settings.enable_sort.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_description",
+      "name": "t:sections.main-collection.blocks.collection_description.name",
+      "limit": 1
+    },
+    {
+      "type": "product_grid",
+      "name": "t:sections.main-collection.blocks.products.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "grid_style",
+          "label": "t:sections.main-collection.blocks.products.settings.grid_style.label",
+          "default": "small",
+          "options": [
+            {
+              "value": "large",
+              "label": "t:sections.main-collection.blocks.products.settings.grid_style.options.large.label"
+            },
+            {
+              "value": "small",
+              "label": "t:sections.main-collection.blocks.products.settings.grid_style.options.small.label"
+            },
+            {
+              "value": "list",
+              "label": "t:sections.main-collection.blocks.products.settings.grid_style.options.list.label"
+            }
+          ]
+        }
+      ],
+      "limit": 1
+    },
+    {
+      "type": "subcollections",
+      "name": "t:sections.main-collection.blocks.subcollections.name",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-collection.blocks.subcollections.settings.content"
+        }
+      ],
+      "limit": 1
+    }
+  ]
+}
 {% endschema %}

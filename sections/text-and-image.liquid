@@ -93,143 +93,143 @@
 {%- if section.settings.divider -%}</div>{%- endif -%}
 
 {% schema %}
-  {
-    "name": "Image with text",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "image_picker",
-        "id": "image2",
-        "label": "Image 2"
-      },
-      {
-        "type": "range",
-        "id": "image_width",
-        "label": "Image width",
-        "default": 700,
-        "min": 200,
-        "max": 700,
-        "step": 10,
-        "unit": "px"
-      },
-      {
-        "type": "text",
-        "id": "subtitle",
-        "label": "Subheading"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "Image with text"
-      },
-      {
-        "type": "richtext",
-        "id": "text",
-        "label": "Text",
-        "default": "<p>Pair large text with an image to tell a story, explain a detail about your product, or describe a new promotion.</p>"
-      },
-      {
-        "type": "text",
-        "id": "button_label",
-        "label": "Button label"
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": "Button link"
-      },
-      {
-        "type": "select",
-        "id": "button_style",
-        "label": "Button style",
-        "default": "primary",
-        "options": [
-          {
-            "value": "primary",
-            "label": "Primary"
-          },
-          {
-            "value": "secondary",
-            "label": "Secondary"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "align_text",
-        "label": "Text alignment",
-        "default": "left",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Centered"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "layout",
-        "label": "Layout",
-        "default": "right",
-        "options": [
-          {
-            "value": "left",
-            "label": "Image on left"
-          },
-          {
-            "value": "right",
-            "label": "Image on right"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "default": "1",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "divider",
-        "label": "Show section divider",
-        "default": false
-      }
-    ],
-    "presets": [
-      {
-        "name": "Image with text"
-      }
-    ]
-  }
+{
+  "name": "t:sections.text-and-image.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.text-and-image.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "t:sections.text-and-image.settings.image2.label"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "t:sections.text-and-image.settings.image_width.label",
+      "default": 700,
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:sections.text-and-image.settings.subtitle.label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.text-and-image.settings.title.label",
+      "default": "Image with text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.text-and-image.settings.text.label",
+      "default": "<p>Pair large text with an image to tell a story, explain a detail about your product, or describe a new promotion.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.text-and-image.settings.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.text-and-image.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.text-and-image.settings.button_style.label",
+      "default": "primary",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.text-and-image.settings.button_style.options.primary.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.text-and-image.settings.button_style.options.secondary.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "t:sections.text-and-image.settings.align_text.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.text-and-image.settings.align_text.options.left.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.text-and-image.settings.align_text.options.center.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.text-and-image.settings.align_text.options.right.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.text-and-image.settings.layout.label",
+      "default": "right",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.text-and-image.settings.layout.options.left.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.text-and-image.settings.layout.options.right.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.text-and-image.settings.color_scheme.label",
+      "default": "1",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.text-and-image.settings.color_scheme.options.none.label"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:sections.text-and-image.settings.divider.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text-and-image.presets.image_with_text.name"
+    }
+  ]
+}
 {% endschema %}

@@ -31,93 +31,93 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Email signup",
-    "max_blocks": 6,
-    "blocks": [
-      {
-        "type": "@app"
-      },
-      {
-        "type": "title",
-        "name": "Title",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Sign up and save"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "Text",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Subheading",
-            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
-          }
-        ]
-      },
-      {
-        "type": "form",
-        "name": "Form",
-        "limit": 1
-      },
-      {
-        "type": "share_buttons",
-        "name": "Share buttons",
-        "limit": 1
-      }
-    ],
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1)."
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "default": "1",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Email signup",
-        "blocks": [
-          {
-            "type": "title"
-          },
-          {
-            "type": "text"
-          },
-          {
-            "type": "form"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.newsletter.name",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "t:sections.newsletter.blocks.title.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.newsletter.blocks.title.settings.title.label",
+          "default": "Sign up and save"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.newsletter.blocks.text.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.newsletter.blocks.text.settings.text.label",
+          "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "t:sections.newsletter.blocks.form.name",
+      "limit": 1
+    },
+    {
+      "type": "share_buttons",
+      "name": "t:sections.newsletter.blocks.share_buttons.name",
+      "limit": 1
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.newsletter.settings.content"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.newsletter.settings.color_scheme.label",
+      "default": "1",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.newsletter.settings.color_scheme.options.none.label"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.newsletter.presets.email_signup.name",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "form"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

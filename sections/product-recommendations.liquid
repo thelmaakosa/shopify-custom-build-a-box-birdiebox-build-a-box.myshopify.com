@@ -74,19 +74,19 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Product recommendations",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Dynamic recommendations use order and product information to change and improve over time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
-      },
-      {
-        "type": "text",
-        "id": "product_recommendations_heading",
-        "label": "Heading",
-        "default": "You may also like"
-      }
-    ]
-  }
+{
+  "name": "t:sections.product-recommendations.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.product-recommendations.settings.content"
+    },
+    {
+      "type": "text",
+      "id": "product_recommendations_heading",
+      "label": "t:sections.product-recommendations.settings.product_recommendations_heading.label",
+      "default": "You may also like"
+    }
+  ]
+}
 {% endschema %}

@@ -1,1 +1,65 @@
-{"sections":{"collection-header":{"type":"collection-header","settings":{"enable":true,"collection_image_enable":true,"parallax":false}},"main-collection":{"type":"main-collection","blocks":{"collection_description":{"type":"collection_description","settings":{}},"subcollections":{"type":"subcollections","settings":{}},"product_grid":{"type":"product_grid","settings":{"grid_style":"small"}}},"block_order":["collection_description","subcollections","product_grid"],"settings":{"enable_sidebar":true,"collapse_filters":true,"enable_color_swatches":false,"enable_sort":true}},"recently-viewed":{"type":"recently-viewed","settings":{}},"16485845458f139618":{"type":"slideshow-split","blocks":{"1648584545469052a6-0":{"type":"slide","settings":{"top_subheading":"","title":"Chipboard","title_size":60,"subheading":"Eco-friendly and extra sturdy to hold your items in place with style","link":"","link_text":"","link_2":"","link_text_2":"","text_position":"right","image":"shopify:\/\/shop_images\/dr_horton_b2b.jpg","indent_image":false,"focal_point":"center center","color_scheme":"2"}},"1648584545469052a6-1":{"type":"slide","settings":{"top_subheading":"","title":"Luxe Foam","title_size":60,"subheading":"Ideal for an elevated take on holding your glass items in place","link":"","link_text":"","link_2":"","link_text_2":"","text_position":"left","image":"shopify:\/\/shop_images\/6982A82E-C2C3-48F3-849A-21564ADBB431.jpg","indent_image":false,"focal_point":"20% 50%","color_scheme":"1"}},"a4712b39-887f-4b06-b42a-0d16928862d8":{"type":"slide","settings":{"top_subheading":"","title":"Satin & Foam","title_size":60,"subheading":"Layers of foam to protect your product with a satin overlay","link":"","link_text":"","link_2":"","link_text_2":"","text_position":"right","image":"shopify:\/\/shop_images\/11D45634-36F5-4C22-94AA-490E42756E04.jpg","indent_image":false,"focal_point":"center center","color_scheme":"2"}}},"block_order":["1648584545469052a6-0","1648584545469052a6-1","a4712b39-887f-4b06-b42a-0d16928862d8"],"settings":{"full_width":true,"height":650,"height_mobile":450,"style":"arrows","autoplay":true,"autoplay_speed":5}},"1648585684f315d4a2":{"type":"text-columns","blocks":{"1648585684fdcc783d-0":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/Untitled_design_29.png","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"1648585684fdcc783d-1":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/Untitled_design_28.png","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"7a1aa2b3-762f-4840-854a-4e4baa77f44c":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/IMG_1896_2_6b8a66ab-8260-4855-bdca-2adbc248ebe0.jpg","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"1648585684fdcc783d-2":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/Untitled_design_27.png","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"6bca6b2b-b8e3-4da8-8f73-d765da972fa8":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/CH_DecanterSet_copy_9940a6b0-2a66-4018-b153-5d5b0fe83f4e.jpg","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"aadc88b3-a1f8-42eb-9d69-58248809b872":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/Untitled_design_30.png","image_width":650,"title":"","text":"","button_label":"","button_link":""}}},"block_order":["1648585684fdcc783d-0","1648585684fdcc783d-1","7a1aa2b3-762f-4840-854a-4e4baa77f44c","1648585684fdcc783d-2","6bca6b2b-b8e3-4da8-8f73-d765da972fa8","aadc88b3-a1f8-42eb-9d69-58248809b872"],"settings":{"title":"What others have done","align_text":"left","divider":false,"color_scheme":"none"}}},"order":["collection-header","main-collection","recently-viewed","16485845458f139618","1648585684f315d4a2"]}
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-header",
+      "settings": {}
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "collection_description": {
+          "type": "collection_description",
+          "settings": {}
+        },
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {}
+        },
+        "subcollections": {
+          "type": "subcollections",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "collection_description",
+        "subcollections",
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false
+      }
+    },
+    "promo-grid": {
+      "type": "promo-grid",
+      "blocks": {
+        "banner": {
+          "type": "banner",
+          "settings": {
+            "color_scheme": "2"
+          }
+        },
+        "advanced": {
+          "type": "advanced",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "banner",
+        "advanced"
+      ],
+      "settings": {
+        "space_below": false
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-header",
+    "promo-grid",
+    "main-collection",
+    "recently-viewed"
+  ]
+}

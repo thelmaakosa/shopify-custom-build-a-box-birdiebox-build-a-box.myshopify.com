@@ -21,27 +21,23 @@
       <div class="collection-hero loading">
 
         {%- if section.settings.parallax -%}
-          <div class="parallax-container">
-            <div class="parallax-image">
+          <parallax-image class="parallax-container">
+            <div class="parallax-image" data-movement="15%" data-parallax-image data-angle="{{ section.settings.parallax_direction }}">
         {%- endif -%}
 
-          <img class="collection-hero__image image-fit lazyload"
-            src=""
-            data-src="{{ img_url }}"
-            data-aspectratio="{{ collection.image.aspect_ratio }}"
-            data-widths="[420, 620, 720, 900, 1080, 1800, 2400]"
-            data-sizes="auto"
-            alt="{{ collection.image.alt | escape }}">
-
-          <noscript>
-            <img class="collection-hero__image image-fit"
-              src="{{ collection.image | img_url: '1400x' }}"
-              alt="{{ collection.image.alt | escape }}">
-          </noscript>
+          {% render 'image-element'
+            img: collection.image,
+            img_width: 2400,
+            classes: 'collection-hero__image image-fit',
+            alt: collection.image.alt,
+            preload: true,
+            sizes: '100%',
+            loading: 'eager'
+          %}
 
         {%- if section.settings.parallax -%}
             </div>
-          </div>
+          </parallax-image>
         {%- endif -%}
 
         <div class="collection-hero__content">
@@ -89,26 +85,42 @@
 {%- endif -%}
 
 {% schema %}
-  {
-    "name": "Collection header",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable",
-        "label": "Enable header",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "collection_image_enable",
-        "label": "Show collection image",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "parallax",
-        "label": "Parallax image"
-      }
-    ]
-  }
+{
+  "name": "t:sections.collection-header.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "t:sections.collection-header.settings.enable.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_image_enable",
+      "label": "t:sections.collection-header.settings.collection_image_enable.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "t:sections.collection-header.settings.parallax.label"
+    },
+    {
+      "type": "select",
+      "id": "parallax_direction",
+      "label": "t:sections.background-image-text.settings.parallax_direction.label",
+      "default": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:sections.background-image-text.settings.parallax_direction.options.top.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.background-image-text.settings.parallax_direction.options.left.label"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

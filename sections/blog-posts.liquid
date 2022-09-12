@@ -105,87 +105,87 @@
 {%- if section.settings.divider -%}</div>{%- endif -%}
 
 {% schema %}
-  {
-    "name": "Blog posts",
-    "class": "index-section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "From the blog"
-      },
-      {
-        "id": "blog",
-        "type": "blog",
-        "label": "Blog"
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_tags",
-        "label": "Show tags",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_comments",
-        "label": "Show comment count",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "blog_image_size",
-        "label": "Force image size",
-        "default": "wide",
-        "options": [
-          {
-            "value": "natural",
-            "label": "Natural"
-          },
-          {
-            "value": "square",
-            "label": "Square (1:1)"
-          },
-          {
-            "value": "landscape",
-            "label": "Landscape (4:3)"
-          },
-          {
-            "value": "portrait",
-            "label": "Portrait (2:3)"
-          },
-          {
-            "value": "wide",
-            "label": "Wide (16:9)"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "divider",
-        "label": "Show section divider",
-        "default": false
-      }
-    ],
-    "presets": [
-      {
-        "name": "Blog posts",
-        "settings": {
-          "blog": "News"
+{
+  "name": "t:sections.blog-posts.name",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.blog-posts.settings.title.label",
+      "default": "From the blog"
+    },
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "t:sections.blog-posts.settings.blog.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "t:sections.blog-posts.settings.blog_show_tags.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "t:sections.blog-posts.settings.blog_show_date.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_comments",
+      "label": "t:sections.blog-posts.settings.blog_show_comments.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "t:sections.blog-posts.settings.blog_show_author.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "blog_image_size",
+      "label": "t:sections.blog-posts.settings.blog_image_size.label",
+      "default": "wide",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:sections.blog-posts.settings.blog_image_size.options.natural.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.blog-posts.settings.blog_image_size.options.square.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.blog-posts.settings.blog_image_size.options.landscape.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.blog-posts.settings.blog_image_size.options.portrait.label"
+        },
+        {
+          "value": "wide",
+          "label": "t:sections.blog-posts.settings.blog_image_size.options.wide.label"
         }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:sections.blog-posts.settings.divider.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.blog-posts.presets.blog_posts.name",
+      "settings": {
+        "blog": "News"
       }
-    ]
-  }
+    }
+  ]
+}
 {% endschema %}
