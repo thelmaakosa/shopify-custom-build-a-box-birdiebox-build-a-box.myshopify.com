@@ -11,7 +11,7 @@
         "1663270606f949676e-0": {
           "type": "heading",
           "settings": {
-            "title": "On-Site Gifting Experience"
+            "title": "Virtual Gifting Experience"
           }
         },
         "1663270606f949676e-1": {
@@ -21,20 +21,11 @@
             "enlarge_text": true,
             "text": "<p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>"
           }
-        },
-        "9f90e7be-0ade-4a46-b46f-cbac5c73d679": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
         }
       },
       "block_order": [
         "1663270606f949676e-0",
-        "1663270606f949676e-1",
-        "9f90e7be-0ade-4a46-b46f-cbac5c73d679"
+        "1663270606f949676e-1"
       ],
       "settings": {
         "align_text": "center",
@@ -43,22 +34,22 @@
         "divider": false
       }
     },
-    "16632805330b2dfc24": {
+    "166328124549047c73": {
       "type": "slideshow-split",
       "blocks": {
-        "1663280533109cec79-0": {
+        "1663281245269a468e-0": {
           "type": "slide",
           "settings": {
             "top_subheading": "",
-            "title": "We'll bring the party to you!",
+            "title": "Stay connected.",
             "title_size": 60,
-            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "subheading": "Remote employee engagements, virtual parties and events, rolling fulfillments, and more. We create custom developed digital solutions while still allowing that hyper personalized touch even from miles away.",
             "link": "",
             "link_text": "",
             "link_2": "",
             "link_text_2": "",
             "text_position": "right",
-            "image": "shopify:\/\/shop_images\/received_2303837406582245.jpg",
+            "image": "shopify:\/\/shop_images\/Shopify_stores.png",
             "indent_image": false,
             "focal_point": "center center",
             "color_scheme": "none"
@@ -66,41 +57,41 @@
         }
       },
       "block_order": [
-        "1663280533109cec79-0"
+        "1663281245269a468e-0"
       ],
       "settings": {
         "full_width": true,
         "height": 650,
         "height_mobile": 450,
         "style": "arrows",
-        "autoplay": false,
+        "autoplay": true,
         "autoplay_speed": 7
       }
     },
-    "16632806665a0bc23a": {
+    "1663281850f49f8de1": {
       "type": "slideshow-split",
       "blocks": {
-        "1663280666862df101-0": {
+        "1663281850393cce57-1": {
           "type": "slide",
           "settings": {
             "top_subheading": "",
-            "title": "Take your event to the next level.",
+            "title": "Endless opportunities.",
             "title_size": 60,
-            "subheading": "Elevate your event through a unique gifting experience your guests won't forget and will keep them coming back for more.",
+            "subheading": "Forget the fuss of trying to narrow down one gift for everyone. Our custom digital solutions allow you to offer a wide selection of curated gift options, so everyone can get something they want. Gifts ship direct to the shopper with a letter from you and inside custom packaging for even more convenience.",
             "link": "",
             "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
+            "link_2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
+            "link_text_2": "Learn More",
             "text_position": "left",
-            "image": "shopify:\/\/shop_images\/received_536332486957379.jpg",
-            "indent_image": false,
+            "image": "shopify:\/\/shop_images\/Top_gun_portal_mockup.png",
+            "indent_image": true,
             "focal_point": "center center",
             "color_scheme": "none"
           }
         }
       },
       "block_order": [
-        "1663280666862df101-0"
+        "1663281850393cce57-1"
       ],
       "settings": {
         "full_width": true,
@@ -118,18 +109,18 @@
         "16632709483619f8f2-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1.png",
+            "image": "shopify:\/\/shop_images\/625826ae6bb9d3605a0d0485_Clean_and_Cool.png",
             "link": "",
             "width": "50%",
-            "alignment": "center"
+            "alignment": "top-middle"
           }
         },
         "16632709483619f8f2-1": {
           "type": "liquid",
           "settings": {
-            "code": "<h2>We'll bring the party to you!<\/h2><p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>",
+            "code": "<h1>We'll bring the party to you!<\/h1><p>Remote employee engagements, virtual parties and events, rolling fulfillments, and more. We create custom developed digital solutions while still allowing that hyper personalized experience. Gifts ship direct to the shopper with a letter from you and inside custom packaging.<\/p>",
             "width": "50%",
-            "alignment": "center"
+            "alignment": "top-middle"
           }
         }
       },
@@ -146,7 +137,8 @@
       "type": "text-and-image",
       "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/1.png",
+        "image": "shopify:\/\/shop_images\/received_2303837406582245.jpg",
+        "image2": "shopify:\/\/shop_images\/received_485463582105580.jpg",
         "image_width": 700,
         "subtitle": "",
         "title": "We’ll bring the party to you!",
@@ -162,6 +154,7 @@
     },
     "16632642368be638ff": {
       "type": "slideshow-image",
+      "disabled": true,
       "blocks": {
         "16632642366d658dca-1": {
           "type": "image",
@@ -170,19 +163,18 @@
             "image": "shopify:\/\/shop_images\/received_1206592302879864.jpg"
           }
         },
-        "4c282b6d-944e-49ab-9d1b-1d8d06907197": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg"
-          }
-        },
         "8f0de3a5-113f-4a8a-a1b2-28b02980dd22": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "link": "",
             "image": "shopify:\/\/shop_images\/received_536332486957379.jpg"
+          }
+        },
+        "16632642366d658dca-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify:\/\/shop_images\/Scope.jpg"
           }
         },
         "77245a80-e338-43e0-b1a7-b30e37f953a0": {
@@ -192,20 +184,20 @@
             "image": "shopify:\/\/shop_images\/20936_1546894717338.jpg"
           }
         },
-        "16632642366d658dca-0": {
+        "4c282b6d-944e-49ab-9d1b-1d8d06907197": {
           "type": "image",
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/Scope.jpg"
+            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg"
           }
         }
       },
       "block_order": [
         "16632642366d658dca-1",
-        "4c282b6d-944e-49ab-9d1b-1d8d06907197",
         "8f0de3a5-113f-4a8a-a1b2-28b02980dd22",
+        "16632642366d658dca-0",
         "77245a80-e338-43e0-b1a7-b30e37f953a0",
-        "16632642366d658dca-0"
+        "4c282b6d-944e-49ab-9d1b-1d8d06907197"
       ],
       "settings": {
         "full_width": true,
@@ -235,8 +227,8 @@
   "order": [
     "main",
     "166327060625c4392e",
-    "16632805330b2dfc24",
-    "16632806665a0bc23a",
+    "166328124549047c73",
+    "1663281850f49f8de1",
     "16632709488b4c34e4",
     "166326421499eb30be",
     "16632642368be638ff",
