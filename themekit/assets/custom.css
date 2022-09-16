@@ -1,5 +1,5 @@
 /* Build a box */
-  /*  Step box  */
+/*  Step box  */
   .bxp-bldr-row.bxp-step-box.bxp-flex{
     padding: 0;
     border: 1px solid rgba(202,202,202,1);
@@ -17,7 +17,7 @@
     border: 1px solid #ddd;
   }
 
-  /* Detail box */
+/* Detail box */
   .bxp-bldr-step #bxp-bldr-order_details, .bxp-bldr-step #bxp-bldr-price_total{
     padding: 15px 0 15px 0;
   }
@@ -54,7 +54,7 @@
     text-align: right;
   }
 
-  /* Filters */
+/* Filters */
   .bxp-step-content .bxp-filt-sort{
     margin-top: 25px;
   }
@@ -81,6 +81,13 @@
   }    
 
 /* Collection page */
-.grid-product__image-wrap{
-  background: #f1f1f1;
+  .grid-product__image-wrap{
+    background: #f1f1f1;
+  }
+
+/* Main nav */
+a.site-nav__link.book-a-meeting{
+  border: 1px solid #18c9c9;
+  border-radius: 10px;
+  color: #18c9c9;
 }
