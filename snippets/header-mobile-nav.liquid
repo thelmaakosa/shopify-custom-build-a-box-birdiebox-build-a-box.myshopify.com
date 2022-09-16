@@ -16,13 +16,7 @@
         endif
       -%}
 
-      {%- if have_image -%}
-        {%- capture collection_image -%}
-          <div class="slide-nav__image">
-            <img src="{{ have_image | img_url: '400x' }}" alt="{{ collections[subcollection_handle].title }}">
-          </div>
-        {%- endcapture -%}
-      {%- endif -%}
+      
 
       <li class="slide-nav__item">
         {%- if link.levels > 0 -%}

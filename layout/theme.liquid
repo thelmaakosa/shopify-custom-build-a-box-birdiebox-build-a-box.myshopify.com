@@ -123,7 +123,7 @@
 </head>
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-transitions="{{ settings.animate_page_transitions }}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
-  {{ page.title }}
+  {% comment %} {{ page.title }} {% endcomment %}
 
   {% if settings.animate_page_transitions %}
     <script type="text/javascript">window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>

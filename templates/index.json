@@ -1,5 +1,210 @@
 {
   "sections": {
+    "16630114243f1b2bb8": {
+      "type": "slideshow",
+      "blocks": {
+        "1663011424099dcee2-0": {
+          "type": "hero",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/best-selling-products",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/Your_One_Stop_Corporate_Gift_Solution_v4.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "2c21e78d-2923-4fb1-a0a1-61e0e427afa3": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Your One Stop Corporate Gift Solution<\/p>",
+            "title_size": 40,
+            "subheading": "",
+            "link": "",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-center horizontal-left",
+            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-Lt-Grey.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-Lt-Grey-Mobile.jpg",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1663011424099dcee2-0",
+        "2c21e78d-2923-4fb1-a0a1-61e0e427afa3"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "minimal",
+        "autoplay": false,
+        "autoplay_speed": 7
+      }
+    },
+    "1663191701ac9d1737": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "16631917018a84af38-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<video width=\"800\" height=\"450\"\n\nautoplay muted loop>\n  \n<source src=\"https:\/\/video.twimg.com\/amplify_video\/1509948477295534085\/vid\/1280x720\/wMB9Fq2Tup3eed4S.mp4?tag=14\"><\/video>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "71a20d17-9e90-446b-a3e2-cac927acf283": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "code": "<h2>Custom content<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML, Liquid, or scripts.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "b7168bcb-0bd1-454e-bdb2-357feb7d5494": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "16631917018a84af38-1",
+        "71a20d17-9e90-446b-a3e2-cac927acf283",
+        "b7168bcb-0bd1-454e-bdb2-357feb7d5494"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "16632603059bf172bc": {
+      "type": "slideshow-split",
+      "blocks": {
+        "16632603050ce4db6a-0": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox is hands down the best way to do gifting. The presentation really creates a jaw-dropping experience.\"",
+            "title_size": 40,
+            "subheading": "- JOSH DILL, VISIT FRISCO",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/ezgif-2-0fea306e27.gif",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "16632603050ce4db6a-1": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"The products that BirdieBox offers are unique and the fact that their team takes care of all of the logistics helps on our side a ton!!\"",
+            "title_size": 40,
+            "subheading": "- ERINN LOPEZ, COLORADO PGA",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/PGA2.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"I've worked with BirdieBox several times over the last few years and have always had a stellar experience.\"",
+            "title_size": 40,
+            "subheading": "- JULIANNE BISCEGLIA, LIVE NATION",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/OldDominion.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "c79303ee-c19e-418b-b37a-c23c4e539174": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox has been instrumental in providing a positive closing experience with our division. We  have all loved the boxes we have received!\"",
+            "title_size": 40,
+            "subheading": "- NIKKI PAULSEN, D.R. HORTON NASHVILLE",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-09-15_152855.png",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "412bba3b-2531-4f58-9e96-20a88414037f": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox helped me so much with my intense order for over 400 people in 16 different states. Thank you for making me look like a hero to my entire team!\"",
+            "title_size": 40,
+            "subheading": "- GINELL PICKRELL, PEPSICO BEVERAGES NORTH AMERICA",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        }
+      },
+      "block_order": [
+        "16632603050ce4db6a-0",
+        "16632603050ce4db6a-1",
+        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e",
+        "c79303ee-c19e-418b-b37a-c23c4e539174",
+        "412bba3b-2531-4f58-9e96-20a88414037f"
+      ],
+      "settings": {
+        "full_width": true,
+        "height": 650,
+        "height_mobile": 450,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
     "slideshow-split": {
       "type": "slideshow-split",
       "disabled": true,
@@ -22,6 +227,24 @@
             "color_scheme": "2"
           }
         },
+        "6eaf3a4d-6364-41e0-b8c3-e1a536d82648": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "Inspire your employees through innovation.",
+            "title_size": 60,
+            "subheading": "Gift your employees something they've never seen before.",
+            "link": "",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/PGA2.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "1"
+          }
+        },
         "slideshow-split-1": {
           "type": "slide",
           "settings": {
@@ -33,17 +256,37 @@
             "link_text": "Shop Now",
             "link_2": "shopify:\/\/collections\/yeti",
             "link_text_2": "",
-            "text_position": "left",
+            "text_position": "right",
             "image": "shopify:\/\/shop_images\/mike-cox-UUn3ifTiyAc-unsplash.jpg",
             "indent_image": false,
             "focal_point": "center center",
             "color_scheme": "2"
           }
+        },
+        "f48fb7b6-d984-4dd3-89c5-eb577445535e": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "It's more than just a gift. It's a memory.",
+            "title_size": 60,
+            "subheading": "Make gifting an experience they'll never forget.",
+            "link": "",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/OldDominion.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "1"
+          }
         }
       },
       "block_order": [
         "slideshow-split-0",
-        "slideshow-split-1"
+        "6eaf3a4d-6364-41e0-b8c3-e1a536d82648",
+        "slideshow-split-1",
+        "f48fb7b6-d984-4dd3-89c5-eb577445535e"
       ],
       "settings": {
         "full_width": true,
@@ -56,6 +299,7 @@
     },
     "featured-collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "YETI Products",
         "home_featured_products": "yeti",
@@ -65,8 +309,129 @@
         "divider": false
       }
     },
+    "featured-collection2": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Gift Sets Featuring YETI",
+        "home_featured_products": "yeti-gift-sets",
+        "count": 5,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "166301095577896fd7": {
+      "type": "featured-collections",
+      "disabled": true,
+      "blocks": {
+        "16630109551670b849-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-selling-gift-sets-1",
+            "title": "Best Selling Kits"
+          }
+        },
+        "16630109551670b849-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "technology",
+            "title": "Tech"
+          }
+        },
+        "16630109551670b849-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "apparel",
+            "title": "Apparel"
+          }
+        },
+        "16630109551670b849-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "drinkware",
+            "title": "Drinkware"
+          }
+        },
+        "16630109551670b849-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "travel-1",
+            "title": "Bags and Totes"
+          }
+        },
+        "16630109551670b849-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "golf",
+            "title": "Golf"
+          }
+        },
+        "fe6598ad-7042-4fb4-ac5d-16e4af78d2b7": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-brands",
+            "title": "Shop by Brand"
+          }
+        },
+        "eb8cedbd-c0ee-4327-9d7f-37178152b8bf": {
+          "type": "collection",
+          "settings": {
+            "collection": "packaging",
+            "title": "Packaging"
+          }
+        },
+        "ac8293c3-61b4-48f7-a569-52abff9865e4": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-lifestyle",
+            "title": "Home and Lifestyle"
+          }
+        },
+        "c5eb6237-bb9b-4151-a011-5c59b225ceaf": {
+          "type": "collection",
+          "settings": {
+            "collection": "incentive",
+            "title": "Awards and Recognition"
+          }
+        },
+        "5653f75d-65a8-4be6-9c97-ddcf8f01fd1e": {
+          "type": "collection",
+          "settings": {
+            "collection": "holiday",
+            "title": "Holiday"
+          }
+        },
+        "2be40101-3ae7-467a-ab33-1589d360c74d": {
+          "type": "collection",
+          "settings": {
+            "collection": "hot-products",
+            "title": "Hot Poroducts"
+          }
+        }
+      },
+      "block_order": [
+        "16630109551670b849-0",
+        "16630109551670b849-1",
+        "16630109551670b849-2",
+        "16630109551670b849-3",
+        "16630109551670b849-4",
+        "16630109551670b849-5",
+        "fe6598ad-7042-4fb4-ac5d-16e4af78d2b7",
+        "eb8cedbd-c0ee-4327-9d7f-37178152b8bf",
+        "ac8293c3-61b4-48f7-a569-52abff9865e4",
+        "c5eb6237-bb9b-4151-a011-5c59b225ceaf",
+        "5653f75d-65a8-4be6-9c97-ddcf8f01fd1e",
+        "2be40101-3ae7-467a-ab33-1589d360c74d"
+      ],
+      "settings": {
+        "title": "",
+        "divider": false
+      }
+    },
     "slideshow": {
       "type": "slideshow",
+      "disabled": true,
       "blocks": {
         "slideshow-0": {
           "type": "hero",
@@ -100,58 +465,34 @@
         "autoplay_speed": 5
       }
     },
-    "featured-collection2": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Gift Sets Featuring YETI",
-        "home_featured_products": "yeti-gift-sets",
-        "count": 5,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
-      }
-    },
-    "slideshow-split2": {
-      "type": "slideshow-split",
+    "16632593896e0e8c73": {
+      "type": "hero-video",
       "disabled": true,
-      "blocks": {
-        "slideshow-split2-0": {
-          "type": "slide",
-          "settings": {
-            "top_subheading": "",
-            "title": "CREATE",
-            "title_size": 45,
-            "subheading": "something they won't forget",
-            "link": "",
-            "link_text": "Add your logo",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "left",
-            "image": "shopify:\/\/shop_images\/yeti-logo-mockup-white-smaller.jpg",
-            "indent_image": false,
-            "focal_point": "bottom center",
-            "color_scheme": "2"
-          }
-        }
-      },
-      "block_order": [
-        "slideshow-split2-0"
-      ],
       "settings": {
         "full_width": true,
-        "height": 550,
-        "height_mobile": 450,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
+        "title": "\"BirdieBox is hands down the best way to do gifting.\"",
+        "title_size": 40,
+        "subheading": "",
+        "link_text": "",
+        "link": "",
+        "color_accent": "#ffffff",
+        "text_align": "vertical-center horizontal-right",
+        "video_url": "https:\/\/video.twimg.com\/amplify_video\/1509948477295534085\/vid\/1280x720\/wMB9Fq2Tup3eed4S.mp4?tag=14",
+        "overlay_opacity": 0,
+        "height": 600,
+        "height_mobile": 300
       }
     }
   },
   "order": [
+    "16630114243f1b2bb8",
+    "1663191701ac9d1737",
+    "16632603059bf172bc",
     "slideshow-split",
     "featured-collection",
-    "slideshow",
     "featured-collection2",
-    "slideshow-split2"
+    "166301095577896fd7",
+    "slideshow",
+    "16632593896e0e8c73"
   ]
 }

@@ -27,7 +27,7 @@
     "color_scheme_2_texture": "paper.jpg",
     "color_scheme_3_bg": "#f5f5f5",
     "color_scheme_3_text": "#000000",
-    "color_scheme_3_texture": "squiggle",
+    "color_scheme_3_texture": "darken",
     "type_header_font_family": "futura_n6",
     "type_header_spacing": "25",
     "type_header_base_size": 25,
@@ -62,6 +62,7 @@
     "cart_additional_buttons": false,
     "cart_notes_enable": false,
     "cart_terms_conditions_enable": false,
+    "search_type": "product,page",
     "show_breadcrumbs": true,
     "show_breadcrumbs_collection_link": true,
     "checkout_logo_image": "shopify:\/\/shop_images\/BirdieBox-Logo-2284x884_600x_e9be01cb-aa66-4297-ad54-1f4bd9776a73.png",
@@ -113,7 +114,7 @@
         "settings": {
           "main_menu_link_list": "main-menu",
           "main_menu_alignment": "left",
-          "mega_products": true,
+          "mega_products": false,
           "header_sticky": true,
           "header_footer_menu": true,
           "sticky_index": false,
@@ -286,7 +287,7 @@
         "settings": {
           "show_newsletter": false,
           "newsletter_richtext": "",
-          "footer_main_menu": true,
+          "footer_main_menu": false,
           "show_copyright": true,
           "copyright_text": "",
           "policies_menu": ""
