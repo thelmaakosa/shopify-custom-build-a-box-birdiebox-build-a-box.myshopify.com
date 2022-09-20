@@ -34,7 +34,7 @@
       class="site-nav__item site-nav__expanded-item {% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}"
       {% if has_dropdown %}aria-haspopup="true"{% endif %}>
 
-      <a href="{{ link.url }}" class="site-nav__link link.handle site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}">
+      <a href="{{ link.url }}" class="site-nav__link {{link.handle}} site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}">
         {{ link.title }}
       </a>
       {%- if is_megamenu -%}
