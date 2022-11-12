@@ -91,3 +91,6 @@ a.site-nav__link.book-a-meeting{
   border-radius: 10px;
   color: #18c9c9;
 }
+.header-item{
+  max-width: 1000px;
+}
