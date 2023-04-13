@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "efa69f9c-a48c-42f1-b925-8d764b8a59f9": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15724388778139__efa69f9c-a48c-42f1-b925-8d764b8a59f9-166853161598baf103-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Book A Meeting With Us Today!"
+          }
+        },
+        "template--15724388778139__efa69f9c-a48c-42f1-b925-8d764b8a59f9-166853161598baf103-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Select your state below to book a meeting with one of our first class sales representatives.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15724388778139__efa69f9c-a48c-42f1-b925-8d764b8a59f9-166853161598baf103-0",
+        "template--15724388778139__efa69f9c-a48c-42f1-b925-8d764b8a59f9-166853161598baf103-1"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": false,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "fdd025dc-1506-4342-8aae-b76019371808": {
+      "type": "advanced-content",
+      "blocks": {
+        "3672792e-fad9-4bea-9844-9293d839de0c": {
+          "type": "liquid",
+          "settings": {
+            "code": "<p> <\/p>",
+            "width": "25%",
+            "alignment": "center"
+          }
+        },
+        "template--15724388778139__fdd025dc-1506-4342-8aae-b76019371808-1668531363c3f4fdb2-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!-- start Fla-shop.com HTML5 Map -->\n\n<div id='map-container'><\/div>\n<link href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0603\/6360\/4123\/files\/map.css?v=1668539027\" rel=\"stylesheet\">\n<script src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0603\/6360\/4123\/files\/raphael.min.js?v=1668539027\"><\/script>\n<script src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0603\/6360\/4123\/files\/settings.js?v=1679589782\"><\/script>\n<script src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0603\/6360\/4123\/files\/paths.js?v=1668539027\"><\/script>\n<script src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0603\/6360\/4123\/files\/map.js?v=1668539027\"><\/script>\n<script>\n  var map = new FlaMap(map_cfg);\n  map.drawOnDomReady('map-container');\n<\/script>\n<!-- end HTML5 Map -->",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "acdda888-96b6-42ab-8f79-4f7da29111b9": {
+          "type": "liquid",
+          "settings": {
+            "code": "<p> <\/p>",
+            "width": "25%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "3672792e-fad9-4bea-9844-9293d839de0c",
+        "template--15724388778139__fdd025dc-1506-4342-8aae-b76019371808-1668531363c3f4fdb2-1",
+        "acdda888-96b6-42ab-8f79-4f7da29111b9"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
+    "b44201e0-0237-4fe5-9e7d-3cc65d72b290": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15724388778139__b44201e0-0237-4fe5-9e7d-3cc65d72b290-16687087872a2bec33-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Meet Our Sales Reps"
+          }
+        }
+      },
+      "block_order": [
+        "template--15724388778139__b44201e0-0237-4fe5-9e7d-3cc65d72b290-16687087872a2bec33-0"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "b75914de-b48e-4f39-b162-e058f785334f": {
+      "type": "slideshow-image",
+      "blocks": {
+        "template--15724388778139__b75914de-b48e-4f39-b162-e058f785334f-1668538556db7c36e2-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify:\/\/shop_images\/babb_-_sales_reps_4-4-23.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--15724388778139__b75914de-b48e-4f39-b162-e058f785334f-1668538556db7c36e2-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "style": "minimal",
+        "autoplay": false,
+        "autoplay_speed": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "efa69f9c-a48c-42f1-b925-8d764b8a59f9",
+    "fdd025dc-1506-4342-8aae-b76019371808",
+    "b44201e0-0237-4fe5-9e7d-3cc65d72b290",
+    "b75914de-b48e-4f39-b162-e058f785334f"
+  ]
+}

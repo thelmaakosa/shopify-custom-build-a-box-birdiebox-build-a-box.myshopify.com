@@ -1,0 +1,220 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "50366f7a-d2ff-43a8-987c-91f83062d08f": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15707163525275__50366f7a-d2ff-43a8-987c-91f83062d08f-1666820750a9fe2880-0": {
+          "type": "hero",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Holiday Gift Guide<\/p>",
+            "title_size": 50,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_banner.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "5079ee2e-38ab-418c-a2c2-0cd9910e0ad9": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_banner_2.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15707163525275__50366f7a-d2ff-43a8-987c-91f83062d08f-1666820750a9fe2880-0",
+        "5079ee2e-38ab-418c-a2c2-0cd9910e0ad9"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "3e5c9af5-af63-46aa-85bb-4a14bae5919d": {
+      "type": "promo-grid",
+      "blocks": {
+        "bfa4d308-9fa7-4557-aa49-c753fb292c52": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_landing_-_employee_ylh.png",
+            "link": "shopify:\/\/collections\/employee-gifts",
+            "width": "50"
+          }
+        },
+        "41642a07-9239-4cf7-9740-1ca962330bc2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_landing_-_affordable_ylh.png",
+            "link": "shopify:\/\/collections\/under-50",
+            "width": "50"
+          }
+        },
+        "9a4c9eb0-6082-4c9f-8412-54e24f76bc37": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_landing_-_intent_ylh.png",
+            "link": "shopify:\/\/collections\/brand-values",
+            "width": "50"
+          }
+        },
+        "e1d66f54-852d-4b36-95db-064318e8be0a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_gift_guide_landing_-_packaging.png",
+            "link": "shopify:\/\/collections\/packaging",
+            "width": "50"
+          }
+        }
+      },
+      "block_order": [
+        "bfa4d308-9fa7-4557-aa49-c753fb292c52",
+        "41642a07-9239-4cf7-9740-1ca962330bc2",
+        "9a4c9eb0-6082-4c9f-8412-54e24f76bc37",
+        "e1d66f54-852d-4b36-95db-064318e8be0a"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 15,
+        "space_above": true,
+        "space_below": true
+      }
+    },
+    "b258f0f2-c8d0-4dc6-9b71-24c9e801685e": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact Us",
+        "text": "<p><\/p><p>Have specific needs or a complex order? Need something extra special?<\/p><p>Tell us about your gifting needs and a member of our team will reach out.<\/p>",
+        "show_phone": false,
+        "narrow_column": true,
+        "color_scheme": "3"
+      }
+    },
+    "70458ea7-b8ef-4833-8156-65300357677c": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "template--15717230805147__70458ea7-b8ef-4833-8156-65300357677c-16678370167409c74a-0": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Employee Holiday Gifts",
+            "textarea": "Show your appreciation this holiday season.",
+            "cta_text1": "Shop Now",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/1_98836648-d63f-42a3-a0bf-25ff2436aa1e.png",
+            "video_url": "",
+            "width": "50",
+            "height": 360,
+            "text_align": "vertical-top horizontal-left",
+            "focal_point": "center",
+            "color_accent": "#33cccc"
+          }
+        },
+        "10bc00ee-45fe-491b-b8ce-b1dfd78ad754": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Affordable Gifts",
+            "textarea": "Budget friendly. Luxury quality.",
+            "cta_text1": "Shop Now",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "video_url": "",
+            "width": "50",
+            "height": 500,
+            "text_align": "vertical-center horizontal-left",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        },
+        "template--15717230805147__70458ea7-b8ef-4833-8156-65300357677c-16678370167409c74a-1": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Gifts with Intent",
+            "textarea": "Gifts that support your values.",
+            "cta_text1": "Shop Now",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "video_url": "",
+            "width": "50",
+            "height": 500,
+            "text_align": "vertical-center horizontal-left",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        },
+        "d23b0986-733d-4ada-8458-5ca5a78d89ab": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Custom Packaging",
+            "textarea": "Add that additional \"WOW\" factor to any gift.",
+            "cta_text1": "Shop Now",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "video_url": "",
+            "width": "50",
+            "height": 500,
+            "text_align": "vertical-center horizontal-left",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "template--15717230805147__70458ea7-b8ef-4833-8156-65300357677c-16678370167409c74a-0",
+        "10bc00ee-45fe-491b-b8ce-b1dfd78ad754",
+        "template--15717230805147__70458ea7-b8ef-4833-8156-65300357677c-16678370167409c74a-1",
+        "d23b0986-733d-4ada-8458-5ca5a78d89ab"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 20,
+        "space_above": true,
+        "space_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "50366f7a-d2ff-43a8-987c-91f83062d08f",
+    "3e5c9af5-af63-46aa-85bb-4a14bae5919d",
+    "b258f0f2-c8d0-4dc6-9b71-24c9e801685e",
+    "70458ea7-b8ef-4833-8156-65300357677c"
+  ]
+}

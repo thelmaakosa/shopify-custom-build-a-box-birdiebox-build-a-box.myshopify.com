@@ -1,0 +1,180 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": false
+          }
+        },
+        "aa5da5a4-1da9-4a19-bb74-f803e12827d8": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "9b440b57-12c2-4c4a-ba3a-2443a5354cff": {
+          "type": "shopify:\/\/apps\/imercium-product-tag-image\/blocks\/app-block\/43ae916d-59e1-4233-a436-aba25666e91e",
+          "settings": {
+            "product": "{{product}}",
+            "visibility": true,
+            "display_format": "icon",
+            "number_of_tags": 8,
+            "top_margin": 0,
+            "bottom_margin": 15,
+            "icon_shape": "circle",
+            "icon_size": 60,
+            "icon_gap": 10,
+            "icon_border": true,
+            "text_color": "#202223",
+            "text_border": false,
+            "text_font_size": 9,
+            "text_border_shape": "rounded",
+            "text_bg_color": "#eeeeee",
+            "font_weight": "normal"
+          }
+        },
+        "7df27fd0-b849-49eb-8bc8-46532c585496": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "9aa62386-f3d0-4d5f-9f22-15e80f12ae98": {
+          "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_page\/7411210d-7b32-4c09-9455-e129e3be4729",
+          "settings": {}
+        },
+        "196560e6-278b-4957-8d37-a5920d4eff4f": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "757a8e94-58d9-4a99-8528-3d50960d7823": {
+          "type": "text",
+          "settings": {
+            "text": "Don't see a spot to add your logo or initials? Don't worry! Any logos or initials needed will be collected after your order has been placed."
+          }
+        },
+        "e07c5595-3834-4019-a741-aecc86c1da37": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>A mockup will be provided for any personalized products for your approval after your order has been placed.<\/strong>"
+          }
+        },
+        "5246bdc7-8e76-48c2-964d-a09fa2da641c": {
+          "type": "shopify:\/\/apps\/wishlist-wishify\/blocks\/product\/e14a43b5-34c6-492d-b46f-3ad2eda08696",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false
+          }
+        }
+      },
+      "block_order": [
+        "variant_picker",
+        "aa5da5a4-1da9-4a19-bb74-f803e12827d8",
+        "price",
+        "9b440b57-12c2-4c4a-ba3a-2443a5354cff",
+        "7df27fd0-b849-49eb-8bc8-46532c585496",
+        "9aa62386-f3d0-4d5f-9f22-15e80f12ae98",
+        "196560e6-278b-4957-8d37-a5920d4eff4f",
+        "757a8e94-58d9-4a99-8528-3d50960d7823",
+        "e07c5595-3834-4019-a741-aecc86c1da37",
+        "5246bdc7-8e76-48c2-964d-a09fa2da641c",
+        "buy_buttons"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_container_size": "medium",
+        "product_image_size": "square",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_height": "flexible",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "blocks": {
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": true
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "title": "Shipping information",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>",
+            "page": ""
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "disabled": true,
+          "settings": {
+            "title": "Ask a question",
+            "phone": false
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "tab",
+        "contact"
+      ],
+      "settings": {
+        "max_width": true
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "You may also like"
+      }
+    },
+    "more-products-vendor": {
+      "type": "more-products-vendor",
+      "settings": {}
+    },
+    "more-products-collection": {
+      "type": "more-products-collection",
+      "settings": {}
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {
+        "color_scheme": "2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sub",
+    "recommendations",
+    "more-products-vendor",
+    "more-products-collection",
+    "recently-viewed",
+    "collection-return"
+  ]
+}

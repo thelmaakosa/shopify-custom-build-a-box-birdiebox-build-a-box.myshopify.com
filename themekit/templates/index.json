@@ -3,47 +3,27 @@
     "16630114243f1b2bb8": {
       "type": "slideshow",
       "blocks": {
-        "1663011424099dcee2-0": {
-          "type": "hero",
-          "disabled": true,
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 70,
-            "subheading": "",
-            "link": "shopify:\/\/collections\/best-selling-products",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#33cccc",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify:\/\/shop_images\/Your_One_Stop_Corporate_Gift_Solution_v4.png",
-            "overlay_opacity": 0,
-            "focal_point": "center center"
-          }
-        },
         "2c21e78d-2923-4fb1-a0a1-61e0e427afa3": {
           "type": "hero",
           "settings": {
             "top_subheading": "",
-            "title": "<p>Your One Stop Corporate Gift Solution<\/p>",
+            "title": "",
             "title_size": 40,
             "subheading": "",
-            "link": "",
-            "link_text": "Shop Now",
+            "link": "shopify:\/\/collections\/best-selling-gift-sets-1",
+            "link_text": "",
             "link_2": "",
             "link_text_2": "",
             "color_accent": "#33cccc",
             "text_align": "vertical-center horizontal-left",
-            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-Lt-Grey.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-Lt-Grey-Mobile.jpg",
+            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image_copy_2.png",
+            "image_mobile": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image_copy_2.png",
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
         }
       },
       "block_order": [
-        "1663011424099dcee2-0",
         "2c21e78d-2923-4fb1-a0a1-61e0e427afa3"
       ],
       "settings": {
@@ -55,44 +35,115 @@
         "autoplay_speed": 7
       }
     },
-    "1663191701ac9d1737": {
-      "type": "advanced-content",
+    "9bc4d62a-f428-4349-8a1e-312db8b322d6": {
+      "type": "promo-grid",
       "disabled": true,
       "blocks": {
-        "16631917018a84af38-1": {
-          "type": "liquid",
-          "settings": {
-            "code": "<video width=\"800\" height=\"450\"\n\nautoplay muted loop>\n  \n<source src=\"https:\/\/video.twimg.com\/amplify_video\/1509948477295534085\/vid\/1280x720\/wMB9Fq2Tup3eed4S.mp4?tag=14\"><\/video>",
-            "width": "50%",
-            "alignment": "center"
-          }
-        },
-        "71a20d17-9e90-446b-a3e2-cac927acf283": {
-          "type": "liquid",
+        "a8500af5-33ee-4820-858f-d971a510133d": {
+          "type": "advanced",
           "disabled": true,
           "settings": {
-            "code": "<h2>Custom content<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML, Liquid, or scripts.<\/p>",
-            "width": "50%",
-            "alignment": "center"
+            "subheading": "",
+            "heading": "Save 10% this Cyber Monday!",
+            "textarea": "Use code BIRDIEBOX10 for 10% off your order of $2,500 or more on select items.",
+            "cta_text1": "Shop Now",
+            "cta_link1": "shopify:\/\/collections\/discount-eligible",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/BABB_-_black_friday_banner.png",
+            "video_url": "",
+            "width": "100",
+            "height": 100,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#33cccc"
           }
         },
-        "b7168bcb-0bd1-454e-bdb2-357feb7d5494": {
-          "type": "image",
+        "17fd6d1d-53f9-43d7-b62c-bbc9110f46b5": {
+          "type": "advanced",
+          "disabled": true,
           "settings": {
-            "link": "",
-            "width": "50%",
-            "alignment": "center"
+            "subheading": "",
+            "heading": "",
+            "textarea": "",
+            "cta_text1": "",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/BABB_-_PPAI_banner.png",
+            "video_url": "",
+            "width": "100",
+            "height": 320,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
           }
         }
       },
       "block_order": [
-        "16631917018a84af38-1",
-        "71a20d17-9e90-446b-a3e2-cac927acf283",
-        "b7168bcb-0bd1-454e-bdb2-357feb7d5494"
+        "a8500af5-33ee-4820-858f-d971a510133d",
+        "17fd6d1d-53f9-43d7-b62c-bbc9110f46b5"
       ],
       "settings": {
-        "full_width": false,
-        "space_around": true
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    },
+    "ac30cede-637b-4e53-9aa2-e20265a3ee20": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "template--15560748040347__ac30cede-637b-4e53-9aa2-e20265a3ee20-1671647491a65b208c-0": {
+          "type": "hero",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "https:\/\/go.shopbirdiebox.com\/PPAI2023",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_PPAI_banner_1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "5d16e623-0b42-4d08-998c-c2ae29f48127": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/women-owned",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_IWD_banner.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15560748040347__ac30cede-637b-4e53-9aa2-e20265a3ee20-1671647491a65b208c-0",
+        "5d16e623-0b42-4d08-998c-c2ae29f48127"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
       }
     },
     "16632603059bf172bc": {
@@ -202,7 +253,7 @@
         "height_mobile": 450,
         "style": "arrows",
         "autoplay": true,
-        "autoplay_speed": 7
+        "autoplay_speed": 10
       }
     },
     "slideshow-split": {
@@ -486,7 +537,8 @@
   },
   "order": [
     "16630114243f1b2bb8",
-    "1663191701ac9d1737",
+    "9bc4d62a-f428-4349-8a1e-312db8b322d6",
+    "ac30cede-637b-4e53-9aa2-e20265a3ee20",
     "16632603059bf172bc",
     "slideshow-split",
     "featured-collection",

@@ -1,0 +1,2473 @@
+{% liquid
+    assign products_with_collections = '['
+    for item in cart.items
+        for collection in item.product.collections
+            assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: item.product.id | append: '"' | append: ',product_handle:"' | append: item.product.handle | append: '"},'
+        endfor
+    endfor
+    if template.name == 'product'
+        for collection in product.collections
+            assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+        endfor
+    else
+        if template.name == 'search'
+            paginate search.results by products_per_search
+                for product in search.results
+                    for collection in product.collections
+                        assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                    endfor
+                endfor
+            endpaginate
+        else
+            if template.name == 'collection'
+                paginate collection.products by products_per_page
+                    for product in collection.products
+                        for collection in product.collections
+                            assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                        endfor
+                    endfor
+                endpaginate
+            endif
+        endif
+    endif
+    assign products_with_collections = products_with_collections | append: ']'
+  %}
+  
+  
+  <script>
+  window.cart = {{cart | json}};
+  WSAIO.products_with_collectionss = {{products_with_collections}};
+  var tempWaioQC = {{shop.metafields.waioQC | json }};
+  var waioQCTemp = [];
+  var collection_handle = '{{ collection.handle }}';
+  var collection_Id = '{{ collection.id }}';
+  var customerTags = {{ customer.tags | json }} || [];
+  var customer_tags = {{ customer.tags | json }} || [];
+  
+  try{
+    customerTags = JSON.parse(customerTags);
+  }catch(e){}
+  try{
+    customer_tags = JSON.parse(customer_tags);
+  }catch(e){}
+  var is_loggedIn = {% if customer %}true{%else%}false{% endif %};
+  function log(a,b,c){if(WSAIO.debug)if("undefined"!==typeof c)switch(c){case "warning":console.warn(a,b);break;case "error":console.error(a,b);break;case "info":console.info(a,b);break;default:console.log(a,b)}else console.log(a,b)};
+  waioQCTemp = waioQCTemp.concat(Object.keys(tempWaioQC).map(function(a){return tempWaioQC[a]}));
+  
+  // sorting all rules
+  WSAIO.quantity_control = [];
+  if(typeof waioQCTemp !== "undefined" && waioQCTemp.length > 0){
+    var sortOrder = ["tag_based", "logged_in", "all"];
+    var sortOrder2 =  ["variants", "products","collections","entire_store"];
+    var temp = [];
+    for(var iter = 0; iter < sortOrder2.length; iter++){
+      var _d = sortOrder2[iter];
+      var temp1 = waioQCTemp.filter(function(x){return x.applies_to === _d});
+      temp1.sort(function(a,b){
+        var compA = $.inArray(a.customer_group, sortOrder);
+        var compB = $.inArray(b.customer_group, sortOrder);
+        return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+      });
+      temp1.forEach(function(_f,_j){
+        temp.push(_f);
+      });
+    }
+    WSAIO.quantity_control = temp; 
+  }
+  
+  
+  
+  //================================Main functions================================================================
+  
+  function getAllRelevantQC(data, callback){
+    var $jscomp$destructuring$var0 = data, rule = $jscomp$destructuring$var0.rule, qc_variants = $jscomp$destructuring$var0.qc_variants, qc_products = $jscomp$destructuring$var0.qc_products, qc_collections = $jscomp$destructuring$var0.qc_collections, qc_entireStore = $jscomp$destructuring$var0.qc_entireStore, variantId = $jscomp$destructuring$var0.variantId, productId = $jscomp$destructuring$var0.productId, collectionId = $jscomp$destructuring$var0.collectionId;
+    var status = "rejected";
+    switch (rule.applies_to) {
+      case "variants":
+        if(rule.selector_for_individual_variant){
+          if(current_product != undefined){
+            $(current_product.variants).each(function(e){
+              var find = rule.variants.findIndex(function(x){ return x.id == current_product.variants[e].id });
+              if(find > -1){
+                status = "approved";
+              }
+            })
+          }
+        }
+        if(variantId){
+          var find = rule.variants.findIndex(function(x){ return x.id == variantId });
+          if(find > -1){
+            status = "approved";
+          }
+        }
+        else{
+          log("WAIO Warning!","Variant id not found for Quantity controller applies to variants","warning");
+        }
+       
+        //         if(productId){
+        //           var find = rule.variants.findIndex(function(x){ return x.product_id == productId });
+        //           if(find > -1){
+        //             status = "approved";
+        //           }
+        //         }
+        break;
+      case "products":
+        if(productId){
+          var find = rule.products.findIndex(function(x){ return x.id == productId });
+          if(find > -1){
+            status = "approved";
+          }
+        }
+        else{
+          log("WAIO Warning!","Product id not found for Quantity controller applies to products","warning");
+        }
+        if(variantId){
+          try{
+            for(var iter = 0; iter < rule.products.length; iter++){
+              var product =  rule.products[iter];
+              var find = product.variants.findIndex(function(x){ return x.id == variantId });
+              if(find > -1){
+                status = "approved"; break;
+              }
+            }
+          }catch(e){log(e);}
+        }
+        break;
+      case "collections":
+        if(collectionId){
+          if(rule.collections.findIndex(function(x){return x.id == collectionId }) > -1){
+            status = "approved";
+          }
+        }
+        else if(productId){
+          WSAIO.collectionsOfProduct(productId, function(collectionIds){
+            for(var iter = 0; iter < collectionIds.length; iter++){
+              var collId = collectionIds[iter].collection_id; 
+              if(rule.collections.findIndex(function(x){return x.id == collId }) > -1){
+                status = "approved"; break;
+              }
+            }
+          });
+        }
+        else if(collection_handle == "all"){
+          if(qc_collections.length == 0){
+            status = "approved";
+          }
+          log("WAIO message: All collections rendered!")
+        }
+        else{
+          log("WAIO message: Current collection's id not found!","warning")
+        }
+        break;
+      case "entire_store":
+        if(WSAIO.template !== "product"){
+          if(qc_collections.length === 0 && qc_products.length === 0 && qc_variants.length === 0){
+            status = "approved";
+          }
+        }
+        else{
+          if(qc_variants.length === 0){
+            status = "approved";
+          }
+          {%if template.name == 'index' or template.name == 'search'%}
+          status = "approved";
+          {%endif%}
+        }
+        break;
+      default:
+        break;
+    }
+    callback({type:rule.applies_to,status:status});
+  }
+  
+  WSAIO.collectionsOfProduct = function (product_id, callback) {
+    if (WSAIO.products_with_collectionss && WSAIO.products_with_collectionss.length) {
+      var arr = WSAIO.products_with_collectionss.filter(function (x) {
+        return x.product_id == product_id
+      });
+      if (typeof callback === "function") {
+        callback(arr);
+      }
+    } else {
+      if (typeof callback === "function") {
+        callback([]);
+      }
+    }
+  }
+  
+  
+  WSAIO.quantity_controllers = function(config, callback){
+    if("undefined"===typeof config)var config={};
+    null===config&&(config={});
+    var productId = config.productId;
+    var variantId = config.variantId;
+    var collectionId = config.collectionId;
+    var custom_message = config.message || null;
+    var qc_variants = [];
+    var qc_products = [];
+    var qc_collections = [];
+    var qc_entireStore = [];
+    for(var iter = 0; iter < WSAIO.quantity_control.length; iter++){
+      var rule = WSAIO.quantity_control[iter];
+     
+      if(rule.status !== "enabled") continue;
+      if(rule.customer_group === "logged_in" && !is_loggedIn) continue;
+      else if(rule.customer_group === "tag_based"){
+        if(!is_loggedIn) continue;
+        var cus_tags = customerTags.map(function (e) {
+          return e.toLowerCase()
+        });
+        var tagFound = false;
+        for(var iter1 = 0; iter1 < rule.customer_tags.length; iter1++){
+          var tag = rule.customer_tags[iter1];
+          if(cus_tags.indexOf(tag.toLowerCase())>-1){
+            tagFound = true; break;
+          }
+        }
+        if(!tagFound) continue;
+      }
+      
+      else if(rule.customer_group === "all"){
+        if(is_loggedIn && (rule.except_tags || rule.except_logged_in)){    
+          var cus_tags = customerTags.map(function (e) {
+            return e.toLowerCase()
+          });
+          if(rule.except_tags){
+            var tagFound = false;
+            for(var iter1 = 0; iter1 < rule.excepted_tags.length; iter1++){
+              var tag = rule.excepted_tags[iter1];
+              if(cus_tags.indexOf(tag.toLowerCase())>-1 && WSAIO.quantity_control.find(function(e){ if(e.customer_group == 'tag_based'){ e.customer_tags.find(function(y){ y != tag.toLowerCase()}) } })){
+                tagFound = true; return;
+              }
+            }
+          }
+          else if(rule.except_logged_in){
+           if(is_loggedIn) return;
+          }
+        }
+      }
+      getAllRelevantQC({
+        rule: rule,
+        variantId: variantId,
+        productId: productId,
+        collectionId: collectionId,
+        qc_variants: qc_variants,
+        qc_products: qc_products,
+        qc_collections: qc_collections,
+        qc_entireStore: qc_entireStore
+      }, function(results){
+        var pushData = {
+          variantId: variantId,
+          productId: productId,
+          collectionId: collectionId,
+          customer_group: rule.customer_group,
+          internal_name: rule.internal_name,
+          default_quantity: rule.default_quantity,
+          maximum_quantity: rule.maximum_quantity,
+          minimum_quantity: rule.minimum_quantity,
+          quantity_increment: rule.quantity_increment,
+          applies_to: rule.applies_to,
+          message: custom_message || rule.message,
+          selector_for_individual_variant: rule.selector_for_individual_variant,
+          minimum_quantity_method: rule.minimum_quantity_method,
+          except_logged_in: rule.except_logged_in,
+          except_tags: rule.except_tags,
+          excepted_tags: rule.excepted_tags
+        };
+        if(results.type === "variants" && results.status === "approved"){
+          pushData.variants = rule.variants;
+          qc_variants.push(pushData);
+        }
+        if(results.type === "products" && results.status === "approved"){
+          pushData.products = rule.products;
+          qc_products.push(pushData);
+        }
+        if(results.type === "collections" && results.status === "approved"){
+          pushData.collections = rule.collections;
+          qc_collections.push(pushData);
+        }
+        if(results.type === "entire_store" && results.status === "approved"){
+          pushData.entire_store = true;
+          qc_entireStore.push(pushData);
+        }
+      });
+    }//end forloop
+    log("qc_products", qc_products);
+    log("qc_collections", qc_collections);
+    log("qc_entireStore", qc_entireStore);
+    var variants_final = [];
+    var products_final = {};
+    var collections_final = {};
+    var entireStore_final = {};
+    for(var iter = 0; iter < qc_variants.length; iter++){
+      var v = qc_variants[iter];
+      if(v.selector_for_individual_variant){
+        var vcg = v.customer_group;
+      }else{
+        var vcg = variants_final.find(function(x){return x.customer_group});
+      }
+      if( "undefined" !== typeof vcg){
+        switch(vcg){
+          case "tag_based":
+                if(v.selector_for_individual_variant){
+                  if(vcg == "tag_based"){
+                    variants_final.push(v);
+                  }
+                }else{
+                  if(vcg != "tag_based"){
+                    variants_final.push(v);
+                  }
+                }
+              break;
+          case "logged_in":
+            if(vcg != "tag_based"){
+              variants_final.push(v);
+            }
+            break;
+          case "all":
+            if(vcg != "tag_based" && variants_final.customer_group != "logged_in"){
+              variants_final.push(v);
+            }
+            break;
+          default:
+            break;
+        }
+  
+      }
+  
+      else{
+        variants_final.push(v);
+      }
+    }
+  
+    for(var iter = 0; iter < qc_products.length; iter++){
+      var v = qc_products[iter];
+      if( "undefined" !== typeof products_final.customer_group ){
+        switch(v.customer_group){
+          case "tag_based":
+            if(products_final.customer_group != "tag_based"){
+              products_final = v;
+            }
+            break;
+          case "logged_in":
+            if(products_final.customer_group != "tag_based"){
+              products_final = v;
+            }
+            break;
+          case "all":
+            if(products_final.customer_group != "tag_based" && products_final.customer_group != "logged_in"){
+              products_final = v;
+            }
+            break;
+          default:
+            break;
+        }
+      }
+      else{
+        products_final = v;
+      }
+    }
+    for(var iter = 0; iter < qc_collections.length; iter++){
+      var v = qc_collections[iter];
+      if( "undefined" !== typeof collections_final.customer_group ){
+        switch(v.customer_group){
+          case "tag_based":
+            if(collections_final.customer_group != "tag_based"){
+              collections_final = v;
+            }
+            break;
+          case "logged_in":
+            if(collections_final.customer_group != "tag_based"){
+              collections_final = v;
+            }
+            break;
+          case "all":
+            if(collections_final.customer_group != "tag_based" && collections_final.customer_group != "logged_in"){
+              collections_final = v;
+            }
+            break;
+          default:
+            break;
+        }
+      }
+      else{
+        collections_final = v;
+      }
+    }
+    for(var iter = 0; iter < qc_entireStore.length; iter++){
+      var v = qc_entireStore[iter];
+      if( "undefined" !== typeof entireStore_final.customer_group ){
+        switch(v.customer_group){
+          case "tag_based":
+            if(entireStore_final.customer_group != "tag_based"){
+              entireStore_final = v;
+            }
+            break;
+          case "logged_in":
+            if(entireStore_final.customer_group != "tag_based"){
+              entireStore_final = v;
+            }
+            break;
+          case "all":
+            if(entireStore_final.customer_group != "tag_based" && entireStore_final.customer_group != "logged_in"){
+              entireStore_final = v;
+            }
+            break;
+          default:
+            break;
+        }
+      }
+      else{
+        entireStore_final = v;
+      }
+    }
+    
+    log("variants_final", variants_final);
+    log("products_final", products_final);
+    log("collections_final", collections_final);
+    log("entireStore_final", entireStore_final);
+    var quantity_controls = [];
+    if("undefined" !== typeof variants_final.find(function(x){return x.applies_to})){
+      variants_final.forEach(function(_d,i){quantity_controls.push(_d);});
+      if("undefined" !== typeof products_final.applies_to){
+        quantity_controls.push(products_final);
+      }
+    }
+    else if("undefined" !== typeof products_final.applies_to){
+      quantity_controls.push(products_final);
+    }
+    else if("undefined" !== typeof collections_final.applies_to){
+      quantity_controls.push(collections_final); 
+    }
+    else if("undefined" !== typeof entireStore_final.applies_to){
+      quantity_controls.push(entireStore_final);
+    }
+    callback(null,{quantity_controls:quantity_controls})
+  
+  }
+  
+  
+  //============================for cart page function start=======================================================
+  
+  WSAIO.quantityControllers = function(config, callback){
+    if("undefined"===typeof config)var config={};
+    null===config&&(config={});
+    if(config.productHandle){
+      WSAIO.getProductByHandle(config.productHandle, function(e,product){
+        if(product){
+          config.productId = product.id;
+          if(!config.variantId){
+            try{
+              config.variantId = product.variants[0].id;
+            }catch(e){log(e)}
+          }
+        }
+        WSAIO.quantity_controllers(config, callback);
+      });
+    }
+    else{
+      WSAIO.quantity_controllers(config, callback);
+    }
+  }
+  
+  function quantityControls__carts(config, callback){
+    if("undefined"===typeof config)var config={};
+    null===config&&(config={});
+    var elementSelector = config.elementSelector || ".responsive-table__row";
+    var variantIdAttribute = config.variantIdAttribute || "data-variant-id";
+    var productIdAttribute = config.productIdAttribute || "data-product-id";
+    if($(elementSelector).length > 0){
+      $(elementSelector).each(function(e,a){
+        var $variantId = $(this).attr(variantIdAttribute);
+        var $productId = $(this).attr(productIdAttribute);
+        config.variantId = $variantId;
+        if($productId){
+          config.productId = $productId;
+        }
+        WSAIO.quantityControllers(config, function(e,quantity_controls){
+          if(e){
+            log(e);
+            callback(e, null);
+          }
+          else{
+            callback(null, {
+              quantity_controls: quantity_controls,
+              elementSelector: "["+variantIdAttribute+"='"+$variantId+"']"
+            });
+          };
+        });
+      });
+    }
+    else{
+      callback("elementSelector could not found any nodeElement. Config elementSelector for Quantity controller to work on cart template.", null);
+    }
+  }
+  
+  WSAIO.cartQuantityControllers = function(config,callback){
+    quantityControls__carts(config,callback)
+  }
+  WSAIO.loadcartQuantityControllers = function(config,callback){
+    quantityControls__carts(config,callback)
+  }
+  //============================for cart page function end=======================================================
+  
+  
+  //=================================Product page restriction code start=========================================
+  var _selected_variant_id = $('[name="id"]').val();
+  var current_product = current_product;
+  window.check_table_rule = [];
+  var combine_table = '';
+  window.MOQ_applied = [];
+
+  WSAIO.qtyControl = function(config){
+    window.MOQ_applied = [];
+    var _addToCart = config._addToCart;
+    var addTocartHtml = $('<div>').append($(_addToCart).clone()).html()
+    var removeableSelector_qty = config.removeableSelector_qty;
+    var removeableSelector_variants = config.removeableSelector_variants;
+    var _selected_variant_id = config.variantId;
+    var grid_parent_selector = '.demoxyz';
+    if(config.grid_parent_selector != undefined){
+      grid_parent_selector = config.grid_parent_selector;
+      qty_selector = config.qty_selector;
+      add_to_cart_selector = config.add_to_cart_selector;
+    }
+    {% if template.name == 'page' or template.name == 'collection' %}
+    var current_product = config.CurrentProduct;
+    {% endif %}
+    WSAIO.quantity_controllers(config,function(e,quantity_controls){
+      if(quantity_controls.quantity_controls.length){ 
+        console.log(quantity_controls.quantity_controls)
+        var product_level_msg = quantity_controls.quantity_controls[0].message.replace("[[mul]]",quantity_controls.quantity_controls[0].quantity_increment).replace("[[min]]",quantity_controls.quantity_controls[0].minimum_quantity);
+        var Notable_result = "false";
+        var product_level_Notable_result = "false";       
+        var product_level = "false";
+  
+        if(quantity_controls.quantity_controls[0].minimum_quantity_method == "product_level" || quantity_controls.quantity_controls[0].minimum_quantity_method == "selected_product_level"){
+          product_level_Notable_result = quantity_controls.quantity_controls[0].selector_for_individual_variant;
+          if(product_level_Notable_result){
+            var product_level_Notable = "false";
+            var product_level = "true";
+          }else{
+            var product_level_Notable = "true";
+          }
+        }
+        if(quantity_controls.quantity_controls[0].minimum_quantity_method == "variant_level"){
+          Notable_result = quantity_controls.quantity_controls[0].selector_for_individual_variant;
+          if(Notable_result){
+            var Notable = "false";
+ var current_product = current_product22; 
+            if(current_product.id == quantity_controls.quantity_controls[0].productId){
+              check_table_rule = quantity_controls.quantity_controls;
+            }else{
+              check_table_rule.length = 0;
+            }
+          }else{
+            var Notable = "true";
+          }
+        }
+  
+        $(removeableSelector_qty).hide();     
+        if(Notable != "true"){
+          $(removeableSelector_variants).hide();
+        }
+  
+  
+        var max_qty = 0;
+        var _qtyInc = 1;
+        var _qtyMin = 1;
+        var _qtyMax = 0;
+        var _qtyDefault = 1;
+        var qc_ctrl = quantity_controls.quantity_controls;
+        var _fLavel = 'variant_level';
+
+  
+  
+  console.log('curr current_product22',current_product22)
+      var current_product = current_product22;
+        console.log('curr22 current_product',current_product)   
+   
+
+  
+        if(typeof current_product.variants !== "undefined" && current_product.variants.length > 0){
+        {% if template.name == 'page' or template.name == 'collection'%}
+  
+          var variant = current_product.variants.find(function(x){return x.id==_selected_variant_id});
+          var Applicable = qc_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt(variant.id)})!==-1)});
+  
+          var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+          if(typeof Applicable !== "undefined"){
+            _fLavel = Applicable.minimum_quantity_method;
+            max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+            _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+            _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+            _qtyMax = parseInt(max_qty) || 0;
+            if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+              _qtyDefault = parseInt(Applicable.default_quantity);
+            }else{
+              _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+            }
+  
+            _qtyDefault = 0;
+            cart.items.forEach(function(e){if(variant.id == e.id){
+              var mod= parseInt(e.quantity)%_qtyInc;
+              var def =  parseInt(e.quantity)-mod;
+              _qtyDefault = def
+            }})
+            var available_check = '';
+            $('.pid_'+current_product.id).find('.variant_stock li').each(function(e){
+              var _this = $(this);
+              available_check=_this.attr('available')
+            })
+            var  inventory_checking = '';
+            if( variant.inventory_management == null || available_check == 'continue' ){
+              inventory_checking = 'no_limit';
+            }else{
+              inventory_checking='limit';
+            }
+            window.MOQ_applied = [{
+              '_qtyDefault':_qtyDefault,
+              '_qtyInc':_qtyInc,
+              '_qtyMin':_qtyMin,
+              '_qtyMax':_qtyMax
+            }]
+            qty__attrs = 'class="waio_qty-input waio_qty-input__applicable" data-method="'+_fLavel+'" data-min="'+_qtyMin+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'" ';
+            var _HTML = ''+
+                '   <div class="waio__single-qc g" continue_outofstock="'+available_check+'" inventory_checking="'+inventory_checking+'" style="margin-left: 4%;">  '  + 
+                '	<label for="" style="font-size: 12px;">Quantity</label>'+
+                '     <div '+qty__attrs+'>  '  + 
+                '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                '             <input type="text" data-qc-variant="'+variant.id+'" variant_title="'+variant.title+'" product_title="'+current_product.title+'" class="input_moq" name="quantity" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  +
+                '     </div>  '  + 
+                '  </div>  ' ; 
+  
+  
+            if($(".update_btn").length){
+              $('[vid="'+variant.id+'"]').find('.qtydiv').hide();
+              $('[vid="'+variant.id+'"]').find('.waio__single-qc').remove();
+              if($('[vid="'+variant.id+'"]').find('.waio__single-qc').length == 0){
+                $('.custom_variant[vid="'+variant.id+'"]').find('.qtydiv').before(_HTML);
+                if(_fLavel == 'product_level' && current_product.variants[0].title!="Default Title"){
+                  if($('.pid_'+current_product.id).find('.quantitytd .product_level_msg').length == 0){
+                    $('.pid_'+current_product.id).find('.quantitytd').append("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                  }
+                }else{
+                  $('.custom_variant[vid="'+variant.id+'"]').find('.qtydiv').after("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                }
+              }
+            }else if($(grid_parent_selector).length){
+              if(_fLavel != 'product_level'){
+               $('[vid="'+variant.id+'"]').find(qty_selector).hide();
+               setTimeout(function(){
+                 $('[vid="'+variant.id+'"]').find(qty_selector).after("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                 $('[vid="'+variant.id+'"]').find(qty_selector).after(_HTML);
+                },500);
+                 var vids = variant.id;
+                 append_addtocart(add_to_cart_selector,vids)
+                 moqEvent(add_to_cart_selector);
+                 setTimeout(function(){
+                    qty_function();
+                 },600)
+                 }
+            }else{
+  
+              $('[vid="'+variant.id+'"]').find('.qtydiv').hide();
+              $('[vid="'+variant.id+'"]').find('.waio__single-qc').remove();
+              if($('[vid="'+variant.id+'"]').find('.waio__single-qc').length == 0){
+                $('.custom_variant[vid="'+variant.id+'"]').find('.qtydiv').before(_HTML);
+                if(_fLavel == 'product_level' && current_product.variants[0].title!="Default Title"){
+                  if($('.pid_'+current_product.id).find('.quantitytd .product_level_msg').length == 0){
+                    $('.pid_'+current_product.id).find('.quantitytd').append("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                  }
+                }else{
+                  if($('.custom_variant[vid="'+variant.id+'"]').find('.quantitytd .product_level_msg').length == 0){ 
+                    $('.custom_variant[vid="'+variant.id+'"]').find('.qtydiv').after("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                  }
+                }
+              }
+              var vids = variant.id;
+              append_addtocart(config._addToCart,vids)
+              moqEvent(config._addToCart)
+            }
+  
+          }
+  
+          {% else %}
+          var rows_data = '';
+          var ids = [];
+  
+          for(var i = 0 ;i< current_product.variants.length; i++){
+            ids.push(current_product.variants[i].id)
+          }
+          if(check_table_rule.length > 0){
+            qc_ctrl = check_table_rule;
+            window.applicable_rule_id = [];
+            window.applicable_rule = [];
+            $(current_product.variants).each(function(e){
+              var row = current_product.variants[e];
+              $(check_table_rule).each(function(rr){
+                if(check_table_rule[rr].applies_to == 'variants'){
+                  $(check_table_rule[rr].variants).each(function(rrr){
+                    if(row.id == check_table_rule[rr].variants[rrr].id){
+                     
+                      max_qty = 0;
+                      _qtyInc = 1;
+                      _qtyMin = 0;
+                      _qtyMax = 0;
+                      _qtyDefault = 1;
+                      var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+                      var indxx = ids.findIndex(function(e){if(e==check_table_rule[rr].variants[rrr].id){return e}})
+  
+                      ids = ids.filter(function(elem){
+                        return elem != ids[indxx]; 
+                      });
+                      $('.product_level_msg').remove();
+                      product_level_msg = '';
+                      var message = check_table_rule[rr].message.replace("[[mul]]",check_table_rule[rr].quantity_increment).replace("[[min]]",check_table_rule[rr].minimum_quantity).replace('"','');
+                      _fLavel = check_table_rule[rr].minimum_quantity_method;
+                      max_qty = check_table_rule[rr].maximum_quantity==""?0:check_table_rule[rr].maximum_quantity;
+                      _qtyInc = parseInt(check_table_rule[rr].quantity_increment) || 1;
+                      _qtyMin = parseInt(check_table_rule[rr].minimum_quantity) || 0;
+                      _qtyMax = parseInt(max_qty) || 0;
+                      if(check_table_rule[rr].default_quantity == 0){
+                        _qtyDefault = parseInt(check_table_rule[rr].default_quantity);
+                      }else{
+                        _qtyDefault = parseInt(check_table_rule[rr].default_quantity) || 1;
+                      }
+                      if(_fLavel == "product_level" || _fLavel == "selected_product_level"){
+                        Notable = "false";
+                        $(removeableSelector_variants).hide();
+                        product_level = "true";
+                      }
+                      var img = current_product.featured_image;
+                      qty__attrs = 'class="waio_qty-input waio_qty-input__applicable" data-method="'+_fLavel+'" data-min="'+_qtyMin+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'" ';
+                      if(row.featured_image != null) img = row.featured_image.src;
+                      rows_data +=''+
+                        '   	<tr>  '  + 
+                        '         <td>  '  + 
+                        '           <div class="waio__product-information">  '  + 
+                        '             <div class="waio__image-wrapper">  '  + 
+                        '             	<img class="waio__image" src="'+img+'" alt="'+row.title+'">  '  + 
+                        '             </div>  '  + 
+                        '               '  + 
+                        '             <div class="waio__product-details">  '  + 
+                        '               <h4 class="waio__product-title">'+row.title+'</h4>  '  + 
+                        '             	  '  + 
+                        '             </div>  '  + 
+                        '           </div>  '  + 
+                        '         </td>  '  + 
+                        '         <td>  '  + 
+                        '         	<div '+qty__attrs+'>  '  + 
+                        '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                        '             <input type="text" data-qc-variant="'+row.id+'" name="quantity" class="input_moq" data-variant="'+row.id+'" value="'+_qtyDefault+'"/>  '  + 
+                        '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  + 
+                        '           </div>  <p style="color:red;font-size: 12px;">"'+message+'"</p>'  + 
+                        '         </td>  '  + 
+                        '      </tr>  ' ; 
+  
+  
+                    }
+                  })
+                }else{
+                   rows_data = '';
+                  qc_ctrl = [];
+                  qc_ctrl.push(check_table_rule);
+                  for(var k=0; k< qc_ctrl.length;k++){
+  
+                    current_product.variants.forEach(function(variant, i){
+                      max_qty = 0;
+                      _qtyInc = 1;
+                      _qtyMin = 0;
+                      _qtyMax = 0;
+                      _qtyDefault = 1;
+                      var Applicable = qc_ctrl[k].find(function(x){
+                        return x.applies_to!="variants" || (x.variants && x.variants.findIndex(function(y){
+                          return parseInt(y.id)===parseInt(variant.id)
+                        })!==-1)
+                      });
+                      var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+  
+                      if(typeof Applicable !== "undefined"){
+                        $('.product_level_msg').remove();
+                        product_level_msg = '';
+                        var indxx = ids.findIndex(function(e){if(e==variant.id){return e}})
+                        ids = ids.filter(function(elem){
+                          return elem != ids[indxx]; 
+                        });
+                        var message = Applicable.message.replace("[[mul]]",Applicable.quantity_increment).replace("[[min]]",Applicable.minimum_quantity).replace('"','');
+                        _fLavel = Applicable.minimum_quantity_method;
+                        max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+                        _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+                        _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+                        _qtyMax = parseInt(max_qty) || 0;
+                        if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+                          _qtyDefault = parseInt(Applicable.default_quantity);
+                        }else{
+                          _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+                        }
+                        if(_fLavel == "product_level" ||_fLavel ==  "selected_product_level"){
+                          Notable = "false";
+                          $(removeableSelector_variants).hide();
+                          product_level = "true";
+                        }
+  
+                        var img = current_product.featured_image;
+                        if(variant.featured_image != null) img = variant.featured_image.src;
+                        qty__attrs = 'class="waio_qty-input waio_qty-input__applicable" data-method="'+_fLavel+'" data-min="'+_qtyMin+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'" ';
+                        rows_data +=''+
+                          '   	<tr>  '  + 
+                          '         <td>  '  + 
+                          '           <div class="waio__product-information">  '  + 
+                          '             <div class="waio__image-wrapper">  '  + 
+                          '             	<img class="waio__image" src="'+img+'" alt="'+variant.title+'">  '  + 
+                          '             </div>  '  + 
+                          '               '  + 
+                          '             <div class="waio__product-details">  '  + 
+                          '               <h4 class="waio__product-title">'+variant.title+'</h4>  '  + 
+                          '             	  '  + 
+                          '             </div>  '  + 
+                          '           </div>  '  + 
+                          '         </td>  '  + 
+                          '         <td>  '  + 
+                          '         	<div '+qty__attrs+'>  '  + 
+                          '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                          '             <input type="text" data-qc-variant="'+variant.id+'" name="quantity" class="input_moq" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                          '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  + 
+                          '           </div> <p style="color:red;font-size: 12px;">"'+message+'"</p> '  + 
+                          '         </td>  '  + 
+                          '      </tr>  ' ; 
+                      }
+  
+                    })
+                  }
+                }
+              })
+            })
+            for(var k=0; k< ids.length;k++){
+              current_product.variants.forEach(function(variant, i){
+                if(ids[k] == variant.id){
+                  max_qty = 0;
+                  _qtyInc = 1;
+                  _qtyMin = 0;
+                  _qtyMax = 0;
+                  _qtyDefault = 1;
+                  window.MOQ_applied = [{
+                    '_qtyDefault':_qtyDefault,
+                    '_qtyInc':_qtyInc,
+                    '_qtyMin':_qtyMin,
+                    '_qtyMax':_qtyMax
+                  }]
+                  var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+  
+                  var indxx = ids.findIndex(function(e){if(e==variant.id){return e}})
+                  ids = ids.filter(function(elem){
+                    return elem != ids[indxx]; 
+                  });
+                  var img = current_product.featured_image;
+                  if(variant.featured_image != null) img = variant.featured_image.src;
+                  rows_data +=''+
+                    '   	<tr>  '  + 
+                    '         <td>  '  + 
+                    '           <div class="waio__product-information">  '  + 
+                    '             <div class="waio__image-wrapper">  '  + 
+                    '             	<img class="waio__image" src="'+img+'" alt="'+variant.title+'">  '  + 
+                    '             </div>  '  + 
+                    '               '  + 
+                    '             <div class="waio__product-details">  '  + 
+                    '               <h4 class="waio__product-title">'+variant.title+'</h4>  '  + 
+                    '             	  '  + 
+                    '             </div>  '  + 
+                    '           </div>  '  + 
+                    '         </td>  '  + 
+                    '         <td>  '  + 
+                    '         	<div '+qty__attrs+'>  '  + 
+                    '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                    '             <input type="text" data-qc-variant="'+variant.id+'" name="quantity" class="input_moq" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                    '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  + 
+                    '           </div>  '  + 
+                    '         </td>  '  + 
+                    '      </tr>  ' ; 
+  
+                }
+              })
+            }
+          }else{
+            current_product.variants.forEach(function(variant, i){
+              max_qty = 0;
+              _qtyInc = 1;
+              _qtyMin = 0;
+              _qtyMax = 0;
+              _qtyDefault = 1;
+              var Applicable = qc_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt(variant.id)})!==-1)});
+              var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+              if(typeof Applicable !== "undefined"){
+                _fLavel = Applicable.minimum_quantity_method;
+                max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+                _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+                _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+                _qtyMax = parseInt(max_qty) || 0;
+                if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+                  _qtyDefault = parseInt(Applicable.default_quantity);
+                }else{
+                  _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+                }
+                if(_fLavel == "product_level" || _fLavel == "selected_product_level"){
+                  Notable = "false";
+                  $(removeableSelector_variants).hide();
+                  product_level = "true";
+                }
+  
+              }   
+              window.MOQ_applied = [{
+                '_qtyDefault':_qtyDefault,
+                '_qtyInc':_qtyInc,
+                '_qtyMin':_qtyMin,
+                '_qtyMax':_qtyMax
+              }]
+              var img = current_product.featured_image;
+              if(variant.featured_image != null) img = variant.featured_image.src;
+              rows_data+=''+
+                '   	<tr>  '  + 
+                '         <td>  '  + 
+                '           <div class="waio__product-information">  '  + 
+                '             <div class="waio__image-wrapper">  '  + 
+                '             	<img class="waio__image" src="'+img+'" alt="'+variant.title+'">  '  + 
+                '             </div>  '  + 
+                '               '  + 
+                '             <div class="waio__product-details">  '  + 
+                '               <h4 class="waio__product-title">'+variant.title+'</h4>  '  + 
+                '             	  '  + 
+                '             </div>  '  + 
+                '           </div>  '  + 
+                '         </td>  '  + 
+                '         <td>  '  + 
+                '         	<div '+qty__attrs+'>  '  + 
+                '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                '             <input type="text" data-qc-variant="'+variant.id+'" name="quantity" class="input_moq" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  + 
+                '           </div>  '  + 
+                '         </td>  '  + 
+                '      </tr>  ' ; 
+            })
+  
+          }
+          var tableHTML =  '   <table class="waio__qc-table">  '  + 
+              '     <thead>  '  + 
+              '       <tr>  '  + 
+              '         <th>Variants</th>  '  + 
+              '         <th>Qty</th>  '  + 
+              '       </tr>  '  + 
+              '     </thead>  '  + 
+              '     '  + 
+              '     <tbody>  '  +
+              rows_data+
+              '     </tbody>  '  + 
+              '  </table>  ' ; 
+          if($('.waio__qc-table').length)$('.waio__qc-table').remove();
+  
+          {% endif %}
+          if(current_product.variants[0].title=="Default Title"){
+            var variant = current_product.variants[0];
+            var Applicable = qc_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt(variant.id)})!==-1)});
+            if(typeof Applicable.message == 'undefined'){
+                Applicable = Applicable[0];
+              }
+               if(typeof Applicable !== "undefined"){
+                _fLavel = Applicable.minimum_quantity_method;
+              max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+              _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+              _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+              _qtyMax = parseInt(max_qty) || 0;
+              if(Applicable.default_quantity == 0){
+                _qtyDefault = parseInt(Applicable.default_quantity);
+              }else{
+                _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+              }
+              product_level_msg = Applicable.message;
+              {% if template.name == 'page' %}
+              if($(".update_btn").length){
+                _qtyDefault = 0;
+                cart.items.forEach(function(e){if(variant.id == e.id){
+                  var mod= parseInt(e.quantity)%_qtyInc;
+                  var def =  parseInt(e.quantity)-mod;
+                  _qtyDefault = def
+                }})
+              }
+              {% endif %}
+              if(current_product.tags != undefined){
+              var all_in_one = 0;
+              for(var i=0; i<current_product.tags.length; i++){
+                if(current_product.tags[i].indexOf("increment")>-1){
+                  all_in_one = current_product.tags[i].split("_")[1];
+                  _qtyDefault = all_in_one;
+                  _qtyInc = all_in_one;
+                  _qtyMin = all_in_one;
+                  tag_applied = 1;
+                }
+              }
+  
+              for(var i=0; i<current_product.tags.length; i++){
+                if(current_product.tags[i].indexOf("vid_")>-1){
+                  var vid = current_product.tags[i].split("_")[1];
+                  if(WSAIO.selected_variant.id == vid){
+                    all_in_one = current_product.tags[i].split("_")[2];
+                    _qtyDefault = all_in_one;
+                    _qtyInc = all_in_one;
+                    _qtyMin = all_in_one;
+                    tag_applied = 1;
+                  }
+                }
+              }
+            }
+  
+              var available_check = $('.pid_'+current_product.id).find('.quantitytd').attr('continue_outofstock');
+              var  inventory_checking = '';
+              if( variant.inventory_management == null || available_check == 'continue' ){
+                inventory_checking = 'no_limit';
+              }else{
+                inventory_checking='limit';
+              }
+              window.MOQ_applied = [{
+                '_qtyDefault':_qtyDefault,
+                '_qtyInc':_qtyInc,
+                '_qtyMin':_qtyMin,
+                '_qtyMax':_qtyMax
+              }]
+              qty__attrs = 'class="waio_qty-input waio_qty-input__applicable" data-method="'+_fLavel+'" data-min="'+_qtyMin+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'" ';
+              var _HTML = ''+
+                  '   <div class="waio__single-qc f" continue_outofstock="'+available_check+'" inventory_checking="'+inventory_checking+'" style="">  '  + 
+                  '	<label for="" style="font-size: 12px;">Quantity</label>'+
+                  '     <div '+qty__attrs+'>  '  + 
+                  '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                  '             <input type="text" data-qc-variant="'+variant.id+'" class="input_moq" name="quantity" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                  '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  +
+                  '     </div>  '  + 
+                  '  </div>  ' ; 
+              
+                  {% if template.name == 'product' %}
+                  setTimeout(function(){$('[name="quantity"]').val(_qtyDefault) },100)
+                  {% endif %}
+              
+              {% if template.name == 'page' %}
+              $('[vid="'+variant.id+'"]').find('.qtydiv').hide();
+              $('[vid="'+variant.id+'"]').find('.qtydiv').before(_HTML);
+              $('[vid="'+variant.id+'"]').find('.qtydiv').after("<div class='product_level_msg'>"+product_level_msg+"</div>")
+              var vids = variant.id;
+              append_addtocart(config._addToCart,vids)
+              moqEvent(config._addToCart)
+              {% else %}
+              $(".waio__single-qc").remove();
+              if($('.waio__single-qc').length == 0){
+                $(_addToCart).before(_HTML);
+              }
+              $(".product_level_msg").remove();
+              $(_addToCart).before("<div class='product_level_msg'>"+product_level_msg+"</div>");
+  
+              var vids = '';
+              append_addtocart(config._addToCart,vids)
+              moqEvent(config._addToCart)
+              {% endif %}
+            }else{
+              {% if template.name != 'page' %}
+              $(".waio__single-qc").remove();
+              //               $(".product_level_msg").remove();
+              $(removeableSelector_qty).show();
+              $('[name="moq_addToCart"]').replaceWith(addTocartHtml);
+              var vids = '';
+              append_addtocart(config._addToCart,vids)
+              moqEvent(config._addToCart)
+              {% endif %}
+            }
+          }
+          else{
+            
+            if(Notable == "true"){
+  
+              var variant = current_product.variants.find(function(x){return x.id==_selected_variant_id});
+              var Applicable = qc_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt(variant.id)})!==-1)});
+  
+              var qty__attrs = 'class="waio_qty-input" data-min="'+_qtyMin+'" data-method="'+_fLavel+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'"';
+              if(typeof Applicable !== "undefined"){
+                _fLavel = Applicable.minimum_quantity_method;
+                max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+                _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+                _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+                _qtyMax = parseInt(max_qty) || 0;
+                if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+                  _qtyDefault = parseInt(Applicable.default_quantity);
+                }else{
+                  _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+                }
+                {% if template.name == 'page' %}
+                _qtyDefault = 0;
+                cart.items.forEach(function(e){if(variant.id == e.id){
+                  var mod= parseInt(e.quantity)%_qtyInc;
+                  var def =  parseInt(e.quantity)-mod;
+                  _qtyDefault = def
+                }})
+                {% endif %}
+                if(current_product.tags != undefined){
+                var all_in_one = 0;
+                
+                for(var i=0; i<current_product.tags.length; i++){
+                  if(current_product.tags[i].indexOf("increment")>-1){
+                    all_in_one = current_product.tags[i].split("_")[1];
+                    _qtyDefault = all_in_one;
+                    _qtyInc = all_in_one;
+                    _qtyMin = all_in_one;
+                    tag_applied = 1;
+                  }
+                }
+  
+                for(var i=0; i<current_product.tags.length; i++){
+                  if(current_product.tags[i].indexOf("vid_")>-1){
+                    var vid = current_product.tags[i].split("_")[1];
+                    if(WSAIO.selected_variant.id == vid){
+                      all_in_one = current_product.tags[i].split("_")[2];
+                      _qtyDefault = all_in_one;
+                      _qtyInc = all_in_one;
+                      _qtyMin = all_in_one;
+                      tag_applied = 1;
+                    }
+                  }
+                }
+              }
+                var available_check = '';
+                $('.pid_'+current_product.id).find('.variant_stock li').each(function(e){
+                  var _this = $(this);
+                  available_check=_this.attr('available')
+                })
+                var  inventory_checking = '';
+                if( variant.inventory_management == null || available_check == 'continue' ){
+                  inventory_checking = 'no_limit';
+                }else{
+                  inventory_checking='limit';
+                }
+                window.MOQ_applied = [{
+                  '_qtyDefault':_qtyDefault,
+                  '_qtyInc':_qtyInc,
+                  '_qtyMin':_qtyMin,
+                  '_qtyMax':_qtyMax
+                }]
+                qty__attrs = 'class="waio_qty-input waio_qty-input__applicable" data-method="'+_fLavel+'" data-min="'+_qtyMin+'" data-max="'+_qtyMax+'" data-default="'+_qtyDefault+'" data-inc="'+_qtyInc+'" ';
+                var _HTML = ''+
+                    '   <div class="waio__single-qc" continue_outofstock="'+available_check+'" inventory_checking="'+inventory_checking+'" style="">  '  + 
+                    '	<label for="" style="font-size: 12px;">Quantity</label>'+
+                    '     <div '+qty__attrs+'>  '  + 
+                    '             <span class="waio__less waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--minus" role="presentation" viewBox="0 0 16 2"> <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path> </svg></span>  '  + 
+                    '             <input type="text" data-qc-variant="'+variant.id+'" class="input_moq" name="quantity" data-variant="'+variant.id+'" value="'+_qtyDefault+'"/>  '  + 
+                    '             <span class="waio__more waio_qty--btn waio_qty--btn_product"><svg class="waio__icon waio__icon--plus" role="presentation" viewBox="0 0 16 16"> <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"> <path d="M8,1 L8,15"></path> <path d="M1,8 L15,8"></path> </g> </svg></span>  '  +
+                    '     </div>  '  + 
+                    '  </div>  ' ; 
+                
+                    {% if template.name == 'product' %}
+                    setTimeout(function(){$('[name="quantity"]').val(_qtyDefault) },100)
+                    {% endif %}
+  
+                {% if template.name == 'page' %}
+                if($(".update_btn").length){
+                  $('[vid="'+variant.id+'"]').find('.qtydiv').hide();
+                  if($('[vid="'+variant.id+'"]').find('.waio__single-qc').length == 0){
+                    $('[vid="'+variant.id+'"]').find('.qtydiv').before(_HTML);
+                    $('[vid="'+variant.id+'"]').find('.qtydiv').after("<div class='product_level_msg'>"+product_level_msg+"</div>")
+                  }
+                  var vids = variant.id;
+                  append_addtocart(config._addToCart,vids)
+                  moqEvent(config._addToCart)
+                }
+                {% else %}
+                $(".waio__single-qc").remove();
+                if($('.waio__single-qc').length == 0){
+                  $(_addToCart).before(_HTML);
+                }
+                $(".product_level_msg").remove();
+                $(_addToCart).before("<div class='product_level_msg'>"+product_level_msg+"</div>");
+                var vids = '';
+                append_addtocart(config._addToCart,vids)
+                moqEvent(config._addToCart)
+                {% endif %}
+              }else{
+                {% if template.name != 'page' and template.name != 'collection' %}
+                $(".waio__single-qc").remove();
+                $(".product_level_msg").remove();
+                $(removeableSelector_qty).show();
+                $('[name="moq_addToCart"]').replaceWith(addTocartHtml);
+  
+                {% endif %}
+    
+               
+                
+              }
+  
+            }else{
+              if(product_level_Notable == "true"){
+                {% if template.name != 'page' and template.name != 'collection' %}
+                $(removeableSelector_qty).show();
+                $(removeableSelector_variants).show();
+                $(".product_level_msg").remove();
+                $(_addToCart).before("<div class='product_level_msg'>"+product_level_msg+"</div>");
+                var vids = '';
+                append_addtocart(config._addToCart,vids)
+                moqEvent(config._addToCart)
+                return false;
+                {% endif %}
+              }else{
+                {% if template.name != 'page' and template.name != 'collection' %}
+                $(_addToCart).before(tableHTML);
+                $(".product_level_msg").remove();
+                $(".waio__qc-table").before("<div class='product_level_msg'>"+product_level_msg+"</div>");
+  
+  
+                var vids = '';
+                append_addtocart(config._addToCart,vids)
+                moqEvent(config._addToCart)
+                {% endif %}
+              }
+            }
+          }
+        }
+  
+  
+      }
+      else{
+        {% if template.name != 'page' and template.name != 'collection' %}
+        $(".product_level_msg").remove();
+        $(".waio__single-qc").remove();
+        $(removeableSelector_qty).show();
+        $('[name="moq_addToCart"]').replaceWith(addTocartHtml);
+        {% endif %}
+
+console.log('okookoko')
+          {% if  template.name == 'collection' %}
+            $(".product_level_msg").remove();
+        $(".waio__single-qc").remove();
+        $(removeableSelector_qty).show();
+        $('[name="moq_addToCart"]').replaceWith(addTocartHtml);
+          {% endif %}
+      }
+      qty_function();
+    })
+  }
+  
+  
+  /*========= Events ===========  */
+  $(document).off('.waio_qc');  /* off all attached event  */
+  {% if template.name == 'page' %}
+  $(document).on('focusout','.input_moq',function(){
+    var _this = $(this);
+    var inc = parseInt(_this.parents('.waio_qty-input').attr('data-inc'));
+    var max = parseInt(_this.parents('.waio_qty-input').attr('data-max'));
+    var value= _this.val();
+    var mod = (value%inc);
+    var resul = value-mod;
+  
+    _this.val(resul)
+    if(resul > max){
+      _this.parents('.waio__single-qc').find('.waio__less').trigger('click')
+    }
+  })
+  {% endif %}
+  function append_addtocart(addtocart,vid){
+    var _atcBtn = ''+
+        '   <button name="moq_addToCart" aria-label="Add to cart" class="'+$(addtocart).attr('class')+'">   '  + 
+        '     <span data-waio-atc-text> Add to cart </span>   '  + 
+        '     <span class="waio-hide">   '  + 
+        '        '  + 
+        '     </span>   '  + 
+        '  </button>  ' ; 
+    if(vid != ''){
+      $('[vid="'+vid+'"]').find(addtocart).replaceWith(_atcBtn);
+    }else{
+      $(addtocart).replaceWith(_atcBtn);
+    }
+  }
+  $(document).on('change.waio_qc','.waio_qty-input input', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
+    var _this = $(this);
+    //       console.warn('========changed=======');
+    var $input = $(this);
+    if($input.val().trim()=='') return;
+    var val = parseInt($input.val());
+    var qty_wrapper = $input.parents('.waio_qty-input');
+  
+    var _qMin = 0,
+        _qMax = 0,
+        _qInc = 1;
+        var _fLavel = qty_wrapper.attr('data-method');
+        if(_fLavel !== 'selected_product_level'){
+         _qInc = parseInt(qty_wrapper.attr('data-inc'));
+        }
+        
+        if(_fLavel === 'variant_level' && _fLavel !== 'selected_product_level'){
+          _qMin = parseInt(qty_wrapper.attr('data-min'));
+          _qMax = parseInt(qty_wrapper.attr('data-max'));
+        }
+    if (val < _qMin) {
+      val = _qMin;
+    }
+    else if (val > _qMax && _qMax!==0) {
+      val = _qMax;
+    }
+    else if(val%_qInc === 0) return;
+    else val = (val-(val%_qInc))+_qInc;
+    {% if template.name == 'page' or template.name == 'collection' %}
+    var max = parseInt(_this.parents('.quantitytd').find('.stocks').attr('stk'));
+    var inventory_checking = _this.parents('.quantitytd').find('.waio__single-qc').attr('inventory_checking');
+    if(inventory_checking != 'no_limit'){
+      if((val <= max)){
+        $input.val(val);
+      }
+    }else{
+      $input.val(val);
+    }
+    {% else%}
+    $input.val(val);
+    {% endif %}
+  });
+  function qty_function(){ 
+    $('.waio_qty-input .waio__more').on('click', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      var _this = $(this);
+      //       console.warn('===================');
+      var $input = $(this).parent().find('input');
+      var val = parseInt($input.val());
+      var qty_wrapper = $input.parents('.waio_qty-input');
+  
+      var _qMin = 0,
+          _qMax = 0,
+          _qInc = 1;
+          var _fLavel = qty_wrapper.attr('data-method');
+      if(_fLavel !== 'selected_product_level'){
+        _qInc = parseInt(qty_wrapper.attr('data-inc'));
+      }
+      if(_fLavel === 'variant_level' && _fLavel !== 'selected_product_level'){
+        _qMin = parseInt(qty_wrapper.attr('data-min'));
+        _qMax = parseInt(qty_wrapper.attr('data-max'));
+      }
+           {% if template.name == 'page' or template.name == 'collection' %}
+      if($(".update_btn").length == 0){
+        _qMin = parseInt(qty_wrapper.attr('data-min'));
+        _qMax = parseInt(qty_wrapper.attr('data-max'));
+      }
+      {% endif %}
+      if ($(this).hasClass('waio__less')) {
+        if(val%_qInc === 0) val = val-_qInc;
+        else val = val-(val%_qInc);
+      } else if ($(this).hasClass('waio__more')) {
+        val = (val-(val%_qInc))+_qInc;
+      }
+  
+      if (val < _qMin) {
+        val = _qMin;
+      }
+  
+      if (val > _qMax && _qMax!==0) {
+        val = _qMax;
+      }
+      {% if template.name == 'page' or template.name == 'collection'%}
+      var max = parseInt(_this.parents('.quantitytd').find('.stocks').attr('stk'));
+      var inventory_checking = _this.parents('.quantitytd').find('.waio__single-qc').attr('inventory_checking');
+      var stock = parseInt(_this.parents('.quantitytd').find('.stocks').attr('stk'));
+  
+      if(inventory_checking != 'no_limit' && !isNaN(max)){
+        if((val <= max) && val <= stock){
+          if(val == 1){
+            if(_this.parents('.custom_variant').length > 0){
+              var data_inc = parseInt(_this.parents('.quantitytd').find('.waio_qty-input').attr('data-inc'));
+              val = data_inc;
+              if(stock < data_inc){
+                val = stock;
+              }
+            }
+            else{
+              var min_val = parseInt(_this.parents('.quantitytd').find('.waio_qty-input').attr('data-min'));
+              if($(".update_btn").length != 0){
+                val = min_val;
+                if(stock < min_val){
+                  val = stock;
+                }
+              }
+            }
+            $input.val(val);
+          }else{
+            $input.val(val);
+          }
+        }
+      }else{
+  
+        if(val == 1){
+          if(_this.parents('.custom_variant').length > 0){
+            var data_inc = parseInt(_this.parents('.quantitytd').find('.waio_qty-input').attr('data-inc'));
+            val = data_inc;
+          }else{
+            var min_val = parseInt(_this.parents('.quantitytd').find('.waio_qty-input').attr('data-min'));
+            val = min_val;
+          }
+          $input.val(val);
+        }else{
+  
+          $input.val(val);
+        }
+      }
+      {% else%}
+      $input.val(val);
+      $(this).find('[name="quantity"]').val(val);
+      {% endif %}
+  
+      if(typeof MOQ_applied != 'undefined' && MOQ_applied.length > 0){
+        check_restriction_Buynow($input.val());
+      }
+  
+  
+  
+  
+  
+    });
+  
+    $('.waio_qty-input .waio__less').on('click',function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      var _this = $(this);
+      //       console.warn('===================');
+      var $input = $(this).parent().find('input');
+      var val = parseInt($input.val());
+  
+      var qty_wrapper = $input.parents('.waio_qty-input');
+  
+      var _qMin = 0,
+          _qMax = 0,
+          _qInc = 1;
+          var _fLavel = qty_wrapper.attr('data-method');
+      if(_fLavel !== 'selected_product_level'){
+        _qInc = parseInt(qty_wrapper.attr('data-inc'));
+      }
+      if(_fLavel === 'variant_level' && _fLavel !== 'selected_product_level'){
+        _qMin = parseInt(qty_wrapper.attr('data-min'));
+        _qMax = parseInt(qty_wrapper.attr('data-max'));
+      }
+      if ($(this).hasClass('waio__less')) {
+        if(val%_qInc === 0) val = val-_qInc;
+        else val = val-(val%_qInc);
+      } else if ($(this).hasClass('waio__more')) {
+        val = (val-(val%_qInc))+_qInc;
+      }
+      {% if template.name != 'page' and template.name != 'collection'%}
+      if (val < _qMin) {
+        val = _qMin;
+      }
+      {% endif %}
+      if (val > _qMax && _qMax!==0) {
+        val = _qMax;
+      }
+      if(val > -1){
+        $input.val(val);
+        $(this).find('[name="quantity"]').val(val);
+      }
+      if(typeof MOQ_applied != 'undefined' && MOQ_applied.length > 0){
+        check_restriction_Buynow($input.val());
+      }
+    });
+  
+    $('.waio__less').trigger('click')
+  }
+  
+  function check_restriction_Buynow(qty){
+    if((qty%MOQ_applied[0]._qtyInc) == 0 && qty >= MOQ_applied[0]._qtyMin){
+      if(MOQ_applied[0]._qtyMax != 0 && qty <= MOQ_applied[0]._qtyMax){
+        $('.shopify-payment-button__button').removeClass('checkout-disabled').removeAttr('disabled')
+      }else{
+        $('.shopify-payment-button__button').removeClass('checkout-disabled').removeAttr('disabled')
+      }
+    }else{
+      $('.shopify-payment-button__button').addClass('checkout-disabled').attr('disabled','disabled')
+    }
+  }
+  
+  
+  
+  function moqEvent(_addToCart){
+    var _form = $(_addToCart).parents('form');
+    _form.off(); 
+  
+    var _atcBtn = $('[name="moq_addToCart"]');
+    $('.product-form--atc').css('display','block')
+  
+    /*====== Click event on ATC =======*/
+    _atcBtn.on('click', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      var _this = $(this);
+      $('.waio__Msg').remove();
+      var _btn = $(this);
+      _btn.find('[data-waio-atc-text]').hide();
+      _btn.find('[data-waio-atcloader]').removeClass('waio-hide');
+      var _totalQty = 0,
+          _isValidQty = true,
+          _errorMsg = '';
+      $('.waio_qty-input').removeClass('waio__invalid-input');
+      var isProductLevel = false,
+          productLevel_Min = 1,
+          productLevel_Max = 1;
+      {% if template.name != 'page' %}
+      _this.parents('form').find('.waio_qty-input').each(function(){
+        var $this=$(this);
+        var _val = $this.find('input').val();
+        if($this.hasClass('waio_qty-input__applicable')){
+          _totalQty+=parseInt(_val);
+        }
+        _fLavel = $this.attr('data-method');
+        if(_fLavel === "product_level" || _fLavel === "selected_product_level"){
+          isProductLevel = true;
+          productLevel_Min = parseInt($this.attr('data-min'));
+          productLevel_Max = parseInt($this.attr('data-max'));
+  
+          var _qInc = parseInt($this.attr('data-inc'));
+          if(_val%_qInc !==0){
+            _isValidQty = false;
+            _errorMsg = 'All quantities must be multiple of '+_qInc;	
+            $this.addClass('waio__invalid-input');
+            return false;
+          }
+        }
+        if(_fLavel === "variant_level"){
+          isProductLevel = true;
+          productLevel_Min = parseInt($this.attr('data-min'));
+          productLevel_Max = parseInt($this.attr('data-max'));
+  
+          var _qInc = parseInt($this.attr('data-inc'));
+          if(_val%_qInc !==0){
+            _isValidQty = false;
+            _errorMsg = 'All quantities must be multiple of '+_qInc;	
+            $this.addClass('waio__invalid-input');
+            return false;
+          }
+        }
+      });
+      {% else %}
+      var $this=_this.parents('.items').find('.quantitytd').find('.waio_qty-input');
+      var _val = $this.find('input').val();
+      if($this.hasClass('waio_qty-input__applicable')){
+        _totalQty+=parseInt(_val);
+      }
+      _fLavel = $this.attr('data-method');
+      if(_fLavel === "product_level" || _fLavel === "selected_product_level"){
+        isProductLevel = true;
+        productLevel_Min = parseInt($this.attr('data-min'));
+        productLevel_Max = parseInt($this.attr('data-max'));
+  
+        var _qInc = parseInt($this.attr('data-inc'));
+        if(_val%_qInc !==0){
+          _isValidQty = false;
+          _errorMsg = 'All quantities must be multiple of '+_qInc;	
+          $this.addClass('waio__invalid-input');
+          //           return false;
+        }
+      }
+      if(_fLavel === "variant_level"){
+        isProductLevel = true;
+        productLevel_Min = parseInt($this.attr('data-min'));
+        productLevel_Max = parseInt($this.attr('data-max'));
+  
+        var _qInc = parseInt($this.attr('data-inc'));
+        if(_val%_qInc !==0){
+          _isValidQty = false;
+          _errorMsg = 'All quantities must be multiple of '+_qInc;	
+          $this.addClass('waio__invalid-input');
+          //           return false;
+        }
+      }
+      {% endif %}
+      if(isProductLevel && _fLavel != 'selected_product_level'){
+        if(_totalQty > productLevel_Max && productLevel_Max != 0){
+          _isValidQty = false;
+          _errorMsg = 'You cannot buy more than '+productLevel_Max+' items';
+        }
+        if(_totalQty < productLevel_Min){
+          _isValidQty = false;
+          _errorMsg = 'You cannot buy less than '+productLevel_Min+' items';
+        }
+      }
+      $('.waio__ErrorMsg').remove();
+      if(!_isValidQty){
+        {% if template.name != 'page' %}
+        _atcBtn.before('<p class="waio__ErrorMsg" style="">'+_errorMsg+'</p');
+        _btn.find('[data-waio-atc-text]').show();
+        _btn.find('[data-waio-atcloader]').addClass('waio-hide');
+        {% else %}
+        _this.parents('.waio-col-of-addtocart').find('.waio-quick-order-addtocart').before('<p class="waio__ErrorMsg" style="">'+_errorMsg+'</p');
+        _this.parents('.waio-col-of-addtocart').find('.waio-quick-order-addtocart').find('[data-waio-atc-text]').show();
+        _this.parents('.waio-col-of-addtocart').find('.waio-quick-order-addtocart').find('[data-waio-atcloader]').addClass('waio-hide');
+        {% endif %}
+        return;
+      }
+  
+      /*======AJAX ATC=========*/
+      //alert('Everythings good');
+      var _queue = [];
+      {% if template.name != 'page' %}
+      if(_this.parents('form').find('.waio_qty-input').length){
+      _this.parents('form').find('.waio_qty-input').each(function(){
+        var $this=$(this);
+        var _value = parseInt($this.find('input').val());
+        if(_value>0){
+          _queue.unshift({
+            quantity:_value,
+            id: $this.find('input').attr('data-qc-variant')
+          });
+        }
+      });
+    }else{
+        var _value = parseInt(_this.parents('form').find('[name="quantity"]').val());
+         if(_value>0){
+               _queue.unshift({
+                 quantity:_value,
+                 id: _this.parents('form').find('[name="id"]').val()
+               });
+         }
+     }
+      {% else %}
+      _queue.unshift({
+        quantity:parseInt(_this.parents('.items').find('.quantitytd').find('.input_moq').val()),
+        id: _this.parents('.items').find('.quantitytd').find('.input_moq').attr('data-qc-variant')
+      });
+      {% endif %}
+  
+      var isCartError = false;
+      var _moveAlong = function(atc_queue){
+        if(atc_queue.length > 0){
+          //keep adding
+          var item = atc_queue.pop();
+          //console.log(item);
+          $.ajax({
+            type: 'POST',
+            url: '/cart/add.js',
+            cache: false,
+            dataType: 'json',
+            data: item,
+            success: function(result){
+              $('.waio__Msg--'+item.id).remove();
+              $('[data-qc-variant="'+item.id+'"]')
+              .parents('.waio_qty-input')
+              .after('<p class="waio__SuccessMsg waio__Msg waio__Msg--'+item.id+'">'+item.quantity+' items are added</p>');
+              _moveAlong(atc_queue);
+            },
+            error: function(err){
+              console.error(err);
+              isCartError = true;
+              _btn.find('[data-waio-atc-text]').show();
+              _btn.find('[data-waio-atcloader]').addClass('waio-hide');
+              if(err.status && err.status===422){
+                $('.waio__Msg--'+item.id).remove();
+                $('[data-qc-variant="'+item.id+'"]')
+                .parents('.waio_qty-input')
+                .after('<p class="waio__ErrorMsg waio__Msg waio__Msg--'+item.id+'">'+err.responseJSON.description+'</p>');
+                _moveAlong(atc_queue);
+              }
+  
+            }
+          });
+        }
+        else{
+          // all added!
+          _btn.find('[data-waio-atc-text]').show();
+          _btn.find('[data-waio-atcloader]').addClass('waio-hide');
+          //           console.log('=============added==============');
+          {% if template.name != 'page' %}
+          if(!isCartError) window.location.href="/cart";
+          {% else %}
+          if(!isCartError) window.location.reload();
+          {% endif %}
+  
+        }
+      }
+      _moveAlong(_queue);
+  
+    })
+  
+  }
+  
+  //   ==========================================product page code end =========================================================
+  //   ==========================================cart page code start ==========================================================
+  $(document).ready(function(){
+    if(typeof WSAIO != 'undefined'){
+      WSAIO.cartQuantityControllers = function(config,callback){
+        window.MOQ_alert = '';
+        window.disable_checkout_MOQ = false;
+        if("undefined"===typeof config)var config={};
+        null===config&&(config={});
+        var _errorMsg = '';
+        var _limitsUl = $('<ol class="wsaio-alerts"></ol>')
+        var checkoutSelector = config.checkoutSelector || WSAIO.checkout_selector;
+        var selected_product_level_rules = [];
+      
+          var cart__items = window.cart_data.items;
+          /*=====Distinct by product====*/
+          var _AlreadyDistincted = [];
+          cart__items.forEach(function(cart__item, i){
+            var $variantId = cart__item.variant_id;
+            var $productId = cart__item.product_id;
+            config.variantId = $variantId;
+            config.productId = $productId;
+            WSAIO.quantityControllers(config, function(e,quantity_controls){
+              if(e){
+                log(e);
+              }
+              else{
+                var qty_ctrl = quantity_controls.quantity_controls;
+                var max_qty = 0;
+                var _qtyInc = 1;
+                var _qtyMin = 0;
+                var _qtyMax = 0;
+                var _qtyDefault = 1;
+                var _fLavel  = 'variant_level';
+                if(qty_ctrl.length>0){
+  
+                  //adding item
+                  var Applicable = qty_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt($variantId)})!==-1)});
+                  if(typeof Applicable !== "undefined" && Applicable.minimum_quantity_method == "selected_product_level"){
+                    Applicable.mul_group = Applicable.quantity_increment;
+                    selected_product_level_rules.push(Applicable);
+  
+                  }else{
+                    if(typeof Applicable !== "undefined"){
+                      _fLavel = Applicable.minimum_quantity_method;
+                      max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+                      _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+                      _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+                      _qtyMax = parseInt(max_qty) || 0;
+                      if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+                        _qtyDefault = parseInt(Applicable.default_quantity);
+                      }else{
+                        _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+                      }
+                      var qty = cart__item.quantity;
+                      var proruct_qty = 0;
+                      var _title = 'Variant \"'+cart__item.title+'\"';
+                      var _errorMsg = '';
+                      if(_fLavel=='product_level'){
+                        qty=0;
+                        cart__items.forEach(function(x){
+                          if(x.product_id===cart__item.product_id){
+                            qty+=x.quantity;
+                            config.variantId = x.variant_id;
+                            config.productId = x.product_id;
+                            WSAIO.quantityControllers(config, function(e,qc){
+                              if(e){
+                                log(e);
+                              }
+                              else{
+                                var Applicable2 = qc.quantity_controls.find(function(y){return y.minimum_quantity_method=="variant_level" && (y.variants && y.variants.findIndex(function(z){return parseInt(z.id)===parseInt(x.variant_id)})!==-1)});
+                                if(typeof Applicable2 === "undefined"){
+                                  proruct_qty+=x.quantity;
+                                }
+                              }
+                            });
+                          }
+  
+                        });
+  
+                        _title = 'Product \"'+cart__item.product_title+'\"';
+                      }
+                      if (qty < _qtyMin) {
+                        _errorMsg=_title+' cannot be less than '+_qtyMin;
+                      }
+                      else if (qty > _qtyMax && _qtyMax!==0) {
+                        _errorMsg=_title+' cannot be more than '+_qtyMax;
+                      }
+                      else {
+                        if(_fLavel=='product_level'){
+                          if(proruct_qty%_qtyInc !== 0) {
+                            _errorMsg=_title+' must be multiple of '+_qtyInc;
+                          }
+                        }
+                        else{
+                          if(qty%_qtyInc !== 0) {
+                            _errorMsg=_title+' must be multiple of '+_qtyInc;
+                          }
+                        }
+                      }
+  
+                      if(_errorMsg != ''){
+                        if(_fLavel=='product_level'){
+                          if(_limitsUl.find('li[data-product="'+cart__item.product_id+'"]').length == 0){
+                            _limitsUl.append('<li class="moq_error" data-product="'+cart__item.product_id+'">'+_errorMsg+'</li>');
+                            window.disable_checkout_MOQ = true;
+                          }
+                        }
+                        else{
+                          _limitsUl.append('<li class="moq_error"  data-variant="'+cart__item.variant_id+'">'+_errorMsg+'</li>');
+                          window.disable_checkout_MOQ = true;
+                        }
+  
+                      }
+  
+                    }
+                  }
+  
+                }
+              }
+            })
+  
+          })
+  
+          if((WSAIO.checkout_message!='' && WSAIO.disable_checkout) || !WSAIO.checkout_requirements){
+            if(typeof WSAIO.checkout_message != 'undefined' &&  WSAIO.default_limit){
+                if(typeof WSAIO.allow_normal_checkout__OC == 'undefined' || WSAIO.allow_normal_checkout__OC == false){
+                    _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                 }else{
+                     _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                     _limitsUl.append('<li data-order>Fulfill minimum order requirements to avail discount</li>');
+                 }
+               window.disable_checkout_MOQ = true;
+            }
+          }
+          window.MOQ_alert = '<div class="wor_title wsaio-alerts" style="text-align:center;color: red; font-weight: 600;max-width: 320px; margin-left: auto;">Order requirements not met.</div> <ul class="wsaio-alerts">'+_limitsUl.html()+'</ul>';
+          multi_level_check();
+         
+        function multi_level_check(){
+          if(selected_product_level_rules.length > 0){
+            var Total_qty = 0;
+            var _qtyInc = 1;
+            var _qtyMin = 0;
+            var _qtyMax = 0;
+            var _qtyDefault = 1;
+            var group_value = [];
+                       $(selected_product_level_rules).each(function(e){
+                         if(group_value.indexOf(selected_product_level_rules[e].mul_group) == -1){
+                         group_value.push(selected_product_level_rules[e].mul_group)
+                         }
+                       })
+                         
+                       $(group_value).each(function(ee){
+                        Total_qty = 0;
+                         _errorMsg = '';
+                        var cart__items = window.cart_data.items;
+                        cart__items.forEach(function(cart__item, i){
+                          $(selected_product_level_rules).each(function(e){
+                            
+                            if(selected_product_level_rules[e].variantId == cart__item.variant_id && selected_product_level_rules[e].mul_group == group_value[ee]){
+                              Total_qty+=parseInt(cart__item.quantity);
+                                _qtyInc = parseInt(selected_product_level_rules[e].quantity_increment);
+                              _qtyMax = parseInt(selected_product_level_rules[e].maximum_quantity);
+                            _qtyDefault = parseInt(selected_product_level_rules[e].default_quantity);
+                            _qtyMin = parseInt(selected_product_level_rules[e].minimum_quantity);
+                            }
+                          })
+                        })   
+              if(Total_qty < _qtyMin ){
+                _errorMsg='Total Quantity cannot be less than '+_qtyMin;
+              }
+              if(Total_qty % _qtyInc !== 0){
+                _errorMsg='Total Quantity must be multiple of '+_qtyInc;
+              }
+              if(Total_qty > _qtyMax){
+                _errorMsg='Total Quantity cannot be more than '+_qtyMax;
+              }
+  
+              if(_errorMsg != ''){
+                _limitsUl.append('<li class="moq_error" tt="4324324">'+_errorMsg+'</li>');
+                window.disable_checkout_MOQ = true;
+              }
+              apply_codition()
+  
+              function apply_codition(){
+                if((WSAIO.checkout_message!='' && WSAIO.disable_checkout) || !WSAIO.checkout_requirements){
+                    if(typeof WSAIO.checkout_message != 'undefined' &&  WSAIO.default_limit){
+                        if(typeof WSAIO.allow_normal_checkout__OC == 'undefined' || WSAIO.allow_normal_checkout__OC == false){
+                      _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                     }else{
+                         _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                         _limitsUl.append('<li data-order>Fulfill minimum order requirements to avail discount</li>');
+                     }
+                       window.disable_checkout_MOQ = true;
+                     }
+                }
+                window.MOQ_alert = '<div class="wor_title wsaio-alerts" style="text-align:center;color: red; font-weight: 600;max-width: 320px; margin-left: auto;">Order requirements not met.</div> <ul class="wsaio-alerts">'+_limitsUl.html()+'</ul>';
+              }
+              })
+          
+  
+          }
+          if ("function" === typeof callback) {
+            callback('done')
+          }
+        }
+      }
+      WSAIO.loadcartQuantityControllers = function(config,callback){
+        window.MOQ_alert = '';
+        window.disable_checkout_MOQ = false;
+        if("undefined"===typeof config)var config={};
+        null===config&&(config={});
+        var _errorMsg = '';
+        var _limitsUl = $('<ol class="wsaio-alerts"></ol>')
+        var checkoutSelector = config.checkoutSelector || WSAIO.checkout_selector;
+        var selected_product_level_rules = [];
+  
+        var cart__items = cart.items;
+        /*=====Distinct by product====*/
+        var _AlreadyDistincted = [];
+        cart__items.forEach(function(cart__item, i){
+          var $variantId = cart__item.variant_id;
+          var $productId = cart__item.product_id;
+          config.variantId = $variantId;
+          config.productId = $productId;
+          WSAIO.quantityControllers(config, function(e,quantity_controls){
+            if(e){
+              log(e);
+            }
+            else{
+              var qty_ctrl = quantity_controls.quantity_controls;
+              var max_qty = 0;
+              var _qtyInc = 1;
+              var _qtyMin = 0;
+              var _qtyMax = 0;
+              var _qtyDefault = 1;
+              var _fLavel  = 'variant_level';
+              if(qty_ctrl.length>0){
+  
+                //adding item
+                var Applicable = qty_ctrl.find(function(x){return x.applies_to!="variants"||(x.variants && x.variants.findIndex(function(y){return parseInt(y.id)===parseInt($variantId)})!==-1)});
+                if(typeof Applicable !== "undefined" && Applicable.minimum_quantity_method == "selected_product_level"){
+                  Applicable.mul_group = Applicable.quantity_increment;
+                selected_product_level_rules.push(Applicable);
+  
+              }else{
+                  if(typeof Applicable !== "undefined"){
+                    _fLavel = Applicable.minimum_quantity_method;
+                    max_qty = Applicable.maximum_quantity==""?0:Applicable.maximum_quantity;
+                    _qtyInc = parseInt(Applicable.quantity_increment) || 1;
+                    _qtyMin = parseInt(Applicable.minimum_quantity) || 0;
+                    _qtyMax = parseInt(max_qty) || 0;
+                    if(Applicable.default_quantity == 0 && Applicable.default_quantity != ''){
+                      _qtyDefault = parseInt(Applicable.default_quantity);
+                    }else{
+                      _qtyDefault = parseInt(Applicable.default_quantity) || 1;
+                    }
+                    var qty = cart__item.quantity;
+                    var proruct_qty = 0;
+                    var _title = 'Variant \"'+cart__item.title+'\"';
+                    var _errorMsg = '';
+                    if(_fLavel=='product_level'){
+                      qty=0;
+                      cart__items.forEach(function(x){
+                        if(x.product_id===cart__item.product_id){
+                          qty+=x.quantity;
+                          config.variantId = x.variant_id;
+                          config.productId = x.product_id;
+                          WSAIO.quantityControllers(config, function(e,qc){
+                            if(e){
+                              log(e);
+                            }
+                            else{
+                              var Applicable2 = qc.quantity_controls.find(function(y){return y.minimum_quantity_method=="variant_level" && (y.variants && y.variants.findIndex(function(z){return parseInt(z.id)===parseInt(x.variant_id)})!==-1)});
+                              if(typeof Applicable2 === "undefined"){
+                                proruct_qty+=x.quantity;
+                              }
+                            }
+                          });
+                        }
+  
+                      });
+  
+                      _title = 'Product \"'+cart__item.product_title+'\"';
+                    }
+                    if (qty < _qtyMin) {
+                      _errorMsg=_title+' cannot be less than '+_qtyMin;
+                    }
+                    else if (qty > _qtyMax && _qtyMax!==0) {
+                      _errorMsg=_title+' cannot be more than '+_qtyMax;
+                    }
+                    else {
+                      if(_fLavel=='product_level'){
+                        if(proruct_qty%_qtyInc !== 0) {
+                          _errorMsg=_title+' must be multiple of '+_qtyInc;
+                        }
+                      }
+                      else{
+                        if(qty%_qtyInc !== 0) {
+                          _errorMsg=_title+' must be multiple of '+_qtyInc;
+                        }
+                      }
+                    }
+  
+                    if(_errorMsg != ''){
+                      if(_fLavel=='product_level'){
+                        if(_limitsUl.find('li[data-product="'+cart__item.product_id+'"]').length == 0){
+                            _limitsUl.append('<li class="moq_error" data-product="'+cart__item.product_id+'">'+_errorMsg+'</li>');
+                            window.disable_checkout_MOQ = true;
+                          }
+  
+                      }
+                      else{
+                        _limitsUl.append('<li class="moq_error" data-variant="'+cart__item.variant_id+'">'+_errorMsg+'</li>');
+                        window.disable_checkout_MOQ = true;
+  
+                      }
+  
+                    }
+  
+                  }
+                }
+  
+              }
+            }
+          })
+  
+        })
+  
+        if((WSAIO.checkout_message!='' && WSAIO.disable_checkout) || !WSAIO.checkout_requirements){
+            if(typeof WSAIO.checkout_message != 'undefined' &&  WSAIO.default_limit){
+                if(typeof WSAIO.allow_normal_checkout__OC == 'undefined' || WSAIO.allow_normal_checkout__OC == false){
+                     _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                }else{
+                    _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                    _limitsUl.append('<li data-order>Fulfill minimum order requirements to avail discount</li>');
+                }
+              window.disable_checkout_MOQ = true;
+          }
+        }
+        window.MOQ_alert = '<div class="wor_title wsaio-alerts" style="text-align:center;color: red; font-weight: 600;max-width: 320px; margin-left: auto;">Order requirements not met.</div> <ul class="wsaio-alerts">'+_limitsUl.html()+'</ul>';
+  
+        multi_level_check();
+  
+        function multi_level_check(){
+          if(selected_product_level_rules.length > 0){
+            var Total_qty = 0;
+            var _qtyInc = 1;
+            var _qtyMin = 0;
+            var _qtyMax = 0;
+            var _qtyDefault = 1;
+            var group_value = [];
+            $(selected_product_level_rules).each(function(e){
+              if(group_value.indexOf(selected_product_level_rules[e].mul_group) == -1){
+              group_value.push(selected_product_level_rules[e].mul_group)
+              }
+            })
+              
+            $(group_value).each(function(ee){
+              Total_qty = 0;
+               _errorMsg = '';
+              var cart__items = window.cart_data.items;
+              cart__items.forEach(function(cart__item, i){
+                $(selected_product_level_rules).each(function(e){
+                  if(selected_product_level_rules[e].variantId == cart__item.variant_id && selected_product_level_rules[e].mul_group == group_value[ee]){
+                    Total_qty+=parseInt(cart__item.quantity);
+                      _qtyInc = parseInt(selected_product_level_rules[e].quantity_increment);
+                    _qtyMax = parseInt(selected_product_level_rules[e].maximum_quantity);
+                  _qtyDefault = parseInt(selected_product_level_rules[e].default_quantity);
+                  _qtyMin = parseInt(selected_product_level_rules[e].minimum_quantity);
+                  }
+                })
+              })          
+             if(Total_qty < _qtyMin ){
+            _errorMsg='Total Quantity cannot be less than '+_qtyMin;
+            }
+            if(Total_qty % _qtyInc !== 0){
+              _errorMsg='Total Quantity must be multiple of '+_qtyInc;
+            }
+            if(Total_qty > _qtyMax){
+              _errorMsg='Total Quantity cannot be more than '+_qtyMax;
+            }
+
+            if(_errorMsg != ''){
+                _limitsUl.append('<li class="moq_error" tt="4324324">'+_errorMsg+'</li>');
+                window.disable_checkout_MOQ = true;
+              }         
+                apply_codition()
+           
+              function apply_codition(){
+                if((WSAIO.checkout_message!='' && WSAIO.disable_checkout) || !WSAIO.checkout_requirements){
+                   if(typeof WSAIO.checkout_message != 'undefined' &&  WSAIO.default_limit){
+                     if(typeof WSAIO.allow_normal_checkout__OC == 'undefined' || WSAIO.allow_normal_checkout__OC == false){
+                     _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                    }else{
+                        _limitsUl.append('<li data-order>'+WSAIO.checkout_message+'</li>');
+                        _limitsUl.append('<li data-order>Fulfill minimum order requirements to avail discount</li>');
+                    }
+                    window.disable_checkout_MOQ = true;
+                  }
+              }
+              window.MOQ_alert = '<div class="wor_title wsaio-alerts" style="text-align:center;color: red; font-weight: 600;max-width: 320px; margin-left: auto;">Order requirements not met.</div> <ul class="wsaio-alerts">'+_limitsUl.html()+'</ul>';
+            }
+          })
+  
+          
+          }
+          if ("function" === typeof callback) {
+            callback('done')
+          }
+        }
+      }
+    }
+  });
+    //   ==========================================product page function call ====================================================
+
+
+        var quickviewmoq=false;
+        var _intv = setInterval(function(){
+        if($('.modal--is-active .product-block--price').length > 0 && quickviewmoq==false){
+        quickviewmoq=true;
+        
+        setTimeout(function(){   
+      
+
+                  var handle = $('.modal--is-active').find('.product-section').attr('data-product-handle');
+                 jQuery.getJSON('/products/'+handle+'.js', function(product) {
+
+                  window.current_product = product
+               window.current_product22 = product
+               console.log(current_product22,'current_product22')  
+
+                  WSAIO.qtyControl({  
+                  productId:current_product.id,
+                  variantId:$('.modal--is-active [name="id"]').val(),
+                  _addToCart: '.modal--is-active form [name="add"],.modal--is-active [name="moq_addToCart"]',
+                  functionality: 'variant_level',
+                  removeableSelector_qty: '.modal--is-active .product__quantity',
+                  removeableSelector_variants:'.product-form-grid-radio'
+                  })
+  
+               })
+        
+            $('.variant-wrapper.js').on('change',function(){
+                setTimeout(function(){
+                console.log('quickview varianttt')
+                
+                 WSAIO.qtyControl({
+                  productId:current_product.id,
+                  variantId:$('.modal--is-active [name="id"]').val(),
+                  _addToCart: '.modal--is-active form [name="add"],.modal--is-active [name="moq_addToCart"]',
+                  functionality: 'variant_level',
+                  removeableSelector_qty: '.modal--is-active .product__quantity',
+                  removeableSelector_variants:'.product-form-grid-radio'
+                  })
+                
+                },500)    
+                }) 
+        
+        
+        },500);
+        
+        
+        }
+        else if(!$('.modal--is-active .product-block--price').length > 0 && quickviewmoq==true){   
+        quickviewmoq=false;
+        
+        }
+        },500);
+
+               
+  
+    {% if template.name != 'page' and template.name != 'cart' and template.name != 'collection'%}
+    $(document).ready(function(){
+     
+  
+      setTimeout(function(){
+        if(typeof current_product != 'undefined' && current_product != null){
+      console.log('current_product',current_product)
+              window.current_product22 = current_product
+          WSAIO.qtyControl({
+            productId:current_product.id,
+            variantId:$('[name="id"]').val(),
+            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+            functionality: 'variant_level',
+            removeableSelector_qty: '.product__quantity',
+            removeableSelector_variants:'.product-form-grid-radio'
+          })
+  
+
+        }
+  
+   $('.variant-wrapper.js').on('change',function(){
+          $('.waio__ErrorMsg').remove()
+  //         console.log('fff')
+          if(typeof current_product != 'undefined' && current_product != null){
+            setTimeout(function(){
+                WSAIO.qtyControl({
+            productId:current_product.id,
+            variantId:$('[name="id"]').val(),
+            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+            functionality: 'variant_level',
+            removeableSelector_qty: '.product__quantity',
+            removeableSelector_variants:'.product-form-grid-radio'
+          })
+
+            },100)
+          }
+        })
+  
+  
+  
+  //       $('.waio__qc-table').remove()
+  //       check_table_rule.length = 0;
+  //       if(typeof current_product != 'undefined' && current_product != null){
+  //         for(var i=0;i<current_product.variants.length;i++){
+  //           WSAIO.qtyControl({
+  //             productId:current_product.id,
+  //             variantId:current_product.variants[i].id,
+  //             _addToCart: '[name="add"],[name="waio_addToCart"]',
+  //             functionality: 'variant_level',
+  //             removeableSelector_qty: '.product__quantity--button',
+  //             removeableSelector_variants:'.variant-wrapper'
+  //           })
+  //         }
+  //       }
+      },100)
+    });
+    {% elsif template.name == 'collection' %}
+        $(document).ready(function(){
+            $(".testss").each(function(){
+            var _this = $(this);
+            current_product = JSON.parse($(this).find("noscript").html());
+            if(current_product != undefined && current_product.available){
+             WSAIO.qtyControl({
+                CurrentProduct:  current_product,
+                variantId:  current_product.variants[0].id,
+                functionality: 'variant_level',
+                productId:current_product.id,
+                grid_parent_selector:'.testsss',
+                qty_selector:'.testsss',
+                add_to_cart_selector:'.testsss'
+              });
+            }
+          });
+    });
+    {% else %}
+    $(document).ready(function(){
+      setTimeout(function(){
+        if($(".update_btn").length != 0){
+          $(".main_tbl tr.custom_coll").each(function(){
+            var curr = $(this).find(".p_table").find("noscript").html();
+            if(curr != undefined){
+              WSAIO.qtyControl({
+                CurrentProduct:  JSON.parse(curr),
+                variantId:  JSON.parse(curr).variants[0].id,
+                functionality: 'variant_level',
+                productId:JSON.parse(curr).id
+              });
+            }
+          });
+        }else{
+          $(".main_tbl tr.custom_coll").each(function(){
+            var curr = $(this).find(".p_table").find("noscript").html();
+            if(curr != undefined){
+              WSAIO.qtyControl({
+                CurrentProduct:  JSON.parse(curr),
+                variantId:  JSON.parse(curr).variants[0].id,
+                _addToCart: '.waio-quick-order-addtocart,[name="moq_addToCart"]',
+                functionality: 'variant_level',
+                productId:JSON.parse(curr).id
+              });
+            }
+          });
+        }
+      },1000);
+    });
+    {% endif %}
+    {% if template.name != 'page' %}
+    $(document).ready(function(){
+      if(typeof WSAIO != 'undefined'){
+        WSAIO.checkout_restriction = function(){
+          WSAIO.order_control();
+          WSAIO.cartQuantityControllers();
+        }
+        WSAIO.load_checkout_restriction = function(){
+          WSAIO.order_control();
+          WSAIO.loadcartQuantityControllers();
+        }
+        setTimeout(function(){
+          $('[name="updates[]"]').on('change',function(){
+            setTimeout(function(){
+              WSAIO.cartQuantityControllers();
+            },1000);
+          })
+          $('.waio__less').trigger('click')
+        },100);
+      }
+    });
+    {% endif %}
+    //   ==========================================product page function end ====================================================
+  
+  
+  
+  
+  
+  
+    ///////////////////////////// Erro Popup/////////////////////////////////////////////////
+    // Get the modal
+    var modal = document.getElementById("errormyModal");
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    $(document).on('click','.errorclose',function(){
+      $('#errormyModal').hide()
+    })
+    ///////////////////////////////////////////////////////////////////////////////////////
+  </script>
+  
+  
+  
+  <style>
+  
+  .waio-hide{display:none!important}
+  .waio__SuccessMsg{font-size:12px;color:#24cc24;margin:0}.waio__ErrorMsg{display: block; width: 100%; text-align: left;font-size:12px;color:#e15d5d;margin:0}.waio__single-qc label{cursor:pointer;display:block;margin-bottom:5px;touch-action:manipulation}.waio__atc-btn{margin-top:10px;display:block;width:100%;line-height:1.4;white-space:normal;min-height:44px;-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;user-select:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:1px solid transparent;text-decoration:none;text-align:center;vertical-align:middle;cursor:pointer;border-radius:2px;font-family:"Work Sans",sans-serif;font-style:normal;font-weight:600;text-transform:uppercase;letter-spacing:.08em;white-space:normal;font-size:14px;padding:10px 18px;background-color:#fff;color:#557b97;border-color:#557b97}.waio__qc-table{margin: 30px 0;width:100%;border-collapse:collapse;border-spacing:0;empty-cells:show;border:1px solid #cbcbcb}.waio__qc-table thead{background-color:#e0e0e0;color:#000;text-align:left;vertical-align:bottom}.waio__qc-table th{padding:.5em 1em;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible}.waio__qc-table tbody td{border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent}.waio__qc-table .waio__product-information{display:flex;align-items:center}.waio__qc-table .waio__product-information .waio__image-wrapper{flex:4rem 0 0;padding-right:1rem}.waio__qc-table .waio__image-wrapper .waio__image{cursor:pointer;max-height:95px;display:block;margin:0 auto}.waio_qty-input{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid #e7e7e7;white-space:nowrap}.waio_qty-input .waio_qty--btn{transition:all 150ms ease-out;display:inline-block;padding:5px 9px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.waio_qty-input .waio_qty--btn .waio__icon{width:11px;height:11px;stroke-width:1.5px;vertical-align:-1px}.waio_qty-input .waio_qty--btn.waio_qty--btn_product{padding:10px 20px}.waio_qty-input .waio_qty--btn:active,.waio_qty-input .waio_qty--btn:hover{color:#939393}.waio_qty-input input{margin: 0;display:inline-block;width:20px;padding:0;font-size:11px;text-align:center;letter-spacing:normal;background:0 0;border:none;width:35px;font-size:15px}.waio__invalid-input{border:1px solid #ed4343}
+  .waio__single-qc{margin: 15px 0;}
+  .waio-qc_cart--wrapper{
+    width: 100%;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .waio-qc_cart--wrapper .waio-qc_cart--items_details{
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .waio-qc_cart--disabled{
+    background: #fbfbfb;
+  }
+  .waio-qc_cart--disabled *{
+    background: #fbfbfb;
+    cursor: wait;
+    pointer-events: none;
+  }
+  .waio--show{display:block!important}
+  .waio-qc_cart--remove{
+    margin: 8px 0;
+    font-size: 9px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+  }
+  .waio_order_requirements{
+    max-width: 100%;
+    text-align: left;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  .waio_order_requirements .wor_title{
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .waio_order_requirements ul{
+    margin: 10px 0;
+    padding: 0 0 0 16px;
+    list-style-type: disc;
+  }
+  .checkout-disabled::before{
+    background: #f5f5f5;
+  }
+  .waio_order_requirements li{
+    font-size: 14px !important;
+  }
+  /* .checkout-disabled{
+  border: none;
+  } */
+  /*   .waio-orderControl-message{display:none;} */
+  .product_level_msg {
+    color: red;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .waio_qty-input .waio_qty--btn.waio_qty--btn_product{
+      padding: 10px 10px;
+    }
+  }
+  @media only screen and (max-width: 380px) {
+    .waio_qty-input .waio_qty--btn.waio_qty--btn_product {
+      padding: 10px 10px;
+    }
+    .waio__qc-table tbody td{
+      padding: .5em 0.5em;
+    }
+  }
+  .Cart__Recap {
+    position: relative;
+  }
+  footer.Cart__Footer .waio_order_requirements {
+    position: absolute;
+    top: 0;
+  }
+  
+  
+  
+  /*   ///////////////////////////////////popup code///////////////////////////////////////// */
+  
+  /* The Modal (background) */
+  .errormodal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .errormodal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .errorclose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .errorclose:hover,
+  .errorclose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* /////////////////////////////////////////////////////////////////////////////////////////////// */
+  
+  #Quick-order-form .waio_qty-input .waio_qty--btn.waio_qty--btn_product {
+    padding: 10px 8px !important;
+    background: white !important;
+  }
+  #Quick-order-form .waio_qty-input{
+    border: 1px solid #e7e7e7 !important;
+    height: 37px !important;
+  }
+  #Quick-order-form .waio__single-qc label, .cart-title .waio_order_requirements{
+    display:none;
+  }
+  
+  #Quick-order-form .waio-quick-order-addtocart{
+    display: inline-block;
+    margin: 10px;
+    background-color: #403b37;
+    color: white;
+    width: 100px;
+    height: 29px;
+    border: unset;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    vertical-align: middle;
+  }
+  </style>  

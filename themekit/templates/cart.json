@@ -2,6 +2,9 @@
   "sections": {
     "main": {
       "type": "main-cart",
+      "custom_css": [
+        ".cart__checkout-button.button {background: #000000; color: #000000;}"
+      ],
       "settings": {}
     },
     "recently-viewed": {

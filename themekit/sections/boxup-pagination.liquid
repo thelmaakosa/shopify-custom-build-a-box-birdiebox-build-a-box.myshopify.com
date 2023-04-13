@@ -72,7 +72,7 @@
             {%- endcapture -%}
             {%- assign colls = collectionList | strip | strip_newlines | remove: " " -%}
             {%- if product.variants.size > 1 -%}
-                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{escapedTitle}}" data-collections="{{ product.collections }}" data-price="{{product.price | money_without_currency}}">
+                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{escapedTitle}}" data-collections="{{ colls }}" data-price="{{product.price | money_without_currency}}">
                     <div class="bxp-bldr-item">
                         <input data-weight="0.00" data-qty="1" data-price="0.00" data-label="{{escapedTitle}}" input="input_{{product.id}}" product-id="{{product.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required" data-display="product"/>
                         <label>
@@ -201,7 +201,7 @@
                     {%- assign inventory = 999999 -%}
                 {%- endif -%}
 
-                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{ product.collections }}" data-price="{{product.price | money_without_currency}}">
+                <div class="bxp-bldr-col-md-{{ colSize }} bxp-filt-sort" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{ colls }}" data-price="{{product.price | money_without_currency}}">
                     <div class="bxp-bldr-item">
                         {%- if product.available -%}
                         <input data-weight="{{ variant.weight| weight_with_unit }}" inventory="{{inventory}}" data-qty="1" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
@@ -313,7 +313,7 @@
                 {% if variant.inventory_policy == 'continue' %}
                     {%- assign inventory = 999999 -%}
                 {%- endif -%}
-                  <div class="bxp-bldr-col-md-{{colSize}} bxp-filt-sort" data-hide="{{productHideIf}}" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                  <div class="bxp-bldr-col-md-{{colSize}} bxp-filt-sort" data-hide="{{productHideIf}}" data-tags="{{ product.tags | join: ',' | escape }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{colls}}" data-price="{{product.price | money_without_currency}}">
                     <div class="bxp-bldr-item">
                       {% if variant.available or variant.inventory_policy == 'continue' %}
                       <input data-pre="{{preSelect}}" data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="{{qty}}" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
@@ -401,7 +401,7 @@
 
                 {% assign colls = collectionList | strip | strip_newlines | remove: " " %}
                 {% if product.variants.size > 1 %}
-                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{product.title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{product.title}}" data-collections="{{colls}}" data-price="{{product.price | money_without_currency}}">
                         <input data-weight="0.00" data-qty="1" data-price="0.00" data-label="{{product.title}}" input="input_{{product.id}}" product-id="{{product.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required" data-display="product"/>
                         <label>
                             <div class="bxp-qty-num"></div>
@@ -537,7 +537,7 @@
                     {% if variant.inventory_policy == 'continue' %}
                         {%- assign inventory = 999999 -%}
                     {%- endif -%}
-                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{colls}}" data-price="{{product.price | money_without_currency}}">
                         {% if variant.available or variant.inventory_policy == 'continue' %}
                             <input data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="1" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
                         {% endif %}
@@ -632,7 +632,7 @@
                     {% if variant.inventory_policy == 'continue' %}
                         {%- assign inventory = 999999 -%}
                     {%- endif -%}
-                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{product.collections}}" data-price="{{product.price | money_without_currency}}">
+                    <div class="bxp-bldr-item bxp-filt-sort" data-tags="{{ product.tags | join: ',' }}" data-type="{{ product.type }}" data-title="{{title}}" data-collections="{{colls}}" data-price="{{product.price | money_without_currency}}">
                         {% if variant.available or variant.inventory_policy == 'continue' %}
                             <input data-pre="{{preSelect}}" data-weight="{{ variant.weight| weight_with_unit }}" data-inventory="{{inventory}}" data-qty="{{qty}}" data-price="{{ variant.price | money_without_currency }}" data-label="{{title}}" product-id="{{variant.id}}" type="radio" name="" value="{{title}} {{variant.price}}" class="bxp-bldr-required"/>
                         {% endif %}

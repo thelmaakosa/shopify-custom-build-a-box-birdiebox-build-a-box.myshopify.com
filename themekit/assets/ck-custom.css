@@ -1,0 +1,79 @@
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 25px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+.birdieBox-form,.form-row {
+    margin: 20px;
+}
+.birdieBox-form{
+/*   text-align:center; */
+}
+
+.form-row label {
+    display: inline-block;
+    width: 60%;
+    text-align: left;
+}
+.form-row input,.form-row select {
+    width: 38%;
+    border: 2px solid gainsboro;
+    padding: 5px;
+    border-radius: 3px;
+}
+.birdieBox-form input[type="submit"] {
+    background: black;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+.form-row-submit {
+    text-align: center;
+}
+#ck-loader {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: none;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+#ck-loader::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0603/6360/4123/files/oval-black.svg?v=1678964811);
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+#ck-loader.active{
+    display:block;
+}
+
+/* ------------------------------------------------------ 
+  Loder 
+ ------------------------------------------------------ */
+
+.birdieBox-footer {
+    text-align: center;
+    font-size: 20px;
+}
+.birdieBox-footer span.error {
+    color: #e01515;
+}
+.birdieBox-footer span.success {
+    color: #05a664;
+}

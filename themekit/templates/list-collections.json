@@ -2,14 +2,101 @@
   "sections": {
     "main": {
       "type": "list-collections-template",
+      "blocks": {
+        "73f44b26-48c1-4377-9605-0681df267e6c": {
+          "type": "collection",
+          "settings": {
+            "collection": "hot-products"
+          }
+        },
+        "b3f38d3e-05fc-4d70-8d04-0179eb00fd75": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-selling-products"
+          }
+        },
+        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336": {
+          "type": "collection",
+          "settings": {
+            "collection": "packaging"
+          }
+        },
+        "497f18da-88cf-45dc-83a2-d93091e84953": {
+          "type": "collection",
+          "settings": {
+            "collection": "technology"
+          }
+        },
+        "a92ae54a-65d1-403c-8a12-e81eda77590e": {
+          "type": "collection",
+          "settings": {
+            "collection": "drinkware"
+          }
+        },
+        "bd3d79c7-5e89-4ea3-9f12-77f50e512858": {
+          "type": "collection",
+          "settings": {
+            "collection": "travel-1"
+          }
+        },
+        "69d89b83-6645-4bd9-91cd-1c3db78d5460": {
+          "type": "collection",
+          "settings": {
+            "collection": "apparel"
+          }
+        },
+        "6d6e3007-d91f-4a2d-80d2-7e928908fc41": {
+          "type": "collection",
+          "settings": {
+            "collection": "golf"
+          }
+        },
+        "b053855b-9f39-406f-9413-354f92a25634": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-lifestyle"
+          }
+        },
+        "6eaa94a6-cbb8-4da7-ba81-1069fcc70db2": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-brands"
+          }
+        }
+      },
+      "block_order": [
+        "73f44b26-48c1-4377-9605-0681df267e6c",
+        "b3f38d3e-05fc-4d70-8d04-0179eb00fd75",
+        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336",
+        "497f18da-88cf-45dc-83a2-d93091e84953",
+        "a92ae54a-65d1-403c-8a12-e81eda77590e",
+        "bd3d79c7-5e89-4ea3-9f12-77f50e512858",
+        "69d89b83-6645-4bd9-91cd-1c3db78d5460",
+        "6d6e3007-d91f-4a2d-80d2-7e928908fc41",
+        "b053855b-9f39-406f-9413-354f92a25634",
+        "6eaa94a6-cbb8-4da7-ba81-1069fcc70db2"
+      ],
       "settings": {
         "title_enable": true,
-        "display_type": "all",
+        "display_type": "selected",
         "sort": "alphabetical"
+      }
+    },
+    "166371077721b2a188": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured collection",
+        "home_featured_products": "",
+        "count": 5,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "166371077721b2a188"
   ]
 }

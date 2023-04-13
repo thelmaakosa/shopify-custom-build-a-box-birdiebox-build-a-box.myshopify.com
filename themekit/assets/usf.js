@@ -666,6 +666,7 @@ usf.templates = {
 /*inc_end_instantsearch-item*/,
 };
 function usfGetDisplayPriceWithSup(price) {
+        console.log('filterrr')
     if (!(_usf_money_format.includes('money') || _usf_money_format.includes('.')) && _usfGlobalSettings.superscript_decimals) {
         if (_usf_money_format.includes('{{amount}}') || _usf_money_format.includes('{{ amount }}') || _usf_money_format.includes('{{amount_with_comma_separator}}') || _usf_money_format.includes('{{ amount_with_comma_separator }}')) {
             var n = price.indexOf(usf.settings.decimalDisplay);

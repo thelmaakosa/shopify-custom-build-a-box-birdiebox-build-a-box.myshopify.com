@@ -1,0 +1,448 @@
+<script>
+    let popupHtml = `
+    <div class="popup popup-validate-product" data-popup="popup-1">
+    <div class="popup-inner">
+        <h2 class="bss-purchase-late-note">Purchase Late Note</h2>
+        <div class="popup-scroll">
+            <span>
+                <p class="invalid-netterm-product">
+                </p>
+            </span>
+            <span class="invalid-netterm-product-message">
+                <p>
+                </p>
+            </span>
+        </div>
+        <p><a class="bss-proceed-to-purchase-late" href="#">Proceed to purchase late page</a></p>
+        <a class="popup-close popup-validate-product" data-popup-close="popup-1" href="#">x</a>
+    </div>
+    </div>
+    `;
+
+    let popupMultiButton = `
+    <div class="popup popup-multi-button" data-popup="popup-2">
+    <div class="popup-inner">
+        <h2 class="bss-purchase-late-rule-name">Purchase Late Note</h2>
+        <div class="popup-scroll">
+            <span class="invalid-netterm-rule-message">
+            </span>
+        </div>
+
+        <a class="popup-close popup-multi-button" data-popup-close="popup-2" href="#">x</a>
+    </div>
+    </div>
+    `;
+// PopupCss
+var styles = `
+    .popup {
+        width:100%;
+        height:100%;
+        display:none;
+        position:fixed;
+        top:0px;
+        left:0px;
+        z-index: 9999;
+        background:rgba(0,0,0,0.75);
+    }
+    .popup-inner {
+        max-width:700px;
+        width:90%;
+        padding:40px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        -webkit-transform:translate(-50%, -50%);
+        transform:translate(-50%, -50%);
+        box-shadow:0px 2px 6px rgba(0,0,0,1);
+        border-radius:3px;
+        background:#fff;
+    }
+    .popup-close {
+        width:30px;
+        height:30px;
+        padding-top:4px;
+        display:inline-block;
+        position:absolute;
+        top:0px;
+        right:0px;
+        transition:ease 0.25s all;
+        -webkit-transform:translate(50%, -50%);
+        transform:translate(50%, -50%);
+        border-radius:1000px;
+        background:rgba(0,0,0,0.8);
+        font-family:Arial, Sans-Serif;
+        font-size:20px;
+        text-align:center;
+        line-height:100%;
+        color:#fff;
+    }
+    .popup-close:hover {
+        -webkit-transform:translate(50%, -50%) rotate(180deg);
+        transform:translate(50%, -50%) rotate(180deg);
+        background:rgba(0,0,0,1);
+        text-decoration:none;
+    }
+    .popup-scroll{
+      overflow-y: scroll;
+      max-height: 300px;
+      padding:0 1em 0 0;
+    }
+    .bss-proceed-to-purchase-late {
+        font-weight: 600;
+        color: #3497fd;
+        text-decoration: underline;
+        margin-top: 20px;
+        display: block;
+    }
+    .popup-scroll::-webkit-scrollbar {background-color:#EEE;width:10px;}
+    .popup-scroll::-webkit-scrollbar-thumb {
+    	border:1px #EEE solid;border-radius:2px;background:#777;
+    	-webkit-box-shadow: 0 0 8px #555 inset;box-shadow: 0 0 8px #555 inset;
+    	-webkit-transition: all .3s ease-out;transition: all .3s ease-out;
+    	}
+    .popup-scroll::-webkit-scrollbar-track {-webkit-box-shadow: 0 0 2px #ccc;box-shadow: 0 0 2px #ccc;}
+    `;
+var styleSheet = document.createElement("style")
+styleSheet.type = "text/css"
+styleSheet.innerText = styles
+document.head.appendChild(styleSheet)
+
+window.document.body.insertAdjacentHTML( 'afterbegin', popupHtml);
+window.document.body.insertAdjacentHTML( 'afterbegin', popupMultiButton);
+
+var ruleNtApply = [];
+const checkRuleNtApply = function() {
+    let ruleId = localStorage.getItem('bssBCPNtId');
+    let ruleApply = bssListRule.filter(rule => ruleId == rule.id)
+    if (ruleApply.length) {
+        let rule = ruleApply[0];
+        let ruleCustomerIds = rule.customer_ids ? rule.customer_ids.split(',') : [];
+        let ruleCustomerTags = rule.customer_tags ? rule.customer_tags.toLowerCase().split(',') : [];
+
+        if (rule.apply_to == 0) {
+            ruleNtApply = rule;
+            return true;
+        }
+        if ((rule.apply_to == 1) && customerId && (ruleCustomerIds.indexOf(customerId.toString()) !== -1)) {
+            ruleNtApply = rule;
+            return true;
+        }
+
+        if ((rule.apply_to == 2) && customerTag.length > 0) {
+            for(const ruleCustomerTag of ruleCustomerTags){
+                for(const tag of customerTag){
+                    if(tag.toLowerCase() === ruleCustomerTag){
+                        ruleNtApply = rule;
+                        return true;
+                    }
+                }
+            }
+        }
+
+    }
+    ruleNtApply = ruleApply.length ? ruleApply[0] : null;
+    return false;
+}
+
+
+function getCartData(isFirstLoad) {
+    var url = "/cart.js";
+    var options = {
+        method: 'GET'
+    };
+    var getCartDataReq = fetch(url, options);
+    getCartDataReq
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("HTTP error, status = " + response.status);
+            }
+            var dataJSON_promise = response.json();
+            return dataJSON_promise;
+        })
+        .then(function(cartData) {
+            validatePurchaseLate(cartData, isFirstLoad);
+        })
+        .catch(function(error) {
+            console.log("Noooooo! Something error:");
+            console.log(error);
+        });
+}
+
+getCartData(true);
+
+
+{% if nt_apply_to == "2" %}
+const checkProductPurchaseLate = function(productData) {
+    let conditionType = ruleNtApply ? ruleNtApply.product_condition_type : null;
+    let ruleTags = ruleNtApply ? ruleNtApply.product_tags : '';
+    ruleTags = ruleTags ? ruleTags.split(",") : [];
+
+    let specificProductIds = ruleNtApply ? ruleNtApply.product_ids : '';
+    specificProductIds = specificProductIds ? specificProductIds.split(",") : [];
+
+    let ruleCollectionIds = ruleNtApply ? ruleNtApply.product_collections : '';
+    ruleCollectionIds = ruleCollectionIds ? ruleCollectionIds.split(",") : [];
+
+    let productId = productData.id;
+    let collections = productData.collections;
+    let tags = productData ? productData.tags : '';
+
+    if (conditionType == 0) {
+        return true;
+    } else if (conditionType == 1) {
+        if (specificProductIds.indexOf(productId + "") !== -1) {
+            return true;
+        }
+    } else if (conditionType == 2) {
+        var checkArray = collections.filter(collection => ruleCollectionIds.includes(collection + ""))
+        if (checkArray.length > 0) {
+            return true;
+        }
+    } else if (conditionType == 3) {
+        var checkArray = ruleTags.filter(tag => tags.includes(tag + ""))
+        if (checkArray.length > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+{% else %}
+const checkProductPurchaseLate = function(productData) {
+    let conditionType = {{nt_rules_product_condition_type}};
+    let ruleTags = {{nt_rules_product_tags}};
+    ruleTags = ruleTags ? ruleTags.split(",") : [];
+
+    let specificProductIds = {{nt_rules_product_ids}};
+    specificProductIds = specificProductIds ? specificProductIds.split(",") : [];
+
+    let ruleCollectionIds = {{nt_rules_product_collections}};
+    ruleCollectionIds = ruleCollectionIds ? ruleCollectionIds.split(",") : [];
+
+    let productId = productData.id;
+    let collections = productData.collections;
+    let tags = productData ? productData.tags : '';
+
+    if (conditionType == 0) {
+        return true;
+    } else if (conditionType == 1) {
+        if (specificProductIds.indexOf(productId + "") !== -1) {
+            return true;
+        }
+    } else if (conditionType == 2) {
+        var checkArray = collections.filter(collection => ruleCollectionIds.includes(collection + ""))
+        if (checkArray.length > 0) {
+            return true;
+        }
+    } else if (conditionType == 3) {
+        var checkArray = ruleTags.filter(tag => tags.includes(tag + ""))
+        if (checkArray.length > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+{% endif %}
+
+const validatePurchaseLate = function(cartData, isFirstLoad = true) {
+    try {
+        if (cartData.items && cartData.items.length > 0) {
+            var productMap = [];
+            var handleUrls = [];
+            var handles = [];
+            var keyIdMap = new Map();
+            var cartItemProductMap = new Map();
+            var cartItemProductMapByKey = [];
+            var totalPrice = cartData.items_subtotal_price;
+            var currency = cartData.currency;
+            cartData.items.forEach(function(item) {
+                var proId = item.product_id;
+                if (handles.indexOf(proId) === -1) {
+                    handles.push(proId);
+                    handleUrls.push('id:"' + proId + '"');
+                    keyIdMap.set(proId, []);
+                }
+                let productItemKeys = keyIdMap.get(proId);
+                productItemKeys.push(item.key)
+                keyIdMap.set(proId, productItemKeys);
+
+                var productVariants = cartItemProductMap.get(proId);
+                if (!productVariants || productVariants == undefined) {
+                    cartItemProductMap.set(proId, [])
+                    productVariants = [];
+                }
+
+                productVariants.push({
+                    key: item.key,
+                    quantity: item.quantity,
+                    id: item.variant_id,
+                    price: item.price
+                });
+                cartItemProductMap.set(proId, productVariants);
+                cartItemProductMapByKey.push({
+                    key: item.key,
+                    price: item.price
+                })
+            })
+            var urlData = '/search.js?q=' + handleUrls.join(' OR ') + '&view=bss.bcp';
+            var encodeUrlData = encodeURI(urlData);
+
+
+            var options = {
+                method: 'GET'
+            };
+            var getSearchDataReq = fetch(encodeUrlData, options);
+            getSearchDataReq
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error("HTTP error, status = " + response.status);
+                    }
+                    var dataJSON_promise = response.json();
+                    return dataJSON_promise;
+                })
+                .then(function(responProd) {
+                    if (responProd.length > 0) {
+                        var productMap = [];
+                        var productPrices = [];
+                        var checkUnique = [];
+                        for (var i = 0; i < responProd.length; i++) {
+                            var pro = responProd[i];
+
+                            if (checkUnique.indexOf(pro.id) === -1) {
+                                checkUnique.push(pro.id);
+                                keyIdMap.get(pro.id).forEach(function(key) {
+                                    productMap.push({
+                                        id: pro.id,
+                                        tags: pro.tags,
+                                        collections: pro.collections,
+                                        key: key,
+                                        title: pro.title
+                                    });
+                                })
+                            }
+                        }
+
+                        let invalidNtProductNtRule = [];
+                        productMap.map((item) => {
+                            let isValidProduct = checkProductPurchaseLate(item);
+                            if (!isValidProduct) {
+                                invalidNtProductNtRule.push(item);
+                            }
+                        })
+                        window.invalidNtProduct = invalidNtProductNtRule;
+
+                        if (!isFirstLoad) {
+                            if (invalidNtProduct.length) {
+                                    let nameListStr = getProductNameList(invalidNtProduct);
+
+
+                                    document.querySelector('.invalid-netterm-product').innerHTML = nameListStr;
+
+
+                                    let popupHtml = document.querySelector('.popup.popup-validate-product');
+                                    popupHtml.style.display = 'block';
+
+                                    document.querySelector('.popup-close.popup-validate-product').onclick = () => {
+                                        popupHtml.style.display = 'none';
+                                    }
+
+                                    document.querySelector('.bss-proceed-to-purchase-late').onclick = () => {
+                                        handleRemoveProductOnPortalRule(invalidNtProduct);
+                                    }
+
+                                } else if (document.getElementsByClassName('modalWarningQI').length) {
+                                    if (document.getElementsByClassName('modalWarningQI')[0].style.display == "block") {
+                                        // do nothing, block store go direct to bcp proxy 
+                                    }
+                                } else {
+                                    window.location = '/apps/customer-portal/purchase-late';
+                                }
+                        }
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Noooooo! Something error:");
+                    console.log(error);
+                });
+
+        } else {
+            console.log("Could not get cart data")
+        }
+    } catch (e) {
+        console.log("Could not get shop data");
+    }
+}
+
+const handleRemoveProductOnPortalRule = function(listKey) {
+    let itemUpdate = {}
+    listKey.map((item) => {
+        let variantId = item.key.split(':')[0];
+        itemUpdate[variantId] = 0
+    });
+
+    fetch('/cart/update.js', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            updates: itemUpdate
+        })
+    }).then(res => res.json())
+        .then(window.location = '/apps/customer-portal/purchase-late');
+}
+
+const getProductNameList = (invalidNtProduct) => {
+    let nameList = invalidNtProduct.map((item) => {
+        return item.title;
+    });
+    return nameList.join(', ');
+}
+
+{% if nt_apply_to == "2" %}
+    const validateProductBeforePurchaseLate = function() {
+        if (checkRuleNtApply()) {
+            window.allowPurchaseLateByRule = true
+            getCartData(false);
+        } else {
+            window.allowPurchaseLateByRule = false
+            if(ruleNtApply) {
+                document.querySelector('.bss-purchase-late-rule-name').innerHTML = ruleNtApply.name;
+            }
+            let popupMultiButton = document.querySelector('.popup.popup-multi-button');
+            popupMultiButton.style.display = 'block';
+
+            document.querySelector('.popup-close.popup-multi-button').onclick = () => {
+                popupMultiButton.style.display = 'none';
+            }
+        }
+    }
+{% else %}
+const validateProductBeforePurchaseLate = function () {
+    if (window.location.host === 'airfluidizedtherapy.com') {
+        if (validatePurchaseOrder()) {
+            getCartData(false);
+        }
+    } else {
+        getCartData(false);
+    }
+}
+const validatePurchaseOrder = function () {
+    let purchaseOrderElement = document.getElementById('purchase-order')
+    if (purchaseOrderElement) {
+        if (purchaseOrderElement.value.trim() === '') {
+            let message = "This field is required";
+            let messageElement = document.createElement('span')
+            messageElement.className = 'bss-error-msg';
+            messageElement.style.color = '#ab2121';
+            messageElement.style.height = '40px';
+            document.getElementsByClassName('cart-attribute__field')[0].appendChild(messageElement);
+            document.querySelector('.bss-error-msg').innerHTML = message;
+            return false;
+        }
+    }
+    return true;
+}
+{% endif %}
+
+</script>

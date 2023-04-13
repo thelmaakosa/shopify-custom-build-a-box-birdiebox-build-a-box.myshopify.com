@@ -8,47 +8,170 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "faq-0": {
+        "5bf9225a-f8ac-4d43-a4f0-7d7fad9b7284": {
           "type": "rich-text",
           "settings": {
-            "title": "Shipping",
-            "text": ""
+            "title": "General",
+            "text": "",
+            "align_text": "left"
           }
         },
-        "faq-1": {
+        "f73a8c89-babd-4616-9c38-77354217ab8a": {
           "type": "question",
-          "settings": {}
+          "settings": {
+            "title": "Does every product\/gift come with a box?",
+            "text": "<p>Individual items do not come with custom packaging. You can add <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> to your order if you would like your gift to include a box.<\/p><p>If a gift set includes custom packaging, it will be noted in the product description. <\/p>"
+          }
         },
-        "faq-2": {
+        "a2cd2855-1cb8-46da-9f71-703ea2e20937": {
           "type": "question",
-          "settings": {}
+          "settings": {
+            "title": "I need to make a rush order.",
+            "text": "<p>We're happy to help you with your rush order! Rush orders are available for in-stock items only. You can check out our <a href=\"\/collections\/rush-order\" target=\"_blank\" title=\"Rush Order\">rush order<\/a> items or <a href=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\">book a meeting<\/a> with us to review your needs.<\/p>"
+          }
+        },
+        "1f14ee06-deb8-4209-9602-221a7ead678d": {
+          "type": "question",
+          "settings": {
+            "title": "How do I create a customer account?",
+            "text": "<p>To create a customer account, click on the middle icon (looks like a person) at the top right. You can also <a href=\"https:\/\/shopbirdiebox.com\/account\/login\" target=\"_blank\" title=\"https:\/\/shopbirdiebox.com\/account\/login\">click here<\/a> to be brought to the page directly.<\/p><p>You will see a \"Create account\" option underneath the password field. Click this option and fill out the form.<\/p><p>Once you have created an account, you will receive an email notification confirming your account creation and can log in.<\/p>"
+          }
+        },
+        "151f0c73-9a87-406e-93f6-0e6cbe43c655": {
+          "type": "question",
+          "settings": {
+            "title": "How do I log in to my customer account?",
+            "text": "<p>To log in to your customer account, click on the middle icon (looks like a person) at the top right. Enter your email address and password, and click sign in.<\/p>"
+          }
         },
         "faq-3": {
           "type": "rich-text",
           "settings": {
-            "title": "Returns",
-            "text": ""
+            "title": "Production",
+            "text": "",
+            "align_text": "left"
           }
         },
         "faq-4": {
           "type": "question",
-          "settings": {}
+          "settings": {
+            "title": "How do I add a logo or initials to a product?",
+            "text": "<p>If a product has the ability to be decorated, you will see options to select blank, logo, or initials where applicable.<\/p><p>A team member will reach out to you after you place your order to collect any needed logos or initials. <\/p>"
+          }
+        },
+        "1809162e-b7ed-476f-a1bf-051cd14c8e88": {
+          "type": "question",
+          "settings": {
+            "title": "Can I see what the product looks like before you ship it?",
+            "text": "<p>After you place your order, a team member will reach out to confirm any personalization and will provide mockups of products for approval before processing your order.<\/p><p>Please note, your order will not start processing until mockups are approved.<\/p>"
+          }
+        },
+        "faq-0": {
+          "type": "rich-text",
+          "settings": {
+            "title": "Shipping",
+            "text": "",
+            "align_text": "left"
+          }
+        },
+        "faq-1": {
+          "type": "question",
+          "settings": {
+            "title": "How long does shipping take?",
+            "text": "<p>Orders typically ship 2 weeks after artwork approval. Shipping times may vary for high quantity orders.<\/p>"
+          }
+        },
+        "faq-2": {
+          "type": "question",
+          "settings": {
+            "title": "How much does shipping cost?",
+            "text": "<p>Shipping rates will vary based on how many boxes, gift sets, and\/or items you are sending. Our standard rates are listed for your reference below.<\/p><p><strong>Standard Ground:<br\/><\/strong>Boxes - $17.50 each<br\/>Gift Sets - $17.50 each<br\/>Individual Items - Based on weight<\/p><p><strong>Rush Shipping:<br\/><\/strong>Boxes - $85 each<br\/>Gift Sets - $85 each<br\/>Individual Items - Based on weight<\/p>"
+          }
+        },
+        "270c7e30-3bd2-4471-b2d8-eaa9e3cc6e58": {
+          "type": "rich-text",
+          "settings": {
+            "title": "Resale Accounts",
+            "text": "",
+            "align_text": "left"
+          }
+        },
+        "5ef082f3-d4a9-4aee-86cc-4e9b46794bfb": {
+          "type": "question",
+          "settings": {
+            "title": "How do I create a resale account?",
+            "text": "<p>To create a resale account, click on the middle icon (looks like a person) at the top right or <a href=\"https:\/\/shopbirdiebox.com\/account\/login\" target=\"_blank\" title=\"https:\/\/shopbirdiebox.com\/account\/login\">click here<\/a> to be brought to the page directly. You will see a \"Create resale account\" option underneath the password field. Click this option and fill out the form.<\/p><p>Once you have created an account, we will verify your reseller affiliation. Once approved, you will receive an email notification and can log in by clicking the same middle icon.<\/p>"
+          }
+        },
+        "d522d3ef-54f4-4d62-99e9-75e87c9eba01": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "How do I see preferred pricing?",
+            "text": "<p>You will be able to see preferred pricing on products after signing in to your resale account.<\/p><p>You can sign in to your account by clicking the middle icon (looks like a person) at the top right.<\/p>"
+          }
+        },
+        "9a85e332-b94e-498d-a026-cc53bfa7a6e2": {
+          "type": "question",
+          "settings": {
+            "title": "How do I log in to my resale account?",
+            "text": "<p>To log in to your resale account, click on the middle icon (looks like a person) at the top right. Enter your email and password, and click sign in.<\/p>"
+          }
         }
       },
       "block_order": [
+        "5bf9225a-f8ac-4d43-a4f0-7d7fad9b7284",
+        "f73a8c89-babd-4616-9c38-77354217ab8a",
+        "a2cd2855-1cb8-46da-9f71-703ea2e20937",
+        "1f14ee06-deb8-4209-9602-221a7ead678d",
+        "151f0c73-9a87-406e-93f6-0e6cbe43c655",
+        "faq-3",
+        "faq-4",
+        "1809162e-b7ed-476f-a1bf-051cd14c8e88",
         "faq-0",
         "faq-1",
         "faq-2",
-        "faq-3",
-        "faq-4"
+        "270c7e30-3bd2-4471-b2d8-eaa9e3cc6e58",
+        "5ef082f3-d4a9-4aee-86cc-4e9b46794bfb",
+        "d522d3ef-54f4-4d62-99e9-75e87c9eba01",
+        "9a85e332-b94e-498d-a026-cc53bfa7a6e2"
       ],
       "settings": {
-        "title": ""
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "6c0bfd40-7c08-431d-bdae-4ac7516b3404": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15560748171419__6c0bfd40-7c08-431d-bdae-4ac7516b3404-16654353972386cf54-0": {
+          "type": "heading",
+          "settings": {
+            "title": "I have more questions."
+          }
+        },
+        "template--15560748171419__6c0bfd40-7c08-431d-bdae-4ac7516b3404-16654353972386cf54-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Have more questions that aren't listed here? Feel free to reach out to us at <strong>customerservice@birdiebox.com<\/strong> and a team member will get back to you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15560748171419__6c0bfd40-7c08-431d-bdae-4ac7516b3404-16654353972386cf54-0",
+        "template--15560748171419__6c0bfd40-7c08-431d-bdae-4ac7516b3404-16654353972386cf54-1"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "3",
+        "divider": false
       }
     }
   },
   "order": [
     "main",
-    "faq"
+    "faq",
+    "6c0bfd40-7c08-431d-bdae-4ac7516b3404"
   ]
 }

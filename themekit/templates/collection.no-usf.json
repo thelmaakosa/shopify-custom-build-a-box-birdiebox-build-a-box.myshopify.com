@@ -2,37 +2,24 @@
   "sections": {
     "collection-header": {
       "type": "collection-header",
-      "settings": {}
-    },
-    "main-collection-no-usf": {
-      "type": "main-collection-no-usf",
-      "blocks": {
-        "collection_description": {
-          "type": "collection_description",
-          "settings": {}
-        },
-        "product_grid": {
-          "type": "product_grid",
-          "settings": {}
-        },
-        "subcollections": {
-          "type": "subcollections",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "collection_description",
-        "subcollections",
-        "product_grid"
-      ],
-      "settings": {}
+      "settings": {
+        "enable": true,
+        "collection_image_enable": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
     },
     "promo-grid": {
       "type": "promo-grid",
+      "disabled": true,
       "blocks": {
         "banner": {
           "type": "banner",
           "settings": {
+            "heading": "Banner promotion",
+            "text": "Add the details of your promotion in smaller text",
+            "link": "",
+            "label": "Shop now",
             "color_scheme": "1"
           }
         }
@@ -41,7 +28,42 @@
         "banner"
       ],
       "settings": {
+        "full_width": false,
+        "gutter_size": 20,
+        "space_above": true,
         "space_below": false
+      }
+    },
+    "main-collection-no-usf": {
+      "type": "main-collection-no-usf",
+      "blocks": {
+        "collection_description": {
+          "type": "collection_description",
+          "disabled": true,
+          "settings": {}
+        },
+        "subcollections": {
+          "type": "subcollections",
+          "disabled": true,
+          "settings": {}
+        },
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "grid_style": "small"
+          }
+        }
+      },
+      "block_order": [
+        "collection_description",
+        "subcollections",
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "collapse_filters": true,
+        "enable_color_swatches": false,
+        "enable_sort": true
       }
     },
     "recently-viewed": {

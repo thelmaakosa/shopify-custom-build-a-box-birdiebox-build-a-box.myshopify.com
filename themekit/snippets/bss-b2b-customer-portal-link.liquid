@@ -1,0 +1,62 @@
+{% assign displayLogin = false %} 
+{% assign displayAccount = true %} 
+{% assign customerPortalLinkText = "B2B Customer Portal" %} 
+{% assign applyTo = 0 | plus: 0 %} 
+{% assign configCustomerIds = "" | split: "," %} 
+{% assign configCustomerTags = "" | downcase | split: "," %} 
+{% assign bss_sm_domain = shop.permanent_domain | url_encode %}
+{% assign bss_sm_timestamp = "now" | date: "%s" %}
+{% assign bss_sm_validity = 60 | times: 60 | times: 24 %}
+
+{% assign bss_sm_params = "customer_id=" | append: customer.id %}
+{% assign bss_sm_params = bss_sm_params | append: "&shop=" | append: bss_sm_domain %}
+{% comment %}
+    {% assign bss_sm_params = bss_sm_params | append: "&timestamp=" | append: bss_sm_timestamp %}
+    {% assign bss_sm_params = bss_sm_params | append: "&validity=" | append: bss_sm_validity %}
+{% endcomment %}
+{% assign bss_sm_url = "/apps/customer-portal" %}
+{% comment %}
+{% assign bss_sm_url = bss_sm_url | append: "&signature=" %}
+{% assign bss_sm_url = bss_sm_url | append: bss_sm_signature%}
+{% endcomment %}
+{%  capture htmlCustomerPortalLink %}
+    <h3 class="bss-bcp-link-wrapper" style="text-align: center;">
+        <a href="{{ bss_sm_url }}" target="_blank" class="bss-bcp-link">{{ customerPortalLinkText }}</a>
+    </h3>
+{%  endcapture %}
+{% if applyTo == 0 %}
+	{% if request.path == "/account/login" %}
+		{% if displayLogin == true %}
+			{{ htmlCustomerPortalLink }}
+		{% endif %}
+	{% endif %}
+	{% if request.path == "/account" %}
+		{% if displayAccount == true %}
+			{{ htmlCustomerPortalLink }}
+		{% endif %}
+	{% endif %}
+{% elsif applyTo == 1 %}
+    {% assign isAppliedShowLink = false %}
+    {% assign customerId = customer.id | append: "" | downcase %}
+    {% for configId in configCustomerIds %}
+        {% if customerId == configId %}
+            {% assign isAppliedShowLink = true %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% if isAppliedShowLink %}
+        {{ htmlCustomerPortalLink }}
+    {% endif %}
+{% elsif applyTo == 2 %}
+    {% assign isAppliedShowLink = false %}
+    {% assign customerTags = customer.tags | join: ', ' | downcase %}
+    {% for configtag in configCustomerTags %}
+        {% if customerTags contains configtag %}
+            {% assign isAppliedShowLink = true %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% if isAppliedShowLink %}
+        {{ htmlCustomerPortalLink }}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,32 @@
+{% assign isConfigAppliedShowBtn = false %}
+{% assign customerTags = customer.tags | join: ', ' | downcase %}
+{% assign customerId = customer.id | append: "" | downcase %}
+{% if nt_apply_to == "1" or nt_apply_to == "2" %}
+    {% assign isConfigAppliedShowBtn = true %}
+{% elsif nt_apply_to == "0" %}
+    {% if list_nt_rules_apply_to contains "0" %}
+        {% assign isConfigAppliedShowBtn = true %}
+    {% else %}
+        {% if list_nt_rules_apply_to contains "1" %}
+            {% for id in list_nt_rules_customer_ids %}
+                {% if customerId == id %}
+                    {% assign isConfigAppliedShowBtn = true %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if list_nt_rules_apply_to contains "2" %}
+            {% for tag in list_nt_rules_customer_tags %}
+                {% assign downcaseTag = tag | downcase %}
+                {% if customerTags contains downcaseTag %}
+                    {% assign isConfigAppliedShowBtn = true %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% if isConfigAppliedShowBtn %}
+    {{ scriptNtCheckoutBtn }}
+{% endif %}

@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Rush Orders"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Rush orders are available for in-stock products and production-ready artwork.<\/p><p>Please fill out the form below with your budget, quantity of gifts needed, preferred delivery date, and any other notes (i.e. would like a speaker, gifts are for VIPs, would like to have a logo on everything, etc). A member of our team will reach out regarding your needs the following business day.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact Us",
+        "text": "",
+        "show_phone": false,
+        "narrow_column": true,
+        "color_scheme": "none"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich-text",
+    "form"
+  ]
+}

@@ -61,10 +61,15 @@
 
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
 
+
   {%- capture product_header -%}
     {%- if settings.show_breadcrumbs and isModal != true -%}
       {%- render 'breadcrumbs' -%}
     {%- endif -%}
+
+
+
+
 
     {%- if isModal -%}
       <p class="h2 product-single__title">
@@ -170,6 +175,96 @@
                       {%- render 'product-description', id: id, product: product, is_tab: block.settings.is_tab -%}
                     </div>
                   {%- when 'price' -%}
+
+                    
+
+                       {% assign login_feature_enable = true %}
+                    {% for collection in product.collections %}
+              
+                    {% if  collection.handle contains "nest-picks"%}
+                  
+                      {% assign login_feature_enable = false %}
+                    {% endif %}
+                    {% endfor %}
+
+                  {% if login_feature_enable %}
+            
+                        {% if customer %}
+
+                              <div class="product-block product-block--price" {{ block.shopify_attributes }}>
+                              <label class="variant__label" for="ProductPrice-{{ section_id }}">
+                              {{ 'cart.label.price' | t }}
+                              </label>
+                              
+                              {%- assign hide_sale_price = true -%}
+                              {%- if product.compare_at_price_max > product.price -%}
+                              {%- if current_variant.compare_at_price > current_variant.price -%}
+                              {%- assign hide_sale_price = false -%}
+                              {%- endif -%}
+                              <span
+                              data-a11y-price
+                              class="visually-hidden"
+                              aria-hidden="{{ hide_sale_price }}">
+                              {{ 'products.general.regular_price' | t }}
+                              </span>
+                              <span data-product-price-wrap class="{% if hide_sale_price %} hide{% endif %}">
+                              <span data-compare-price class="product__price product__price--compare">
+                              {%- if current_variant.compare_at_price > current_variant.price -%}
+                              {%- render 'price' with current_variant.compare_at_price -%}
+                              {%- endif -%}
+                              </span>
+                              </span>
+                              <span data-compare-price-a11y class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                              {%- else -%}
+                              <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                              {%- endif -%}
+                              
+                              <span data-product-price
+                              class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
+                              {%- unless product.empty? -%}
+                              {%- render 'price' with current_variant.price -%}
+                              {%- else -%}
+                              {%- render 'price' with 1999 -%}
+                              {%- endunless -%}
+                              </span>
+                              
+                              {%- if settings.product_save_amount -%}
+                              {%- if settings.product_save_type == 'dollar' -%}
+                              {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}{%- endcapture -%}
+                              {%- else -%}
+                              {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+                              {%- endif -%}
+                              <span data-save-price class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                              {%- unless hide_sale_price -%}
+                              {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                              {%- endunless -%}
+                              </span>
+                              {%- endif -%}
+                              
+                              <div data-unit-price-wrapper class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                              {%- capture unit_price_base_unit -%}
+                              <span data-unit-base>
+                              {%- if current_variant.unit_price_measurement -%}
+                              {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                                {{ current_variant.unit_price_measurement.reference_value }}
+                              {%- endif -%}
+                              {{ current_variant.unit_price_measurement.reference_unit }}
+                              {%- endif -%}
+                              </span>
+                              {%- endcapture -%}
+                              
+                              <span data-unit-price>
+                              {%- render 'price' with current_variant.unit_price -%}
+                              </span>/{{ unit_price_base_unit }}
+                              </div>
+                              </div>
+                        
+                        {% else %}
+                         <a class="product loginss" href="/account/login"> Login To View Price</a>
+                        {% endif %}
+                    
+                  {% else %}
+                  
                     <div class="product-block product-block--price" {{ block.shopify_attributes }}>
                       <label class="variant__label" for="ProductPrice-{{ section_id }}">
                         {{ 'cart.label.price' | t }}
@@ -237,6 +332,8 @@
                         </span>/{{ unit_price_base_unit }}
                       </div>
                     </div>
+
+                  {% endif %}
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div class="product__quantity">
@@ -332,26 +429,60 @@
                       {%- endunless -%}
                     </div>
                   {%- when 'buy_buttons' -%}
-                    <div class="product-block" {{ block.shopify_attributes }}>
-                      {%- unless product.empty? -%}
-                        <div class="product-block">
-                          {%- render 'product-form',
-                            form_id: form_id,
-                            product: product,
-                            show_dynamic_checkout: block.settings.show_dynamic_checkout,
-                            current_variant: current_variant
-                          -%}
-                        </div>
-                      {%- endunless -%}
 
-                      {%- if block.settings.surface_pickup_enable -%}
-                        <div
-                          data-store-availability-holder
-                          data-product-name="{{ product.title | escape }}"
-                          data-base-url="{{ shop.url }}{{ routes.root_url }}"
-                          ></div>
-                      {%- endif -%}
-                    </div>
+                   {% if login_feature_enable %}
+            
+                        {% if customer %}
+                  
+                          <div class="product-block" {{ block.shopify_attributes }}>
+                            {%- unless product.empty? -%}
+                              <div class="product-block">
+                                {%- render 'product-form',
+                                  form_id: form_id,
+                                  product: product,
+                                  show_dynamic_checkout: block.settings.show_dynamic_checkout,
+                                  current_variant: current_variant
+                                -%}
+                              </div>
+                            {%- endunless -%}
+        
+                            {%- if block.settings.surface_pickup_enable -%}
+                              <div
+                                data-store-availability-holder
+                                data-product-name="{{ product.title | escape }}"
+                                data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                                ></div>
+                            {%- endif -%}
+                          </div>
+
+                          {% endif %}
+                     
+                     {% else %}
+
+                     <div class="product-block" {{ block.shopify_attributes }}>
+                            {%- unless product.empty? -%}
+                              <div class="product-block">
+                                {%- render 'product-form',
+                                  form_id: form_id,
+                                  product: product,
+                                  show_dynamic_checkout: block.settings.show_dynamic_checkout,
+                                  current_variant: current_variant
+                                -%}
+                              </div>
+                            {%- endunless -%}
+        
+                            {%- if block.settings.surface_pickup_enable -%}
+                              <div
+                                data-store-availability-holder
+                                data-product-name="{{ product.title | escape }}"
+                                data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                                ></div>
+                            {%- endif -%}
+                          </div>
+
+                     {% endif %}
+
+                     
                   {%- when 'sales_point' -%}
                     {%- unless block.settings.text == blank -%}
                       <div class="product-block product-block--sales-point" {{ block.shopify_attributes }}>

@@ -1,0 +1,177 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "50366f7a-d2ff-43a8-987c-91f83062d08f": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15707163525275__50366f7a-d2ff-43a8-987c-91f83062d08f-1666820750a9fe2880-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Referral Program<\/p>",
+            "title_size": 55,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/1_5e065892-de7b-42dc-ba37-8d5dea31f257.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15707163525275__50366f7a-d2ff-43a8-987c-91f83062d08f-1666820750a9fe2880-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "eeed83de-e700-426f-8d5a-ccfd2ac100e4": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "template--15707163525275__eeed83de-e700-426f-8d5a-ccfd2ac100e4-1670275070b8348174-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Referral Program"
+          }
+        }
+      },
+      "block_order": [
+        "template--15707163525275__eeed83de-e700-426f-8d5a-ccfd2ac100e4-1670275070b8348174-0"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "3",
+        "divider": false
+      }
+    },
+    "55349643-d992-45be-9364-caa815ede306": {
+      "type": "promo-grid",
+      "blocks": {
+        "43546bea-8184-46ff-8b98-e3770fa9659c": {
+          "type": "banner",
+          "settings": {
+            "heading": "How can BirdieBox help others you know by partnering with them on their gifting needs?",
+            "text": "Refer a friend or colleague, and have the potential to earn up to 10% of their order value as a gift or credit towards your next order!",
+            "link": "",
+            "label": "",
+            "color_scheme": "3"
+          }
+        }
+      },
+      "block_order": [
+        "43546bea-8184-46ff-8b98-e3770fa9659c"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    },
+    "64cc0231-89b7-40b2-8c59-5f901afe4217": {
+      "type": "slideshow-image",
+      "blocks": {
+        "template--15707163525275__64cc0231-89b7-40b2-8c59-5f901afe4217-1668811006632da2fc-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify:\/\/shop_images\/BABB_-_referral_program_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "template--15707163525275__64cc0231-89b7-40b2-8c59-5f901afe4217-1668811006632da2fc-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "dff28995-b824-440f-b4f4-d019c15cba7c": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "template--15707163525275__dff28995-b824-440f-b4f4-d019c15cba7c-167027503382adb7fa-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "Ready, Set, Refer!",
+            "link": "",
+            "link_text": "Submit a Referral",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#fff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/BABB_-_black_friday_banner.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15707163525275__dff28995-b824-440f-b4f4-d019c15cba7c-167027503382adb7fa-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": false,
+        "autoplay_speed": 7
+      }
+    },
+    "bdd4843a-2334-453d-9022-2f3aee311f7f": {
+      "type": "promo-grid",
+      "blocks": {
+        "a0b605da-3024-402e-b5bd-162f589be990": {
+          "type": "banner",
+          "settings": {
+            "heading": "Click Here to Submit a Referral",
+            "text": "",
+            "link": "https:\/\/go.shopbirdiebox.com\/ReferralProgram",
+            "label": "",
+            "color_scheme": "1"
+          }
+        }
+      },
+      "block_order": [
+        "a0b605da-3024-402e-b5bd-162f589be990"
+      ],
+      "settings": {
+        "full_width": false,
+        "gutter_size": 20,
+        "space_above": false,
+        "space_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "50366f7a-d2ff-43a8-987c-91f83062d08f",
+    "eeed83de-e700-426f-8d5a-ccfd2ac100e4",
+    "55349643-d992-45be-9364-caa815ede306",
+    "64cc0231-89b7-40b2-8c59-5f901afe4217",
+    "dff28995-b824-440f-b4f4-d019c15cba7c",
+    "bdd4843a-2334-453d-9022-2f3aee311f7f"
+  ]
+}

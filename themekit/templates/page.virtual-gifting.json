@@ -19,7 +19,7 @@
           "disabled": true,
           "settings": {
             "enlarge_text": true,
-            "text": "<p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>"
+            "text": "<p>We create custom-branded websites so our clients' guests can easily shop online, personalize their gifts, and have their selection conveniently drop shipped directly to their home or office. <\/p>"
           }
         }
       },
@@ -34,6 +34,97 @@
         "divider": false
       }
     },
+    "6bdc6bc1-2d53-4744-84fe-4fa37d89a694": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "template--15602503188635__6bdc6bc1-2d53-4744-84fe-4fa37d89a694-16702762529eef709d-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Virtual Gifting Experience<\/p>",
+            "title_size": 40,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/1_5e065892-de7b-42dc-ba37-8d5dea31f257.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15602503188635__6bdc6bc1-2d53-4744-84fe-4fa37d89a694-16702762529eef709d-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "16637962095f40e42d": {
+      "type": "hero-video",
+      "settings": {
+        "full_width": true,
+        "title": "Stay connected.",
+        "title_size": 60,
+        "subheading": "We create custom-branded websites so our clients' guests can easily shop online, personalize their gifts, and have their selection conveniently drop shipped directly to their home or office. ",
+        "link_text": "",
+        "link": "",
+        "color_accent": "#ffffff",
+        "text_align": "vertical-center horizontal-left",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=uTvMfjRLCEQ",
+        "overlay_opacity": 14,
+        "height": 650,
+        "height_mobile": 300
+      }
+    },
+    "16637902366cdcaef3": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "8593908d-0988-4d9a-9db9-6827e245f0bb": {
+          "type": "liquid",
+          "settings": {
+            "code": "<br>",
+            "width": "25%",
+            "alignment": "center"
+          }
+        },
+        "1663790236801d84ad-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<h3 style=\"padding-top: 20px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px\">\n<center>We create custom-branded websites so our clients' guests can easily shop online, personalize their gifts, and have their selection conveniently drop shipped directly to their home or office.\n<\/h4>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "53e2ca25-d9a0-48ac-8629-0000e6c5b2d5": {
+          "type": "liquid",
+          "settings": {
+            "code": "<br>",
+            "width": "25%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "8593908d-0988-4d9a-9db9-6827e245f0bb",
+        "1663790236801d84ad-1",
+        "53e2ca25-d9a0-48ac-8629-0000e6c5b2d5"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
     "166328124549047c73": {
       "type": "slideshow-split",
       "blocks": {
@@ -41,9 +132,9 @@
           "type": "slide",
           "settings": {
             "top_subheading": "",
-            "title": "Stay connected.",
+            "title": "Endless opportunities.",
             "title_size": 60,
-            "subheading": "Remote employee engagements, virtual parties and events, rolling fulfillments, and more. We create custom developed digital solutions while still allowing that hyper personalized touch even from miles away.",
+            "subheading": "Remote employee engagements, virtual parties and events, rolling fulfillments, and more. We create custom developed digital solutions that fit your needs while still allowing that hyper personalized touch even from miles away.",
             "link": "",
             "link_text": "",
             "link_2": "",
@@ -75,7 +166,7 @@
           "type": "slide",
           "settings": {
             "top_subheading": "",
-            "title": "Endless opportunities.",
+            "title": "High satisfaction.",
             "title_size": 60,
             "subheading": "Forget the fuss of trying to narrow down one gift for everyone. Our custom digital solutions allow you to offer a wide selection of curated gift options, so everyone can get something they want. Gifts ship direct to the shopper with a letter from you and inside custom packaging for even more convenience.",
             "link": "",
@@ -98,106 +189,49 @@
         "height": 650,
         "height_mobile": 450,
         "style": "arrows",
-        "autoplay": true,
+        "autoplay": false,
         "autoplay_speed": 7
-      }
-    },
-    "16632709488b4c34e4": {
-      "type": "advanced-content",
-      "disabled": true,
-      "blocks": {
-        "16632709483619f8f2-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/625826ae6bb9d3605a0d0485_Clean_and_Cool.png",
-            "link": "",
-            "width": "50%",
-            "alignment": "top-middle"
-          }
-        },
-        "16632709483619f8f2-1": {
-          "type": "liquid",
-          "settings": {
-            "code": "<h1>We'll bring the party to you!<\/h1><p>Remote employee engagements, virtual parties and events, rolling fulfillments, and more. We create custom developed digital solutions while still allowing that hyper personalized experience. Gifts ship direct to the shopper with a letter from you and inside custom packaging.<\/p>",
-            "width": "50%",
-            "alignment": "top-middle"
-          }
-        }
-      },
-      "block_order": [
-        "16632709483619f8f2-0",
-        "16632709483619f8f2-1"
-      ],
-      "settings": {
-        "full_width": false,
-        "space_around": false
-      }
-    },
-    "166326421499eb30be": {
-      "type": "text-and-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/received_2303837406582245.jpg",
-        "image2": "shopify:\/\/shop_images\/received_485463582105580.jpg",
-        "image_width": 700,
-        "subtitle": "",
-        "title": "We’ll bring the party to you!",
-        "text": "<p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "layout": "right",
-        "color_scheme": "none",
-        "divider": false
       }
     },
     "16632642368be638ff": {
       "type": "slideshow-image",
       "disabled": true,
       "blocks": {
-        "16632642366d658dca-1": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify:\/\/shop_images\/received_1206592302879864.jpg"
-          }
-        },
-        "8f0de3a5-113f-4a8a-a1b2-28b02980dd22": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify:\/\/shop_images\/received_536332486957379.jpg"
-          }
-        },
         "16632642366d658dca-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/Scope.jpg"
+            "image": "shopify:\/\/shop_images\/3.png"
           }
         },
         "77245a80-e338-43e0-b1a7-b30e37f953a0": {
           "type": "image",
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/20936_1546894717338.jpg"
+            "image": "shopify:\/\/shop_images\/2.png"
           }
         },
         "4c282b6d-944e-49ab-9d1b-1d8d06907197": {
           "type": "image",
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg"
+            "image": "shopify:\/\/shop_images\/1_a108bd0a-3e6b-42c2-acc7-7adcd99bf9c9.png"
+          }
+        },
+        "f42b91b0-f954-4b9c-b810-62758537b9a4": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify:\/\/shop_images\/BABB_-_virtual_gifting.png"
           }
         }
       },
       "block_order": [
-        "16632642366d658dca-1",
-        "8f0de3a5-113f-4a8a-a1b2-28b02980dd22",
         "16632642366d658dca-0",
         "77245a80-e338-43e0-b1a7-b30e37f953a0",
-        "4c282b6d-944e-49ab-9d1b-1d8d06907197"
+        "4c282b6d-944e-49ab-9d1b-1d8d06907197",
+        "f42b91b0-f954-4b9c-b810-62758537b9a4"
       ],
       "settings": {
         "full_width": true,
@@ -206,32 +240,96 @@
         "autoplay_speed": 7
       }
     },
-    "16632709302105cf2f": {
-      "type": "background-image-text",
-      "disabled": true,
+    "1663964749a48e34db": {
+      "type": "rich-text",
+      "blocks": {
+        "1663964749927aa8f5-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Experience the hype yourself. Check out one of our virtual gifting experiences below."
+          }
+        }
+      },
+      "block_order": [
+        "1663964749927aa8f5-0"
+      ],
       "settings": {
-        "subtitle": "",
-        "title": "Large image with text box",
-        "text": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.<\/p>",
-        "button_label": "",
-        "button_link": "",
-        "image": "shopify:\/\/shop_images\/received_536332486957379.jpg",
-        "focal_point": "center",
-        "layout": "left",
-        "height": 550,
-        "parallax": true,
-        "parallax_direction": "top"
+        "align_text": "center",
+        "narrow_column": false,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "16637971989c65e819": {
+      "type": "logo-list",
+      "blocks": {
+        "1663797198220e2d4b-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_3858a535-b0f7-4270-8c26-de2e06fa41d4.png",
+            "link": "https:\/\/drhortontopgungifting.com\/"
+          }
+        },
+        "1663797198220e2d4b-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_b38bc792-95f8-4294-890b-a6e58ee9da05.png",
+            "link": "https:\/\/lakingsgifting.com\/"
+          }
+        },
+        "da6aacfe-0ad9-41fb-be86-4f4db754d262": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_8fa67051-626d-4701-9403-1118220e9098.png",
+            "link": "https:\/\/dallascowboysitgiftsuite.myshopify.com\/"
+          }
+        },
+        "1663797198220e2d4b-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_9550ad8e-de17-4a95-9884-a0ebb5f8f302.png",
+            "link": "https:\/\/accgifting.myshopify.com\/"
+          }
+        },
+        "1663797198220e2d4b-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_291f441c-baff-4b7f-9af1-68491c3412b5.png",
+            "link": "https:\/\/fritolayfinancegifting.myshopify.com\/"
+          }
+        },
+        "97704e0a-12ce-4aa3-b0d2-7b321fdeffec": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_virtual_gifting_logos.png",
+            "link": "https:\/\/friscobowlgifting.myshopify.com\/"
+          }
+        }
+      },
+      "block_order": [
+        "1663797198220e2d4b-0",
+        "1663797198220e2d4b-1",
+        "da6aacfe-0ad9-41fb-be86-4f4db754d262",
+        "1663797198220e2d4b-3",
+        "1663797198220e2d4b-2",
+        "97704e0a-12ce-4aa3-b0d2-7b321fdeffec"
+      ],
+      "settings": {
+        "title": "",
+        "divider": false
       }
     }
   },
   "order": [
     "main",
     "166327060625c4392e",
+    "6bdc6bc1-2d53-4744-84fe-4fa37d89a694",
+    "16637962095f40e42d",
+    "16637902366cdcaef3",
     "166328124549047c73",
     "1663281850f49f8de1",
-    "16632709488b4c34e4",
-    "166326421499eb30be",
     "16632642368be638ff",
-    "16632709302105cf2f"
+    "1663964749a48e34db",
+    "16637971989c65e819"
   ]
 }

@@ -2,15 +2,15 @@
   "current": {
     "color_body_bg": "#ffffff",
     "color_body_text": "#000000",
-    "color_price": "#1c1d1d",
+    "color_price": "#000000",
     "color_savings_text": "#33cccc",
     "color_borders": "#f5f5f5",
-    "color_button": "#111111",
+    "color_button": "#000000",
     "color_button_text": "#ffffff",
     "color_sale_tag": "#33cccc",
     "color_cart_dot": "#33cccc",
     "color_small_image_bg": "#f1f1f1",
-    "color_large_image_bg": "#0f0f0f",
+    "color_large_image_bg": "#000000",
     "color_header": "#000000",
     "color_header_text": "#ffffff",
     "color_announcement": "#000000",
@@ -58,10 +58,16 @@
     "collection_grid_shape": "circle",
     "collection_grid_image": "collection",
     "collection_grid_image_margin": 0,
-    "cart_type": "dropdown",
+    "cart_type": "page",
     "cart_additional_buttons": false,
-    "cart_notes_enable": false,
+    "cart_notes_enable": true,
     "cart_terms_conditions_enable": false,
+    "cart_terms_conditions_page": "terms-and-conditions",
+    "social_facebook_link": "https:\/\/www.facebook.com\/birdiebox",
+    "social_twitter_link": "https:\/\/twitter.com\/birdiebox",
+    "social_instagram_link": "https:\/\/www.instagram.com\/birdiebox",
+    "social_tiktok_link": "https:\/\/www.tiktok.com\/@birdieboxgifting",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/birdiebox",
     "search_type": "product,page",
     "show_breadcrumbs": true,
     "show_breadcrumbs_collection_link": true,
@@ -102,8 +108,8 @@
           "ece08fc2-aeba-4f01-bae2-a7807c172a06": {
             "type": "logo",
             "settings": {
-              "logo": "shopify:\/\/shop_images\/BIRDIEBOX-New-Site-Logo-2022-White.png",
-              "desktop_logo_width": 200,
+              "logo": "shopify:\/\/shop_images\/babb_-_bb_logo.png",
+              "desktop_logo_width": 160,
               "mobile_logo_width": 140
             }
           }
@@ -140,14 +146,14 @@
           "disable_for_account_holders": true,
           "popup_seconds": 5,
           "popup_days": 30,
-          "popup_title": "Save 10% off your first purchase",
-          "popup_text": "<p>Sign up today and we&#x27;ll send you a 10% discount code towards your first purchase.<\/p>",
+          "popup_title": "Save 10% off this Black Friday!",
+          "popup_text": "<p>Use code <strong>BIRDIEBOX10 <\/strong>for 10% off your order of $2,500 or more on select items!<\/p>",
           "image_position": "left",
           "color_scheme": "3",
           "show_social_icons": false,
-          "enable_newsletter": true,
-          "button_label": "Optional button",
-          "button_link": ""
+          "enable_newsletter": false,
+          "button_label": "Shop Now",
+          "button_link": "shopify:\/\/collections\/discount-eligible"
         }
       },
       "collection-header": {
@@ -221,6 +227,14 @@
       "toolbar": {
         "type": "toolbar",
         "blocks": {
+          "cff431d4-9a3a-4622-a731-bd2d4c67a45c": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "richtext": "<p><a href=\"\/collections\/discount-eligible\" target=\"_blank\" title=\"Discount Eligible\">Use code BIRDIEBOX10 to recieve 10% off your order of $2500 or more on select items!<\/a><\/p>",
+              "richtext_mobile": "<p><a href=\"\/collections\/discount-eligible\" target=\"_blank\" title=\"Discount Eligible\">Use code BIRDIEBOX10 to recieve 10% off your order of $2500 or more on select items!<\/a><\/p>"
+            }
+          },
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae": {
             "type": "announcement",
             "settings": {
@@ -228,25 +242,25 @@
               "richtext_mobile": "<p><a href=\"\/collections\/yeti\" title=\"YETI\">YETI drinkware now available in all colors & styles!<\/a><\/p>"
             }
           },
-          "cff431d4-9a3a-4622-a731-bd2d4c67a45c": {
+          "8f6f3821-27e7-46db-9a98-921ea9075827": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "richtext": "",
+              "richtext": "<p>FREE SHIPPING ON ORDERS OVER $1000 USING CODE <em><strong>SHIPSHIPHOORAY<\/strong><\/em><\/p>",
               "richtext_mobile": ""
             }
           }
         },
         "block_order": [
+          "cff431d4-9a3a-4622-a731-bd2d4c67a45c",
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae",
-          "cff431d4-9a3a-4622-a731-bd2d4c67a45c"
+          "8f6f3821-27e7-46db-9a98-921ea9075827"
         ],
         "settings": {
           "announcement_center": true,
           "toolbar_social": false,
           "show_locale_selector": true,
-          "show_currency_selector": true,
-          "show_currency_flags": true
+          "show_currency_selector": false,
+          "show_currency_flags": false
         }
       },
       "footer": {
@@ -264,7 +278,7 @@
             "type": "contact",
             "settings": {
               "phone": "469.294.2500‬",
-              "contact": "",
+              "contact": "book-a-meeting",
               "chat": "",
               "enable_social": true
             }
@@ -284,9 +298,12 @@
           "fe6a67a0-686e-435b-a946-f28802053c97",
           "c296bc3e-1d7f-4750-b993-050176521596"
         ],
+        "custom_css": [
+          "a:hover {\/* Color goes here *\/ color: #18c9c9 !important;}"
+        ],
         "settings": {
-          "show_newsletter": false,
-          "newsletter_richtext": "",
+          "show_newsletter": true,
+          "newsletter_richtext": "<p>Join the Nest to recieve insights<br\/>new trends, hot items, and  more<\/p>",
           "footer_main_menu": false,
           "show_copyright": true,
           "copyright_text": "",
@@ -315,6 +332,11 @@
     },
     "content_for_index": [],
     "blocks": {
+      "1692329972272007824": {
+        "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_main\/7411210d-7b32-4c09-9455-e129e3be4729",
+        "disabled": false,
+        "settings": {}
+      },
       "10249797228608187657": {
         "type": "shopify:\/\/apps\/collection-filter-search-usf\/blocks\/core\/45de52d0-b602-4c6e-aa3b-61524a251869",
         "disabled": false,
@@ -322,6 +344,33 @@
       },
       "728624156632579923": {
         "type": "shopify:\/\/apps\/imercium-product-tag-image\/blocks\/app-embed\/43ae916d-59e1-4233-a436-aba25666e91e",
+        "disabled": false,
+        "settings": {}
+      },
+      "14710812113501315912": {
+        "type": "shopify:\/\/apps\/limit-quantity-purchase\/blocks\/app-embed\/143c1e59-4c01-4de6-ad3e-90b86ada592d",
+        "disabled": false,
+        "settings": {}
+      },
+      "18209738915288330680": {
+        "type": "shopify:\/\/apps\/wholesale-all-in-one\/blocks\/wholesale-all-in-one\/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
+        "disabled": false,
+        "settings": {
+          "wsaio_app_access_token": "expanse_wsaiouvh6qz_PG200",
+          "wsaio_main_js_file": "",
+          "wsaio_main_liquid_file": "",
+          "wsaio_modules_liquid_file": "",
+          "wsaio_addons_liquid_file": "{% render 'MOQ' %}",
+          "wsaio_custom_css_file": ""
+        }
+      },
+      "534977871531306417": {
+        "type": "shopify:\/\/apps\/tnc-terms-and-conditions-cbox\/blocks\/app-embed\/2b45c8fb-5ee2-4392-8a72-b663da1d38ad",
+        "disabled": false,
+        "settings": {}
+      },
+      "18228966181090706294": {
+        "type": "shopify:\/\/apps\/upsell-cross-sell-selleasy\/blocks\/app-embed\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
         "disabled": false,
         "settings": {}
       }

@@ -1,0 +1,190 @@
+<script id="bss-bcp-store-data" type="application/json">
+{
+  "shop": {
+    "domain": "{{ shop.domain }}",
+    "permanent_domain": "{{ shop.permanent_domain }}",
+    "url": "{{ shop.url }}",
+    "secure_url": "{{ shop.secure_url }}",
+    "money_format": {{ shop.money_format | json }},
+    "currency": {{ shop.currency | json }}
+  },
+  "customer": {
+    "id": {{ customer.id | json }},
+    "tags": {{ customer.tags | json }}
+  },
+  "template": "{{ template | split: "." | first }}",
+  "product": {{ product | json }}
+}
+</script>
+<style id="bss-bcp-header-style">
+    /* --- R4Q style --- */
+    .bss-bcp-add-to-quote-btn {
+        height: 44px;
+        width: 100%;
+        margin: 5px 0px 5px 0px;
+        cursor: pointer;
+        border: 1px solid #424141;
+        border: 1px solid #424141;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+    }
+
+    .bss-quote-modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .bss-quote-modal-content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        min-height: 150px;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 450px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12),
+        0 2px 2px rgba(0, 0, 0, 0.12),
+        0 4px 4px rgba(0, 0, 0, 0.12),
+        0 8px 8px rgba(0, 0, 0, 0.12),
+        0 16px 16px rgba(0, 0, 0, 0.12);
+        border-radius: 5px;
+        top: 45%;
+    }
+
+    #bss-quote-modal-text, .bss-quote-modal-text {
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .bss-quote-modal-close {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .bss-quote-modal-close:hover,
+    .bss-quote-modal-close:focus {
+        color: #b60808;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #bss-quote-continue-shopping, #bss-quote-view-quote-cart {
+        display: block;
+        background: #fff;
+        border: 2px solid #000;
+        color: #000;
+        font-size: 12px;
+        padding: 6px 5px;
+        width: 45%;
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    #bss-quote-continue-shopping {
+        float: left;
+    }
+
+    #bss-quote-view-quote-cart {
+        float: right;
+    }
+
+    #bss-quote-continue-shopping:hover, #bss-quote-view-quote-cart:hover {
+        color: #ffffff;
+        background: #000000;
+        transition: all .3s ease-in-out;
+    }
+
+    .bss-quote-continue-shopping, .bss-quote-view-quote-cart {
+        display: block;
+        background: #fff;
+        border: 2px solid #000;
+        color: #000;
+        font-size: 12px;
+        padding: 6px 5px;
+        width: 45%;
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .bss-quote-continue-shopping {
+        float: left;
+    }
+
+    .bss-quote-view-quote-cart {
+        float: right;
+    }
+
+    .bss-quote-continue-shopping:hover, .bss-quote-view-quote-cart:hover {
+        color: #ffffff;
+        background: #000000;
+        transition: all .3s ease-in-out;
+    }
+
+    .bss-quote-cart-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background: #d1dde3;
+        position: fixed;
+        right: 30px;
+        border-radius: 34px 8px 34px 34px;
+        bottom: 30px;
+        box-shadow: 0 5px 4px 0 rgb(0 0 0 / 26%);
+        z-index: 1000;
+    }
+    .bss-bcp-quote-hide-add-to-cart {
+        display: none !important;
+    }
+    .bss-bcp-quote-hide-price {
+        display: none !important;
+    }
+    .bss-bcp-quote-hide-buy-it-now {
+        display: none !important;
+    }
+
+    @media only screen and (min-width: 750px) {
+        .page-container {
+            -ms-transform: initial !important;
+            -webkit-transform: initial !important;
+            transform: initial !important;
+        }
+    }
+    /* End R4Q style */
+</style>
+<script id="bss-bcp-config-data">
+			if (typeof BSS_BCP == 'undefined') {
+			  var BSS_BCP = {};
+			}
+			BSS_BCP.storeId = 1900;
+			BSS_BCP.isEnableQuote = false;
+			BSS_BCP.quoteRule = null;
+			BSS_BCP.quoteConfig = null;
+			BSS_BCP.quoteTranslations = null;
+			</script>

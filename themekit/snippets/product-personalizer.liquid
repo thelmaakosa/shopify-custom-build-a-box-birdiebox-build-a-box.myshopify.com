@@ -1,0 +1,61 @@
+{% if product %}
+{% else %}
+{%- assign a_p = true -%}
+  {% for setting in section.settings -%}
+    {%- assign l_product = section.settings[setting] -%}
+    {% if l_product.variants and a_p %}
+      {%- assign product = l_product  -%}
+    {%- assign a_p = false -%}
+    {% endif %}
+  {%- endfor -%}
+{% endif %}
+
+{% assign pplr_product = product %}  
+{% assign pplr_product_handle = product.handle %} 
+{% if pplr_product ==  pplr_product_handle %}                           
+{% assign pplr_product = all_products[pplr_product_handle] %}
+{% endif %} 
+{% if pplr_product.metafields.customify['cstmfy_ref'] %}<script type='text/javascript'>window.location = "{{ pplr_product.metafields.customify['cstmfy_ref'] }}";</script>{% endif %}
+{% if pplr_product.metafields.customify['cstmfy_req'] == '1' %}
+<style>.pplr_add_to_cart{display:none !important;}</style><div id="pplr-{{ pplr_product.id }}" data-id="{{ pplr_product.id }}" class="product-personalizer" data-handle="{{pplr_product.handle}}"></div>
+<script type='text/javascript'>
+  window.pplr_variant_product = [];
+  {% assign variant_product  = shop.metafields.pplr['variant_product']  %}
+  {% for v_p in variant_product %}
+  {% assign v_p_size = v_p | size %}
+  {% if v_p_size == 2 %} 
+  {% assign p_handle = v_p.first %}
+  {% assign products_obj = all_products[p_handle] %}
+  {% for variant in products_obj.variants %}
+  window.pplr_variant_product["{{ variant.id }}"]={"id":"{{ variant.id }}","product_id":"{{ product.id }}","price":"{{ variant.price }}","inventory_quantity":"{{ variant.inventory_quantity }}","inventory_policy":"{{ variant.inventory_policy }}","inventory_management":"{{ variant.inventory_management }}"};
+  {% endfor %}
+  {% else %}
+  {% assign product_id = v_p | times: 1 %}
+  {% assign products_obj = collections.all.products | where: 'id', product_id %}
+  {% for variant in products_obj[0].variants %}
+  window.pplr_variant_product["{{ variant.id }}"]={"id":"{{ variant.id }}","product_id":"{{ product.id }}","price":"{{ variant.price }}","inventory_quantity":"{{ variant.inventory_quantity }}","inventory_policy":"{{ variant.inventory_policy }}","inventory_management":"{{ variant.inventory_management }}"};
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+  if (typeof product_personalizer == 'undefined') {
+  var product_personalizer = {{pplr_product.metafields.customify | json}};
+  }
+  if (typeof pplr_product == 'undefined') {
+    var pplr_product = {{ pplr_product | json }};
+  }
+  if (typeof pplr_shop_currency == 'undefined') {
+  var pplr_shop_currency = {{ shop.currency | json }};
+  }
+  if (typeof pplr_enabled_currencies_size == 'undefined') {
+    var pplr_enabled_currencies_size = {{ shop.enabled_currencies | size }};
+  }
+  if (typeof pplr_money_formate == 'undefined') {
+  var pplr_money_formate = {{ shop.money_format | json }};
+  }
+  if (typeof pplr_script_loaded == "undefined") {
+    var pplr_script_loaded = true;
+  }
+</script>
+<script src="https://cdn-zeptoapps.com/product-personalizer/canvas-script.php?shop={{ shop.permanent_domain }}&prid={{ pplr_product.id }}&kkr=tomato" defer="defer"></script>
+
+{% endif %}

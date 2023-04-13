@@ -1,0 +1,108 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": true,
+        "collection_image_enable": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "1664326172c9f43d5e": {
+      "type": "featured-collections",
+      "blocks": {
+        "1664326172622db394-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "California"
+          }
+        },
+        "1664326172622db394-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Florida"
+          }
+        },
+        "1664326172622db394-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Michigan"
+          }
+        },
+        "1664326172622db394-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Minnesota"
+          }
+        },
+        "1664326172622db394-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Texas"
+          }
+        },
+        "1664326172622db394-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "1664326172622db394-4",
+        "1664326172622db394-3",
+        "1664326172622db394-1",
+        "1664326172622db394-2",
+        "1664326172622db394-0",
+        "1664326172622db394-5"
+      ],
+      "settings": {
+        "title": "Select Your State",
+        "divider": false
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "collection_description": {
+          "type": "collection_description",
+          "disabled": true,
+          "settings": {}
+        },
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "grid_style": "small"
+          }
+        }
+      },
+      "block_order": [
+        "collection_description",
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "collapse_filters": true,
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-header",
+    "1664326172c9f43d5e",
+    "main-collection",
+    "recently-viewed"
+  ]
+}

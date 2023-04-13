@@ -1,0 +1,76 @@
+<!-- Add CK JavaScript file -->
+<script src="{{ 'jquery-3.6.4.min.js' | asset_url }}"></script>
+{% if cart.item_count > 0 %}
+  <!-- Add CK CSS file -->
+  <link rel="stylesheet" href="{{ 'magnific-popup.css' | asset_url }}" />
+  <link rel="stylesheet" href="{{ 'ck-custom.css' | asset_url }}" />
+  
+
+  
+  <div id="birdieBox-popup" class="white-popup mfp-hide">
+      <div id="ck-loader"></div>
+      <p>To better assist with your order, we need to collect some extra information.</p>
+      <div class="birdieBox-form">
+          <form action="" id="birdieBox-application">
+              <div class="form-row">
+                  <label for="order-assistant">Who assisted you with your order?</label>
+                  <select name="order_assistant" id="order-assistant">
+                    <option value="None">None</option>
+                    <option value="Jake Arling">Jake Arling</option>
+                    <option value="Tara Bell">Tara Bell</option>
+                    <option value="Diego Bolivar">Diego Bolivar</option>
+                    <option value="Pat DePirro">Pat DePirro</option>
+                    <option value="Maddie Douglas">Maddie Douglas</option>
+                    <option value="Chrissy Dunlap">Chrissy Dunlap</option>
+                    <option value="Ali Harman">Ali Harman</option>
+                    <option value="Stephanie Helman">Stephanie Helman</option>
+                    <option value="Kathy Kreft">Kathy Kreft</option>
+                    <option value="Kristin Miller">Kristin Miller</option>
+                    <option value="Brandon Oshel">Brandon Oshel</option>
+                    <option value="Michael Pasvar">Michael Pasvar</option>
+                    <option value="Christa Selner">Christa Selner</option>
+                    <option value="Mark Williams">Mark Williams</option>
+                    <option value="Other">Other</option>
+                  </select>  
+                    
+              </div>
+              <div class="form-row">
+                  <label for="delivery-date">Preferred Delivery Date: </label>
+                  <input type="date" id="delivery-date" name="delivery_date" required>
+                 <p> <center>Please note the standard turnaround time is 2 weeks from artwork approval. Dates selected prior to the 2 week window may incur rush shipping fees.</center></p>
+              </div>
+            
+              <div class="form-row-submit">
+                <input type="submit" name="submit" value="Continue to checkout">
+              </div>
+          </form>
+      </div>
+      <div class="birdieBox-footer"><span></span></div>
+  </div>
+  {% if cart.attributes.delivery_date and cart.attributes.order_assistant %}
+    <div class="birdieBox-edit-application-text">
+      <button class="birdieBox-edit-application btn btn--secondary" style="font-family: 'Lato';">Change my preferred delivery date</button>
+    </div>
+  {% endif %}
+  <script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}"></script>
+  <script src="{{ 'ck-custom.js' | asset_url }}"></script>
+{% else %}
+  {% if cart.attributes.delivery_date and cart.attributes.order_assistant %}
+    <script>
+      
+        $.ajax({
+          type: 'POST',
+          url: '/cart/update.js',
+          data: {
+            attributes: {
+              order_assistant: '',
+              delivery_date: ''
+            }},
+          dataType: 'json'
+        });
+        
+    </script>
+  {% endif %}
+{% endif %}
+
+

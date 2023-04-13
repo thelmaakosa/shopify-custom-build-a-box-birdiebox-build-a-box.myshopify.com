@@ -43,8 +43,129 @@
         "divider": false
       }
     },
+    "16637882993526f425": {
+      "type": "hero-video",
+      "settings": {
+        "full_width": true,
+        "title": "We'll bring the party to you!",
+        "title_size": 60,
+        "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+        "link_text": "",
+        "link": "",
+        "color_accent": "#ffffff",
+        "text_align": "vertical-center horizontal-right",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=5ShhITqU2J8",
+        "overlay_opacity": 14,
+        "height": 650,
+        "height_mobile": 300
+      }
+    },
+    "1663788307ea0a0919": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "a0f96426-5fef-468d-93ed-89fd7bc5de26": {
+          "type": "liquid",
+          "settings": {
+            "code": "<div style=\"position: relative; width: 100%; height: 0; padding-top: 100.0000%;\n padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;\n border-radius: 0px; will-change: transform;\">\n  <iframe loading=\"lazy\" style=\"position: absolute; width: 50%; height: 50%; top: 0; left: 0; border: none; padding: 0;margin: 0;\"\n    src=\"https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFM4ot7mJ0&#x2F;watch?embed\" >\n  <\/iframe>\n<\/div>\n<a href=\"https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFM4ot7mJ0&#x2F;watch?utm_content=DAFM4ot7mJ0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link\" target=\"_blank\" rel=\"noopener\">",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "1663788307037e9997-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<h2>We'll bring the party to you!<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML, Liquid, or scripts.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "a0f96426-5fef-468d-93ed-89fd7bc5de26",
+        "1663788307037e9997-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
+    "1663779716236de09f": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "1663779716ccdafade-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>We'll bring the party to you!<\/p>",
+            "title_size": 70,
+            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "link": "",
+            "link_text": "Learn More",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "1663779716ccdafade-1": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>We'll bring the party to you!<\/p>",
+            "title_size": 70,
+            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "link": "",
+            "link_text": "Learn More",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/received_1206592302879864.jpg",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "792a57e4-3555-42d5-9efc-9c177dd7c97f": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>We'll bring the party to you!<\/p>",
+            "title_size": 70,
+            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "link": "",
+            "link_text": "Learn More",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1663779716ccdafade-0",
+        "1663779716ccdafade-1",
+        "792a57e4-3555-42d5-9efc-9c177dd7c97f"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": -50,
+        "mobile_size": -20,
+        "style": "minimal",
+        "autoplay": true,
+        "autoplay_speed": 10
+      }
+    },
     "16632805330b2dfc24": {
       "type": "slideshow-split",
+      "disabled": true,
       "blocks": {
         "1663280533109cec79-0": {
           "type": "slide",
@@ -58,7 +179,45 @@
             "link_2": "",
             "link_text_2": "",
             "text_position": "right",
-            "image": "shopify:\/\/shop_images\/received_2303837406582245.jpg",
+            "image": "shopify:\/\/shop_images\/1.png",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "0a587f66-25b8-4419-b6db-43419d8217dd": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "We'll bring the party to you!",
+            "title_size": 60,
+            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "d42afa8a-e6b0-4173-9d1c-f333f1142845": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "We'll bring the party to you!",
+            "title_size": 60,
+            "subheading": "A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/received_1206592302879864.jpg",
             "indent_image": false,
             "focal_point": "center center",
             "color_scheme": "none"
@@ -66,7 +225,9 @@
         }
       },
       "block_order": [
-        "1663280533109cec79-0"
+        "1663280533109cec79-0",
+        "0a587f66-25b8-4419-b6db-43419d8217dd",
+        "d42afa8a-e6b0-4173-9d1c-f333f1142845"
       ],
       "settings": {
         "full_width": true,
@@ -74,7 +235,7 @@
         "height_mobile": 450,
         "style": "arrows",
         "autoplay": false,
-        "autoplay_speed": 7
+        "autoplay_speed": 10
       }
     },
     "16632806665a0bc23a": {
@@ -111,85 +272,28 @@
         "autoplay_speed": 7
       }
     },
-    "16632709488b4c34e4": {
-      "type": "advanced-content",
-      "disabled": true,
-      "blocks": {
-        "16632709483619f8f2-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/1.png",
-            "link": "",
-            "width": "50%",
-            "alignment": "center"
-          }
-        },
-        "16632709483619f8f2-1": {
-          "type": "liquid",
-          "settings": {
-            "code": "<h2>We'll bring the party to you!<\/h2><p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>",
-            "width": "50%",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "16632709483619f8f2-0",
-        "16632709483619f8f2-1"
-      ],
-      "settings": {
-        "full_width": false,
-        "space_around": false
-      }
-    },
-    "166326421499eb30be": {
-      "type": "text-and-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/1.png",
-        "image_width": 700,
-        "subtitle": "",
-        "title": "We’ll bring the party to you!",
-        "text": "<p>A BirdieBox gift suite is unlike any other; trending and luxury products your guests can test on the spot, options to personalize their gift, and easy online checkout. Plus, we’ll manage the customer service afterwards.<\/p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "layout": "right",
-        "color_scheme": "none",
-        "divider": false
-      }
-    },
     "16632642368be638ff": {
       "type": "slideshow-image",
       "blocks": {
-        "16632642366d658dca-1": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify:\/\/shop_images\/received_1206592302879864.jpg"
-          }
-        },
         "4c282b6d-944e-49ab-9d1b-1d8d06907197": {
           "type": "image",
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/received_461789368075429.jpg"
+            "image": "shopify:\/\/shop_images\/PGA.jpg"
           }
         },
         "8f0de3a5-113f-4a8a-a1b2-28b02980dd22": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/received_536332486957379.jpg"
+            "image": "shopify:\/\/shop_images\/IMG_1928.png"
           }
         },
-        "77245a80-e338-43e0-b1a7-b30e37f953a0": {
+        "66ef2860-d928-4406-adc7-0b72274eb4d0": {
           "type": "image",
           "settings": {
             "link": "",
-            "image": "shopify:\/\/shop_images\/20936_1546894717338.jpg"
+            "image": "shopify:\/\/shop_images\/IMG_6336.png"
           }
         },
         "16632642366d658dca-0": {
@@ -198,48 +302,38 @@
             "link": "",
             "image": "shopify:\/\/shop_images\/Scope.jpg"
           }
+        },
+        "16632642366d658dca-1": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify:\/\/shop_images\/IMG_8110.png"
+          }
         }
       },
       "block_order": [
-        "16632642366d658dca-1",
         "4c282b6d-944e-49ab-9d1b-1d8d06907197",
         "8f0de3a5-113f-4a8a-a1b2-28b02980dd22",
-        "77245a80-e338-43e0-b1a7-b30e37f953a0",
-        "16632642366d658dca-0"
+        "66ef2860-d928-4406-adc7-0b72274eb4d0",
+        "16632642366d658dca-0",
+        "16632642366d658dca-1"
       ],
       "settings": {
         "full_width": true,
         "style": "arrows",
         "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "16632709302105cf2f": {
-      "type": "background-image-text",
-      "disabled": true,
-      "settings": {
-        "subtitle": "",
-        "title": "Large image with text box",
-        "text": "<p>Pair large text with a full-width image to draw attention to an important detail of your brand or product line.<\/p>",
-        "button_label": "",
-        "button_link": "",
-        "image": "shopify:\/\/shop_images\/received_536332486957379.jpg",
-        "focal_point": "center",
-        "layout": "left",
-        "height": 550,
-        "parallax": true,
-        "parallax_direction": "top"
+        "autoplay_speed": 10
       }
     }
   },
   "order": [
     "main",
     "166327060625c4392e",
+    "16637882993526f425",
+    "1663788307ea0a0919",
+    "1663779716236de09f",
     "16632805330b2dfc24",
     "16632806665a0bc23a",
-    "16632709488b4c34e4",
-    "166326421499eb30be",
-    "16632642368be638ff",
-    "16632709302105cf2f"
+    "16632642368be638ff"
   ]
 }

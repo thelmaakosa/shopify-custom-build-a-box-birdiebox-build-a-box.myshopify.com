@@ -123,7 +123,7 @@
     "general": {
       "title": "Cart",
       "remove": "Remove",
-      "note": "Add order note",
+      "note": "Add Custom Kitting Instructions",
       "subtotal": "Subtotal",
       "discounts": "Discounts",
       "savings_html": "You save {{ saved_amount }}",
@@ -135,9 +135,9 @@
       "close_cart": "Close cart",
       "reduce_quantity": "Reduce item quantity by one",
       "increase_quantity": "Increase item quantity by one",
-      "terms": "I agree with the terms and conditions",
-      "terms_html": "I agree with the <a href='{{ url }}' target='_blank'>terms and conditions<\/a>",
-      "terms_confirm": "You must agree with the terms and conditions of sales to check out",
+      "terms": "I acknowledge my order will not be processed until mockups are approved for personalized items.",
+      "terms_html": "I acknowledge my order will not be processed until mockups are approved for personalized items.",
+      "terms_confirm": "You must agree to the terms and conditions to check out.",
       "recommended_title": "Goes great with"
     },
     "label": {
@@ -305,7 +305,7 @@
       "accepted_payments": "We accept",
       "contact_title": "Get in touch",
       "chat_link": "Live chat",
-      "email_link": "Email us",
+      "email_link": "Book a Meeting",
       "social_title": "Follow us",
       "social_platform": "{{ name }} on {{ platform }}"
     }
@@ -334,7 +334,7 @@
         "one": "Low stock - {{ count }} item left",
         "other": "Low stock - {{ count }} items left"
       },
-      "sold_out": "Sold Out",
+      "sold_out": "Coming Soon",
       "unavailable": "Unavailable",
       "quantity": "Quantity",
       "add_to_cart": "Add to cart",
@@ -377,11 +377,19 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "shipping_method_notice": "Please note you may be invoiced additional shipping charges if you are purchasing more than one gift."
+        "shipping_method_notice": "Please select your shipping method below."
       },
       "contact": {
-        "email_placeholder": "Your email address",
-        "email_label": "Your email address"
+        "email_placeholder": "Order Contact Email Address",
+        "email_label": "Order Contact Email Address"
+      },
+      "order_summary": {
+        "gift_card_placeholder": "Account code",
+        "gift_card_title": "Account code",
+        "gift_card_label": "Account code"
+      },
+      "general": {
+        "pay_now_button_label": "Place order"
       }
     }
   }

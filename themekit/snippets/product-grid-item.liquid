@@ -246,13 +246,83 @@
             {%- endfor -%}
           {%- endif -%}
 
-          <div class="grid-product__title">{{ product.title }}</div>
+          <div class="grid-product__title ">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
             <div class="grid-product__vendor">{{ product.vendor }}</div>
           {%- endif -%}
         </div>
         <div class="grid-item__meta-secondary">
-          <div class="grid-product__price">
+
+
+           {% assign login_feature_enable = true %}
+                    {% for collection in product.collections %}
+              
+                    {% if  collection.handle contains "nest-picks"%}
+                      
+                  {{ collection.handle }}
+                      {% assign login_feature_enable = false %}
+                    {% endif %}
+                    {% endfor %}
+
+
+              {% if login_feature_enable %}
+              
+                  {% if customer %}
+                        <div class="grid-product__price ">
+                        {%- if product.price_varies -%}
+                        <span class="grid-product__price--current">
+                        {%- render 'price-varies', price: product.price_min -%}
+                        </span>
+                        {%- else -%}
+                        {%- if on_sale -%}
+                        <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                        {%- endif -%}
+                        <span class="grid-product__price--current">               
+                        {%- render 'price' with product.price -%}
+                        </span>
+                        {%- endif -%}
+                        {%- if on_sale -%}
+                        <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                        <span class="grid-product__price--original">
+                        {%- render 'price' with product.compare_at_price -%}
+                        </span>
+                        
+                        {%- if settings.product_save_amount -%}
+                        {%- if settings.product_save_type == 'dollar' -%}
+                        {%- capture saved_amount -%}{{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}{%- endcapture -%}
+                        {%- else -%}
+                        {%- capture saved_amount -%}{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%{%- endcapture -%}
+                        {%- endif -%}
+                        <span class="grid-product__price--savings">
+                        {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                        </span>
+                        {%- endif -%}
+                        {%- endif -%}
+                        
+                        {%- assign product_variant = product.selected_or_first_available_variant -%}
+                        {%- if product_variant.unit_price_measurement -%}
+                        <div class="product__unit-price">
+                        {%- capture unit_price_base_unit -%}
+                        {%- if product_variant.unit_price_measurement -%}
+                        {%- if product_variant.unit_price_measurement.reference_value != 1 -%}
+                        {{ product_variant.unit_price_measurement.reference_value }}
+                        {%- endif -%}
+                        {{ product_variant.unit_price_measurement.reference_unit }}
+                        {%- endif -%}
+                        {%- endcapture -%}
+                        
+                        {{ product_variant.unit_price | money }}/{{ unit_price_base_unit }}
+                        </div>
+                        {%- endif -%}
+                        </div>
+                  
+                  {% else %}
+                      <a class="productss" href="/account/login"> Login To View Price</a>
+                  {% endif %}
+              
+              {% else %}
+
+          <div class="grid-product__price ">
             {%- if product.price_varies -%}
               <span class="grid-product__price--current">
                 {%- render 'price-varies', price: product.price_min -%}
@@ -261,7 +331,7 @@
               {%- if on_sale -%}
                 <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
               {%- endif -%}
-              <span class="grid-product__price--current">
+              <span class="grid-product__price--current">               
                 {%- render 'price' with product.price -%}
               </span>
             {%- endif -%}
@@ -299,6 +369,8 @@
               </div>
             {%- endif -%}
           </div>
+
+        {% endif %}
 
           {%- if settings.enable_product_reviews -%}
             <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>

@@ -1,0 +1,241 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "A One Stop Corporate Gift Solution",
+            "textarea": "Welcome to the BirdieBox Wholesale Catalog",
+            "cta_text1": "Shop Now",
+            "cta_link1": "shopify:\/\/collections\/best-selling-gift-sets-1",
+            "cta_text2": "Book a Meeting",
+            "cta_link2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
+            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-boxes-round_886eeb62-7f40-42cb-af75-2fad936e15e8.jpg",
+            "video_url": "",
+            "width": "100",
+            "height": 100,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#f1f1f1"
+          }
+        }
+      },
+      "block_order": [
+        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    },
+    "2a93c219-fa88-45e7-9566-0c62870817fb": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact us",
+        "text": "",
+        "show_phone": false,
+        "narrow_column": true,
+        "color_scheme": "1"
+      }
+    },
+    "166429489701dbbee1": {
+      "type": "text-with-icons",
+      "blocks": {
+        "166429489727bda521-0": {
+          "type": "text_block",
+          "settings": {
+            "icon": "globe",
+            "title": "Product Sourcing",
+            "text": "<p>We work with <a href=\"\/collections\/all-brands\" target=\"_blank\" title=\"All Brands\">hundreds of luxury brands<\/a> across the globe to provide you with a wide array of top trending products.<\/p>"
+          }
+        },
+        "166429489727bda521-1": {
+          "type": "text_block",
+          "settings": {
+            "icon": "gift",
+            "title": "Packaging",
+            "text": "<p>Our <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> options are like no other. Select from over 10+ box options, add custom molds and letters for an added WOW factor.<\/p>"
+          }
+        },
+        "166429489727bda521-2": {
+          "type": "text_block",
+          "settings": {
+            "icon": "charity",
+            "title": "Personalization",
+            "text": "<p>Add your client's logo or recepient's initials for an added personalized touch. Our <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">in-house personalization options<\/a> require no minimums.<\/p>"
+          }
+        },
+        "b936537d-88b5-4362-a551-dc321f41b2e3": {
+          "type": "text_block",
+          "settings": {
+            "icon": "package",
+            "title": "Kitting",
+            "text": "<p>Let us do the heavy lifting. Our team will <a href=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\" target=\"_blank\" title=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\">kit your gifts<\/a> so you can spend time elsewhere. <\/p>"
+          }
+        },
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78": {
+          "type": "text_block",
+          "settings": {
+            "icon": "truck",
+            "title": "Drop Shipping",
+            "text": "<p>Have gifts <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">shipped direcetly to your recpient's<\/a> home or office. In addtion to bulk shipping, our drop shipping option pulls the stress off of you.<\/p>"
+          }
+        },
+        "ca437a50-929a-4a52-b84d-85cd4f90e576": {
+          "type": "text_block",
+          "settings": {
+            "icon": "phone",
+            "title": "One Phone Call",
+            "text": "<p><a href=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\">Book a meeting<\/a> with our team to learn more about our services and start your order today.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "166429489727bda521-0",
+        "166429489727bda521-1",
+        "166429489727bda521-2",
+        "b936537d-88b5-4362-a551-dc321f41b2e3",
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78",
+        "ca437a50-929a-4a52-b84d-85cd4f90e576"
+      ],
+      "settings": {
+        "title": "The BirdieBox Difference",
+        "align_text": "center",
+        "desktop_columns_per_row": 3,
+        "icon_color": "#000000",
+        "button_label": "",
+        "button_link": "",
+        "divider": false
+      }
+    },
+    "166395357092ee8210": {
+      "type": "text-columns",
+      "disabled": true,
+      "blocks": {
+        "16639535701e9f9059-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/BABB_-_landing_page_images_1.png",
+            "image_width": 650,
+            "title": "Personalize YETI",
+            "text": "<p>Shop the full line of YETI drinkware and add a personalizaed touch with your client's logo or recipient's initials.<\/p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/yeti"
+          }
+        },
+        "06d7a8af-8ddb-4832-a194-edf3f7d1c542": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/4_a0f7bde6-8cd4-4074-aed4-d47b97d0a5d7.png",
+            "image_width": 650,
+            "title": "Innovative Gifts",
+            "text": "<p>No boring gifts here. The BBTEK Powerbank Journal is an innovative twist of an office staple. <\/p>",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "366a2eab-ea47-4b65-9eef-1ddbdf9bf48c": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/6_4c2bc843-5806-4512-807b-95d554a5c20d.png",
+            "image_width": 650,
+            "title": "Welcome New Hires",
+            "text": "<p>Equip new hires with a robust gift they'll actually use and custom packaging they won't forget.<\/p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/products\/new-school-executive"
+          }
+        }
+      },
+      "block_order": [
+        "16639535701e9f9059-0",
+        "06d7a8af-8ddb-4832-a194-edf3f7d1c542",
+        "366a2eab-ea47-4b65-9eef-1ddbdf9bf48c"
+      ],
+      "settings": {
+        "title": "Trending Gifts",
+        "align_text": "center",
+        "divider": false,
+        "color_scheme": "none"
+      }
+    },
+    "147f9ed1-765f-4172-a20d-927b90967b5a": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "template--15664853024923__147f9ed1-765f-4172-a20d-927b90967b5a-1664914140350d9b2b-0": {
+          "type": "advanced",
+          "disabled": true,
+          "settings": {
+            "subheading": "",
+            "heading": "Holiday Gifting Made Easy",
+            "textarea": "",
+            "cta_text1": "Shop Now",
+            "cta_link1": "shopify:\/\/collections\/holiday",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/BABB_-_landing_page.jpg",
+            "video_url": "",
+            "width": "100",
+            "height": 340,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        },
+        "bfb944a2-abca-4083-93b3-b1972dd0dedf": {
+          "type": "simple",
+          "settings": {
+            "link": "shopify:\/\/collections\/holiday",
+            "text": "Holiday Gifting Made Easy",
+            "image": "shopify:\/\/shop_images\/BABB_-_holiday_set.jpg",
+            "width": "50",
+            "height": 300
+          }
+        },
+        "176e243c-065c-4108-b92c-5fa65f76a5ce": {
+          "type": "simple",
+          "settings": {
+            "link": "shopify:\/\/collections\/packaging",
+            "text": "Custom Packaging",
+            "image": "shopify:\/\/shop_images\/BABB_-_custom_packaging.jpg",
+            "width": "50",
+            "height": 300
+          }
+        }
+      },
+      "block_order": [
+        "template--15664853024923__147f9ed1-765f-4172-a20d-927b90967b5a-1664914140350d9b2b-0",
+        "bfb944a2-abca-4083-93b3-b1972dd0dedf",
+        "176e243c-065c-4108-b92c-5fa65f76a5ce"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab",
+    "2a93c219-fa88-45e7-9566-0c62870817fb",
+    "166429489701dbbee1",
+    "166395357092ee8210",
+    "147f9ed1-765f-4172-a20d-927b90967b5a"
+  ]
+}

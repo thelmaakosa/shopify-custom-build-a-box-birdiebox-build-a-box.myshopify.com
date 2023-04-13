@@ -11,6 +11,10 @@
             "color_swatches": false
           }
         },
+        "9aa62386-f3d0-4d5f-9f22-15e80f12ae98": {
+          "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_page\/7411210d-7b32-4c09-9455-e129e3be4729",
+          "settings": {}
+        },
         "aa5da5a4-1da9-4a19-bb74-f803e12827d8": {
           "type": "quantity_selector",
           "settings": {}
@@ -40,20 +44,58 @@
             "font_weight": "normal"
           }
         },
+        "196560e6-278b-4957-8d37-a5920d4eff4f": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "7df27fd0-b849-49eb-8bc8-46532c585496": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "757a8e94-58d9-4a99-8528-3d50960d7823": {
+          "type": "text",
+          "settings": {
+            "text": "Don't see a spot to add your logo or initials? Don't worry! Any logos or initials needed will be collected after your order has been placed."
+          }
+        },
+        "e07c5595-3834-4019-a741-aecc86c1da37": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>A mockup will be provided for any personalized products for your approval after your order has been placed.<\/strong>"
+          }
+        },
+        "5246bdc7-8e76-48c2-964d-a09fa2da641c": {
+          "type": "shopify:\/\/apps\/wishlist-wishify\/blocks\/product\/e14a43b5-34c6-492d-b46f-3ad2eda08696",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "surface_pickup_enable": false
           }
+        },
+        "c009f155-02f9-4790-b8d0-45d9caa880e0": {
+          "type": "shopify:\/\/apps\/upsell-cross-sell-selleasy\/blocks\/lb-upsell-addon-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
         }
       },
       "block_order": [
         "variant_picker",
+        "9aa62386-f3d0-4d5f-9f22-15e80f12ae98",
         "aa5da5a4-1da9-4a19-bb74-f803e12827d8",
         "price",
         "9b440b57-12c2-4c4a-ba3a-2443a5354cff",
-        "buy_buttons"
+        "196560e6-278b-4957-8d37-a5920d4eff4f",
+        "7df27fd0-b849-49eb-8bc8-46532c585496",
+        "757a8e94-58d9-4a99-8528-3d50960d7823",
+        "e07c5595-3834-4019-a741-aecc86c1da37",
+        "5246bdc7-8e76-48c2-964d-a09fa2da641c",
+        "buy_buttons",
+        "c009f155-02f9-4790-b8d0-45d9caa880e0"
       ],
       "settings": {
         "sku_enable": false,
@@ -71,6 +113,7 @@
     },
     "sub": {
       "type": "product-full-width",
+      "disabled": true,
       "blocks": {
         "description": {
           "type": "description",

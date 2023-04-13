@@ -5,48 +5,47 @@
       "disabled": true,
       "settings": {}
     },
-    "rich-text": {
-      "type": "rich-text",
+    "4d739777-c8be-4938-9e44-82ed2356abe5": {
+      "type": "advanced-content",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "96548aa3-ae49-4c69-a996-13e69e4d0cb9": {
+          "type": "liquid",
           "settings": {
-            "title": "Rush Orders"
+            "code": "‎",
+            "width": "25%",
+            "alignment": "bottom-middle"
           }
         },
-        "text": {
-          "type": "text",
+        "template--15817136439451__4d739777-c8be-4938-9e44-82ed2356abe5-1679606828aad620a6-1": {
+          "type": "liquid",
           "settings": {
-            "enlarge_text": true,
-            "text": "<p>Rush orders are available for in-stock products and production-ready artwork.<\/p><p>Please fill out the form below with your budget, quantity of gifts needed, preferred delivery date, and any other notes (i.e. would like a speaker, gifts are for VIPs, would like to have a logo on everything, etc). A member of our team will reach out regarding your needs the following business day.<\/p>"
+            "code": "<iframe src=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\" name=\"FormIframe\" scrolling=\"auto\" width=\"1000px\" height=\"1000px\"><\/iframe>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "69094800-0766-41d7-a819-d7ae23c360b9": {
+          "type": "liquid",
+          "settings": {
+            "code": "‎",
+            "width": "25%",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "96548aa3-ae49-4c69-a996-13e69e4d0cb9",
+        "template--15817136439451__4d739777-c8be-4938-9e44-82ed2356abe5-1679606828aad620a6-1",
+        "69094800-0766-41d7-a819-d7ae23c360b9"
       ],
       "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "none",
-        "divider": false
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "title": "",
-        "text": "",
-        "show_phone": false,
-        "narrow_column": true,
-        "color_scheme": "none"
+        "full_width": false,
+        "space_around": true
       }
     }
   },
   "order": [
     "main",
-    "rich-text",
-    "form"
+    "4d739777-c8be-4938-9e44-82ed2356abe5"
   ]
 }

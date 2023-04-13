@@ -1,0 +1,29 @@
+{{ 'bss-file-configdata.js' | asset_url | script_tag }} {{ 'bss-file-configdata-banner.js' | asset_url | script_tag}}<script>
+                  if (typeof BSS_PL == 'undefined') {
+                      var BSS_PL = {};
+                  }
+                  var bssPlApiServer = "https://product-labels-pro.bsscommerce.com";
+                  BSS_PL.customerTags = {% if customer %}'{%for tag in customer.tags%}{{ tag }},{% endfor %}'{% else %}'null'{% endif %};
+                  BSS_PL.customerId = {% if customer %}'{{customer.id}}'{% else %}'null'{% endif %};
+                  BSS_PL.configData = configDatas;
+                  BSS_PL.configDataBanner = configDataBanners;
+                  BSS_PL.storeId = 27248;
+                  BSS_PL.currentPlan = "twenty_usd";
+                  BSS_PL.storeIdCustomOld = "10678";
+                  BSS_PL.storeIdOldWIthPriority = "12200";
+                  BSS_PL.apiServerProduction = "https://product-labels-pro.bsscommerce.com";
+                  
+                  BSS_PL.integration = {"laiReview":{"status":0,"config":[]}}
+                  </script>
+              <style>
+.homepage-slideshow .slick-slide .bss_pl_img {
+    visibility: hidden !important;
+}
+</style><script>function fixBugForStores($, BSS_PL, parent, page, htmlLabel) { let appended = false; if (window.location.pathname.includes('collections') && $(parent).hasClass('grid-item__content')) {
+  $(parent).find('.grid-product__image-wrap').prepend(htmlLabel);
+  appended = true;
+}
+if (page == 'products' && $(parent).hasClass('image-wrap')) {
+  $(parent).prepend(htmlLabel);
+  appended = true;
+} return appended;}</script>

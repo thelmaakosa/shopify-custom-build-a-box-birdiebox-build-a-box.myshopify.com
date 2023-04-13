@@ -1,0 +1,532 @@
+{% capture all_output %}
+
+{% comment %} Hide line item pricing rows {% endcomment %}
+{% if pplr == 'hide-pricing-item-row' or product-personalizer-helper == 'hide-pricing-item-row' %}
+
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split == null %}
+display:none;
+{% endif %}
+{% if item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split == null %}
+display:none;
+{% endif %}
+{% endif %}
+
+{% comment %} Add the product pricing ref and pricing product quantity {% endcomment %}
+{% if pplr == 'cart-row-data' or product-personalizer-helper == 'cart-row-data' %}
+
+{% if item.properties._pc_pricing_ref != null %}
+data-product-personalizer-pricing-ref="{{ item.properties._pc_pricing_ref }}"
+{% endif %}
+
+{% if item.properties._pplr_pricing_ref != null%}
+data-product-personalizer-pricing-ref="{{ item.properties._pplr_pricing_ref }}"
+{% endif %}
+
+
+{% if item.properties._pc_pricing_qty_split != null %}
+data-product-personalizer-pricing-qty-split="{{ item.properties._pc_pricing_qty_split }}"
+{% endif %}
+
+{% if item.properties._pplr_pricing_qty_split != null %}
+data-product-personalizer-pricing-qty-split="{{ item.properties._pplr_pricing_qty_split }}"
+{% endif %}
+
+data-line="{{ forloop.index }}" data_pplr_row= "{{ forloop.index }}"
+
+{% endif %}
+
+{% if pplr == 'line-item-properties' or  product-personalizer-helper == 'line-item-properties' or  pplr == null and product-personalizer-helper == null %}
+{% assign propertySize = item.properties | size %}
+{% if propertySize > 0 %}
+{% for p in item.properties %}
+{% assign hidden_property = p.first | first | replace: '_', true %}
+{% unless p.last == blank %}
+<span data-cart-item-property>
+{% if hidden_property == 'true' %}
+{% if p.first contains 'Option Title' %}
+{{ p.last }}
+{% else %}
+<span style="display:none;" class="product-personalizer-line-item-prop product-details__item-label"  data-prop-name="{{ p.first }}"><span data-cart-item-property-name>{{ p.first }}</span>: <span data-cart-item-property-value>{{ p.last }}</span></span>
+{% endif %}
+{% else %}
+{% if p.last contains '/assets/' %}
+{% assign foo = p.last %}
+{% assign my_variable = true %}
+{% endif %}
+<span data-cart-item-property-name>{{ p.first }}: </span>
+{% if p.last contains '/uploads/' or p.last contains '/assets/' or p.last contains '/products/' %}
+<a target="_blank"  href="{{ p.last }}" src="{{ p.last }}" class="jslghtbx-thmb" data-jslghtbx download data-cart-item-property-value>{% if shop.metafields.customify['clickable_text'] %} {{ shop.metafields.customify['clickable_text'] }}{% else %}Click to view image{% endif %}</a>
+{% else %}
+ <span data-cart-item-property-value>
+{{ p.last | newline_to_br }}
+</span>
+{% endif %}
+<br>
+{% endif %}
+</span>
+{% endunless %}
+{% endfor %}
+{% else %}
+<span data-cart-item-property=""><span class="product-details__item-label" data-cart-item-property-name=""></span><span data-cart-item-property-value=""></span>
+</span>
+{% endif %}
+{% endif %}
+
+
+{% comment %} Fix the line item remove from cart link {% endcomment %}
+{% if pplr == 'remove-from-cart-href' or product-personalizer-helper == 'remove-from-cart-href' %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+#pplr_remove
+{% else %}
+{% if forloop == null %}
+/cart/change?quantity=0&id={{ item.key }}
+{% else %}
+/cart/change?line={{ forloop.index }}&amp;quantity=0
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% comment %} Fix the line item remove from cart link {% endcomment %}
+{% if pplr == 'remove-from-cart-class' or product-personalizer-helper == 'remove-from-cart-class' %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+product-personalizer-cart-remove
+{% else %}
+{{ else_class }}
+{% endif %}
+{% endif %}
+
+
+{% comment %} Get the line item price. required: item or _item_line_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-final-line-price' or product-personalizer-helper == 'item-final-line-price' %}
+{% if _item_line_price == null %}
+{% assign _item_line_price = item.final_line_price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign _item_line_price = _item_line_price | plus: other_item.final_line_price %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_line_final_price" data-line="{{item.index}}" >
+{{ _item_line_price }}
+</span>
+{% else %}
+<span class="pplr_item_line_final_price" data-line="{{item.index}}" >
+{{ _item_line_price | money }}
+</span>
+{% endif %}
+{% assign _item_line_price = null %}
+{% endif %}
+
+
+{% comment %} Get the line item price. required: item or _item_line_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-original-line-price' or product-personalizer-helper == 'item-original-line-price' %}
+{% if _item_line_price == null %}
+{% assign _item_line_price = item.original_line_price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign _item_line_price = _item_line_price | plus: other_item.original_line_price %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_line_original_price" data-line="{{item.index}}" >
+{{ _item_line_price }}
+</span>
+{% else %}
+<span class="pplr_item_line_original_price" data-line="{{item.index}}" >
+{{ _item_line_price | money }}
+</span>
+{% endif %}
+{% assign _item_line_price = null %}
+{% endif %}
+
+
+
+
+{% comment %} Get the line item price. required: item or _item_line_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-line-price' or product-personalizer-helper == 'item-line-price' %}
+{% if _item_line_price == null %}
+{% assign _item_line_price = item.line_price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign _item_line_price = _item_line_price | plus: other_item.line_price %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_line_price" data-line="{{item.index}}" >
+{{ _item_line_price }}
+</span>
+{% else %}
+<span class="pplr_item_line_price" data-line="{{item.index}}" >
+{{ _item_line_price | money }}
+</span>
+{% endif %}
+{% assign _item_line_price = null %}
+{% endif %}
+
+
+
+
+{% comment %} Get the item price. required: item or _item_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-price' or product-personalizer-helper == 'item-price' %}
+{% if _item_price == null %}
+{% assign _item_price = item.price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign main_item_qty = item.quantity %}
+{% assign other_item_price = other_item.line_price | divided_by: main_item_qty  %}
+{% assign _item_price = _item_price | plus: other_item_price  %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_price" data-line="{{item.index}}" sdfsd>
+{{ _item_price }}
+</span>
+{% else %}
+<span class="pplr_item_price" data-line="{{item.index}}" rtyrt>
+{{ _item_price | money }}
+</span>
+{% endif %}
+{% assign _item_price = null %}
+{% endif %}
+
+
+{% comment %} Get the item price. required: item or _item_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-original-price' or product-personalizer-helper == 'item-original-price' %}
+{% if _item_price == null %}
+{% assign _item_price = item.original_price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split %}
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign main_item_qty = item.quantity %}
+{% assign other_item_price = other_item.original_price | divided_by: main_item_qty  %}
+{% assign _item_price = _item_price | plus: other_item_price  %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_original_price" data-line="{{item.index}}" >
+{{ _item_price }}
+</span>
+{% else %}
+<span class="pplr_item_original_price" data-line="{{item.index}}" >
+{{ _item_price | money }}
+</span>
+{% endif %}
+{% assign _item_price = null %}
+{% endif %}
+
+
+
+{% comment %} Get the item price. required: item or _item_price, items. optional: raw {% endcomment %}
+{% if pplr == 'item-final-price' or product-personalizer-helper == 'item-final-price' %}
+{% if _item_price == null %}
+{% assign _item_price = item.final_price %}
+{% endif %}
+{% if item.properties._pc_pricing_ref and item.properties._pc_pricing_qty_split or item.properties._pplr_pricing_ref and item.properties._pplr_pricing_qty_split  %}
+{% assign _item_quantity = item.quantity %}
+{% for other_item in items %}
+{% if other_item.properties._pc_pricing_qty_split == null and other_item.properties._pc_pricing_ref == item.properties._pc_pricing_ref or other_item.properties._pplr_pricing_qty_split == null and other_item.properties._pplr_pricing_ref == item.properties._pplr_pricing_ref and item.properties._pplr_pricing_ref != null %}
+{% assign main_item_qty = item.quantity %}
+{% assign other_item_price = other_item.final_price | divided_by: main_item_qty  %}
+{% assign _item_price = _item_price | plus: other_item_price  %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if raw == true %}
+<span class="pplr_item_final_price" data-line="{{item.index}}" >
+{{ _item_price }}
+</span>
+{% else %}
+<span class="pplr_item_final_price" data-line="{{item.index}}" >
+{{ _item_price | money }}
+</span>
+{% endif %}
+{% assign _item_price = null %}
+{% endif %}
+
+
+
+{% comment %} Fix the cart bubble count. required: cart. optional: _cart_item_count {% endcomment %}
+{% if pplr == 'cart-item-count' or product-personalizer-helper == 'cart-item-count' %}
+{% if _cart_item_count == null %}
+{% assign _cart_item_count = cart.item_count %}
+{% endif %}
+{% for cart_item in cart.items %}
+{% if cart_item.properties._pc_pricing_ref and cart_item.properties._pc_pricing_qty_split == null or cart_item.properties._pplr_pricing_ref and cart_item.properties._pplr_pricing_qty_split == null%}
+{% assign _cart_item_count = _cart_item_count | minus: cart_item.quantity %}
+{% endif %}
+{% endfor %}
+<span class="pplr_cart_count">
+ {{ _cart_item_count }}
+</span>
+{% assign _cart_item_count = null %}
+{% endif %}
+
+{% if pplr == 'product-personalizer-script' or product-personalizer-helper == 'product-personalizer-script' %}
+<script>
+
+  var loadScript_pplr = function(url, callback) {
+    var script = document.createElement("script")
+    script.type = "text/javascript";
+    if (script.readyState) {
+      script.onreadystatechange = function() {
+        if (script.readyState == "loaded" ||
+            script.readyState == "complete") {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else {
+      script.onload = function() {
+        callback();
+      };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  };
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    if ((typeof $ === 'undefined') && (typeof jQuery === 'undefined')) {
+      loadScript_pplr('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function() {
+        pplr_cart(jQuery);
+      });
+    }
+    else{
+      pplr_cart(jQuery);
+    }
+    
+    function recursiveajaxdelete(line,this_ref){
+      jQuery.ajax({
+        type: "POST",
+        url: "/cart/change.js",
+        data: "line="+line+"&quantity=0",
+        dataType: "json",
+        success: function(data) { 
+          var noredirect = true ;
+          for (var i = 0;  i < data['items'].length; ++i) {
+            if(data['items'][i]['properties']['_pc_pricing_ref']==this_ref || data['items'][i]['properties']['_pplr_pricing_ref']==this_ref){
+            recursiveajaxdelete(i+1,this_ref);
+              noredirect = false;
+              break;
+            }
+          }
+          if(noredirect){
+          location.href="/cart";
+          }
+        }
+      });
+    }
+    
+    function recursiveajaxupdate(varianttoupdate){
+      var line = varianttoupdate[0]['line'];
+      var qty = varianttoupdate[0]['qty'];
+      jQuery.ajax({
+        type: "POST",
+        url: "/cart/change.js",
+        data: "line="+line+"&quantity="+qty,
+        dataType: "json",
+        success: function(data) {
+          var li= data.items[line-1]["quantity"];
+          if(varianttoupdate.length==1 || li !== qty){
+            location.href="/cart";
+          }
+          else{
+            varianttoupdate.shift();
+      recursiveajaxupdate(varianttoupdate);
+          }
+        }
+      });
+    }
+    
+    
+      function pplr_cart(jQuery){
+        var l= 'product-personalizer-cart-remove';
+        var cartElSelector = '.'+l+',a[href*="pplr_remove"]';
+        jQuery(cartElSelector).addClass(l);
+        document.body.addEventListener('click', function(e){
+        var t= jQuery(e.target);
+        if (t.hasClass(l) || t.parents('.'+l)[0]){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var t = jQuery(e.target);
+                var personalizedItemRow = t.closest('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split]');
+                var this_ref = personalizedItemRow.attr('data-product-personalizer-pricing-ref');
+                var next_line = personalizedItemRow.siblings('[data-product-personalizer-pricing-ref="'+this_ref+'"]').attr('data-line');
+                if(this_ref!=="" && next_line!=="" && typeof next_line !== typeof undefined){     
+                  recursiveajaxdelete(parseInt(personalizedItemRow.attr('data-line')),this_ref); 
+                }
+                else{
+                  location.href="/cart/change?line="+personalizedItemRow.attr('data-line')+"&amp;quantity=0";
+                }
+              }
+          }, true);
+
+      function adjust_cart(){
+        jQuery('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split] input:not([type=button]):not([type=submit])').each(function(){
+          var personalizedItemNum = jQuery(this).closest('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split]');
+          personalizedItemNum.find('[href*="/cart/change"]').attr('href','#pplr_remove').addClass('product-personalizer-cart-remove');
+          personalizedItemNum.find('[class*="minus"]').remove();
+          personalizedItemNum.find('[class*="plus"]').remove();
+          jQuery(this).siblings('.js-change-quantity,.js-qty__adjust,.QuantitySelector__Button').remove();
+          jQuery(this).removeClass('quantity js-qty__input').css("min-width","60px");
+          jQuery(this).prop('type','number');
+          jQuery(this).removeAttr("data-cart-item-input-quantity");
+
+        })
+
+        jQuery('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split]').each(function(){
+          var this_ref = jQuery(this).attr('data-product-personalizer-pricing-ref');
+          var t_m_p =jQuery('[data-product-personalizer-pricing-ref="'+this_ref+'"][data-product-personalizer-pricing-qty-split]');
+          if(!t_m_p[0]){
+            var line = jQuery(this).attr('data-line');
+            recursiveajaxdelete(parseInt(line),this_ref);
+          }
+        })
+
+        jQuery('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split]').each(function(){
+          var this_ref = jQuery(this).attr('data-product-personalizer-pricing-ref');
+          var t_m_p =jQuery('[data-product-personalizer-pricing-ref="'+this_ref+'"][data-product-personalizer-pricing-qty-split]');
+          if(!t_m_p[0]){
+            var line = jQuery(this).attr('data-line');
+            recursiveajaxdelete(parseInt(line),this_ref);
+          }
+          jQuery('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split] input[name*="updates["]').each(function(){
+              updatecart_p(this);
+          })
+
+
+        })
+
+
+      }
+      adjust_cart();
+      setInterval(function() {adjust_cart();}, 1000);
+
+      function updatecart_p(k,e){ 
+        var personalizedItemNum = jQuery(k).closest('[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split]');
+        var ref_pplr = personalizedItemNum.attr('data-product-personalizer-pricing-ref');
+        var qty_pplr = personalizedItemNum.attr('data-product-personalizer-pricing-qty-split');
+        if(qty_pplr.indexOf('-')>-1){
+          qty_pplr = qty_pplr.split('-')[1].split('_');
+        }
+        else{
+          qty_pplr = JSON.parse(qty_pplr);
+        }
+        var qtymain = personalizedItemNum.find('input[name*="updates["]:visible').val();
+        if(qtymain == undefined){
+          qtymain = personalizedItemNum.find('input[type=number]').val();
+        }
+        if(qtymain==0){
+          recursiveajaxdelete(parseInt(personalizedItemNum.attr('data-line')),ref_pplr);
+          return;
+        }
+        var eachvariant = jQuery('form:visible [data-product-personalizer-pricing-ref="'+ref_pplr+'"]:not([data-product-personalizer-pricing-qty-split])');
+        var quantitychange = false;
+        var varianttoupdate =[];
+        eachvariant.each(function(i){
+          var qtyaux = jQuery(this).find('input[name*="updates["]');
+          if(parseInt(qtyaux.val()) !== qty_pplr[i]*qtymain && qtymain !== undefined && qty_pplr[i]){
+            quantitychange = true;
+            var line = jQuery(this).attr('data-line');
+            varianttoupdate.push({ "line": line , "qty": qty_pplr[i]*qtymain });
+            if(e){
+             e.stopImmediatePropagation();
+            }
+          }
+
+        })
+        if(quantitychange){
+          varianttoupdate.push({ "line": personalizedItemNum.attr('data-line') , "qty": qtymain });
+          jQuery('[name="checkout"],[name="update"]').prop('disabled',true);
+         recursiveajaxupdate(varianttoupdate);
+        }
+      }
+
+    jQuery(document).on('change', '[data-product-personalizer-pricing-ref][data-product-personalizer-pricing-qty-split] input', function(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      updatecart_p(this,event);
+    })
+
+    jQuery(document).on('click', '[data-product-personalizer-pricing-ref] button:not([name="update"]),[data-product-personalizer-pricing-ref] label,[data-product-personalizer-pricing-ref] a', function(event) {
+    setTimeout(function() {
+      adjust_cart();
+      },500);
+    })
+
+  }
+ })
+
+</script>
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jsonlylightbox@0.5.5/css/lightbox.min.css" />
+<script src="//cdn.jsdelivr.net/npm/jsonlylightbox@0.5.5/js/lightbox.min.js"></script>
+
+<script>
+  var lightbox = new Lightbox();
+  lightbox.load();
+</script> 
+<style>
+  .jslghtbx-thmb:hover, .jslghtbx-thmb {
+    box-shadow:inherit;margin: 0;
+  }
+  .jslghtbx {
+    z-index: 99999999999 !important;
+  }
+  [data-product-personalizer-pricing-ref] .js-qty__adjust{display:none;}
+  
+     @media screen and (max-height: 3000px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 1250px;max-width: 750px;
+    }
+  }
+
+  @media screen and (max-height: 1600px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 850px;max-width: 750px;
+    }
+  }
+
+  
+    @media screen and (max-height: 900px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 750px;max-width: 650px;
+    }
+  }
+  
+    @media screen and (max-height: 700px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 550px;max-width: 550px;
+    }
+  }
+  
+  @media screen and (max-height: 500px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 400px;max-width: 400px;
+    }
+  }
+@media screen and (max-width: 500px) {
+    .jslghtbx-contentwrapper > img.jslghtbx-animate-transition {
+      max-height: 500px;max-width: 360px;
+    }
+}
+</style>
+
+{% endif %}
+
+{% endcapture %}{{ all_output | strip }}

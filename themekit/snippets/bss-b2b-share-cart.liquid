@@ -1,0 +1,310 @@
+<script>let enable = false; let listSubUser = [];let shareCartText = "Share Cart";    let BSSCPcheckoutBtn1 = document.querySelectorAll(
+        'form[action*="/cart"] [name="checkout"],' +
+            "#dropdown-cart button.btn.btn-checkout.show," +
+            'a.button.checkout-button[href="/checkout"],' +
+            'form[action*="/checkout"] .add_to_cart,' +
+            'form[action*="/cart"]#cart_form #checkout,' +
+            'form[action*="/cart"] button.Cart__Checkout,' +
+            'form[action*="/cart"] button.cart__checkout,' +
+            'a.btn.disabled.ttmodalbtn[href="/checkout"],' +
+            'form[action*="/cart"] [name="checkout"][type="submit"],' +
+            "button.Cart__Checkout.Button.Button--primary.Button--full," +
+            ".baskettop button.mini-cart-checkout," +
+            ".tt-dropdown-menu .btn.itemCheckout," +
+            ".bss-btn-checkout-mini-cart," +
+            'button[name="checkout"].btn,' +
+            'form[action*="/checkout"] [name="checkout"],' +
+            ".cart__footer .cart__checkout-button.button," +
+            "#cartform #checkout," +
+            `#slidedown-cart button[onclick="window.location='/checkout'"],` +
+            "#dropdown-cart button.btn.btn-checkout," +
+            'form[action*="/cart"] button[type="submit"].c-btn.c-btn--light.cart__button-update.update-cart,' +
+            'form[action*="/cart"] .sp-proceed-to-checkout a[href="/checkout/"]'
+    );
+
+    let bssShareCartBtnText = shareCartText ? shareCartText : "Share Cart";
+
+    let BSSCPCustomCheckoutBtn2 = document.querySelectorAll(
+        "span.bss-b2b-customer-portal-share-cart"
+    );
+    const btnTextShareCartDefault =
+        document.createTextNode(bssShareCartBtnText);
+    let defaultShareCartBtn = document.createElement("button");
+    defaultShareCartBtn.className =
+        "bss-b2b-customer-portal-share-cart-btn-default";
+    defaultShareCartBtn.style.width = "130px";
+    defaultShareCartBtn.style.height = "40px";
+    defaultShareCartBtn.type = "button";
+    defaultShareCartBtn.appendChild(btnTextShareCartDefault);
+    defaultShareCartBtn.onclick = function () {
+        window.location =
+            "/apps/customer-portal/company-account/add-share-cart";
+    };
+
+    let BSSCPShareCartBtn = null;
+    const btnShareCartText = document.createTextNode(bssShareCartBtnText);
+    if (BSSCPcheckoutBtn1.length) {
+        BSSCPShareCartBtn = document.createElement(
+            BSSCPcheckoutBtn1[0].tagName
+        );
+        BSSCPShareCartBtn.className =
+            BSSCPcheckoutBtn1[0].className +
+            " bss-b2b-customer-portal-share-cart-btn";
+        BSSCPShareCartBtn.value = bssShareCartBtnText;
+        BSSCPShareCartBtn.id = BSSCPcheckoutBtn1[0].id;
+        BSSCPShareCartBtn.type = "button";
+        BSSCPShareCartBtn.appendChild(btnShareCartText);
+        BSSCPShareCartBtn.onclick = function () {
+            window.location =
+                "/apps/customer-portal/company-account/add-share-cart";
+        };
+    }
+
+    if (enable && listSubUser.indexOf("{{customer.email}}") != -1) {
+        var url = "/cart.js";
+        var options = {
+            method: "GET",
+        };
+        var getCartDataReq = fetch(url, options);
+        getCartDataReq
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("HTTP error, status = " + response.status);
+                }
+                var dataJSON_promise = response.json();
+                return dataJSON_promise;
+            })
+            .then(function (cartData) {
+                if (cartData.items.length) {
+                    if (BSSCPCustomCheckoutBtn2.length) {
+                        for (
+                            let i = 0;
+                            i < BSSCPCustomCheckoutBtn2.length;
+                            i++
+                        ) {
+                            BSSCPCustomCheckoutBtn2[i].after(
+                                defaultShareCartBtn
+                            );
+                        }
+                    }
+
+                    if (BSSCPcheckoutBtn1.length) {
+                        for (let i = 0; i < BSSCPcheckoutBtn1.length; i++) {
+                            BSSCPcheckoutBtn1[i].after(BSSCPShareCartBtn);
+                        }
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.log("error:");
+                console.log(error);
+            });
+    }
+
+    let BSSCPAjaxCartElement1 = document.querySelectorAll(
+        '[id^="AddToCart"]:not(form), ' +
+            '[id^="addToCart"]:not(form):not(span),' +
+            'button[aria-controls="CartDrawer"],' +
+            'a[aria-controls="CartDrawer"], ' +
+            'button[name="add"].product-form__add-to-cart,' +
+            'button[name="add"].product__add-to-cart-button,' +
+            'button[name="add"].add-to-cart,' +
+            "a.ajax-cart__toggle," +
+            "span.icon__fallback-text," +
+            "button#add-to-cart.add-to-cart," +
+            "a.cart-toggle," +
+            ".mini-cart-wrap[data-cart-mini-toggle]," +
+            ".addtocart-button-active[data-product-submit]," +
+            "button.product-form--atc-button," +
+            "button.productitem--action-atc," +
+            "#add-to-cart-product-template," +
+            '.product-form__add-button[data-action="add-to-cart"],' +
+            '.header__cart-toggle[data-action="toggle-mini-cart"],' +
+            'button[type="submit"][data-action="add-to-cart"],' +
+            "button.btn-addtocart," +
+            'form[action*="/cart/add"] input.AddtoCart,' +
+            "a[data-cart-toggle][data-dropdown-menu]," +
+            "input[data-btn-addtocart]," +
+            ".cart-block-click," +
+            "button[data-btn-addtocart]," +
+            'a.js-cart-trigger[href="/cart"],' +
+            "form.js-product-form," +
+            'form[action*="/cart/add"] button.single_add_to_cart_button.button,' +
+            '.Header__Wrapper .Header__FlexItem a[data-drawer-id="sidebar-cart"],' +
+            "button.product-form__cart-submit," +
+            ".add-to-cart-box .add-to-cart," +
+            "a.header-cart-btn.cart-toggle," +
+            ".product-page--submit-action .btn," +
+            ".ajax-submit.action_button.add_to_cart," +
+            ".site-header__cart.cart-modal," +
+            'form[action*="/cart/add"] button.ajax-submit.button--add-to-cart,' +
+            'form[action*="/cart/add"] div.add-to-cart button.button[type="submit"],' +
+            "a.add-cart-btn," +
+            "button.tt-dropdown-toggle," +
+            ".quick-view button.add-to-cart-btn.btn," +
+            "button.add.font--secondary-button," +
+            'button[type="submit"].gf_add-to-cart.product-form-product-template,' +
+            "a.header--cart-link.font--accent," +
+            ".cart-container," +
+            ".icon-bag.mini_cart.dropdown_link," +
+            "a.my-cart-link," +
+            ".product-form--button-container button.product-form--add-to-cart," +
+            ".product-form--submit span.price," +
+            "a.push_side.pr.cb.chp.db," +
+            ".ProductForm__AddToCart," +
+            ".slideout__trigger-mobile-menu.js-mini-cart-trigger.js-slideout-open," +
+            "button.btn.btn--full.btn--status.btn--animated.js-product-button-add-to-cart," +
+            "a.header__btn-cart.js-popup-button," +
+            ".payment-buttons button[data-add-to-cart]," +
+            "a.js-product-button-add-to-cart," +
+            ".js-drawer-open-cart," +
+            "button.btn.btn--tertiary.add-to-cart," +
+            ".cart-link," +
+            ".mini-cart a.icon-link," +
+            ".quick-cart__indicator," +
+            ".add-to-cart-box," +
+            ".header-wrapper .mini-cart," +
+            ".header-middle .mini-cart"
+    );
+
+    for (let i = 0; i < BSSCPAjaxCartElement1.length; i++) {
+        BSSCPAjaxCartElement1[i].addEventListener(
+            "click",
+            function () {
+                setTimeout(() => {
+                    let BSSCPViewCartBtn1 = document.querySelectorAll(
+                        '.cart-popup a[href*="/cart"], #CartDrawer button[type="submit"], #ajaxifyCart button[type="submit"]'
+                    );
+                    if (BSSCPViewCartBtn1.length) {
+                        for (let y = 0; y < BSSCPViewCartBtn1.length; y++) {
+                            let BSSCPViewCartBtnParent1 =
+                                document.querySelectorAll(
+                                    "." +
+                                        BSSCPViewCartBtn1[
+                                            y
+                                        ].parentElement.className
+                                            .split(" ")
+                                            .join(".") +
+                                        " .bss-b2b-customer-portal-ca-checkout-btn"
+                                );
+                            let BSSCPMiniNtcheckoutBtn1 = null;
+                            if (!BSSCPViewCartBtnParent1.length) {
+                                const btnTextMiniCart1 =
+                                    document.createTextNode(
+                                        bssShareCartBtnText
+                                    );
+                                BSSCPMiniNtcheckoutBtn1 =
+                                    document.createElement(
+                                        BSSCPViewCartBtn1[0].tagName
+                                    );
+                                BSSCPMiniNtcheckoutBtn1.className =
+                                    BSSCPViewCartBtn1[0].className +
+                                    " bss-b2b-customer-portal-ca-checkout-btn";
+                                BSSCPMiniNtcheckoutBtn1.value =
+                                    bssShareCartBtnText;
+                                BSSCPMiniNtcheckoutBtn1.id =
+                                    BSSCPViewCartBtn1[0].id;
+                                BSSCPMiniNtcheckoutBtn1.type = "button";
+                                BSSCPMiniNtcheckoutBtn1.appendChild(
+                                    btnTextMiniCart1
+                                );
+                                BSSCPMiniNtcheckoutBtn1.onclick = function () {
+                                    window.location =
+                                        "/apps/customer-portal/company-account/add-share-cart";
+                                };
+                                if (
+                                    enable &&
+                                    listSubUser.indexOf("{{customer.email}}") !=
+                                        -1
+                                ) {
+                                    BSSCPViewCartBtn1[y].after(
+                                        BSSCPMiniNtcheckoutBtn1
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }, 2000);
+            },
+            false
+        );
+    }
+    let fixAjaxCartElement1 = document.querySelectorAll(".icon-cart-header");
+    for (let i = 0; i < fixAjaxCartElement1.length; i++) {
+        fixAjaxCartElement1[i].addEventListener("mouseover", function () {
+            setTimeout(() => {
+                let BSSCPViewCartBtn1 = document.querySelectorAll(
+                    '.cart-popup a[href*="/cart"], #CartDrawer button[type="submit"], #ajaxifyCart button[type="submit"], .header-wrapper .mini-cart a[href*="/checkout"], .header-middle .mini-cart a[href*="/checkout"]'
+                );
+                if (BSSCPViewCartBtn1.length) {
+                    for (let y = 0; y < BSSCPViewCartBtn1.length; y++) {
+                        let BSSCPViewCartBtnParent1 = BSSCPViewCartBtn1[
+                            y
+                        ].parentElement.querySelectorAll(
+                            "." +
+                                BSSCPViewCartBtn1[y].parentElement.className
+                                    .split(" ")
+                                    .join(".") +
+                                " .bss-b2b-customer-portal-ca-checkout-btn"
+                        );
+                        let BSSCPMiniNtcheckoutBtn1 = null;
+                        if (!BSSCPViewCartBtnParent1.length) {
+                            const btnTextMiniCart1 =
+                                document.createTextNode(bssShareCartBtnText);
+                            BSSCPMiniNtcheckoutBtn1 = document.createElement(
+                                BSSCPViewCartBtn1[0].tagName
+                            );
+                            BSSCPMiniNtcheckoutBtn1.className =
+                                BSSCPViewCartBtn1[0].className +
+                                " bss-b2b-customer-portal-ca-checkout-btn";
+                            BSSCPMiniNtcheckoutBtn1.value =
+                                bssShareCartBtnTextt;
+                            BSSCPMiniNtcheckoutBtn1.id =
+                                BSSCPViewCartBtn1[0].id;
+                            BSSCPMiniNtcheckoutBtn1.type = "button";
+                            BSSCPMiniNtcheckoutBtn1.appendChild(
+                                btnTextMiniCart1
+                            );
+                            BSSCPMiniNtcheckoutBtn1.onclick = function () {
+                                window.location =
+                                    "/apps/customer-portal/company-account/add-share-cart";
+                            };
+                            if (
+                                enable &&
+                                listSubUser.indexOf("{{customer.email}}") != -1
+                            ) {
+                                var url = "/cart.js";
+                                var options = {
+                                    method: "GET",
+                                };
+                                var getCartDataReq = fetch(url, options);
+                                getCartDataReq
+                                    .then(function (response) {
+                                        if (!response.ok) {
+                                            throw new Error(
+                                                "HTTP error, status = " +
+                                                    response.status
+                                            );
+                                        }
+                                        var dataJSON_promise = response.json();
+                                        return dataJSON_promise;
+                                    })
+                                    .then(function (cartData) {
+                                        if (cartData.items.length) {
+                                            BSSCPViewCartBtn[y].after(
+                                                BSSCPMiniNtcheckoutBtn
+                                            );
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log("error:");
+                                        console.log(error);
+                                    });
+                            }
+                        }
+                    }
+                }
+            }, 200);
+        });
+    }
+</script>
