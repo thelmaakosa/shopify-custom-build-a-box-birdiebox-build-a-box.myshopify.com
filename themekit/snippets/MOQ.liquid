@@ -1680,7 +1680,8 @@ console.log('okookoko')
           _btn.find('[data-waio-atcloader]').addClass('waio-hide');
           //           console.log('=============added==============');
           {% if template.name != 'page' %}
-          if(!isCartError) window.location.href="/cart";
+{% comment %}           if(!isCartError) window.location.href="/cart"; {% endcomment %}
+             if(!isCartError) window.location.reload(); 
           {% else %}
           if(!isCartError) window.location.reload();
           {% endif %}
