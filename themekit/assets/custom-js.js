@@ -1,3 +1,10 @@
+
+/*============================================================================
+  Build a Box module
+  Created by thelmaakosa107@gmail.com
+
+==============================================================================*/
+
 var budget;
 
 $("input[name='attr_your-budget']").change(function(){
@@ -225,3 +232,32 @@ $('.ui.button').on('click', function () {
   $('.ui.dropdown')
     .dropdown('restore defaults')
 })
+
+
+/*============================================================================
+  AJAX add to cart module
+  Created by thelmaakosa107@gmail.com
+  
+==============================================================================*/
+
+window.addEventListener('pplrAddToCartCompleted' , function(e) {
+  console.log('pplrAddToCartCompleted');
+  var str = $(".product_level_msg").text().split(" ")
+  var MOQ_min = parseInt(str[str.length-1]);
+  if (MOQ_min > 0 && $(".pplr_atc_form input[name=quantity]").val() >= MOQ_min && $(".cart-link__bubble-num").text()=='0'){
+    window.location.reload()
+  }
+  else{
+
+  }
+  if ($(".pplr_atc_form input[name=quantity]").val() == undefined && $(".cart-link__bubble-num").text()=='0'){
+    window.location.reload()
+  }
+  // e.preventDefault();
+  // window.location.reload()
+  
+  // check if the add to cart event has fired
+})
+
+
+

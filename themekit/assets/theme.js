@@ -1577,6 +1577,7 @@ lazySizesConfig.expFactor = 4;
     },
   
     _updateCart: function(params) {
+      console.log("_updateCart")
       return fetch(params.url, {
         method: 'POST',
         body: params.data,
@@ -2582,6 +2583,7 @@ lazySizesConfig.expFactor = 4;
           } else {
             var product = data;
             this.success(product);
+            console.log(product);
           }
   
           status.loading = false;
@@ -5120,6 +5122,8 @@ lazySizesConfig.expFactor = 4;
                 addToCartBtn: btn
               }
             }));
+            console.log(product);
+            console.log('AddToCartCompleted');
           }
   
           visibleBtn.classList.remove('btn--loading');
@@ -8767,6 +8771,7 @@ lazySizesConfig.expFactor = 4;
 
         document.addEventListener('ajaxProduct:added', function(evt) {
           cartForm.buildCart();
+          console.log("ajaxProduct:added")
         }.bind(this));
       }
     }

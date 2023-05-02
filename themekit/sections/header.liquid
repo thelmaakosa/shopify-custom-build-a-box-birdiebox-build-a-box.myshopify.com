@@ -175,6 +175,9 @@
               <div class="page-width page-width--flush-small">
                 <div class="new-grid product-grid scrollable-grid--small" data-view="scrollable">
                   {%- for product in search_collection.products limit: 6 -%}
+                    {%- comment %}<locksmith:8597>{% endcomment -%}
+                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: search_collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                    {%- comment %}</locksmith:8597>{% endcomment -%}
                     {%- render 'product-grid-item', product: product, no_actions: true -%}
                   {%- endfor -%}
                 </div>

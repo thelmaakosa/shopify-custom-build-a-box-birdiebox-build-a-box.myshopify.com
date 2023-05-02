@@ -20,10 +20,16 @@
       -%}
       {%- if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' -%}
         {%- for collection in collections -%}
+          {%- comment %}<locksmith:c92b>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:c92b>{% endcomment -%}
           {%- render 'collection-grid-item', collection: collection -%}
         {%- endfor -%}
       {%- else -%}
         {%- for collection in collections reversed -%}
+          {%- comment %}<locksmith:46a4>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:46a4>{% endcomment -%}
           {%- render 'collection-grid-item', collection: collection -%}
         {%- endfor -%}
       {%- endif -%}

@@ -1492,7 +1492,6 @@ console.log('okookoko')
   
   
   function moqEvent(_addToCart){
-    
     var _form = $(_addToCart).parents('form');
     _form.off(); 
   
@@ -1501,7 +1500,6 @@ console.log('okookoko')
   
     /*====== Click event on ATC =======*/
     _atcBtn.on('click', function(e) {
-      console.log("moqEvent: Add to cart")
       e.preventDefault();
       e.stopImmediatePropagation();
       e.stopPropagation();
@@ -1682,7 +1680,7 @@ console.log('okookoko')
           _btn.find('[data-waio-atcloader]').addClass('waio-hide');
           //           console.log('=============added==============');
           {% if template.name != 'page' %}
-          {% comment %} if(!isCartError) window.location.href="/cart"; {% endcomment %}
+{% comment %}           if(!isCartError) window.location.href="/cart"; {% endcomment %}
              if(!isCartError) window.location.reload(); 
           {% else %}
           if(!isCartError) window.location.reload();

@@ -49,7 +49,7 @@
     "quick_shop_enable": true,
     "quick_add_enable": true,
     "product_grid_image_size": "square",
-    "product_grid_image_fill": true,
+    "product_grid_image_fill": false,
     "product_hover_image": false,
     "enable_swatches": true,
     "swatch_size": 30,
@@ -332,11 +332,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "1692329972272007824": {
-        "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_main\/7411210d-7b32-4c09-9455-e129e3be4729",
-        "disabled": false,
-        "settings": {}
-      },
       "10249797228608187657": {
         "type": "shopify:\/\/apps\/collection-filter-search-usf\/blocks\/core\/45de52d0-b602-4c6e-aa3b-61524a251869",
         "disabled": false,
@@ -371,6 +366,11 @@
       },
       "18228966181090706294": {
         "type": "shopify:\/\/apps\/upsell-cross-sell-selleasy\/blocks\/app-embed\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+        "disabled": false,
+        "settings": {}
+      },
+      "1692329972272007824": {
+        "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_main\/7411210d-7b32-4c09-9455-e129e3be4729",
         "disabled": false,
         "settings": {}
       }

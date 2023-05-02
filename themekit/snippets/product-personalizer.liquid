@@ -27,6 +27,9 @@
   {% assign p_handle = v_p.first %}
   {% assign products_obj = all_products[p_handle] %}
   {% for variant in products_obj.variants %}
+  {%- comment %}<locksmith:4c1c>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: products_obj, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:4c1c>{% endcomment -%}
   window.pplr_variant_product["{{ variant.id }}"]={"id":"{{ variant.id }}","product_id":"{{ product.id }}","price":"{{ variant.price }}","inventory_quantity":"{{ variant.inventory_quantity }}","inventory_policy":"{{ variant.inventory_policy }}","inventory_management":"{{ variant.inventory_management }}"};
   {% endfor %}
   {% else %}

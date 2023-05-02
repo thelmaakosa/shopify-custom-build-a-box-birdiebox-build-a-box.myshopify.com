@@ -7,6 +7,9 @@
 
   <div class="new-grid product-grid scrollable-grid--small" data-view="scrollable-7">
     {%- for item in search.results -%}
+      {%- comment %}<locksmith:a468>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:a468>{% endcomment -%}
       {%- if item.object_type == 'product' -%}
         {%- liquid
           render 'product-grid-item', product: item

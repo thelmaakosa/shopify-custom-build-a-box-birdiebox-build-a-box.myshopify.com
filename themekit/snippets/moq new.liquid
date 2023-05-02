@@ -1270,7 +1270,7 @@ console.log('okookoko')
   {% endif %}
   function append_addtocart(addtocart,vid){
     var _atcBtn = ''+
-        '   <button name="moq_addToCart" aria-label="Add to cart" class="btn btn--full add-to-cart">   '  + 
+        '   <button name="moq_addToCart" aria-label="Add to cart" class="ws_btnn">   '  + 
         '     <span data-waio-atc-text> Add to cart </span>   '  + 
         '     <span class="waio-hide">   '  + 
         '        '  + 
@@ -1492,7 +1492,6 @@ console.log('okookoko')
   
   
   function moqEvent(_addToCart){
-    
     var _form = $(_addToCart).parents('form');
     _form.off(); 
   
@@ -1501,7 +1500,6 @@ console.log('okookoko')
   
     /*====== Click event on ATC =======*/
     _atcBtn.on('click', function(e) {
-      console.log("moqEvent: Add to cart")
       e.preventDefault();
       e.stopImmediatePropagation();
       e.stopPropagation();
@@ -1618,21 +1616,21 @@ console.log('okookoko')
       _this.parents('form').find('.waio_qty-input').each(function(){
         var $this=$(this);
         var _value = parseInt($this.find('input').val());
-        if(_value>0){
-          _queue.unshift({
-            quantity:_value,
-            id: $this.find('input').attr('data-qc-variant')
-          });
-        }
+        // if(_value>0){
+        //   _queue.unshift({
+        //     quantity:_value,
+        //     id: $this.find('input').attr('data-qc-variant')
+        //   });
+        // }
       });
     }else{
         var _value = parseInt(_this.parents('form').find('[name="quantity"]').val());
-         if(_value>0){
-               _queue.unshift({
-                 quantity:_value,
-                 id: _this.parents('form').find('[name="id"]').val()
-               });
-         }
+         // if(_value>0){
+         //       _queue.unshift({
+         //         quantity:_value,
+         //         id: _this.parents('form').find('[name="id"]').val()
+         //       });
+         // }
      }
       {% else %}
       _queue.unshift({
@@ -1682,7 +1680,7 @@ console.log('okookoko')
           _btn.find('[data-waio-atcloader]').addClass('waio-hide');
           //           console.log('=============added==============');
           {% if template.name != 'page' %}
-          {% comment %} if(!isCartError) window.location.href="/cart"; {% endcomment %}
+{% comment %}           if(!isCartError) window.location.href="/cart"; {% endcomment %}
              if(!isCartError) window.location.reload(); 
           {% else %}
           if(!isCartError) window.location.reload();
@@ -2179,12 +2177,18 @@ console.log('okookoko')
           WSAIO.qtyControl({
             productId:current_product.id,
             variantId:$('[name="id"]').val(),
-            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+            _addToCart: '.wsaiobtnn,[name="moq_addToCart"]',
             functionality: 'variant_level',
             removeableSelector_qty: '.product__quantity',
             removeableSelector_variants:'.product-form-grid-radio'
           })
-  
+    setTimeout(function(){
+          if($('.waio__single-qc').length > 0){
+          $('[name="add"]').hide()
+          }else{
+                $('[name="add"]').show()
+          }
+       },200)
 
         }
   
@@ -2196,11 +2200,18 @@ console.log('okookoko')
                 WSAIO.qtyControl({
             productId:current_product.id,
             variantId:$('[name="id"]').val(),
-            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+            _addToCart: '.wsaiobtnn,[name="moq_addToCart"]',
             functionality: 'variant_level',
             removeableSelector_qty: '.product__quantity',
             removeableSelector_variants:'.product-form-grid-radio'
           })
+        setTimeout(function(){
+          if($('.waio__single-qc').length > 0){
+          $('[name="add"]').hide()
+          }else{
+                $('[name="add"]').show()
+          }
+       },200)
 
             },100)
           }
@@ -2473,4 +2484,13 @@ console.log('okookoko')
     border-radius: 5px;
     vertical-align: middle;
   }
+
+    .ws_btnn {
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 17px;
+  font-size: 17px;
+  font-weight: bold;
+}
   </style>  
