@@ -386,11 +386,35 @@
       "order_summary": {
         "gift_card_placeholder": "Account code",
         "gift_card_title": "Account code",
-        "gift_card_label": "Account code"
+        "gift_card_label": "Account code",
+        "gift_card_and_discount_title": "Gift card or account code",
+        "gift_card_and_discount_label": "Gift card or account code",
+        "gift_card_and_discount_placeholder": "Gift card or account code",
+        "remove_gift_card_label": "Clear code",
+        "gift_card_has_been_applied": "Your funds have been applied",
+        "gift_card_has_been_removed": "Your code has been removed"
       },
       "general": {
         "pay_now_button_label": "Place order"
+      },
+      "payment": {
+        "gift_card_code_label": "Gift card or account code",
+        "order_covered_by_gift_cards_notice": {
+          "one": "Your order is covered by your gift card or account code.",
+          "other": "Your order is covered by your gift cards or account codes."
+        }
+      },
+      "field_errors": {
+        "reduction_code_code_not_found": "Enter a valid gift card or account code",
+        "reduction_code_gift_card_code_invalid": "Enter a valid gift card or account code",
+        "gift_card_already_applied": "This gift card or account code has already been applied to your order",
+        "gift_card_disabled": "This gift card or account code is no longer available",
+        "gift_card_expired": "This gift card or account code has expired",
+        "gift_card_depleted": "This gift card or account code has no remaining funds"
       }
+    },
+    "errors": {
+      "gift_card_depleted": "This gift card or account code has no remaining funds"
     }
   }
 }

@@ -1,0 +1,118 @@
+  $(document).ready(function () {
+    //Function for check wether is any input type is checked and if logo is checked then get the value
+    const setInputValueWhenChecked = () => {
+      console.log("working");
+      $('input[type="radio"]').each(function (index) {
+        if ($(this).is(":checked")) {
+          setValues($(this).val());
+        }
+      });
+    };
+   
+    $(document).on("change", 'input[type="radio"]', function () {
+      var selectedVariant = $(this).val();
+      setValues(selectedVariant);
+    });
+
+    setTimeout( setInputValueWhenChecked, 2000);
+
+  });
+
+    //function for set values selected from backend
+    const setValues = (variant) => {
+      console.log(variant);
+      if (variant.includes("Logo") && variant.includes("Name")) {
+        if (typeof logoAssetUrl === "undefined") {
+          return;
+        } else {
+          showLogoImage();
+          showText();
+        }
+      } else if (variant == "Logo") {
+        if (typeof logoAssetUrl === "undefined") {
+          return;
+        } else {
+          showLogoImage();
+        }
+      } else if (variant.includes("Name") || variant.includes("Initials")) {
+        if (typeof initialText === "undefined") {
+          return;
+        } else {
+          showText();
+        }
+      }
+    };
+
+    //function for set image input value
+    const showLogoImage = () => {
+      setImageUrlToInput(logoAssetUrl);
+    };
+
+    //function for set image url to input
+    const setImageUrlToInput = (imageUrl) => {
+      var inputElement = $(".pplr_monogram.fileupload")[0];
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", imageUrl, true);
+      xhr.responseType = "blob";
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          var blob = xhr.response;
+
+          // Create a File object from the downloaded image blob
+          var file = new File([blob], "image.jpg", { type: blob.type });
+
+          // Create a new DataTransfer object and add the File object to it
+          var dataTransfer = new DataTransfer();
+          dataTransfer.items.add(file);
+
+          // Set the files property of the file input element using the DataTransfer object
+          inputElement.files = dataTransfer.files;
+
+          //check if view image div is already exist or not
+          if ($(".ckCustomViewSelectedImage").length === 0) {
+            viewSelectedImage(imageUrl);
+          }
+        }
+      };
+
+      xhr.send();
+    };
+
+    //function for show text input field
+    const showText = () => {
+      $(".pplr_text").val(initialText);
+    };
+
+    //Function for view selected image
+    const viewSelectedImage = (imageUrl = "") => {
+      $(".pplr-logo .pplrlabel").append(
+        '<a href="#" class="ckCustomViewSelectedImage" style="margin-left:10px">View your Selected Image</a> '
+      );
+      if (imageUrl.length) {
+        var popupHtml = `
+        <div class="selectedImagePopup" id="selectedImagePopup">
+          <div class="popupWrapper">
+            <div class="popupImage">
+                <img src="${imageUrl}" />
+                <a class="popupCloseIcon" href="#">x</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+        $(".page-content--product").append(popupHtml);
+      }
+    };
+
+    //Function for open popup
+    $(document).on("click", ".ckCustomViewSelectedImage", function (e) {
+      e.preventDefault();
+      $(".selectedImagePopup").addClass("active");
+    });
+
+    $(document).on("click", ".popupCloseIcon", function (e) {
+      e.preventDefault();
+      $(".selectedImagePopup").removeClass("active");
+    });
+ 

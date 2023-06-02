@@ -1,0 +1,73 @@
+{% if cart.item_count > 0 %}
+  
+
+{% unless settings.shipping_calculator == 'Disabled' %}
+<button class="estimate-shipping-btn btn btn--secondary"><span class="se-btn-text">Estimate Shipping Cost</span><span class="se-btn-icon">{% render 'arrow-down' %}</span></button>
+<div id="shipping-calculator">
+<!--   <h3>{{ settings.shipping_calculator_heading | default: 'Get shipping estimates' }}</h3> -->
+  <div>
+    <p class="field" style="display: none">
+      <label for="address_country">Country</label>
+      <select id="address_country" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">{{ country_option_tags }}</select>
+    </p>
+    <p class="field" id="address_province_container" style="display:none;">
+      <label for="address_province" id="address_province_label">State</label>
+      <select id="address_province" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+    </p>  
+    <p class="field">
+      <label for="address_zip">Zip/Postal Code</label>
+      <input type="text" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+    </p>
+    <p class="field">
+      <input type="button" class="get-rates btn button" value="{{ settings.shipping_calculator_submit_button_label | default: 'Estimate my shipping cost' }}" />
+    </p>
+  </div>
+  <div id="wrapper-response"></div>
+</div>
+{% endunless %}
+
+<script id="shipping-calculator-response-template" type="text/template">
+  {% raw %}
+  <p id="shipping-rates-feedback" {{#if success}} class="success" {{else}} class="error" {{/if}}>
+  {{#if success}}
+    {{#if rates}}
+      <span class="shipping-rate-title">Available Rates:</span>
+    <ul class="shipping-rates-list">
+      {{#rates}}
+        <li>
+          <span class="shipping-name">{{name}}: </span>
+          <span class="shipping-price">{{price}}</span>
+        </li>
+      {{/rates}}
+    </ul>
+    {{else}}
+      We do not ship to this destination.
+    {{/if}}    
+  {{else}}
+    {{ errorFeedback }}
+  {{/if}}
+  </p>
+  {% endraw %}
+</script>
+
+
+
+<!--[if lte IE 8]>
+<style> #shipping-calculator { display: none; } </style>
+<![endif]-->
+{% endif %}
+<script>
+$("#shipping-calculator").hide();
+$(".estimate-shipping-btn").click(function() {
+  event.preventDefault();
+});
+$(document).ready(function() {
+
+  $(".estimate-shipping-btn").click(function() {
+    
+    $(this).toggleClass("open");
+    $("#shipping-calculator").slideToggle("slow");
+  });
+});
+
+</script>

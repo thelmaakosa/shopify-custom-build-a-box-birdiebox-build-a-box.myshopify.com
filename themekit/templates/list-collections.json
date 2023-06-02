@@ -93,10 +93,61 @@
         "view_all": true,
         "divider": false
       }
+    },
+    "0dae9cf4-fd09-4b7d-bd30-b362f964b70b": {
+      "type": "text-columns",
+      "disabled": true,
+      "blocks": {
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image_width": 650,
+            "title": "Example title",
+            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        },
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image_width": 650,
+            "title": "Example title",
+            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        },
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image_width": 650,
+            "title": "Example title",
+            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-0",
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-1",
+        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-2"
+      ],
+      "settings": {
+        "title": "",
+        "align_text": "left",
+        "divider": false,
+        "color_scheme": "none"
+      }
     }
   },
   "order": [
     "main",
-    "166371077721b2a188"
+    "166371077721b2a188",
+    "0dae9cf4-fd09-4b7d-bd30-b362f964b70b"
   ]
 }

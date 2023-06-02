@@ -71,6 +71,7 @@
     "search_type": "product,page",
     "show_breadcrumbs": true,
     "show_breadcrumbs_collection_link": true,
+    "shipping_calculator_submit_button_label": "Estimate my shipping cost",
     "checkout_logo_image": "shopify:\/\/shop_images\/BirdieBox-Logo-2284x884_600x_e9be01cb-aa66-4297-ad54-1f4bd9776a73.png",
     "checkout_logo_position": "center",
     "checkout_logo_size": "large",
@@ -227,14 +228,6 @@
       "toolbar": {
         "type": "toolbar",
         "blocks": {
-          "cff431d4-9a3a-4622-a731-bd2d4c67a45c": {
-            "type": "announcement",
-            "disabled": true,
-            "settings": {
-              "richtext": "<p><a href=\"\/collections\/discount-eligible\" target=\"_blank\" title=\"Discount Eligible\">Use code BIRDIEBOX10 to recieve 10% off your order of $2500 or more on select items!<\/a><\/p>",
-              "richtext_mobile": "<p><a href=\"\/collections\/discount-eligible\" target=\"_blank\" title=\"Discount Eligible\">Use code BIRDIEBOX10 to recieve 10% off your order of $2500 or more on select items!<\/a><\/p>"
-            }
-          },
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae": {
             "type": "announcement",
             "settings": {
@@ -242,18 +235,17 @@
               "richtext_mobile": "<p><a href=\"\/collections\/yeti\" title=\"YETI\">YETI drinkware now available in all colors & styles!<\/a><\/p>"
             }
           },
-          "8f6f3821-27e7-46db-9a98-921ea9075827": {
+          "000ed69f-9904-431a-a2e4-08eb7f6aecb0": {
             "type": "announcement",
             "settings": {
-              "richtext": "<p>FREE SHIPPING ON ORDERS OVER $1000 USING CODE <em><strong>SHIPSHIPHOORAY<\/strong><\/em><\/p>",
-              "richtext_mobile": ""
+              "richtext": "<p><a href=\"\/pages\/book-a-meeting\" target=\"_blank\" title=\"Book A Meeting\">Need assistance placing an order? Have questions? Book a meeting with us today!<\/a><\/p>",
+              "richtext_mobile": "<p><a href=\"\/pages\/book-a-meeting\" target=\"_blank\" title=\"Book A Meeting\">Need assistance placing an order? Have questions? Book a meeting with us today!<\/a><\/p>"
             }
           }
         },
         "block_order": [
-          "cff431d4-9a3a-4622-a731-bd2d4c67a45c",
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae",
-          "8f6f3821-27e7-46db-9a98-921ea9075827"
+          "000ed69f-9904-431a-a2e4-08eb7f6aecb0"
         ],
         "settings": {
           "announcement_center": true,
@@ -347,18 +339,6 @@
         "disabled": false,
         "settings": {}
       },
-      "18209738915288330680": {
-        "type": "shopify:\/\/apps\/wholesale-all-in-one\/blocks\/wholesale-all-in-one\/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
-        "disabled": false,
-        "settings": {
-          "wsaio_app_access_token": "expanse_wsaiouvh6qz_PG200",
-          "wsaio_main_js_file": "",
-          "wsaio_main_liquid_file": "",
-          "wsaio_modules_liquid_file": "",
-          "wsaio_addons_liquid_file": "{% render 'MOQ' %}",
-          "wsaio_custom_css_file": ""
-        }
-      },
       "534977871531306417": {
         "type": "shopify:\/\/apps\/tnc-terms-and-conditions-cbox\/blocks\/app-embed\/2b45c8fb-5ee2-4392-8a72-b663da1d38ad",
         "disabled": false,
@@ -373,6 +353,18 @@
         "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_main\/7411210d-7b32-4c09-9455-e129e3be4729",
         "disabled": false,
         "settings": {}
+      },
+      "18209738915288330680": {
+        "type": "shopify:\/\/apps\/wholesale-all-in-one\/blocks\/wholesale-all-in-one\/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
+        "disabled": false,
+        "settings": {
+          "wsaio_app_access_token": "expanse_wsaiouvh6qz_PG200",
+          "wsaio_main_js_file": "",
+          "wsaio_main_liquid_file": "",
+          "wsaio_modules_liquid_file": "",
+          "wsaio_addons_liquid_file": "{% render 'MOQ' %}",
+          "wsaio_custom_css_file": ""
+        }
       }
     }
   },

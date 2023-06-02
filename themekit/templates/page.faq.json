@@ -20,7 +20,7 @@
           "type": "question",
           "settings": {
             "title": "Does every product\/gift come with a box?",
-            "text": "<p>Individual items do not come with custom packaging. You can add <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> to your order if you would like your gift to include a box.<\/p><p>If a gift set includes custom packaging, it will be noted in the product description. <\/p>"
+            "text": "<p>Individual items do not come with custom packaging. You can add <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> to your order if you would like your gift to include a box.<\/p><p>If a gift set includes custom packaging, it will be noted in the product description and you will see branding options available for the box. <\/p>"
           }
         },
         "a2cd2855-1cb8-46da-9f71-703ea2e20937": {
@@ -56,7 +56,14 @@
           "type": "question",
           "settings": {
             "title": "How do I add a logo or initials to a product?",
-            "text": "<p>If a product has the ability to be decorated, you will see options to select blank, logo, or initials where applicable.<\/p><p>A team member will reach out to you after you place your order to collect any needed logos or initials. <\/p>"
+            "text": "<p>If a product has the ability to be decorated, you will see options to select blank, logo, or initials where applicable.<\/p><p>Once you have selected your branding preference, you will see either a logo upload button and\/or a text field to add initials.<\/p><p>A team member will reach out to you after you place your order with mockups for your approval.<\/p>"
+          }
+        },
+        "ad4e59b5-0acc-4cd1-bf2c-706334a57114": {
+          "type": "question",
+          "settings": {
+            "title": "What are the requirements for my logo?",
+            "text": "<p>Below you will find the art file requirements needed for us to produce the best quality customization for you and your gifting experience! We want to ensure that the unboxing moment is as wonderful as the intent of the gift. With that being said, please read below on what our team needs from you. If you have any questions, please feel free to reach out to us.<\/p><p><span style=\"text-decoration:underline\">Printing File Requirements:<\/span><\/p><ul><li>Images must be of high quality - 300+ DPI for smaller products or 600+ DPI for custom packaging<\/li><li>CMYK only<\/li><li>File type must be .EPS, .AI, or .PDF<\/li><\/ul><p><span style=\"text-decoration:underline\">Etching File Requirements:<\/span><\/p><ul><li>Vectorized files only<\/li><li>RGB only, all black - color logos will not be accepted<\/li><li>Images must be of high quality - 600+ DPI <\/li><li>File type must be .EPS, .AI, or .PDF<\/li><\/ul><p><span style=\"text-decoration:underline\">Embroidery File Requirements:<\/span><\/p><ul><li>Can be any file type or image quality<\/li><li>If a specific PMS code is required please let us know<\/li><\/ul><p><span style=\"text-decoration:underline\">Video Booklet Requirements:<\/span><\/p><ul><li>Must be in a MP4 format<\/li><li>Content must be 720 MP<\/li><li>File can not be greater than 500 MB<\/li><\/ul><p>If you are unable to provide the specific artwork required to complete your order, no worries! Please provide the closest logo you can find and our team will convert your image for a $25 fee.<\/p>"
           }
         },
         "1809162e-b7ed-476f-a1bf-051cd14c8e88": {
@@ -127,6 +134,7 @@
         "151f0c73-9a87-406e-93f6-0e6cbe43c655",
         "faq-3",
         "faq-4",
+        "ad4e59b5-0acc-4cd1-bf2c-706334a57114",
         "1809162e-b7ed-476f-a1bf-051cd14c8e88",
         "faq-0",
         "faq-1",

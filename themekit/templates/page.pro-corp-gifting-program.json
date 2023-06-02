@@ -1,0 +1,595 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "69c97403-95ee-42bc-9271-ec350de03fa1": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Your One Stop Corporate Gifting Solution<\/p>",
+            "title_size": 40,
+            "subheading": "Welcome to the BirdieBox Corporate Gifting Program",
+            "link": "shopify:\/\/collections\/nest-picks",
+            "link_text": "Shop Now",
+            "link_2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
+            "link_text_2": "Book a Meeting",
+            "color_accent": "#f1f1f1",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/BABB_-_Golf_program_banner_1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 30,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Your One Stop Corporate Gifting Solution",
+            "textarea": "Welcome to the BirdieBox Corporate Gifting Program",
+            "cta_text1": "Shop Now",
+            "cta_link1": "shopify:\/\/collections\/nest-picks",
+            "cta_text2": "Book a Meeting",
+            "cta_link2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
+            "image": "shopify:\/\/shop_images\/BABB_-_Golf_program_banner.png",
+            "video_url": "",
+            "width": "100",
+            "height": 100,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#f1f1f1"
+          }
+        }
+      },
+      "block_order": [
+        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    },
+    "e1ffadc6-3ae9-490f-b4f8-c203f7764335": {
+      "type": "advanced-content",
+      "blocks": {
+        "a0a8037b-fbf4-4e9b-8ab2-21292bc8f770": {
+          "type": "liquid",
+          "settings": {
+            "code": "‎",
+            "width": "25%",
+            "alignment": "center"
+          }
+        },
+        "template--15846958661787__e1ffadc6-3ae9-490f-b4f8-c203f7764335-1684168561929d9755-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<center>\n<h2>Who is BirdieBox?<\/h2>\n\n<p>BirdieBox is a turnkey corporate gifting solution and leader in luxury gifting. We make the ordinary extraordinary by showing gratitude and emotional intelligence through the creation of personalized experiences.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "70e10066-2ff2-45e6-a1f1-632d633d6305": {
+          "type": "liquid",
+          "settings": {
+            "code": "‎",
+            "width": "25%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "a0a8037b-fbf4-4e9b-8ab2-21292bc8f770",
+        "template--15846958661787__e1ffadc6-3ae9-490f-b4f8-c203f7764335-1684168561929d9755-1",
+        "70e10066-2ff2-45e6-a1f1-632d633d6305"
+      ],
+      "custom_css": [
+        "p {font-size: 19px;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "3aae25d2-95af-4999-a322-69bb1ee6cb29": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-0": {
+          "type": "text_block",
+          "settings": {
+            "icon": "ribbon",
+            "title": "Employee onboarding and appreciation",
+            "text": ""
+          }
+        },
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-1": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "title": "Client prospecting and retention",
+            "text": ""
+          }
+        },
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-2": {
+          "type": "text_block",
+          "settings": {
+            "icon": "calendar",
+            "title": "Special events and marketing campaigns",
+            "text": ""
+          }
+        },
+        "d61255b4-0ec5-4e99-806b-a8666ba14556": {
+          "type": "text_block",
+          "settings": {
+            "icon": "gift",
+            "title": "Holidays, anniversaries, and more!",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-0",
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-1",
+        "template--15846958661787__3aae25d2-95af-4999-a322-69bb1ee6cb29-1682977745e9cce5db-2",
+        "d61255b4-0ec5-4e99-806b-a8666ba14556"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "Which types of corporate gifting moments can my members use BirdieBox for?",
+        "align_text": "center",
+        "desktop_columns_per_row": 4,
+        "icon_color": "#33cccc",
+        "button_label": "",
+        "button_link": "",
+        "divider": false
+      }
+    },
+    "8cb93cbf-536f-4036-832e-c8b35177f552": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "template--15856150216859__8cb93cbf-536f-4036-832e-c8b35177f552-1684182304a69c3b34-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Key Program Benefits"
+          }
+        },
+        "template--15856150216859__8cb93cbf-536f-4036-832e-c8b35177f552-1684182304a69c3b34-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<ul><li>You \/ your shop \/ facility receives 40% of all corporate gift revenue derived from any Member\/Customer of your Club<\/li><\/ul><p><\/p><ul><li>No inventory risk running through your shop<\/li><\/ul><p><\/p><ul><li>High-end display for your Pro Shop and custom samples <\/li><\/ul><p><\/p><ul><li>Added amenity service benefit for your membership<\/li><\/ul><p><\/p><ul><li>Free sample gifts for qualified club members <\/li><\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15856150216859__8cb93cbf-536f-4036-832e-c8b35177f552-1684182304a69c3b34-0",
+        "template--15856150216859__8cb93cbf-536f-4036-832e-c8b35177f552-1684182304a69c3b34-1"
+      ],
+      "custom_css": [],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<h2><center>Key Program Benefits<\/h2>\n\n<p><ul>\n<li>You \/ your shop \/ facility receives 40% of all corporate gift revenue derived from any Member\/Customer of your Club<\/li>\n<br>\n\n<li>No inventory risk running through your shop<\/li>\n<br>\n\n<li>High-end display for your Pro Shop and custom samples<\/li>\n<br>\n\n<li>Added amenity service benefit for your membership<\/li>\n<br>\n\n<li>Free sample gifts for qualified club members<\/li><\/ul>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1"
+      ],
+      "custom_css": [
+        "ul {font-size: 17px;}",
+        "@media (min-width: 979px) {.custom-content {padding-left: 200px; padding-right: 100px; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "cffdae33-e2fa-43e3-a041-1ef50801371f": {
+      "type": "hero-video",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "title": "",
+        "title_size": 70,
+        "subheading": "",
+        "link_text": "",
+        "link": "",
+        "color_accent": "#fff",
+        "text_align": "vertical-center horizontal-center",
+        "video_url": "https:\/\/youtu.be\/mIz2vFEbeQo",
+        "overlay_opacity": 0,
+        "height": 650,
+        "height_mobile": 300
+      }
+    },
+    "0ea17ed1-c5ac-49ae-9569-d0379a7fb212": {
+      "type": "featured-video",
+      "custom_css": [
+        "h2{text-align: center;}"
+      ],
+      "settings": {
+        "title": "About the Corporate Program",
+        "video_url": "https:\/\/youtu.be\/mIz2vFEbeQo",
+        "divider": false
+      }
+    },
+    "30870546-0d7d-41ba-9600-32a309fd4c78": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15846958661787__30870546-0d7d-41ba-9600-32a309fd4c78-168297837910c7e374-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/Your_One_Stop_Corporate_Gift_Solution_v4_1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__30870546-0d7d-41ba-9600-32a309fd4c78-168297837910c7e374-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "a9602bb3-3d35-489f-be71-52273a0ef327": {
+      "type": "faq",
+      "blocks": {
+        "9c06b6c9-5c9a-4226-9e8a-0a9c12ad585c": {
+          "type": "rich-text",
+          "settings": {
+            "title": "Program FAQ",
+            "text": "",
+            "align_text": "left"
+          }
+        },
+        "template--15664853024923__a9602bb3-3d35-489f-be71-52273a0ef327-1664913132eb5259b6-0": {
+          "type": "question",
+          "settings": {
+            "title": "Which brands are eligible for 40% revenue?",
+            "text": "<p>BBTEK (Technology), Hudson Cole (Travel), Charlotte Lou (Women's Luxury Handbags), and Old Tymes (drinkware and entertaining). When you are logged into your reseller account you'll see the price you will charge your member crossed out and your actual cost shown next to it. You'll also see 40% off on custom packaging, and 15% off on Corkcicle and Yeti. <\/p>"
+          }
+        },
+        "template--15664853024923__a9602bb3-3d35-489f-be71-52273a0ef327-1664913132eb5259b6-1": {
+          "type": "question",
+          "settings": {
+            "title": "What type of club members are best to approach with this new offering?",
+            "text": "<p>Fortune 1000 executives, members who own their businesses that generate over $100M+ in annual revenue (NOT lawyers, doctors or dentists)<\/p>"
+          }
+        },
+        "a9bfd1ed-4990-42ad-8c49-ed5cf1c89f08": {
+          "type": "question",
+          "settings": {
+            "title": "How can I leverage this program successfully to significantly increase Pro Shop revenue?",
+            "text": "<ul><li>Ensure all golf shop staff are trained on the program and how to place orders on the reseller account. BirdieBox will provide training support as needed. <\/li><li>Ensure the display unit is merchandised with provided custom samples daily and the video monitor is looping the video throughout the day. <\/li><li>Target qualified members for higher revenue opportunities. Average corporate orders can range from $20k to $200k and up. <\/li><\/ul>"
+          }
+        },
+        "3c24f736-f957-4401-8379-09a57504575e": {
+          "type": "question",
+          "settings": {
+            "title": "Do you offer gift sets only?",
+            "text": "<p>Though we are best known for custom curated gift sets, we offer individual products in various categories on shopbirdiebox.com including technology, lifestyle, drinkware, travel, and more. <\/p>"
+          }
+        },
+        "3d11f02c-8fe1-4605-80ce-05562de3082b": {
+          "type": "question",
+          "settings": {
+            "title": "Is branding available for all items?",
+            "text": "<p>If a product has the ability to be decorated, you will see options to select blank, logo, or initials where applicable.<\/p>"
+          }
+        },
+        "2f944f9e-f095-408a-847c-86903cbdef22": {
+          "type": "question",
+          "settings": {
+            "title": "Are there quantity price breaks available? ",
+            "text": "<p>Yes, quantity price breaks are available on custom packaging and many products. Price breaks will be shown on the product information page. <\/p>"
+          }
+        },
+        "f1da74d2-5896-46a6-80ba-71c609cc753a": {
+          "type": "question",
+          "settings": {
+            "title": "Who do I contact with questions, concerns, etc?",
+            "text": "<p>Please reach out to Kathy Kreft, Director of Golf Membership Engagement via email at <a href=\"mailto:kkreft@birdiebox.com\" title=\"mailto:kkreft@birdiebox.com\">kkreft@birdiebox.com<\/a> or by phone at <a href=\"tel:773-593-3420\" title=\"tel:773-593-3420\">773-593-3420<\/a><\/p>"
+          }
+        },
+        "cc14cb98-bf70-4987-b7b6-cbe9dac35d6a": {
+          "type": "rich-text",
+          "settings": {
+            "title": "Processing FAQ",
+            "text": "",
+            "align_text": "left"
+          }
+        },
+        "caef31c8-ccb1-4967-bdd3-269c72bf89ef": {
+          "type": "question",
+          "settings": {
+            "title": "How do I place an order?",
+            "text": "<p>You have two options to place an order.<\/p><ol><li>Contact your Pro Shop and a staff member can place an order on your behalf.<\/li><li><a href=\"https:\/\/shopbirdiebox.com\/account\/register\" target=\"_blank\" title=\"https:\/\/shopbirdiebox.com\/account\/register\">Create an account<\/a> and place orders online.<\/li><\/ol><p>Whichever option you choose, you can <a href=\"\/collections\/nest-picks\" target=\"_blank\" title=\"Nest Picks\">browse our gift sets and products<\/a> and find the perfect option for your needs.<\/p>"
+          }
+        },
+        "e8438ab0-eb02-44c4-b33e-12cc63624091": {
+          "type": "question",
+          "settings": {
+            "title": "What happens after I place an order?",
+            "text": "<p>After you place your order, a team member will reach out to confirm any personalization and will provide mockups of products for approval before processing your order. Please note, your order will not start processing until mockups are approved.<\/p>"
+          }
+        },
+        "8e09a4a7-de04-4ef0-bbf7-03b4377428df": {
+          "type": "question",
+          "settings": {
+            "title": "What are the payment options?",
+            "text": "<p>Reseller account holders can pay via credit card at checkout or choose \"Pay via Invoice\" for Net 30 terms. <\/p>"
+          }
+        },
+        "bc99a4b9-f9d9-450d-bfd4-177b97e74b56": {
+          "type": "question",
+          "settings": {
+            "title": "How long does shipping take?",
+            "text": "<p>Orders typically ship 2 weeks after artwork approval. Shipping times may vary for high quantity orders and depending on product availability.<\/p>"
+          }
+        },
+        "eef2671b-36a8-464b-8e35-2a1db4de6792": {
+          "type": "question",
+          "settings": {
+            "title": "How much does shipping cost?",
+            "text": "<p>Shipping rates will vary based on how many boxes, gift sets, and\/or items you are sending. Our standard rates are listed for your reference below.<\/p><p><strong>Standard Ground:<br\/><\/strong>Boxes - $17.50 each<br\/>Gift Sets - $17.50 each<br\/>Individual Items - Based on weight<\/p><p><strong>Rush Shipping:<br\/><\/strong>Boxes - $85 each<br\/>Gift Sets - $85 each<br\/>Individual Items - Based on weight<\/p>"
+          }
+        },
+        "0e1d66c9-72bf-4479-9342-e561581bc378": {
+          "type": "question",
+          "settings": {
+            "title": "Can I place a rush order? ",
+            "text": "<p>We're happy to help you with your rush order! Rush orders are available for in-stock items only. You can check out our <a href=\"https:\/\/shopbirdiebox.com\/collections\/rush-order\"><span style=\"text-decoration:underline\">rush order<\/span><\/a> items or <a href=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\"><span style=\"text-decoration:underline\">book a meeting<\/span><\/a> with us to review your needs.<\/p>"
+          }
+        },
+        "e73de413-82af-4a3f-80e5-96bae8a534bd": {
+          "type": "question",
+          "settings": {
+            "title": "What file type is required for logos?",
+            "text": "<p>EPS, SVG or AI are the preferred file types. <\/p>"
+          }
+        },
+        "1658c749-ffe5-4e48-9bbf-ebc8552ed2a5": {
+          "type": "question",
+          "settings": {
+            "title": "My member would like gifts shipped directly to their recipients, what is the best way to collect the addresses?",
+            "text": "<p>A BirdieBox team member will provide you with a drop ship template for shipping addresses.<\/p>"
+          }
+        },
+        "d1d03383-6e68-43ad-9568-787e014eac8d": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "If one of my members has a complex gifting need\/order over $20k, who should I direct them to at BirdieBox?",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9c06b6c9-5c9a-4226-9e8a-0a9c12ad585c",
+        "template--15664853024923__a9602bb3-3d35-489f-be71-52273a0ef327-1664913132eb5259b6-0",
+        "template--15664853024923__a9602bb3-3d35-489f-be71-52273a0ef327-1664913132eb5259b6-1",
+        "a9bfd1ed-4990-42ad-8c49-ed5cf1c89f08",
+        "3c24f736-f957-4401-8379-09a57504575e",
+        "3d11f02c-8fe1-4605-80ce-05562de3082b",
+        "2f944f9e-f095-408a-847c-86903cbdef22",
+        "f1da74d2-5896-46a6-80ba-71c609cc753a",
+        "cc14cb98-bf70-4987-b7b6-cbe9dac35d6a",
+        "caef31c8-ccb1-4967-bdd3-269c72bf89ef",
+        "e8438ab0-eb02-44c4-b33e-12cc63624091",
+        "8e09a4a7-de04-4ef0-bbf7-03b4377428df",
+        "bc99a4b9-f9d9-450d-bfd4-177b97e74b56",
+        "eef2671b-36a8-464b-8e35-2a1db4de6792",
+        "0e1d66c9-72bf-4479-9342-e561581bc378",
+        "e73de413-82af-4a3f-80e5-96bae8a534bd",
+        "1658c749-ffe5-4e48-9bbf-ebc8552ed2a5",
+        "d1d03383-6e68-43ad-9568-787e014eac8d"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "c3a8b57c-9c65-490e-b882-e52202230aef": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Shop Trending Gifts",
+        "home_featured_products": "nest-picks",
+        "count": 15,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "166429489701dbbee1": {
+      "type": "text-with-icons",
+      "blocks": {
+        "166429489727bda521-0": {
+          "type": "text_block",
+          "settings": {
+            "icon": "globe",
+            "title": "Product Sourcing",
+            "text": "<p>We work with <a href=\"\/collections\/all-brands\" target=\"_blank\" title=\"All Brands\">hundreds of luxury brands<\/a> across the globe to provide you with a wide array of top trending products.<\/p>"
+          }
+        },
+        "166429489727bda521-1": {
+          "type": "text_block",
+          "settings": {
+            "icon": "gift",
+            "title": "Packaging",
+            "text": "<p>Our <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> options are like no other. Select from over 10+ box options, add custom molds and letters for an added WOW factor.<\/p>"
+          }
+        },
+        "166429489727bda521-2": {
+          "type": "text_block",
+          "settings": {
+            "icon": "charity",
+            "title": "Personalization",
+            "text": "<p>Add your client's logo or recepient's initials for an added personalized touch. Our <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">in-house personalization options<\/a> require no minimums.<\/p>"
+          }
+        },
+        "b936537d-88b5-4362-a551-dc321f41b2e3": {
+          "type": "text_block",
+          "settings": {
+            "icon": "package",
+            "title": "Kitting",
+            "text": "<p>Let us do the heavy lifting. Our team will <a href=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\" target=\"_blank\" title=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\">kit your gifts<\/a> so you can spend time elsewhere. <\/p>"
+          }
+        },
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78": {
+          "type": "text_block",
+          "settings": {
+            "icon": "truck",
+            "title": "Drop Shipping",
+            "text": "<p>Have gifts <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">shipped direcetly to your recpient's<\/a> home or office. In addtion to bulk shipping, our drop shipping option pulls the stress off of you.<\/p>"
+          }
+        },
+        "ca437a50-929a-4a52-b84d-85cd4f90e576": {
+          "type": "text_block",
+          "settings": {
+            "icon": "phone",
+            "title": "One Phone Call",
+            "text": "<p><a href=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\">Book a meeting<\/a> with our team to learn more about our services and start your order today.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "166429489727bda521-0",
+        "166429489727bda521-1",
+        "166429489727bda521-2",
+        "b936537d-88b5-4362-a551-dc321f41b2e3",
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78",
+        "ca437a50-929a-4a52-b84d-85cd4f90e576"
+      ],
+      "settings": {
+        "title": "The BirdieBox Difference",
+        "align_text": "center",
+        "desktop_columns_per_row": 3,
+        "icon_color": "#000000",
+        "button_label": "",
+        "button_link": "",
+        "divider": false
+      }
+    },
+    "166395357092ee8210": {
+      "type": "text-columns",
+      "disabled": true,
+      "blocks": {
+        "16639535701e9f9059-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/BABB_-_landing_page_images_1.png",
+            "image_width": 650,
+            "title": "Personalize YETI",
+            "text": "<p>Shop the full line of YETI drinkware and add a personalizaed touch with your client's logo.<\/p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/yeti"
+          }
+        },
+        "06d7a8af-8ddb-4832-a194-edf3f7d1c542": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/4_a0f7bde6-8cd4-4074-aed4-d47b97d0a5d7.png",
+            "image_width": 650,
+            "title": "Innovative Gifts",
+            "text": "<p>No boring gifts here. The BBTEK Powerbank Journal is an innovative twist of an office staple. <\/p>",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "366a2eab-ea47-4b65-9eef-1ddbdf9bf48c": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/6_4c2bc843-5806-4512-807b-95d554a5c20d.png",
+            "image_width": 650,
+            "title": "Welcome New Hires",
+            "text": "<p>Equip new hires with a robust gift they'll actually use and custom packaging they won't forget.<\/p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/products\/new-school-executive"
+          }
+        }
+      },
+      "block_order": [
+        "16639535701e9f9059-0",
+        "06d7a8af-8ddb-4832-a194-edf3f7d1c542",
+        "366a2eab-ea47-4b65-9eef-1ddbdf9bf48c"
+      ],
+      "settings": {
+        "title": "Trending Gifts",
+        "align_text": "center",
+        "divider": false,
+        "color_scheme": "none"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "69c97403-95ee-42bc-9271-ec350de03fa1",
+    "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab",
+    "e1ffadc6-3ae9-490f-b4f8-c203f7764335",
+    "3aae25d2-95af-4999-a322-69bb1ee6cb29",
+    "8cb93cbf-536f-4036-832e-c8b35177f552",
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427",
+    "cffdae33-e2fa-43e3-a041-1ef50801371f",
+    "0ea17ed1-c5ac-49ae-9569-d0379a7fb212",
+    "30870546-0d7d-41ba-9600-32a309fd4c78",
+    "a9602bb3-3d35-489f-be71-52273a0ef327",
+    "c3a8b57c-9c65-490e-b882-e52202230aef",
+    "166429489701dbbee1",
+    "166395357092ee8210"
+  ]
+}

@@ -5,8 +5,43 @@
       "disabled": true,
       "settings": {}
     },
+    "69c97403-95ee-42bc-9271-ec350de03fa1": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Your One Stop Corporate Gifting Solution<\/p>",
+            "title_size": 40,
+            "subheading": "Welcome to the BirdieBox Corporate Gifting Program",
+            "link": "shopify:\/\/collections\/nest-picks",
+            "link_text": "Shop Now",
+            "link_2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
+            "link_text_2": "Book a Meeting",
+            "color_accent": "#f1f1f1",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/BABB_-_Golf_program_banner_1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 30,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
     "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab": {
       "type": "promo-grid",
+      "disabled": true,
       "blocks": {
         "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0": {
           "type": "advanced",
@@ -18,7 +53,7 @@
             "cta_link1": "shopify:\/\/collections\/nest-picks",
             "cta_text2": "Book a Meeting",
             "cta_link2": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
-            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image-boxes-round_886eeb62-7f40-42cb-af75-2fad936e15e8.jpg",
+            "image": "shopify:\/\/shop_images\/BABB_-_Golf_program_banner.png",
             "video_url": "",
             "width": "100",
             "height": 100,
@@ -38,32 +73,45 @@
         "space_below": false
       }
     },
-    "8011a80f-c3d3-4fc1-9ac9-f125ca91208a": {
-      "type": "rich-text",
+    "e1ffadc6-3ae9-490f-b4f8-c203f7764335": {
+      "type": "advanced-content",
       "blocks": {
-        "template--15846958661787__8011a80f-c3d3-4fc1-9ac9-f125ca91208a-1682978119dc5a0eb9-0": {
-          "type": "heading",
+        "a0a8037b-fbf4-4e9b-8ab2-21292bc8f770": {
+          "type": "liquid",
           "settings": {
-            "title": "Who is BirdieBox?"
+            "code": "‎",
+            "width": "25%",
+            "alignment": "center"
           }
         },
-        "template--15846958661787__8011a80f-c3d3-4fc1-9ac9-f125ca91208a-1682978119dc5a0eb9-1": {
-          "type": "text",
+        "template--15846958661787__e1ffadc6-3ae9-490f-b4f8-c203f7764335-1684168561929d9755-1": {
+          "type": "liquid",
           "settings": {
-            "enlarge_text": true,
-            "text": "<p>BirdieBox is a turnkey corporate gifting solution and leader in luxury gifting. Our key pillars of service include global sourcing, customization including personalization with initials\/logos, fulfillment, and shipping. We make the ordinary extraordinary by showing gratitude and emotional intelligence through the creation of personalized experiences.<\/p>"
+            "code": "<center>\n<h2>Who is BirdieBox?<\/h2>\n\n<p>BirdieBox is a turnkey corporate gifting solution and leader in luxury gifting. We make the ordinary extraordinary by showing gratitude and emotional intelligence through the creation of personalized experiences.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "70e10066-2ff2-45e6-a1f1-632d633d6305": {
+          "type": "liquid",
+          "settings": {
+            "code": "‎",
+            "width": "25%",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "template--15846958661787__8011a80f-c3d3-4fc1-9ac9-f125ca91208a-1682978119dc5a0eb9-0",
-        "template--15846958661787__8011a80f-c3d3-4fc1-9ac9-f125ca91208a-1682978119dc5a0eb9-1"
+        "a0a8037b-fbf4-4e9b-8ab2-21292bc8f770",
+        "template--15846958661787__e1ffadc6-3ae9-490f-b4f8-c203f7764335-1684168561929d9755-1",
+        "70e10066-2ff2-45e6-a1f1-632d633d6305"
+      ],
+      "custom_css": [
+        "p {font-size: 19px;}"
       ],
       "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "none",
-        "divider": false
+        "full_width": false,
+        "space_around": true
       }
     },
     "3aae25d2-95af-4999-a322-69bb1ee6cb29": {
@@ -133,7 +181,7 @@
             "link_text": "",
             "link_2": "",
             "link_text_2": "",
-            "color_accent": "#fff",
+            "color_accent": "#ffffff",
             "text_align": "vertical-bottom horizontal-left",
             "image": "shopify:\/\/shop_images\/Your_One_Stop_Corporate_Gift_Solution_v4_1.png",
             "overlay_opacity": 0,
@@ -155,7 +203,6 @@
     },
     "a9602bb3-3d35-489f-be71-52273a0ef327": {
       "type": "faq",
-      "disabled": true,
       "blocks": {
         "9c06b6c9-5c9a-4226-9e8a-0a9c12ad585c": {
           "type": "rich-text",
@@ -168,6 +215,7 @@
         },
         "template--15664853024923__a9602bb3-3d35-489f-be71-52273a0ef327-1664913132eb5259b6-0": {
           "type": "question",
+          "disabled": true,
           "settings": {
             "title": "What is BirdieBox?",
             "text": "<p>BirdieBox is a turnkey corporate gifting solution and leader in luxury gifting. Our key pillars of service include global sourcing, customization including personalization with initials\/name\/monogram, fulfillment and shipping. BirdieBox makes the ordinary extraordinary by showing gratitude and emotional intelligence  through the creation of personalized experiences.<\/p>"
@@ -204,6 +252,13 @@
             "title": "Processing FAQ",
             "text": "",
             "align_text": "left"
+          }
+        },
+        "caef31c8-ccb1-4967-bdd3-269c72bf89ef": {
+          "type": "question",
+          "settings": {
+            "title": "How do I place an order?",
+            "text": "<p>You have two options to place an order.<\/p><ol><li>Contact your Pro Shop and a staff member can place an order on your behalf.<\/li><li><a href=\"https:\/\/shopbirdiebox.com\/account\/register\" target=\"_blank\" title=\"https:\/\/shopbirdiebox.com\/account\/register\">Create an account<\/a> and place orders online.<\/li><\/ol><p>Whichever option you choose, you can <a href=\"\/collections\/nest-picks\" target=\"_blank\" title=\"Nest Picks\">browse our gift sets and products<\/a> and find the perfect option for your needs.<\/p>"
           }
         },
         "e8438ab0-eb02-44c4-b33e-12cc63624091": {
@@ -258,6 +313,7 @@
         "3c24f736-f957-4401-8379-09a57504575e",
         "3d11f02c-8fe1-4605-80ce-05562de3082b",
         "cc14cb98-bf70-4987-b7b6-cbe9dac35d6a",
+        "caef31c8-ccb1-4967-bdd3-269c72bf89ef",
         "e8438ab0-eb02-44c4-b33e-12cc63624091",
         "bc99a4b9-f9d9-450d-bfd4-177b97e74b56",
         "eef2671b-36a8-464b-8e35-2a1db4de6792",
@@ -403,116 +459,49 @@
         "color_scheme": "none"
       }
     },
-    "147f9ed1-765f-4172-a20d-927b90967b5a": {
-      "type": "promo-grid",
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427": {
+      "type": "advanced-content",
       "disabled": true,
       "blocks": {
-        "bfb944a2-abca-4083-93b3-b1972dd0dedf": {
-          "type": "simple",
-          "disabled": true,
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1": {
+          "type": "liquid",
           "settings": {
-            "link": "shopify:\/\/collections\/holiday",
-            "text": "Holiday Gifting Made Easy",
-            "image": "shopify:\/\/shop_images\/BABB_-_holiday_set.jpg",
-            "width": "50",
-            "height": 300
+            "code": "<h2><center>Trusted Partners With<\/h2>",
+            "width": "100%",
+            "alignment": "center"
           }
         },
-        "f695eb89-5e4d-4119-b7d9-8c7040f6e10a": {
-          "type": "simple",
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0": {
+          "type": "image",
           "settings": {
-            "link": "shopify:\/\/collections\/nest-picks",
-            "text": "Corporate Gifting Made Easy",
-            "image": "shopify:\/\/shop_images\/BABB_-_distributor_landing_2.png",
-            "width": "50",
-            "height": 300
-          }
-        },
-        "176e243c-065c-4108-b92c-5fa65f76a5ce": {
-          "type": "simple",
-          "settings": {
-            "link": "shopify:\/\/collections\/packaging",
-            "text": "Custom Packaging",
-            "image": "shopify:\/\/shop_images\/BABB_-_custom_packaging.jpg",
-            "width": "50",
-            "height": 300
+            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_9697918a-d586-4a24-b30f-d7fe376207d5.png",
+            "link": "",
+            "width": "100%",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "bfb944a2-abca-4083-93b3-b1972dd0dedf",
-        "f695eb89-5e4d-4119-b7d9-8c7040f6e10a",
-        "176e243c-065c-4108-b92c-5fa65f76a5ce"
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1",
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0"
       ],
       "settings": {
-        "full_width": true,
-        "gutter_size": 0,
-        "space_above": false,
-        "space_below": false
-      }
-    },
-    "a7b36dba-08e7-4b76-88cd-f6fb50a78489": {
-      "type": "text-columns",
-      "disabled": true,
-      "blocks": {
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-0": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-1": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-2": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-0",
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-1",
-        "template--15846958661787__a7b36dba-08e7-4b76-88cd-f6fb50a78489-16829792408e4c0d1c-2"
-      ],
-      "settings": {
-        "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
+        "full_width": false,
+        "space_around": true
       }
     }
   },
   "order": [
     "main",
+    "69c97403-95ee-42bc-9271-ec350de03fa1",
     "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab",
-    "8011a80f-c3d3-4fc1-9ac9-f125ca91208a",
+    "e1ffadc6-3ae9-490f-b4f8-c203f7764335",
     "3aae25d2-95af-4999-a322-69bb1ee6cb29",
     "30870546-0d7d-41ba-9600-32a309fd4c78",
     "a9602bb3-3d35-489f-be71-52273a0ef327",
     "166429489701dbbee1",
     "c3a8b57c-9c65-490e-b882-e52202230aef",
     "166395357092ee8210",
-    "147f9ed1-765f-4172-a20d-927b90967b5a",
-    "a7b36dba-08e7-4b76-88cd-f6fb50a78489"
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427"
   ]
 }

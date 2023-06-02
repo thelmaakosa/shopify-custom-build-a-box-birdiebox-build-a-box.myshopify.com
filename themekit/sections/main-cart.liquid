@@ -81,8 +81,12 @@
               </label>
             </div>
           {% endif %}
-
-          <div class="cart__item-row cart__checkout-wrapper">
+<p><input style="-webkit-appearance: checkbox; float:none; vertical-align: middle;" type="checkbox" id="effectiveAppsAgreeCB" onchange="termsAndConditionsCheckboxChanged2(this);">&nbsp;<label id="eaLbl" style="display:inline; float:none" for="agree">I acknowledge my order will not be processed until mockups have been approved for personalized items.</label></p>
+    <div onclick="if (!document.getElementById('effectiveAppsAgreeCB').checked) { alert(window.EFFECTIVE_APPS_TAC_ALERT); clearLoadingStateFromElement(this); return false;} return true;" >      
+    
+    {% render 'shipping-calculator' %}
+    
+    <div class="cart__item-row cart__checkout-wrapper" id="coWrapper" style="cursor: pointer; pointer-events: none;">
             <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout" style="display: inline-block !important;">
               {{ 'cart.general.checkout' | t }}
             </button>
@@ -95,6 +99,7 @@
               {{ 'cart.general.continue_shopping' | t }}
             </a>
           </div>
+    </div>
 
           <div class="cart__item-row text-center">
             <small>{{ 'cart.general.shipping_at_checkout' | t }}</small>
@@ -111,3 +116,43 @@
   "name": "t:sections.main-cart.name"
 }
 {% endschema %}
+<script>
+  
+    window.EaI = setInterval(function() {
+    try {
+          if (window.EFFECTIVE_APPS_TAC_TEXT !== undefined) {
+              if (document.querySelector('[name="waio_addToCart"]') !== null && window.done === undefined) {
+                  document.querySelector('[name="waio_addToCart"]').removeAttribute('style');
+                  window.done = true;
+              }
+            
+              document.getElementById('eaLbl').innerHTML = window.EFFECTIVE_APPS_TAC_TEXT;
+          }
+    }
+    catch(err) {}
+    }, 500);
+  
+  function termsAndConditionsCheckboxChanged2(element) {
+    if (element.checked) {
+      document.getElementById('coWrapper').style.pointerEvents = "auto";
+    }
+    else {
+      document.getElementById('coWrapper').style.pointerEvents = "none";
+    }
+    
+    termsAndConditionsCheckboxChanged(element);
+  }
+</script> 
+
+<script>
+  theme.strings = {
+      shippingCalcSubmitButton: {{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' | json }},
+      shippingCalcSubmitButtonDisabled: {{ settings.shipping_calculator_submit_button_label_disabled | default: 'Calculating...' | json }},
+      {% if customer %}shippingCalcCustomerIsLoggedIn: true,{% endif %}
+      shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
+  }
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="/services/javascripts/countries.js"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>

