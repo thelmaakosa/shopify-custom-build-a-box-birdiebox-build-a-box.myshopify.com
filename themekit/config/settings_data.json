@@ -24,7 +24,7 @@
     "color_scheme_1_texture": "swirl",
     "color_scheme_2_bg": "#ffffff",
     "color_scheme_2_text": "#000000",
-    "color_scheme_2_texture": "paper.jpg",
+    "color_scheme_2_texture": "none",
     "color_scheme_3_bg": "#f5f5f5",
     "color_scheme_3_text": "#000000",
     "color_scheme_3_texture": "darken",
@@ -68,6 +68,7 @@
     "social_instagram_link": "https:\/\/www.instagram.com\/birdiebox",
     "social_tiktok_link": "https:\/\/www.tiktok.com\/@birdieboxgifting",
     "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/birdiebox",
+    "favicon": "shopify:\/\/shop_images\/Submark_400px.png",
     "search_type": "product,page",
     "show_breadcrumbs": true,
     "show_breadcrumbs_collection_link": true,
@@ -172,7 +173,7 @@
             "type": "promotion",
             "disabled": true,
             "settings": {
-              "enable_image": true,
+              "enable_image": false,
               "title": "Site-wide promotion",
               "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.<\/p>",
               "button_label": "Optional button",
@@ -211,8 +212,8 @@
           "footer-promotions-2"
         ],
         "settings": {
-          "hide_homepage": true,
-          "image_size": "wide"
+          "hide_homepage": false,
+          "image_size": "natural"
         }
       },
       "product-recommendations": {
@@ -291,11 +292,11 @@
           "c296bc3e-1d7f-4750-b993-050176521596"
         ],
         "custom_css": [
-          "a:hover {\/* Color goes here *\/ color: #18c9c9 !important;}"
+          "a:hover {color: #18c9c9 !important;}"
         ],
         "settings": {
           "show_newsletter": true,
-          "newsletter_richtext": "<p>Join the Nest to recieve insights<br\/>new trends, hot items, and  more<\/p>",
+          "newsletter_richtext": "<p>Join the Nest to receive insight on new trends, hot items, and more<\/p>",
           "footer_main_menu": false,
           "show_copyright": true,
           "copyright_text": "",

@@ -1,4 +1,4 @@
-div#selectedImagePopup {
+#selectedImagePopup {
     position: fixed;
     z-index: 999;
     display: flex;
@@ -12,11 +12,13 @@ div#selectedImagePopup {
 #selectedImagePopup img{
     width:300px
 }
-div#selectedImagePopup.active{
+#selectedImagePopup.active{
     clip-path: circle(70.7% at 50% 50%);
 }
 #selectedImagePopup .popupImage{
   position:relative;
+  background-color:white;
+  padding:20px;
 }
 #selectedImagePopup .popupCloseIcon {
     position: absolute;

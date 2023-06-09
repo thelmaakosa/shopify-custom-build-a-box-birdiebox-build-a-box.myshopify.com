@@ -43,14 +43,17 @@
         <p>{{ 'customer.orders.none' | t }}</p>
 
       {%- endif -%}
-     
     </div>
+
     <div class="grid__item medium-up--one-third">
       <h3>{{ 'customer.account.details' | t }}</h3>
+
       <p class="h5">{{ customer.name }}</p>
+
       {{ customer.default_address | format_address }}
+
       <p><a href="{{ routes.account_addresses_url }}" class="text-link">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
-        <style>
+      <style>
         .ckCustomInputFields {
           border: 1px solid #aaa;
           padding: 20px;
@@ -72,17 +75,46 @@
         .logoWrapper ,.initialsWrapper {
             display: flex;
             gap: 20px;
+            padding-bottom: 10px;
         }
-          #loading {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        border: 3px solid black;
-        border-radius: 50%;
-        border-top-color: #fff;
-        animation: spin 1s ease-in-out infinite;
-        -webkit-animation: spin 1s ease-in-out infinite;
-    }
+        .logoWrapper{
+           border-bottom: 1px solid lightgray;
+        }
+        .logoWrapper .input{
+          width: 58%;
+        }
+        #loading {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          border: 3px solid black;
+          border-radius: 50%;
+          border-top-color: #fff;
+          animation: spin 1s ease-in-out infinite;
+          -webkit-animation: spin 1s ease-in-out infinite;
+        }
+        .ckLogoImageView , .ckLogoTextView{
+          position:relative;
+        }
+        .ckLogoImageView img , .ckLogoTextView {
+           width: 100%;
+           border: 1px solid lightgray;
+           padding: 10px;
+        }
+        .ckRemoveLogo {
+          position: absolute;
+          right: -8px;
+          top: -10px;
+          background: red;
+          height: 10px;
+          width: 10px;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          border-radius: 50%;
+        }
 
     @keyframes spin {
         to {
@@ -110,7 +142,7 @@
         top: 0;
     }
       </style>
-      
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
       <h3>Set Default Personalization</h3> 
       <div class="ckCustomInputFields">
            <!-- Loader -->
@@ -126,7 +158,12 @@
           <div class="selected">
              {% if customer.metafields.custom_meta.logo_asset_url %}
                <p>Selected Logo</p>
-               <img src="{{ customer.metafields.custom_meta.logo_asset_url }}" style="width:100%" />
+               <div class="ckLogoImageView">
+                   <img src="{{ customer.metafields.custom_meta.logo_asset_url }}" style="width:100%" />
+                   <a href="#" id="ckRemoveLogo" class="ckRemoveLogo" data-customer-id="{{customer.id }}">
+                     <i class="fa fa-times"></i>
+                   </a>
+                 </div>
               {% endif %}
           </div>
         </div>
@@ -140,8 +177,13 @@
             </div>
             <div class="selected">
              {% if customer.metafields.custom_meta.initial_text %}
-               <p>Selected Text :- <strong>{{  customer.metafields.custom_meta.initial_text }}</strong></p>
-               
+                <p>Selected Text </p>
+                <div class="ckLogoTextView">
+                    <strong>{{  customer.metafields.custom_meta.initial_text }}</strong>
+                    <a href="#" id="ckRemoveText" class="ckRemoveLogo" data-customer-id="{{customer.id }}">
+                         <i class="fa fa-times"></i>
+                       </a>
+                </div>
               {% endif %}
           </div>
         </div>
@@ -151,10 +193,9 @@
         </form>
       </div>
       <script>
-      console.log('working');
+        $(document).ready(function () {
        $('#ckCustomerForm').submit(function(event) {
           event.preventDefault();
-
           var fileInput = $('#logoFile')[0].files[0];
           var textValue = $('#initialsText').val();
           var customerId = $('#customerId').val();
@@ -163,10 +204,32 @@
           formData.append('logoFile', fileInput);
           formData.append('initialsText', textValue);
           formData.append('customerId', customerId);
+         let url = 'https://ckapps.codingkloud.com/birdie-box/index.php/save-custom-usermeta';
+          ajaxFire(url, 'POST',formData)
+        });
 
+        $('#ckRemoveLogo').click(function (e) {
+          e.preventDefault()
+          var customerId = $(this).data('customer-id')
+          var url = `https://ckapps.codingkloud.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=logo_asset_url`
+          if(confirm('Did you realy want to remove logo image')){
+            ajaxFire(url, 'GET')
+          }
+        })
+
+          $('#ckRemoveText').click(function (e) {
+            e.preventDefault()
+            var customerId = $(this).data('customer-id')
+            var url = `https://ckapps.codingkloud.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=initial_text`
+            if(confirm('Did you realy want to remove text')){
+              ajaxFire(url, 'GET')
+            }
+          })
+
+        const ajaxFire = (url,method,formData='') => {
           $.ajax({
-            url: 'https://ckapps.codingkloud.com/birdie-box/index.php/save-custom-usermeta',
-            type: 'POST',
+            url: url,
+            type: method,
             data: formData,
             processData: false,
             contentType: false,
@@ -184,13 +247,13 @@
               console.error('Failed to submit form data');
             }
           });
-        });
+        }
+          })
     </script>
       
     </div>
 
   </div>
-  
 
   {%- liquid
     if paginate.pages > 1

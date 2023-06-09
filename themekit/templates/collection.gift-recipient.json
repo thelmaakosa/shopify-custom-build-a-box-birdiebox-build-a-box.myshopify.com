@@ -1,0 +1,108 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": true,
+        "collection_image_enable": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "7103e83c-707a-4226-90bd-afd187dc565c": {
+      "type": "featured-collections",
+      "blocks": {
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "employee-gifts",
+            "title": "‎"
+          }
+        },
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "client-gifts",
+            "title": "‎"
+          }
+        },
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "executive-leadership-gifts",
+            "title": "‎"
+          }
+        },
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "athlete-gifts",
+            "title": "‎"
+          }
+        },
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "student-gifts",
+            "title": "‎"
+          }
+        },
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-2": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "women-owned",
+            "title": "‎"
+          }
+        }
+      },
+      "block_order": [
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-5",
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-1",
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-0",
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-4",
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-3",
+        "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-2"
+      ],
+      "settings": {
+        "title": "Shop by recipient",
+        "divider": false
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "collection_description": {
+          "type": "collection_description",
+          "settings": {}
+        },
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "grid_style": "small"
+          }
+        }
+      },
+      "block_order": [
+        "collection_description",
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "collapse_filters": true,
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-header",
+    "7103e83c-707a-4226-90bd-afd187dc565c",
+    "main-collection",
+    "recently-viewed"
+  ]
+}
