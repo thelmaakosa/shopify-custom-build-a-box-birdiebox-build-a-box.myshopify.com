@@ -204,14 +204,14 @@
           formData.append('logoFile', fileInput);
           formData.append('initialsText', textValue);
           formData.append('customerId', customerId);
-         let url = 'https://ckapps.codingkloud.com/birdie-box/index.php/save-custom-usermeta';
+         let url = 'https://soodletech.com/birdie-box/index.php/save-custom-usermeta';
           ajaxFire(url, 'POST',formData)
         });
 
         $('#ckRemoveLogo').click(function (e) {
           e.preventDefault()
           var customerId = $(this).data('customer-id')
-          var url = `https://ckapps.codingkloud.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=logo_asset_url`
+          var url = `https://soodletech.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=logo_asset_url`
           if(confirm('Did you realy want to remove logo image')){
             ajaxFire(url, 'GET')
           }
@@ -220,7 +220,7 @@
           $('#ckRemoveText').click(function (e) {
             e.preventDefault()
             var customerId = $(this).data('customer-id')
-            var url = `https://ckapps.codingkloud.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=initial_text`
+            var url = `https://soodletech.com/birdie-box/index.php/delete-saved-logo-image/?customerId=${customerId}&key=initial_text`
             if(confirm('Did you realy want to remove text')){
               ajaxFire(url, 'GET')
             }

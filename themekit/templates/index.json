@@ -111,7 +111,7 @@
             "link_2": "",
             "link_text_2": "",
             "text_position": "right",
-            "image": "shopify:\/\/shop_images\/Sports_Testimonial_Video_SHOP_BB_Homepage_2-min.gif",
+            "image": "shopify:\/\/shop_images\/Review_Frisco_Bowl-min.gif",
             "indent_image": false,
             "focal_point": "center center",
             "color_scheme": "none"
@@ -508,7 +508,7 @@
             "height": 240,
             "text_align": "vertical-center horizontal-center",
             "focal_point": "center",
-            "color_accent": "#fff"
+            "color_accent": "#ffffff"
           }
         },
         "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-1": {
@@ -527,7 +527,7 @@
             "height": 240,
             "text_align": "vertical-center horizontal-center",
             "focal_point": "center",
-            "color_accent": "#fff"
+            "color_accent": "#ffffff"
           }
         }
       },
