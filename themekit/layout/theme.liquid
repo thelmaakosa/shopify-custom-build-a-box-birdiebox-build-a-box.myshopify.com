@@ -1,23 +1,19 @@
-{%- comment %}<locksmith:e897>{% endcomment -%}
+{%- comment %}<locksmith:6e57>{% endcomment -%}
   {%- include 'locksmith' -%}
-{%- comment %}</locksmith:e897>{% endcomment -%}
+{%- comment %}</locksmith:6e57>{% endcomment -%}
 
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
 <head>
   {{ locksmith_initializations }}
-  <script>
-    window.dataLayer = window.dataLayer || [];
-</script>
-  
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N7F5MB5');</script>
-<!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JC41YMT2N8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-JC41YMT2N8');
 </script>
 <!-- Hotjar Tracking Code for https://www.birdiebox.com/ -->
 <script>
@@ -52,10 +48,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {%- render 'seo-title' -%}
 
   {%- if page_description -%}
-  {%- comment %}<locksmith:db89>{% endcomment -%}
+  {%- comment %}<locksmith:df9b>{% endcomment -%}
     {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
     {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
-  {%- comment %}</locksmith:db89>{% endcomment -%}
+  {%- comment %}</locksmith:df9b>{% endcomment -%}
   {%- endif -%}
 
   {%- render 'social-meta-tags' -%}
@@ -154,6 +150,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {% comment %} End {% endcomment %}
 
                   {% include 'bss-product-labels-configs' %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1D5WFZXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1D5WFZXZ');
+</script>  
+
+
   <style>
     .loginss {
     display: block;
@@ -172,28 +179,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   width: 100%;
 }
   </style>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "hfqeztbucy");
-</script>
-  
-
-	{{ shop.metafields.loox["global_html_head"] }}
 </head>
              
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} {% if customer %}logged-in {% endif %}" data-transitions="{{ settings.animate_page_transitions }}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
   {% comment %} {{ page.title }} {% endcomment %}
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7F5MB5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  
   {% if settings.animate_page_transitions %}
     <script type="text/javascript">window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>
   {% endif %}
@@ -261,8 +252,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4272180&fmt=gif" />
 </noscript>
 {% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}
-	{{ shop.metafields.loox["global_html_body"] }}
- {% if template == 'product' %}
+{% if template == 'product' %}
  <script src="{{ 'ck-custom-product.js' | asset_url }}" defer></script>
 {% endif %}
 </body>
@@ -339,4 +329,6 @@ _this.find('.grid-product__price,.usf-sr-container .grid-product__actions').show
 
     
   </script>
+
+  
 </html>

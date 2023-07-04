@@ -258,7 +258,8 @@
                     {% for collection in product.collections %}
               
                     {% if  collection.handle contains "nest-picks"%}
-             
+                      
+                  {{ collection.handle }}
                       {% assign login_feature_enable = false %}
                     {% endif %}
                     {% endfor %}

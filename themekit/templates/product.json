@@ -25,13 +25,6 @@
           "type": "price",
           "settings": {}
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "surface_pickup_enable": false
-          }
-        },
         "9b440b57-12c2-4c4a-ba3a-2443a5354cff": {
           "type": "shopify:\/\/apps\/imercium-product-tag-image\/blocks\/app-block\/43ae916d-59e1-4233-a436-aba25666e91e",
           "settings": {
@@ -39,12 +32,12 @@
             "visibility": true,
             "display_format": "icon",
             "number_of_tags": 8,
-            "top_margin": -25,
-            "bottom_margin": 0,
+            "top_margin": 0,
+            "bottom_margin": 15,
             "icon_shape": "circle",
             "icon_size": 60,
             "icon_gap": 10,
-            "icon_border": false,
+            "icon_border": true,
             "text_color": "#202223",
             "text_border": false,
             "text_font_size": 9,
@@ -56,37 +49,39 @@
         "196560e6-278b-4957-8d37-a5920d4eff4f": {
           "type": "description",
           "settings": {
-            "is_tab": true
+            "is_tab": false
           }
         },
-        "d10ed11d-33a3-486c-a7f0-b5e4c26d2237": {
-          "type": "tab",
-          "settings": {
-            "title": "Shipping information",
-            "content": "<p>Shipping rates will vary based on how many boxes, gift sets, and\/or items you are sending. Whether you need to send gifts <strong>in bulk<\/strong> or <strong>drop shipped<\/strong>, we've got you covered. Our standard rates are listed for your reference below.<\/p><p><strong>Standard Ground (2+ week turnaround):<br\/><\/strong>Boxes - $17.50 each<br\/>Gift Sets - $17.50 each<br\/>Individual Items - Based on weight<\/p><p><strong>Rush Shipping (less than 2 week turnaround for in stock products):<br\/><\/strong>Boxes - $85 each<br\/>Gift Sets - $85 each<br\/>Individual Items - Based on weight<\/p>",
-            "page": ""
-          }
+        "7df27fd0-b849-49eb-8bc8-46532c585496": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
         },
-        "31985777-ba2a-44f9-8eaa-1727da7cb9e0": {
-          "type": "tab",
+        "757a8e94-58d9-4a99-8528-3d50960d7823": {
+          "type": "text",
           "settings": {
-            "title": "Artwork requirements",
-            "content": "<p>Below you will find the art file requirements needed for us to produce the best quality customization for you and your gifting experience! We want to ensure that the unboxing moment is as wonderful as the intent of the gift. With that being said, please read below on what our team needs from you. If you have any questions, please feel free to reach out to us.<\/p><p><strong>Printing File Requirements:<\/strong><span style=\"text-decoration:underline\"><br\/><\/span>Images must be of high quality - 300+ DPI for smaller products or 600+ DPI for custom packaging<br\/>CMYK only<br\/>File type must be .EPS, .AI, or .PDF<\/p><p><strong>Etching File Requirements:<br\/><\/strong>Vectorized files only<br\/>RGB only, all black - color logos will not be accepted<br\/>Images must be of high quality - 600+ DPI<br\/>File type must be .EPS, .AI, or .PDF<\/p><p><strong>Embroidery File Requirements:<br\/><\/strong>Can be any file type or image quality<br\/>If a specific PMS code is required please let us know<\/p><p><strong>Video Booklet Requirements:<br\/><\/strong>Must be in a MP4 format<br\/>Content must be 720 MP<br\/>File can not be greater than 500 MB<\/p><p>If you are unable to provide the specific artwork required to complete your order, no worries! Please provide the closest logo you can find and our team will convert your image for a $25 fee.<\/p>",
-            "page": ""
+            "text": "Don't see a spot to add your logo or initials? Don't worry! Any logos or initials needed will be collected after your order has been placed."
           }
         },
         "e07c5595-3834-4019-a741-aecc86c1da37": {
           "type": "text",
           "settings": {
-            "text": "<strong> Don't see a spot to add your logo or initials? Don't worry! Any logos or initials needed will be collected after your order has been placed. A mockup will be provided for any personalized products for your approval after your order has been placed.<\/strong>"
+            "text": "<strong>A mockup will be provided for any personalized products for your approval after your order has been placed.<\/strong>"
           }
         },
         "5246bdc7-8e76-48c2-964d-a09fa2da641c": {
           "type": "shopify:\/\/apps\/wishlist-wishify\/blocks\/product\/e14a43b5-34c6-492d-b46f-3ad2eda08696",
           "settings": {}
         },
-        "loox-rating": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-rating\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false
+          }
+        },
+        "c009f155-02f9-4790-b8d0-45d9caa880e0": {
+          "type": "shopify:\/\/apps\/upsell-cross-sell-selleasy\/blocks\/lb-upsell-addon-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
           "settings": {}
         }
       },
@@ -95,28 +90,23 @@
         "9aa62386-f3d0-4d5f-9f22-15e80f12ae98",
         "aa5da5a4-1da9-4a19-bb74-f803e12827d8",
         "price",
-        "loox-rating",
-        "buy_buttons",
         "9b440b57-12c2-4c4a-ba3a-2443a5354cff",
         "196560e6-278b-4957-8d37-a5920d4eff4f",
-        "d10ed11d-33a3-486c-a7f0-b5e4c26d2237",
-        "31985777-ba2a-44f9-8eaa-1727da7cb9e0",
+        "7df27fd0-b849-49eb-8bc8-46532c585496",
+        "757a8e94-58d9-4a99-8528-3d50960d7823",
         "e07c5595-3834-4019-a741-aecc86c1da37",
-        "5246bdc7-8e76-48c2-964d-a09fa2da641c"
-      ],
-      "custom_css": [
-        "@media only screen and (min-width: 992px) {.btn--full {display: flex; width: 50% !important; position: relative !important; left: 175px !important; top: -77px !important; }}",
-        "@media only screen and (max-width: 992px) {.btn--full {display: flex; width: 50% !important; position: relative !important; left: 125px !important; top: -77px !important; }}",
-        ".add-to-cart {background: #18c9c9; border: 1px solid #18c9c9;}"
+        "5246bdc7-8e76-48c2-964d-a09fa2da641c",
+        "buy_buttons",
+        "c009f155-02f9-4790-b8d0-45d9caa880e0"
       ],
       "settings": {
         "sku_enable": false,
         "image_position": "left",
-        "image_container_size": "small",
+        "image_container_size": "medium",
         "product_image_size": "square",
         "product_zoom_enable": true,
         "thumbnail_position": "beside",
-        "thumbnail_height": "fixed",
+        "thumbnail_height": "flexible",
         "thumbnail_arrows": true,
         "mobile_layout": "partial",
         "enable_video_looping": true,
@@ -137,15 +127,22 @@
           "type": "tab",
           "settings": {
             "title": "Shipping information",
-            "content": "<p>Shipping rates will vary based on how many boxes, gift sets, and\/or items you are sending. Our standard rates are listed for your reference below.<\/p><p><strong>Standard Ground (2+ week turnaround):<br\/><\/strong>Boxes - $17.50 each<br\/>Gift Sets - $17.50 each<br\/>Individual Items - Based on weight<\/p><p><strong>Rush Shipping (less than 2 week turnaround):<br\/><\/strong>Boxes - $85 each<br\/>Gift Sets - $85 each<br\/>Individual Items - Based on weight<\/p>",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>",
             "page": ""
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "settings": {
+            "title": "Ask a question",
+            "phone": false
           }
         },
         "eddbd67e-18ba-4be1-bb6e-7f1a5ac4ef0c": {
           "type": "tab",
           "settings": {
-            "title": "Artwork requirements",
-            "content": "<p>Below you will find the art file requirements needed for us to produce the best quality customization for you and your gifting experience! We want to ensure that the unboxing moment is as wonderful as the intent of the gift. With that being said, please read below on what our team needs from you. If you have any questions, please feel free to reach out to us.<\/p><p><strong>Printing File Requirements:<\/strong><span style=\"text-decoration:underline\"><br\/><\/span>Images must be of high quality - 300+ DPI for smaller products or 600+ DPI for custom packaging<br\/>CMYK only<br\/>File type must be .EPS, .AI, or .PDF<\/p><p><strong>Etching File Requirements:<br\/><\/strong>Vectorized files only<br\/>RGB only, all black - color logos will not be accepted<br\/>Images must be of high quality - 600+ DPI<br\/>File type must be .EPS, .AI, or .PDF<\/p><p><strong>Embroidery File Requirements:<br\/><\/strong>Can be any file type or image quality<br\/>If a specific PMS code is required please let us know<\/p><p><strong>Video Booklet Requirements:<br\/><\/strong>Must be in a MP4 format<br\/>Content must be 720 MP<br\/>File can not be greater than 500 MB<\/p><p>If you are unable to provide the specific artwork required to complete your order, no worries! Please provide the closest logo you can find and our team will convert your image for a $25 fee.<\/p>",
+            "title": "Shipping information",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>",
             "page": ""
           }
         }
@@ -153,9 +150,9 @@
       "block_order": [
         "description",
         "tab",
+        "contact",
         "eddbd67e-18ba-4be1-bb6e-7f1a5ac4ef0c"
       ],
-      "custom_css": [],
       "settings": {
         "max_width": true
       }
@@ -179,92 +176,11 @@
       "type": "recently-viewed",
       "settings": {}
     },
-    "03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8": {
-      "type": "testimonials",
-      "blocks": {
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-0": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "5-stars",
-            "testimonial": "<p>\"BirdieBox executives provide incredible support from beginning to end and have a proven track record of quality materials, clear communication, and critical timelines.\"<\/p>",
-            "author": "MATTHEW MCINNIS",
-            "author_info": "DALLAS COWBOYS FOOTBALL CLUB"
-          }
-        },
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-1": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "5-stars",
-            "testimonial": "<p>\"Whether it is gifts for 300 people or gifts for one there is nobody else we will ever look to other than BirdieBox.\"<\/p>",
-            "author": "GEOFF LOFSTEAD",
-            "author_info": "SOUTH FLORIDA SECTION, PGA AMERICA"
-          }
-        },
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-2": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "5-stars",
-            "testimonial": "<p>\"BirdieBox helped me so much with my intense order for over 400 people in 16 different states. Thank you for making me look like a hero to my entire team!\"<\/p>",
-            "author": "GINELL PICKRELL",
-            "author_info": "PEPSICO BEVERAGES NORTH AMERICA"
-          }
-        },
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-3": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "5-stars",
-            "testimonial": "<p>\"BirdieBox has been creative, thorough, and professional which has made for a truly exceptional experience.\"<\/p>",
-            "author": "JESSICA RIPPEY",
-            "author_info": "ATLANTIC COAST CONFERENCE"
-          }
-        },
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-4": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "5-stars",
-            "testimonial": "<p>\"BirdieBox is more than a vendor or gift service - they provide solutions and help drive the experience.\"<\/p>",
-            "author": "DEL ARVAYO",
-            "author_info": "ARIZONA BOWL"
-          }
-        }
-      },
-      "block_order": [
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-0",
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-1",
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-2",
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-3",
-        "template--15817137062043__03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8-1685552981cbd7fa53-4"
-      ],
-      "settings": {
-        "title": "What clients love about BirdieBox",
-        "align_text": "center",
-        "round_images": true,
-        "color_scheme": "none"
-      }
-    },
     "collection-return": {
       "type": "collection-return",
       "settings": {
         "color_scheme": "2"
       }
-    },
-    "loox-product-reviews-app-section": {
-      "type": "apps",
-      "blocks": {
-        "loox-product-reviews": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "only_photos": false,
-            "aggregated": false,
-            "hide_thumbnails": false,
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "loox-product-reviews"
-      ],
-      "settings": {}
     }
   },
   "order": [
@@ -274,8 +190,6 @@
     "more-products-vendor",
     "more-products-collection",
     "recently-viewed",
-    "03d38ff3-b1d0-4345-a5a4-a0ab2cd3dce8",
-    "collection-return",
-    "loox-product-reviews-app-section"
+    "collection-return"
   ]
 }

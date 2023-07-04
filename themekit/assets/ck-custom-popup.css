@@ -17,8 +17,6 @@
 }
 #selectedImagePopup .popupImage{
   position:relative;
-  background-color:white;
-  padding:20px;
 }
 #selectedImagePopup .popupCloseIcon {
     position: absolute;

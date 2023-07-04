@@ -17,7 +17,7 @@
             "subheading": "",
             "link": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
             "link_text": "Book a Meeting",
-            "link_2": "shopify:\/\/collections\/best-selling-gift-sets-1",
+            "link_2": "shopify:\/\/collections\/gift-sets",
             "link_text_2": "Shop Now",
             "color_accent": "#33cccc",
             "text_align": "vertical-bottom horizontal-right",
@@ -36,7 +36,7 @@
             "subheading": "",
             "link": "https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting",
             "link_text": "Book a Meeting",
-            "link_2": "shopify:\/\/collections\/best-selling-gift-sets-1",
+            "link_2": "shopify:\/\/collections\/gift-sets",
             "link_text_2": "Shop Now",
             "color_accent": "#33cccc",
             "text_align": "vertical-bottom horizontal-right",
@@ -154,7 +154,7 @@
         "67835d2f-6f6e-40cf-a2e8-d7264dc6b294": {
           "type": "product",
           "settings": {
-            "product": "yeti-rambler-20-oz-tumbler",
+            "product": "yeti-20oz-rambler",
             "subheading": "",
             "heading": "YETI 20oz Tumbler",
             "textarea": "Personalize YETI with your logo or recipient's initials.",
