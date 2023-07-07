@@ -22,12 +22,12 @@
                     <option value="Pat DePirro">Pat DePirro</option>
                     <option value="Maddie Douglas">Maddie Douglas</option>
                     <option value="Chrissy Dunlap">Chrissy Dunlap</option>
+                    <option value="Juliette Eiseman">Juliette Eiseman</option>
                     <option value="Ali Harman">Ali Harman</option>
                     <option value="Stephanie Helman">Stephanie Helman</option>
-                    <option value="Kathy Kreft">Kathy Kreft</option>
-                    <option value="Kristin Miller">Kristin Miller</option>
                     <option value="Brandon Oshel">Brandon Oshel</option>
                     <option value="Michael Pasvar">Michael Pasvar</option>
+                    <option value="Jim Pfieffer">Jim Pfieffer</option>
                     <option value="Christa Selner">Christa Selner</option>
                     <option value="Mark Williams">Mark Williams</option>
                     <option value="Other">Other</option>
@@ -37,7 +37,7 @@
               <div class="form-row">
                   <label for="delivery-date">Preferred Delivery Date: </label>
                   <input type="date" id="delivery-date" name="delivery_date" required>
-                 <p> <center>Please note the standard turnaround time is 2 weeks from artwork approval. Dates selected prior to the 2 week window may incur rush shipping fees.</center></p>
+                 <p> <center>Please note your preferred date is not a guarantee. The standard turnaround time is 2 weeks from artwork approval. Dates selected prior to the 2 week window may incur rush shipping fees.</center></p>
               </div>
             
               <div class="form-row-submit">
@@ -47,11 +47,492 @@
       </div>
       <div class="birdieBox-footer"><span></span></div>
   </div>
+  <div class="d-flex cart-action-wrapper">
   {% if cart.attributes.delivery_date and cart.attributes.order_assistant %}
     <div class="birdieBox-edit-application-text">
       <button class="birdieBox-edit-application btn btn--secondary" style="font-family: 'Lato';">Change my preferred delivery date</button>
     </div>
   {% endif %}
+   <div class="make-gift-box">
+      <button class="gift-box-btn btn" id="addGiftBox">Build a Gift Set</button>
+
+{% capture gift_box %}
+  {% for item in cart.items %}
+    {% assign result = item.properties.Gift | remove: 'Gift Set ' %}
+    {{ result }}
+  {% endfor %}
+{% endcapture %}
+  
+{% assign gift_box_array = gift_box | split: '' | compact %}
+{% assign max_value = gift_box_array.first %}
+
+{% for value in gift_box_array %}
+  {% if value > max_value %}
+    {% assign max_value = value %}
+  {% endif %}
+{% endfor %}
+  <div id="giftBoxContainer">
+    {% for i in (1..max_value) %}
+      <div class="giftBox" id="giftBox{{ i }}">
+        <div class="giftBoxName">Gift Set{{ i }}</div>
+        <div class="buttonContainer"><span class="removeGiftBox disabled">-</span><span class="addGiftBox">+</span></div>
+      </div>
+    {% endfor %}
+  </div>
+
+    </div>
+
+    {% assign info_text = "Uploading a drop ship list will allow you to bulk upload shipping addresses for multiple gift recipients at once. This also includes bulk personalization." %}
+
+    <div class="upload-wrap">
+      <div class="show-file-upload-btn">
+        <button class="gift-box-btn btn" id="showfilebtn">Upload Drop Ship List</button>
+        <span class="info-box" data-tippy-content="{{ info_text }}">i</span>
+      </div>
+      <form class="file-form">
+        <div class="loading-animation-wrap">
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <g transform="rotate(0 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(30 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(60 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(90 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(120 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(150 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(180 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(210 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(240 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(270 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(300 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+            </rect>
+          </g><g transform="rotate(330 50 50)">
+            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#18c9c9">
+              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+            </rect>
+          </g>
+          </svg>
+        </div>
+        <div class="file-input">
+          <div id="download-file">
+            <p>File uploaded!</p>
+          </div>
+          <input type="file" id="upload-input">
+          <div class="file-btn-wrapper">
+
+            <button id="upload-button" onclick="uploadFile(event)">Upload</button>
+            <a id="download-template"  download="download" href="https://cdn.shopify.com/s/files/1/0603/6360/4123/files/BirdieBox_Drop_Ship_List_Template.xlsx?v=1687847425">Download Template</a>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <style>
+    .info-box{
+      display: inline-flex;
+      padding: 8px 10px 8px 8px;
+      background: black;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+      font-family: serif;
+      font-size: 16px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      tippy('[data-tippy-content]', {
+        placement: 'right',
+      });
+
+      $('.giftBox:last-child').addClass('last')
+      var giftBoxCount = $('.giftBox').length + 1;
+      var isFirstGiftBoxAdded = false;
+
+      // Add gift box
+      function addGiftBox() {
+        $('.gift-product').show();
+        $('.giftBox').removeClass('last');
+        var giftBox = $('<div>').addClass('giftBox last').attr('id', 'giftBox' + giftBoxCount);
+        var giftBoxName = $('<div>').addClass('giftBoxName').text('Gift Set ' + giftBoxCount);
+        var buttonContainer = $('<div>').addClass('buttonContainer');
+        var removeButton = $('<span>').addClass('removeGiftBox').text('-');
+        var addButton = $('<span>').addClass('addGiftBox').text('+');
+
+        buttonContainer.append(removeButton);
+        buttonContainer.append(addButton);
+
+        giftBox.append(giftBoxName);
+        giftBox.append(buttonContainer);
+
+        // Remove gift box
+        removeButton.on('click', function() {
+          $(this).closest('.giftBox').remove();
+          updateGiftBoxCount();
+          updateSelectOptions();
+          checkAddGiftBoxButton();
+          updateButtonState();
+        });
+        
+
+        // Add new gift box
+        addButton.on('click', function() {
+          addGiftBox();
+          updateSelectOptions();
+          updateButtonState();
+        });
+
+        $('#giftBoxContainer').append(giftBox);
+        giftBoxCount++;
+        updateGiftBoxCount();
+        updateSelectOptions();
+        checkAddGiftBoxButton();
+        updateButtonState();
+      }
+
+      // Add first gift box
+      $('#addGiftBox').on('click', function() {
+         $('.option-select').show();
+        if (!isFirstGiftBoxAdded) {
+          addGiftBox();
+          isFirstGiftBoxAdded = true;
+        }
+      });
+
+      // Function to update the gift box counter
+      function updateGiftBoxCount() {
+        var giftBoxes = $('.giftBox');
+        if (giftBoxes.length === 0) {
+          giftBoxCount = 1;
+        } else {
+          giftBoxCount = giftBoxes.length + 1;
+        }
+      }
+
+      // Update the select options
+      function updateSelectOptions() {
+        var giftBoxes = $('.giftBox');
+        var selectOptions = $('.option-select');
+
+        selectOptions.empty();
+        selectOptions.append('<option>Assign to Gift Set</option>');
+        giftBoxes.each(function(index) {
+          var giftBoxName = $(this).find('.giftBoxName').text();
+          var option = $('<option>').text(giftBoxName);
+          selectOptions.append(option);
+        });
+      }
+
+      // Check if "Add Gift Box" should be enabled
+      function checkAddGiftBoxButton() {
+        var giftBoxes = $('.giftBox');
+        if (giftBoxes.length === 0) {
+          isFirstGiftBoxAdded = false;
+          $('#addGiftBox').prop('disabled', false);
+          $('.gift-product').hide();
+        } else {
+          $('#addGiftBox').prop('disabled', true);
+          $('.gift-product').show();
+        }
+      }
+
+      // Update the button state
+      function updateButtonState() {
+        var giftBoxes = $('.giftBox');
+        var removeButtons = giftBoxes.find('.removeGiftBox');
+        var addButtons = giftBoxes.find('.addGiftBox');
+
+        removeButtons.prop('disabled', true).addClass('disabled');
+        addButtons.prop('disabled', true).addClass('disabled');
+
+        if (giftBoxes.length > 1) {
+          removeButtons.last().prop('disabled', false).removeClass('disabled');
+          addButtons.eq(giftBoxes.length - 2).prop('disabled', false).removeClass('disabled');
+        } else {
+          addButtons.last().prop('disabled', false).removeClass('disabled');
+        }
+
+        removeButtons.off('click');
+        addButtons.off('click');
+
+        removeButtons.last().on('click', function() {
+          $(this).closest('.giftBox').remove();
+          updateGiftBoxCount();
+          updateSelectOptions();
+          checkAddGiftBoxButton();
+          updateButtonState();
+        });
+
+        addButtons.last().on('click', function() {
+          addGiftBox();
+          updateSelectOptions();
+          updateButtonState();
+        });
+      }
+
+      // Initial check
+      checkAddGiftBoxButton();
+
+      // Update button state on page load
+      updateButtonState();
+    });
+    // add to cart
+    // Include jQuery library in your HTML if not already present
+
+    $(document).ready(function() {
+      $('.option-select').change(function() {
+      let _this = $(this);
+      var itemKey = $(this).closest('.cart__item').data('key');
+      var line = $(this).closest('.cart__item').index();
+      var selectedOption = $(this).val();
+      var id_arr = itemKey.split(':');
+      var productId = id_arr[0]
+      var properties;
+
+      if(selectedOption != 'Assign to Gift Set'){
+      $.ajax({
+        url: '/cart.js',
+        dataType: 'json',
+        success: function(cart) {
+          // Handle the cart data
+          //console.log('Cart data:', cart.items);
+          for(let item in cart.items){
+            if(productId == cart.items[item].id){
+              properties = cart.items[item].properties;
+              break;
+            }
+          }
+          var data = {
+            'line': line + 1,
+            'properties':properties
+          };
+          data.properties.Gift = selectedOption;
+          $.ajax({
+            url: '/cart/change.js',
+            method: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function(response) {
+              // Handle the updated cart response
+              console.log('Cart updated:', response);
+              _this.closest('.cart__item').find('.cart__item--variants + .cart__item--variants + div').text('Gift: ' + selectedOption);
+            },
+            error: function(xhr, status, error) {
+              // Handle the error
+              console.error('Error updating cart:', error);
+            }
+          });
+        },
+        error: function(xhr, status, error) {
+          // Handle the error
+          console.error('Error getting cart data:', error);
+        }
+    });
+    }
+
+      });
+    $('.show-file-upload-btn button').click(function(){
+        $('.file-form').slideToggle();
+    });
+    });
+
+    jQuery(document).on('click', '.removeGiftBox', function() {
+        let ind = $('.removeGiftBox').length - 1;
+        $('.giftBox:eq('+ind+')').addClass('last')
+    })
+  </script>
+  <script>
+    // Get token
+
+      function update_cart_note(cart_note){
+            // $.post('/cart/update.js', {"note": cart_note}, function(resp){
+
+            // })
+      }
+
+      let cart_token = "";
+      $.get('/cart.js', function(resp){
+          let cart_data = JSON.parse(resp);
+          cart_token = cart_data.token;
+          $.get('https://apps.shopbirdiebox.com/api/get-file/'+cart_token, function(resp){
+            console.log(resp)
+             if(resp.file_url){
+                 console.log(resp.file_url)
+                 document.getElementById("download-file").style.display = "block";
+                 $('#download-file').append('<a target="_blank" href="'+resp.file_url+'" id="download-file-link">Download File</a> <span id="remove-file">&#10006;</span>');
+                 //Display none upload file and button
+                 document.getElementById("upload-input").style.display = "none";
+                 document.getElementById("upload-button").style.display = "none";
+              }else{
+                // Show upload file and button
+                document.getElementById("upload-input").style.display = "block";
+                //Display none download link
+                document.getElementById("download-file").style.display = "none";
+              }
+          });
+      });
+// upload btn
+    function uploadFile(e) {
+      e.preventDefault()
+
+    //var input = document.getElementById("upload-input");
+
+    // if (input.files.length > 0) {
+    //     var file = input.files[0];
+    //     var formData = new FormData();
+
+    //     formData.append("file", file);
+
+    //     // You can send the formData to a server using AJAX or fetch
+    //     // Example using fetch:
+    //     fetch("upload.php", {
+    //         method: "POST",
+    //         body: formData
+    //     })
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         console.log(data);
+    //         // Handle the server response
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //         // Handle error
+    //     });
+    // }
+  // second
+      var fileInput = document.getElementById('upload-input'); // Replace 'fileInput' with the ID of your file input element
+      var file = fileInput.files[0];
+      if(file){
+
+      $('#upload-button').attr('disabled', 'disabled');
+      $('.loading-animation-wrap').show();
+      var filename = fileInput.files[0].name;
+
+      var extension = filename.split('.').pop().toLowerCase();
+
+      // Check the extension against known formats
+      if (extension === 'csv' || extension === 'xlsx') {
+        var form = new FormData();
+        form.append('file', file);
+
+        var settings = {
+          url: 'https://apps.shopbirdiebox.com/api/file-upload/' + cart_token,
+          method: 'POST',
+          timeout: 0,
+          processData: false,
+          mimeType: 'multipart/form-data',
+          contentType: false,
+          data: form
+        };
+
+        $.ajax(settings).done(function (response) {
+           response = JSON.parse(response);
+           if(response.file_url){
+             document.getElementById("download-file").style.display = "block";
+             $('#download-file').append('<a target="_blank" href="'+response.file_url+'" id="download-file-link">Download File</a> <span id="remove-file">&#10006;</span>');
+             //Display none upload file and button
+             document.getElementById("upload-input").style.display = "none";
+             document.getElementById("upload-button").style.display = "none";
+             $('#upload-input').val('');
+             $('.loading-animation-wrap').hide();
+             $('#upload-button').removeAttr('disabled');
+
+             let cart_note = `Drop Ship List: ${response.file_url}`;
+             update_cart_note(cart_note);
+
+          }else{
+            // Show upload file and button
+            document.getElementById("upload-input").style.display = "block";
+            document.getElementById("upload-button").style.display = "block";
+            //Display none download link
+            document.getElementById("download-file").style.display = "none";
+          }
+        });
+      }else{
+          alert('Please Upload CSV or xlsx File.')
+          $('#upload-input').val('');
+          $('.loading-animation-wrap').hide();
+          $('#upload-button').removeAttr('disabled');
+      }
+    }else{
+        alert('Please select a file first.');
+    }
+  }
+
+  $(document).on('click', '#remove-file', function(){
+    var c = confirm("Are you sure you want to delete file?");
+    if(c){
+      $('.loading-animation-wrap').show();
+      $.ajax({
+        url: 'https://apps.shopbirdiebox.com/api/remove-file/' + cart_token,
+        type: 'DELETE',
+        success: function(result) {
+          // Handle the success response
+          // console.log(result);
+          if(result.status == "success"){
+            let cart_note = ``;
+            update_cart_note(cart_note);
+            document.getElementById("upload-input").style.display = "block";
+            document.getElementById("upload-button").style.display = "block";
+            //Display none download link
+            document.getElementById("download-file").style.display = "none";
+            $('#remove-file, #download-file-link').remove();
+            $('.loading-animation-wrap').hide();
+          }
+        },
+        error: function(xhr, status, error) {
+          // Handle the error response
+        }
+      });
+    }
+  })
+// File input
+
+  </script>
   <script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}"></script>
   <script src="{{ 'ck-custom.js' | asset_url }}"></script>
 {% else %}

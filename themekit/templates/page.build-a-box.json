@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "166429489701dbbee1": {
+      "type": "text-with-icons",
+      "disabled": true,
+      "blocks": {
+        "166429489727bda521-0": {
+          "type": "text_block",
+          "settings": {
+            "icon": "globe",
+            "title": "Product Sourcing",
+            "text": "<p>We work with <a href=\"\/collections\/all-brands\" target=\"_blank\" title=\"All Brands\">hundreds of luxury brands<\/a> across the globe to provide you with a wide array of top trending products.<\/p>"
+          }
+        },
+        "166429489727bda521-1": {
+          "type": "text_block",
+          "settings": {
+            "icon": "gift",
+            "title": "Packaging",
+            "text": "<p>Our <a href=\"\/collections\/packaging\" target=\"_blank\" title=\"Packaging\">custom packaging<\/a> options are like no other. Select from over 10+ box options, add custom molds and letters for an added WOW factor.<\/p>"
+          }
+        },
+        "166429489727bda521-2": {
+          "type": "text_block",
+          "settings": {
+            "icon": "charity",
+            "title": "Personalization",
+            "text": "<p>Add your client's logo or recepient's initials for an added personalized touch. Our <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">in-house personalization options<\/a> require no minimums.<\/p>"
+          }
+        },
+        "b936537d-88b5-4362-a551-dc321f41b2e3": {
+          "type": "text_block",
+          "settings": {
+            "icon": "package",
+            "title": "Kitting",
+            "text": "<p>Let us do the heavy lifting. Our team will <a href=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\" target=\"_blank\" title=\"https:\/\/www.youtube.com\/watch?v=pqLrl7Nfumo\">kit your gifts<\/a> so you can spend time elsewhere. <\/p>"
+          }
+        },
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78": {
+          "type": "text_block",
+          "settings": {
+            "icon": "truck",
+            "title": "Drop Shipping",
+            "text": "<p>Have gifts <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">shipped direcetly to your recpient's<\/a> home or office. In addtion to bulk shipping, our drop shipping option pulls the stress off of you.<\/p>"
+          }
+        },
+        "ca437a50-929a-4a52-b84d-85cd4f90e576": {
+          "type": "text_block",
+          "settings": {
+            "icon": "phone",
+            "title": "One Phone Call",
+            "text": "<p><a href=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/contacts\/lets-start-gifting\">Book a meeting<\/a> with our team to learn more about our services and start your order today.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "166429489727bda521-0",
+        "166429489727bda521-1",
+        "166429489727bda521-2",
+        "b936537d-88b5-4362-a551-dc321f41b2e3",
+        "3a5758a5-721c-4bc9-9a45-17d7ee800a78",
+        "ca437a50-929a-4a52-b84d-85cd4f90e576"
+      ],
+      "settings": {
+        "title": "The BirdieBox Difference",
+        "align_text": "center",
+        "desktop_columns_per_row": 3,
+        "icon_color": "#000000",
+        "button_label": "",
+        "button_link": "",
+        "divider": false
+      }
+    },
+    "a83f4fcb-3e80-4210-8050-8f891d760750": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15884652642459__a83f4fcb-3e80-4210-8050-8f891d760750-1687979310251410de-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text"
+          }
+        },
+        "template--15884652642459__a83f4fcb-3e80-4210-8050-8f891d760750-1687979310251410de-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15884652642459__a83f4fcb-3e80-4210-8050-8f891d760750-1687979310251410de-0",
+        "template--15884652642459__a83f4fcb-3e80-4210-8050-8f891d760750-1687979310251410de-1"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "166429489701dbbee1",
+    "a83f4fcb-3e80-4210-8050-8f891d760750"
+  ]
+}

@@ -1,7 +1,7 @@
 {% comment %}
   ---
   Documentation: https://meteor.heliumdev.com/help
-  Version: 4.5.2
+  Version: 4.5.3
   The following snippet serves multiple utility functions for the Meteor Menu
   application by Helium.
   YOU SHOULD NOT BE EDITING THIS FILE.
@@ -74,7 +74,7 @@
     ---
   {% endcomment %}
   {
-    "version": "4.5.2",
+    "version": "4.5.3",
     "base_url": "https://meteor.heliumdev.com",
     "settings": {"app_proxy":"apps/meteor","z_index":9999,"mobile_breakpoint":"","disable_at_width":"","vertical_offset":0,"mobile_vertical_offset":0,"css":"","queries":"","async_load":"true","layout_liquid":"theme.liquid","external_links_in_new_tab":"false"},
     "theme": {
@@ -86,31 +86,48 @@
         "links": [
           {% include 'meteor-menu', meteor_links: linklists["main-menu"].links, meteor_level: 1 %}
         ]
+      },
+      "main-menu-2": {
+        "links": [
+          {% include 'meteor-menu', meteor_links: linklists["main-menu-2"].links, meteor_level: 1 %}
+        ]
       }
     },
     "menus":
     [
       {
-        "id": "aPs1MW",
-        "title": "Account",
+        "id": "g2syNW",
+        "title": "Golf",
         "list_handle": "main-menu",
-        "object_path": "https://shopbirdiebox.com/account/login",
+        "object_path": "/collections/golf",
         "sub_list_handle": "",
         "template": "tidal",
         "object_id": "",
-        "settings": {"size":"300px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"true","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
+        "handle": null,
+        "manual_attach": false
+      },
+      {
+        "id": "aPs1MW",
+        "title": "ACCOUNT",
+        "list_handle": "main-menu-2",
+        "object_path": "/pages/my-favorites",
+        "sub_list_handle": "",
+        "template": "tidal",
+        "object_id": "90643464347",
+        "settings": {"size":"300px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },
       {
         "id": "aPsvgv",
-        "title": "Gifting Experiences",
-        "list_handle": "main-menu",
-        "object_path": "/pages/on-site-gifting",
+        "title": "SERVICES",
+        "list_handle": "main-menu-2",
+        "object_path": "/collections/packaging",
         "sub_list_handle": "",
         "template": "tidal",
-        "object_id": "89369346203",
-        "settings": {"size":"300px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"true","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "object_id": "287731744923",
+        "settings": {"size":"300px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },
@@ -146,7 +163,7 @@
         "sub_list_handle": "",
         "template": "tidal",
         "object_id": "287563481243",
-        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"true","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"true","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },
@@ -199,18 +216,6 @@
         "manual_attach": false
       },
       {
-        "id": "g2syNW",
-        "title": "Golf",
-        "list_handle": "main-menu",
-        "object_path": "/collections/golf",
-        "sub_list_handle": "",
-        "template": "tidal",
-        "object_id": "",
-        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
-        "handle": null,
-        "manual_attach": false
-      },
-      {
         "id": "qysqYM",
         "title": "Home \u0026 Lifestyle",
         "list_handle": "main-menu",
@@ -218,7 +223,7 @@
         "sub_list_handle": "",
         "template": "tidal",
         "object_id": "286771249307",
-        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },
@@ -242,7 +247,7 @@
         "sub_list_handle": "",
         "template": "tidal",
         "object_id": "286771118235",
-        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },
@@ -260,13 +265,13 @@
       },
       {
         "id": "6ZsMYG",
-        "title": "Shop",
-        "list_handle": "main-menu",
-        "object_path": "/collections/best-selling-gift-sets-1",
+        "title": "SHOP BY CATEGORY",
+        "list_handle": "main-menu-2",
+        "object_path": "/collections/all-products",
         "sub_list_handle": "",
         "template": "tidal",
-        "object_id": "287040536731",
-        "settings": {"size":"600px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"900px","columns_per_row":"3","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"240,240,240,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"30,30,30,1"},
+        "object_id": "287251955867",
+        "settings": {"size":"1200px","action":"hover","height":"auto","animation":"none","font_size":"12px","color_text":"30,30,30,1","center_menu":"false","color_hover":"51,204,204,1","content_width":"1200px","columns_per_row":"4","clickable_titles":"yes","color_background":"255,255,255,1","link_font_weight":"normal","sub_column_width":"full","color_mobile_text":"30,30,30,1","heading_font_size":"14px","delay_menu_opening":"false","menu_opening_delay":"200ms","stack_mobile_links":"false","center_menu_content":"false","heading_font_weight":"bold","link_sort_direction":"left_to_right","color_mobile_background":"241,241,241,1"},
         "handle": null,
         "manual_attach": false
       },

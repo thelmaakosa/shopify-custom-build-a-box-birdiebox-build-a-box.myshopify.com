@@ -29,21 +29,21 @@
         "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-0": {
           "type": "collection",
           "settings": {
-            "collection": "new-client",
+            "collection": "new-client-prospecting",
             "title": "‎"
           }
         },
         "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-4": {
           "type": "collection",
           "settings": {
-            "collection": "anniversary",
+            "collection": "anniversary-retirement",
             "title": "‎"
           }
         },
         "template--15718575734939__7103e83c-707a-4226-90bd-afd187dc565c-16679261227155d854-2": {
           "type": "collection",
           "settings": {
-            "collection": "incentive",
+            "collection": "awards-recognition",
             "title": "‎"
           }
         },

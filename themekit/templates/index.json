@@ -16,8 +16,7 @@
             "link_text_2": "",
             "color_accent": "#33cccc",
             "text_align": "vertical-center horizontal-left",
-            "image": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image_copy_2.png",
-            "image_mobile": "shopify:\/\/shop_images\/Build-A-Box-Hero-Image_copy_2.png",
+            "image": "shopify:\/\/shop_images\/Shop_BB_Main_Hero_Home_Page_2000_x_419_px_ca0a9d8d-3e3d-4bb8-ad46-8052e479a004.png",
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
@@ -33,6 +32,221 @@
         "style": "minimal",
         "autoplay": false,
         "autoplay_speed": 7
+      }
+    },
+    "61a05358-eaf0-4a13-a9c4-5e25154ca025": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15817136177307__61a05358-eaf0-4a13-a9c4-5e25154ca025-16860838137eaef765-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<h2><center>Trusted by 1000+ organizations<\/h2>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "template--15817136177307__61a05358-eaf0-4a13-a9c4-5e25154ca025-16860838137eaef765-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_3.png",
+            "link": "",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136177307__61a05358-eaf0-4a13-a9c4-5e25154ca025-16860838137eaef765-1",
+        "template--15817136177307__61a05358-eaf0-4a13-a9c4-5e25154ca025-16860838137eaef765-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "16632603059bf172bc": {
+      "type": "slideshow-split",
+      "blocks": {
+        "16632603050ce4db6a-0": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox is hands down the best way to do gifting. The presentation really creates a jaw-dropping experience.\"",
+            "title_size": 40,
+            "subheading": "- JOSH DILL, VISIT FRISCO",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/Review_Frisco_Bowl-min.gif",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "16632603050ce4db6a-1": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"The products that BirdieBox offers are unique and the fact that their team takes care of all of the logistics helps on our side a ton!!\"",
+            "title_size": 40,
+            "subheading": "- ERINN LOPEZ, COLORADO PGA",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/PGA2.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"I've worked with BirdieBox several times over the last few years and have always had a stellar experience.\"",
+            "title_size": 40,
+            "subheading": "- JULIANNE BISCEGLIA, LIVE NATION",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "image": "shopify:\/\/shop_images\/OldDominion.jpg",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "c79303ee-c19e-418b-b37a-c23c4e539174": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox has been instrumental in providing a positive closing experience with our division. We  have all loved the boxes we have received!\"",
+            "title_size": 40,
+            "subheading": "- NIKKI PAULSEN, D.R. HORTON NASHVILLE",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-09-15_152855.png",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        },
+        "412bba3b-2531-4f58-9e96-20a88414037f": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "\"BirdieBox helped me so much with my intense order for over 400 people in 16 different states. Thank you for making me look like a hero to my entire team!\"",
+            "title_size": 40,
+            "subheading": "- GINELL PICKRELL, PEPSICO BEVERAGES NORTH AMERICA",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "right",
+            "indent_image": false,
+            "focal_point": "center center",
+            "color_scheme": "none"
+          }
+        }
+      },
+      "block_order": [
+        "16632603050ce4db6a-0",
+        "16632603050ce4db6a-1",
+        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e",
+        "c79303ee-c19e-418b-b37a-c23c4e539174",
+        "412bba3b-2531-4f58-9e96-20a88414037f"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "height": 500,
+        "height_mobile": 450,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 10
+      }
+    },
+    "f092e434-de56-400e-96a4-93c8fccad204": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "e21ac43c-dc64-4cf3-b279-5912278d3fbd": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 40,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/gift-sets",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#33cccc",
+            "text_align": "vertical-center horizontal-left",
+            "image": "shopify:\/\/shop_images\/Shop_BB_Main_Hero_Home_Page_2000_x_419_px_d423dff2-127d-4892-93e4-a0224c5161b4.png",
+            "image_mobile": "shopify:\/\/shop_images\/unleash_the_power_of_gifting_-_hero.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "e21ac43c-dc64-4cf3-b279-5912278d3fbd"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "minimal",
+        "autoplay": false,
+        "autoplay_speed": 7
+      }
+    },
+    "48e8d72f-06c8-4cd3-ac65-66ecaba33c91": {
+      "type": "advanced-content",
+      "blocks": {
+        "2dc89a14-d001-4e95-b10d-b091fb5507dd": {
+          "type": "liquid",
+          "settings": {
+            "code": "<center>\n\n<h1>Unleash The Power of Thoughtful Gifting<\/h2>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "template--15870885757083__48e8d72f-06c8-4cd3-ac65-66ecaba33c91-1688674820ae863e7b-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n\n\/*for desktop*\/\n\n@media only screen and (min-width: 768px) {\n\n.description {\n  color: #000000;\n  font-size: 20px;\n  max-width: 60%;\n}\n\n.description em {\n  color: #18c9c9;\n  font-weight: bold;\n}\n}\n\n\/*for mobile*\/\n\n@media only screen and (max-width: 768px) {\n\n.description {\n  color: #000000;\n  font-size: 20px;\n}\n\n.description em {\n  color: #18c9c9;\n  font-weight: bold;\n}\n}\n<\/style>\n<\/head>\n<body>\n\n<p class=\"description\">BirdieBox experts deliver exceptional gifts that <em>evoke emotion, foster connections, and strengthen business relationships<\/em> through creativity, strategy, and an understanding of gifting psychology.<\/p>\n\n<\/body>\n<\/html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "16a06bbc-e910-4e4d-8bee-d3d17604aa16": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n.button {\n  border: none;\n  padding: 16px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-family: futura;\n  font-weight:bold;\n  margin: 4px 4px;\n  transition-duration: 0.4s;\n  cursor: pointer;\n  height: 50px;\n}\n\n.button1 {\n  background-color: #18c9c9; \n  color: white; \n}\n\n.button1:hover {\n  background-color: #000000;\n}\n\n\n<\/style>\n<\/head>\n<body>\n\n<input class=\"button button1\" onclick=\"location.href='https:\/\/shopbirdiebox.com\/collections\/nest-picks';\" value=\"Start Gifting\" \/>\n\n\n<\/body>\n<\/html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "2dc89a14-d001-4e95-b10d-b091fb5507dd",
+        "template--15870885757083__48e8d72f-06c8-4cd3-ac65-66ecaba33c91-1688674820ae863e7b-1",
+        "16a06bbc-e910-4e4d-8bee-d3d17604aa16"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
       }
     },
     "ac30cede-637b-4e53-9aa2-e20265a3ee20": {
@@ -150,6 +364,11 @@
         "62786d33-f6a6-420a-be50-7d5b7a4e4ffd",
         "d8a19ef7-0213-4867-aa46-8ef9ba78c271"
       ],
+      "custom_css": [
+        "a:link {color: #18c9c9; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #18c9c9; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #018a8f; background-color: transparent; text-decoration: underline;}"
+      ],
       "settings": {
         "title": "Let us take care of the hard work and experience the BirdieBox difference.",
         "align_text": "center",
@@ -160,230 +379,195 @@
         "divider": false
       }
     },
-    "16632603059bf172bc": {
-      "type": "slideshow-split",
+    "d88d3546-3355-425c-b42c-af7aa9e0f910": {
+      "type": "logo-list",
       "blocks": {
-        "16632603050ce4db6a-0": {
-          "type": "slide",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-0": {
+          "type": "logo_image",
           "settings": {
-            "top_subheading": "",
-            "title": "\"BirdieBox is hands down the best way to do gifting. The presentation really creates a jaw-dropping experience.\"",
-            "title_size": 40,
-            "subheading": "- JOSH DILL, VISIT FRISCO",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "right",
-            "image": "shopify:\/\/shop_images\/ezgif-2-0fea306e27.gif",
-            "indent_image": false,
-            "focal_point": "center center",
-            "color_scheme": "none"
+            "image": "shopify:\/\/shop_images\/BBTEK-Logo-586x196.png",
+            "link": "shopify:\/\/collections\/bbtek"
           }
         },
-        "16632603050ce4db6a-1": {
-          "type": "slide",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-1": {
+          "type": "logo_image",
           "settings": {
-            "top_subheading": "",
-            "title": "\"The products that BirdieBox offers are unique and the fact that their team takes care of all of the logistics helps on our side a ton!!\"",
-            "title_size": 40,
-            "subheading": "- ERINN LOPEZ, COLORADO PGA",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "left",
-            "image": "shopify:\/\/shop_images\/PGA2.jpg",
-            "indent_image": false,
-            "focal_point": "center center",
-            "color_scheme": "none"
+            "image": "shopify:\/\/shop_images\/Hudson-Cole-Flag.png",
+            "link": "shopify:\/\/collections\/hudson-cole"
           }
         },
-        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e": {
-          "type": "slide",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-3": {
+          "type": "logo_image",
           "settings": {
-            "top_subheading": "",
-            "title": "\"I've worked with BirdieBox several times over the last few years and have always had a stellar experience.\"",
-            "title_size": 40,
-            "subheading": "- JULIANNE BISCEGLIA, LIVE NATION",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "right",
-            "image": "shopify:\/\/shop_images\/OldDominion.jpg",
-            "indent_image": false,
-            "focal_point": "center center",
-            "color_scheme": "none"
+            "image": "shopify:\/\/shop_images\/yeti_logo.svg",
+            "link": "shopify:\/\/collections\/yeti"
           }
         },
-        "c79303ee-c19e-418b-b37a-c23c4e539174": {
-          "type": "slide",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-4": {
+          "type": "logo_image",
           "settings": {
-            "top_subheading": "",
-            "title": "\"BirdieBox has been instrumental in providing a positive closing experience with our division. We  have all loved the boxes we have received!\"",
-            "title_size": 40,
-            "subheading": "- NIKKI PAULSEN, D.R. HORTON NASHVILLE",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "left",
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-09-15_152855.png",
-            "indent_image": false,
-            "focal_point": "center center",
-            "color_scheme": "none"
+            "image": "shopify:\/\/shop_images\/raycon_logo.png",
+            "link": "shopify:\/\/collections\/raycon"
           }
         },
-        "412bba3b-2531-4f58-9e96-20a88414037f": {
-          "type": "slide",
-          "disabled": true,
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-2": {
+          "type": "logo_image",
           "settings": {
-            "top_subheading": "",
-            "title": "\"BirdieBox helped me so much with my intense order for over 400 people in 16 different states. Thank you for making me look like a hero to my entire team!\"",
-            "title_size": 40,
-            "subheading": "- GINELL PICKRELL, PEPSICO BEVERAGES NORTH AMERICA",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "text_position": "right",
-            "indent_image": false,
-            "focal_point": "center center",
-            "color_scheme": "none"
+            "image": "shopify:\/\/shop_images\/Old-Tymes-Logo-Gold-1500.png",
+            "link": "shopify:\/\/collections\/old-tymes"
+          }
+        },
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-5": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CHARLOTTE_LOU_Font_Logo-01.png",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "16632603050ce4db6a-0",
-        "16632603050ce4db6a-1",
-        "d6ebb14e-9d7a-46b9-a472-682bdbb4480e",
-        "c79303ee-c19e-418b-b37a-c23c4e539174",
-        "412bba3b-2531-4f58-9e96-20a88414037f"
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-0",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-1",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-3",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-4",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-2",
+        "template--15817136177307__d88d3546-3355-425c-b42c-af7aa9e0f910-1685569747a9d8133d-5"
+      ],
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
+      "settings": {
+        "title": "Preferred distributors of",
+        "divider": false
+      }
+    },
+    "0c4286da-cf1a-4ce9-bb30-087e09fa78b5": {
+      "type": "logo-list",
+      "disabled": true,
+      "blocks": {
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DR_Horton_logo.png",
+            "link": ""
+          }
+        },
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PGA_4C_Logo.png",
+            "link": ""
+          }
+        },
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Pepsi_Logo_CMYK_for_Printing_1.png",
+            "link": ""
+          }
+        },
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Dallas_Cowboys-CMYK_for_printing.png",
+            "link": ""
+          }
+        },
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-5": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/01-Paylocity-Primary-LogoTag-Lock.png",
+            "link": ""
+          }
+        },
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Publicis_Groupe_CMYK_for_printing.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-2",
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-1",
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-3",
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-0",
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-5",
+        "template--15817136177307__0c4286da-cf1a-4ce9-bb30-087e09fa78b5-1686082456ba7555d7-4"
+      ],
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
+      "settings": {
+        "title": "Trusted by 1000+ organizations",
+        "divider": false
+      }
+    },
+    "5ec1bb1e-2d81-4954-9862-762aa2b1b834": {
+      "type": "promo-grid",
+      "blocks": {
+        "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-0": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "On-Site Gifting",
+            "textarea": "Have an event? Let your attendees shop for their gift in person with our on-site gifting services.",
+            "cta_text1": "Learn More",
+            "cta_link1": "shopify:\/\/pages\/on-site-gifting",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/az_bowl_-_darkened.png",
+            "video_url": "",
+            "width": "50",
+            "height": 240,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        },
+        "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-1": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Virtual Gifting",
+            "textarea": "Give your recipients the gift of choice with our virtual gifting experience.",
+            "cta_text1": "Learn More",
+            "cta_link1": "shopify:\/\/pages\/virtual-gifting",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/spark_mockup_-_darkened.png",
+            "video_url": "",
+            "width": "50",
+            "height": 240,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-0",
+        "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-1"
       ],
       "settings": {
         "full_width": true,
-        "height": 650,
-        "height_mobile": 450,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 10
-      }
-    },
-    "166301095577896fd7": {
-      "type": "featured-collections",
-      "disabled": true,
-      "blocks": {
-        "16630109551670b849-0": {
-          "type": "collection",
-          "settings": {
-            "collection": "gift-sets",
-            "title": "Best Selling Kits"
-          }
-        },
-        "16630109551670b849-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "technology",
-            "title": "Tech"
-          }
-        },
-        "16630109551670b849-2": {
-          "type": "collection",
-          "settings": {
-            "collection": "apparel",
-            "title": "Apparel"
-          }
-        },
-        "16630109551670b849-3": {
-          "type": "collection",
-          "settings": {
-            "collection": "drinkware",
-            "title": "Drinkware"
-          }
-        },
-        "16630109551670b849-4": {
-          "type": "collection",
-          "settings": {
-            "collection": "travel-1",
-            "title": "Bags and Totes"
-          }
-        },
-        "16630109551670b849-5": {
-          "type": "collection",
-          "settings": {
-            "collection": "golf",
-            "title": "Golf"
-          }
-        },
-        "fe6598ad-7042-4fb4-ac5d-16e4af78d2b7": {
-          "type": "collection",
-          "settings": {
-            "collection": "all-brands",
-            "title": "Shop by Brand"
-          }
-        },
-        "eb8cedbd-c0ee-4327-9d7f-37178152b8bf": {
-          "type": "collection",
-          "settings": {
-            "collection": "packaging",
-            "title": "Packaging"
-          }
-        },
-        "ac8293c3-61b4-48f7-a569-52abff9865e4": {
-          "type": "collection",
-          "settings": {
-            "collection": "home-lifestyle",
-            "title": "Home and Lifestyle"
-          }
-        },
-        "c5eb6237-bb9b-4151-a011-5c59b225ceaf": {
-          "type": "collection",
-          "settings": {
-            "collection": "awards-recognition",
-            "title": "Awards and Recognition"
-          }
-        },
-        "5653f75d-65a8-4be6-9c97-ddcf8f01fd1e": {
-          "type": "collection",
-          "settings": {
-            "collection": "holiday",
-            "title": "Holiday"
-          }
-        },
-        "2be40101-3ae7-467a-ab33-1589d360c74d": {
-          "type": "collection",
-          "settings": {
-            "collection": "whats-hot",
-            "title": "Hot Poroducts"
-          }
-        }
-      },
-      "block_order": [
-        "16630109551670b849-0",
-        "16630109551670b849-1",
-        "16630109551670b849-2",
-        "16630109551670b849-3",
-        "16630109551670b849-4",
-        "16630109551670b849-5",
-        "fe6598ad-7042-4fb4-ac5d-16e4af78d2b7",
-        "eb8cedbd-c0ee-4327-9d7f-37178152b8bf",
-        "ac8293c3-61b4-48f7-a569-52abff9865e4",
-        "c5eb6237-bb9b-4151-a011-5c59b225ceaf",
-        "5653f75d-65a8-4be6-9c97-ddcf8f01fd1e",
-        "2be40101-3ae7-467a-ab33-1589d360c74d"
-      ],
-      "settings": {
-        "title": "",
-        "divider": false
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
       }
     }
   },
   "order": [
     "16630114243f1b2bb8",
+    "61a05358-eaf0-4a13-a9c4-5e25154ca025",
+    "16632603059bf172bc",
+    "f092e434-de56-400e-96a4-93c8fccad204",
+    "48e8d72f-06c8-4cd3-ac65-66ecaba33c91",
     "ac30cede-637b-4e53-9aa2-e20265a3ee20",
     "5e842b6b-e777-4b81-abb9-0efe138dd1c9",
-    "16632603059bf172bc",
-    "166301095577896fd7"
+    "d88d3546-3355-425c-b42c-af7aa9e0f910",
+    "0c4286da-cf1a-4ce9-bb30-087e09fa78b5",
+    "5ec1bb1e-2d81-4954-9862-762aa2b1b834"
   ]
 }

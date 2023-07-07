@@ -1,7 +1,7 @@
 /*!
 * Meteor Mega Menus (https://apps.shopify.com/meteor-mega-menus)
 * Author: Helium Development, heliumdev.com
-* Version: 4.5.2
+* Version: 4.5.3
 * 
 * YOU SHOULD NOT BE EDITTING THIS FILE. CHANGES WILL BE OVERWRITTEN ON SAVE!
 * For CSS changes, please use Meteor's built-in CSS editor, which applies saved changes directly.

@@ -2179,7 +2179,7 @@ console.log('okookoko')
           WSAIO.qtyControl({
             productId:current_product.id,
             variantId:$('[name="id"]').val(),
-            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+            _addToCart: '.product-single__meta [name="add"],.product-single__meta [name="moq_addToCart"]',
             functionality: 'variant_level',
             removeableSelector_qty: '.product__quantity',
             removeableSelector_variants:'.product-form-grid-radio'
@@ -2196,7 +2196,7 @@ console.log('okookoko')
                 WSAIO.qtyControl({
             productId:current_product.id,
             variantId:$('[name="id"]').val(),
-            _addToCart: 'form [name="add"],[name="moq_addToCart"]',
+               _addToCart: '.product-single__meta [name="add"],.product-single__meta [name="moq_addToCart"]',
             functionality: 'variant_level',
             removeableSelector_qty: '.product__quantity',
             removeableSelector_variants:'.product-form-grid-radio'

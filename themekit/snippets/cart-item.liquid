@@ -119,4 +119,33 @@
       </div>
     </div>
   </div>
+<!--   <select id="gift-box-select" class="product">
+    <option>Select Gift Box</option>
+  </select> -->
+{% capture gift_box %}
+    {% for item in cart.items %}
+      {% if item.properties.Gift == 'Assign to Gift Set' %}{% continue %}{% endif %}
+      {% assign result = item.properties.Gift | remove: 'Gift Set ' %}
+      {{ result }}
+    {% endfor %}
+{% endcapture %}
+  
+{% assign gift_box_array = gift_box | split: '' | compact %}
+{% assign max_value = gift_box_array.first %}
+
+{% for value in gift_box_array %}
+  {% if value > max_value %}
+    {% assign max_value = value %}
+  {% endif %}
+{% endfor %}
+  <div class="gift-product" {% if max_value == blank %}style="display:none;"{% endif %}>
+    <!-- Product details here -->
+    <select class="option-select">
+      <option>Assign to Gift Set</option>
+      {% for i in (1..max_value) %}
+        {% assign compare = 'Gift Set ' | append: i %}
+        <option {% if product.properties.Gift == compare %}selected{% endif %}>{{ compare }}</option>
+      {% endfor %}
+    </select>
+  </div>
 </div>

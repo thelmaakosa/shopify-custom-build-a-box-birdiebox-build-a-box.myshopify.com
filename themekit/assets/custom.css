@@ -145,3 +145,253 @@ span.shipping-price {
 .shipping-rates-list li {
     font-size: 16px;
 }
+/*Gift Box css  */
+.make-gift-box{
+  margin:0 40px;
+}
+.d-flex{
+  display:flex;
+  align-items:center;
+  gap:40px;
+}
+.file-input {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* .file-input input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+} */
+
+.file-input .button {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.file-input .button:hover {
+  background-color: #45a049;
+}
+
+.file-input .file-label {
+    display: inline-block;
+    padding: 14px 30px 8px;
+    background-color: transparent;
+    border-radius: 0px;
+    height: 46px;
+    margin: 0;
+    margin-top: 10px;
+    border: 1px solid #000;
+    color: #000;
+    cursor:pointer;
+}
+
+.file-input .file-label::after {
+  content: attr(data-text);
+}
+
+.file-input input[type="file"]:focus + .file-label {
+  outline: 2px solid #4CAF50;
+}
+.giftBox {
+  margin-bottom: 10px;
+  display: flex;
+}
+.giftBoxName{
+    border: 1px solid;
+    padding: 8px 70px;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+}
+.removeGiftBox {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.buttonContainer span{
+        cursor: pointer;
+    font-weight: 700;
+    margin-left: 10px;
+    width: 33px;
+    display: inline-block;
+    font-size: 29px;
+    height: 37px;
+    text-align: center;
+    padding-top: 7px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.removeGiftBox{
+    background-color: red;
+}
+.addGiftBox{
+  background-color: green;
+}
+.gift-product{
+  width: 50%;
+}
+.cart__page-col .cart__item{
+  flex-wrap:wrap;
+}
+.file-form{
+  display:none;
+  position:absolute;
+}
+.file-input button, #download-template {
+    border: 1px solid #000;
+    padding: 8px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 20px;
+    color: black;
+    text-align: center;
+}
+
+#giftBoxContainer .giftBox:not(.last) .buttonContainer{
+  display:none;
+}
+#remove-file{
+  display: inline-block;
+  margin-left: 20px;
+  color: red;
+  font-size: 18px;
+  vertical-align: bottom;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.upload-wrap{
+  position: relative;
+  z-index: 5;
+}
+
+.file-form{
+    padding: 10px;
+    border: 1px solid #f1f1f1;
+    margin-top: 8px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 100%;
+    position: absolute;
+    z-index: 1;
+    background: white;
+}
+.file-form .loading-animation-wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(130,130,130, .2);
+  z-index: 999999;
+  display: none;
+}
+.file-form .loading-animation-wrap svg{
+  width: 100px;
+  height: 100%;
+  background: transparent !important;
+}
+#birdieBox-popup + .d-flex{
+  flex-wrap: wrap;
+}
+#birdieBox-popup + .d-flex .make-gift-box{
+  margin:0px;
+}
+
+.file-btn-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-action-wrapper{
+
+  margin-top: 32px;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.show-file-upload-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-action-wrapper > div,
+.file-btn-wrapper a,
+.cart-action-wrapper > div button,
+#upload-input,
+.file-input{
+  width: 100%;
+}
+
+#giftBox1{
+  margin-top: 32px;
+}
+
+
+@media screen and (min-width: 769px){
+  .cart-action-wrapper > div button:not(#upload-button):not(#showfilebtn),
+  .file-form,
+  .show-file-upload-btn
+  {
+    width: 50%;
+  }  
+ 
+}
+
+.upload-wrap{
+/*   visibility: hidden !important; */
+}
+
+@media screen and (min-width: 1024px){
+  .cart-action-wrapper{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cart-action-wrapper > div{
+    width: 30%;
+  }
+
+  .file-btn-wrapper a,
+  .cart-action-wrapper > div button,
+  #upload-input,
+  .show-file-upload-btn,
+  .file-form{
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1366px){
+
+    .cart-action-wrapper > div{
+      width: 25%;
+    }
+
+    .cart-action-wrapper{
+      justify-content: flex-start;
+    }
+}
+
+
+
+

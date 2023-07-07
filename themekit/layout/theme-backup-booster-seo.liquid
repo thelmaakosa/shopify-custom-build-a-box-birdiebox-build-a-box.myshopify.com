@@ -1,14 +1,11 @@
-{%- comment %}<locksmith:7829>{% endcomment -%}
+{%- comment %}<locksmith:e897>{% endcomment -%}
   {%- include 'locksmith' -%}
-{%- comment %}</locksmith:7829>{% endcomment -%}
+{%- comment %}</locksmith:e897>{% endcomment -%}
 
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
 <head>
   {{ locksmith_initializations }}
-  <meta name="google-site-verification" content="Ai8Oc0scNh1_I3e965GV7HB6vTjVjlrsKWaq9OXZASk" />
-  
-{% include 'booster-seo' %}
   <script>
     window.dataLayer = window.dataLayer || [];
 </script>
@@ -52,10 +49,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
   {%- endif -%}
 
-  {% comment %}{%- render 'seo-title' -%}{% endcomment %}
+  {%- render 'seo-title' -%}
 
   {%- if page_description -%}
-  {% comment %}{%- comment %}<locksmith:0808>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}{%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}{%- comment %}</locksmith:0808>{% endcomment -%}{% endcomment %}
+  {%- comment %}<locksmith:db89>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
+    {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+  {%- comment %}</locksmith:db89>{% endcomment -%}
   {%- endif -%}
 
   {%- render 'social-meta-tags' -%}
@@ -164,6 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 
 
+ {% render 'multiship' %} 
 {% if content_for_header contains 'bss-b2b-customer-portal' %}{% render "bss-bcp-header" %}{% endif %}
 
 <style>
@@ -241,7 +242,7 @@ piHostname = 'go.shopbirdiebox.com';
 })();
 </script>
 
-
+<script src="//code.tidio.co/wcwnoyrcw9nb2jznvyynuc833jzmgyvt.js" async></script>
   <script type="text/javascript">
 _linkedin_partner_id = "4272180";
 window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];

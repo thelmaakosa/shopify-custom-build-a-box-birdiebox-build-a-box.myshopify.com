@@ -2,6 +2,11 @@
   "sections": {
     "collection-header": {
       "type": "collection-header",
+      "custom_css": [
+        "a:link {color: #18c9c9; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #18c9c9; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #018a8f; background-color: transparent; text-decoration: underline;}"
+      ],
       "settings": {
         "enable": true,
         "collection_image_enable": false,
@@ -26,6 +31,11 @@
       "block_order": [
         "collection_description",
         "product_grid"
+      ],
+      "custom_css": [
+        "a:link {color: #000000; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #000000; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #18c9c9; background-color: transparent; text-decoration: underline;}"
       ],
       "settings": {
         "enable_sidebar": true,

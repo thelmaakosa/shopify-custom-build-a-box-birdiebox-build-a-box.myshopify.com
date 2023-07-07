@@ -2,23 +2,26 @@
   "sections": {
     "main": {
       "type": "list-collections-template",
+      "disabled": true,
       "blocks": {
         "73f44b26-48c1-4377-9605-0681df267e6c": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "whats-hot"
           }
         },
         "b3f38d3e-05fc-4d70-8d04-0179eb00fd75": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "best-selling-products"
           }
         },
-        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336": {
+        "af6d4a11-0b4f-4763-94dc-c1e9039e56a7": {
           "type": "collection",
           "settings": {
-            "collection": "packaging"
+            "collection": "nest-picks"
           }
         },
         "497f18da-88cf-45dc-83a2-d93091e84953": {
@@ -57,8 +60,15 @@
             "collection": "home-lifestyle"
           }
         },
+        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336": {
+          "type": "collection",
+          "settings": {
+            "collection": "packaging"
+          }
+        },
         "6eaa94a6-cbb8-4da7-ba81-1069fcc70db2": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "all-brands"
           }
@@ -67,87 +77,206 @@
       "block_order": [
         "73f44b26-48c1-4377-9605-0681df267e6c",
         "b3f38d3e-05fc-4d70-8d04-0179eb00fd75",
-        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336",
+        "af6d4a11-0b4f-4763-94dc-c1e9039e56a7",
         "497f18da-88cf-45dc-83a2-d93091e84953",
         "a92ae54a-65d1-403c-8a12-e81eda77590e",
         "bd3d79c7-5e89-4ea3-9f12-77f50e512858",
         "69d89b83-6645-4bd9-91cd-1c3db78d5460",
         "6d6e3007-d91f-4a2d-80d2-7e928908fc41",
         "b053855b-9f39-406f-9413-354f92a25634",
+        "e9d61a0e-fe44-400a-b4ad-6c45e86ff336",
         "6eaa94a6-cbb8-4da7-ba81-1069fcc70db2"
       ],
+      "custom_css": [],
       "settings": {
         "title_enable": true,
         "display_type": "selected",
         "sort": "alphabetical"
       }
     },
-    "166371077721b2a188": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Featured collection",
-        "home_featured_products": "",
-        "count": 5,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
-      }
-    },
-    "0dae9cf4-fd09-4b7d-bd30-b362f964b70b": {
-      "type": "text-columns",
-      "disabled": true,
+    "6a596eb6-9af8-444d-80f8-19065170de4a": {
+      "type": "featured-collections",
       "blocks": {
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-0": {
-          "type": "text_block",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-0": {
+          "type": "collection",
           "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
-            "button_label": "Optional button",
-            "button_link": ""
+            "collection": "nest-picks",
+            "title": "‎"
           }
         },
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-1": {
-          "type": "text_block",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-1": {
+          "type": "collection",
           "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
-            "button_label": "Optional button",
-            "button_link": ""
+            "collection": "technology",
+            "title": "‎"
           }
         },
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-2": {
-          "type": "text_block",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-2": {
+          "type": "collection",
           "settings": {
-            "enable_image": true,
-            "image_width": 650,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions.<\/p>",
-            "button_label": "Optional button",
-            "button_link": ""
+            "collection": "drinkware",
+            "title": "‎"
+          }
+        },
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "travel-1",
+            "title": "‎"
+          }
+        },
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "apparel",
+            "title": "‎"
+          }
+        },
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "golf",
+            "title": "‎"
+          }
+        },
+        "6f80a3ec-109a-427d-8926-0d64f787ed44": {
+          "type": "collection",
+          "settings": {
+            "collection": "home-lifestyle",
+            "title": "‎"
+          }
+        },
+        "ce1115ce-868a-49a7-a904-6c5b5419a91e": {
+          "type": "collection",
+          "settings": {
+            "collection": "packaging",
+            "title": "‎"
+          }
+        },
+        "2c57a713-3290-493e-af94-f31521b8b6d8": {
+          "type": "collection",
+          "settings": {
+            "collection": "brand-values",
+            "title": "‎"
+          }
+        },
+        "dc85ff30-aa68-4e4e-bd99-24c605facc88": {
+          "type": "collection",
+          "settings": {
+            "collection": "gifting-moment",
+            "title": "‎"
+          }
+        },
+        "2f819516-69a9-496b-8364-8ba21b744611": {
+          "type": "collection",
+          "settings": {
+            "collection": "gift-recipient",
+            "title": "‎"
+          }
+        },
+        "c6bebf2d-af68-4ed4-af7c-86cd44d49cea": {
+          "type": "collection",
+          "settings": {
+            "collection": "gift-sets",
+            "title": "‎"
           }
         }
       },
       "block_order": [
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-0",
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-1",
-        "template--15817136210075__0dae9cf4-fd09-4b7d-bd30-b362f964b70b-16836622799ac9a181-2"
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-0",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-1",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-2",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-3",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-4",
+        "template--15817136210075__6a596eb6-9af8-444d-80f8-19065170de4a-16860673495613b39d-5",
+        "6f80a3ec-109a-427d-8926-0d64f787ed44",
+        "ce1115ce-868a-49a7-a904-6c5b5419a91e",
+        "2c57a713-3290-493e-af94-f31521b8b6d8",
+        "dc85ff30-aa68-4e4e-bd99-24c605facc88",
+        "2f819516-69a9-496b-8364-8ba21b744611",
+        "c6bebf2d-af68-4ed4-af7c-86cd44d49cea"
+      ],
+      "custom_css": [
+        "h2 {text-align: center;}"
       ],
       "settings": {
-        "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
+        "title": "Shop popular categories",
+        "divider": false
+      }
+    },
+    "e0327381-2fed-4d97-a654-b267d2aa494d": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15817136210075__e0327381-2fed-4d97-a654-b267d2aa494d-168606791277b74c68-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#fff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/Your_One_Stop_Corporate_Gift_Solution_v4_1.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136210075__e0327381-2fed-4d97-a654-b267d2aa494d-168606791277b74c68-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "12bc45ed-280b-4cf3-930b-6c37462d0444": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15817136210075__12bc45ed-280b-4cf3-930b-6c37462d0444-168606791277b74c68-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#fff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/Shop_BB_Main_Hero_Home_Page_2000_x_419_px_d423dff2-127d-4892-93e4-a0224c5161b4.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15817136210075__12bc45ed-280b-4cf3-930b-6c37462d0444-168606791277b74c68-0"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
       }
     }
   },
   "order": [
     "main",
-    "166371077721b2a188",
-    "0dae9cf4-fd09-4b7d-bd30-b362f964b70b"
+    "6a596eb6-9af8-444d-80f8-19065170de4a",
+    "e0327381-2fed-4d97-a654-b267d2aa494d",
+    "12bc45ed-280b-4cf3-930b-6c37462d0444"
   ]
 }

@@ -10,6 +10,7 @@
       "blocks": {
         "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0": {
           "type": "hero",
+          "disabled": true,
           "settings": {
             "top_subheading": "",
             "title": "<p>Your One Stop Corporate Gifting Solution<\/p>",
@@ -25,18 +26,129 @@
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
+        },
+        "dc9680ab-04bb-4634-b413-4b1371c05437": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_golf_program_header_1.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_header_mobile_6cd3c157-63c9-44b2-bf67-b683d06bc757.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
         }
       },
       "block_order": [
-        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0"
+        "template--15846958661787__69c97403-95ee-42bc-9271-ec350de03fa1-16841726919d38bcd8-0",
+        "dc9680ab-04bb-4634-b413-4b1371c05437"
       ],
       "settings": {
         "full_width": true,
         "desktop_size": 0,
-        "mobile_size": 30,
+        "mobile_size": 0,
         "style": "arrows",
         "autoplay": true,
         "autoplay_speed": 7
+      }
+    },
+    "40f814b8-8241-4d18-8f28-759563af7b2c": {
+      "type": "text-columns",
+      "blocks": {
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/1_1cdff1a7-a341-4c46-bb15-1c857dc24a52.png",
+            "image_width": 80,
+            "title": "Step 1:",
+            "text": "<p>Determine your budget and find products you love online<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/2_def14390-3be5-49ba-8558-004053d314e5.png",
+            "image_width": 80,
+            "title": "Step 2:",
+            "text": "<p>Provide your company logo to your golf shop pro<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/3_266a6717-5ff7-4780-854d-d7a52e37499f.png",
+            "image_width": 80,
+            "title": "Step 3:",
+            "text": "<p>Place your order through your golf shop pro and capitalize on exclusive discounts<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "038066a1-6222-486c-ad25-bd0da4185782": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/4_c56e2204-adbc-4558-84a7-83cdc02cc849.png",
+            "image_width": 80,
+            "title": "Step 4:",
+            "text": "<p>Receive mockups from your golf shop pro<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "adce6257-3066-4a82-93a3-ed20a40550c8": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/7_0b048c1c-544f-4bd3-82ad-4dab20aeb86f.png",
+            "image_width": 80,
+            "title": "Step 5:",
+            "text": "<p>Approve your mockups and we'll take care of the rest!<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "db2bbe7c-4102-4622-8d64-c7b826eabc7a": {
+          "type": "text_block",
+          "disabled": true,
+          "settings": {
+            "enable_image": false,
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "Get Started",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-0",
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-1",
+        "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-2",
+        "038066a1-6222-486c-ad25-bd0da4185782",
+        "adce6257-3066-4a82-93a3-ed20a40550c8",
+        "db2bbe7c-4102-4622-8d64-c7b826eabc7a"
+      ],
+      "settings": {
+        "title": "How does it work?",
+        "align_text": "center",
+        "divider": false,
+        "color_scheme": "none"
       }
     },
     "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab": {
@@ -45,6 +157,7 @@
       "blocks": {
         "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0": {
           "type": "advanced",
+          "disabled": true,
           "settings": {
             "subheading": "",
             "heading": "Your One Stop Corporate Gifting Solution",
@@ -61,20 +174,52 @@
             "focal_point": "center",
             "color_accent": "#f1f1f1"
           }
+        },
+        "6d20ed2c-f7a0-42ce-bead-42e643d4763b": {
+          "type": "banner",
+          "settings": {
+            "heading": "Get Started",
+            "text": "",
+            "link": "",
+            "label": "",
+            "color_scheme": "1"
+          }
         }
       },
       "block_order": [
-        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0"
+        "template--15664853024923__1518b8d3-1a5a-4aa7-bf23-6f1d964271ab-1664914140350d9b2b-0",
+        "6d20ed2c-f7a0-42ce-bead-42e643d4763b"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "gutter_size": 0,
         "space_above": false,
         "space_below": false
       }
     },
+    "248fb492-679b-4ead-b1a3-4dff49d04852": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15870886051995__248fb492-679b-4ead-b1a3-4dff49d04852-1688674820ae863e7b-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n.button {\n  border: none;\n  padding: 16px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-family: futura;\n  font-weight:bold;\n  margin: 4px 4px;\n  transition-duration: 0.4s;\n  cursor: pointer;\n  height: 50px;\n}\n\n.button1 {\n  background-color: #18c9c9; \n  color: white; \n}\n\n.button1:hover {\n  background-color: #000000;\n}\n\n\n<\/style>\n<\/head>\n<body>\n\n<input class=\"button button1\" onclick=\"location.href='https:\/\/shopbirdiebox.com\/collections\/nest-picks';\" value=\"Start Shopping\" \/>\n\n\n<\/body>\n<\/html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15870886051995__248fb492-679b-4ead-b1a3-4dff49d04852-1688674820ae863e7b-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
     "e1ffadc6-3ae9-490f-b4f8-c203f7764335": {
       "type": "advanced-content",
+      "disabled": true,
       "blocks": {
         "a0a8037b-fbf4-4e9b-8ab2-21292bc8f770": {
           "type": "liquid",
@@ -95,7 +240,7 @@
         "70e10066-2ff2-45e6-a1f1-632d633d6305": {
           "type": "liquid",
           "settings": {
-            "code": "‎",
+            "code": "",
             "width": "25%",
             "alignment": "center"
           }
@@ -112,6 +257,42 @@
       "settings": {
         "full_width": false,
         "space_around": true
+      }
+    },
+    "98577174-c8b5-4068-a04e-04a172abb391": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "template--15870886051995__98577174-c8b5-4068-a04e-04a172abb391-168807630114c58be8-1": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify:\/\/shop_images\/BABB_-_golf_program.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_mobile_2.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15870886051995__98577174-c8b5-4068-a04e-04a172abb391-168807630114c58be8-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
       }
     },
     "3aae25d2-95af-4999-a322-69bb1ee6cb29": {
@@ -158,7 +339,7 @@
       ],
       "custom_css": [],
       "settings": {
-        "title": "Which types of corporate gifting moments can I use BirdieBox for?",
+        "title": "Which types of corporate gifting moments can I use this program for?",
         "align_text": "center",
         "desktop_columns_per_row": 4,
         "icon_color": "#33cccc",
@@ -167,11 +348,43 @@
         "divider": false
       }
     },
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<h2><center>Trusted By 1000+ organizations\n<br>\n<\/br>\n<\/h2>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_3.png",
+            "link": "",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1",
+        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": false
+      }
+    },
     "30870546-0d7d-41ba-9600-32a309fd4c78": {
       "type": "slideshow",
       "blocks": {
         "template--15846958661787__30870546-0d7d-41ba-9600-32a309fd4c78-168297837910c7e374-0": {
           "type": "hero",
+          "disabled": true,
           "settings": {
             "top_subheading": "",
             "title": "",
@@ -187,22 +400,64 @@
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
+        },
+        "f10002ab-35e1-4fc5-bc9c-89de4ab37c95": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_3.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_logo_list_2.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "f6e6874e-8909-44e5-98d8-8447fb61c58b": {
+          "type": "hero",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_3.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_logo_list-2.png",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
         }
       },
       "block_order": [
-        "template--15846958661787__30870546-0d7d-41ba-9600-32a309fd4c78-168297837910c7e374-0"
+        "template--15846958661787__30870546-0d7d-41ba-9600-32a309fd4c78-168297837910c7e374-0",
+        "f10002ab-35e1-4fc5-bc9c-89de4ab37c95",
+        "f6e6874e-8909-44e5-98d8-8447fb61c58b"
       ],
       "settings": {
         "full_width": true,
         "desktop_size": 0,
         "mobile_size": 0,
-        "style": "arrows",
+        "style": "minimal",
         "autoplay": true,
-        "autoplay_speed": 7
+        "autoplay_speed": 5
       }
     },
     "a9602bb3-3d35-489f-be71-52273a0ef327": {
       "type": "faq",
+      "disabled": true,
       "blocks": {
         "9c06b6c9-5c9a-4226-9e8a-0a9c12ad585c": {
           "type": "rich-text",
@@ -349,7 +604,7 @@
           "settings": {
             "icon": "charity",
             "title": "Personalization",
-            "text": "<p>Add your client's logo or recepient's initials for an added personalized touch. Our <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">in-house personalization options<\/a> require no minimums.<\/p>"
+            "text": "<p>Add your company logo or recipient's initials for an added personalized touch. Our <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">in-house personalization options<\/a> require no minimums.<\/p>"
           }
         },
         "b936537d-88b5-4362-a551-dc321f41b2e3": {
@@ -365,7 +620,7 @@
           "settings": {
             "icon": "truck",
             "title": "Drop Shipping",
-            "text": "<p>Have gifts <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">shipped direcetly to your recpient's<\/a> home or office. In addtion to bulk shipping, our drop shipping option pulls the stress off of you.<\/p>"
+            "text": "<p>Have gifts <a href=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\" target=\"_blank\" title=\"https:\/\/www.birdiebox.com\/home\/fulfillment-center\">shipped directly to your recipient's<\/a> home or office. In addition to bulk shipping, our drop shipping option pulls the stress off of you.<\/p>"
           }
         },
         "ca437a50-929a-4a52-b84d-85cd4f90e576": {
@@ -385,6 +640,11 @@
         "3a5758a5-721c-4bc9-9a45-17d7ee800a78",
         "ca437a50-929a-4a52-b84d-85cd4f90e576"
       ],
+      "custom_css": [
+        "a:link {color: #18c9c9; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #18c9c9; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #018a8f; background-color: transparent; text-decoration: underline;}"
+      ],
       "settings": {
         "title": "The BirdieBox Difference",
         "align_text": "center",
@@ -397,6 +657,11 @@
     },
     "c3a8b57c-9c65-490e-b882-e52202230aef": {
       "type": "featured-collection",
+      "custom_css": [
+        "a:link {color: #000000; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #000000; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #18c9c9; background-color: transparent; text-decoration: underline;}"
+      ],
       "settings": {
         "title": "Shop Trending Gifts",
         "home_featured_products": "nest-picks",
@@ -459,49 +724,32 @@
         "color_scheme": "none"
       }
     },
-    "b9ae9c3a-bf26-4cb0-b811-08793f261427": {
-      "type": "advanced-content",
-      "disabled": true,
-      "blocks": {
-        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1": {
-          "type": "liquid",
-          "settings": {
-            "code": "<h2><center>Trusted Partners With<\/h2>",
-            "width": "100%",
-            "alignment": "center"
-          }
-        },
-        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/BABB_-_logo_list_9697918a-d586-4a24-b30f-d7fe376207d5.png",
-            "link": "",
-            "width": "100%",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-1",
-        "template--15846958661787__b9ae9c3a-bf26-4cb0-b811-08793f261427-1684177844a896f2ec-0"
-      ],
+    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a": {
+      "type": "contact-form",
       "settings": {
-        "full_width": false,
-        "space_around": true
+        "title": "Ready to elevate your corporate gifting program?",
+        "text": "<p><\/p><p>Birdie Box can take your gifting moments from routine to experiences that will leave the recipient with goosebumps. From corporate programs with a custom digital site to client prospecting gifts that get real results. Let us know who to connect with and our experts will take care of the rest!<\/p>",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "3"
       }
     }
   },
   "order": [
     "main",
     "69c97403-95ee-42bc-9271-ec350de03fa1",
+    "40f814b8-8241-4d18-8f28-759563af7b2c",
     "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab",
+    "248fb492-679b-4ead-b1a3-4dff49d04852",
     "e1ffadc6-3ae9-490f-b4f8-c203f7764335",
+    "98577174-c8b5-4068-a04e-04a172abb391",
     "3aae25d2-95af-4999-a322-69bb1ee6cb29",
+    "b9ae9c3a-bf26-4cb0-b811-08793f261427",
     "30870546-0d7d-41ba-9600-32a309fd4c78",
     "a9602bb3-3d35-489f-be71-52273a0ef327",
     "166429489701dbbee1",
     "c3a8b57c-9c65-490e-b882-e52202230aef",
     "166395357092ee8210",
-    "b9ae9c3a-bf26-4cb0-b811-08793f261427"
+    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a"
   ]
 }

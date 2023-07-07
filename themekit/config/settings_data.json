@@ -3,12 +3,12 @@
     "color_body_bg": "#ffffff",
     "color_body_text": "#000000",
     "color_price": "#000000",
-    "color_savings_text": "#33cccc",
-    "color_borders": "#f5f5f5",
+    "color_savings_text": "#18c9c9",
+    "color_borders": "#f1f1f1",
     "color_button": "#000000",
     "color_button_text": "#ffffff",
-    "color_sale_tag": "#33cccc",
-    "color_cart_dot": "#33cccc",
+    "color_sale_tag": "#18c9c9",
+    "color_cart_dot": "#18c9c9",
     "color_small_image_bg": "#f1f1f1",
     "color_large_image_bg": "#000000",
     "color_header": "#000000",
@@ -17,15 +17,15 @@
     "color_announcement_text": "#ffffff",
     "color_header_search": "#ffffff",
     "color_footer": "#000000",
-    "color_footer_border": "#33cccc",
+    "color_footer_border": "#18c9c9",
     "color_footer_text": "#ffffff",
     "color_scheme_1_bg": "#f1f1f1",
     "color_scheme_1_text": "#000000",
     "color_scheme_1_texture": "swirl",
     "color_scheme_2_bg": "#ffffff",
     "color_scheme_2_text": "#000000",
-    "color_scheme_2_texture": "paper.jpg",
-    "color_scheme_3_bg": "#f5f5f5",
+    "color_scheme_2_texture": "none",
+    "color_scheme_3_bg": "#f1f1f1",
     "color_scheme_3_text": "#000000",
     "color_scheme_3_texture": "darken",
     "type_header_font_family": "futura_n6",
@@ -33,7 +33,7 @@
     "type_header_base_size": 25,
     "type_header_line_height": 1,
     "type_header_capitalize": false,
-    "type_base_font_family": "helvetica_n4",
+    "type_base_font_family": "futura_n5",
     "type_base_spacing": "-25",
     "type_base_size": 14,
     "type_base_line_height": 1.6,
@@ -68,6 +68,7 @@
     "social_instagram_link": "https:\/\/www.instagram.com\/birdiebox",
     "social_tiktok_link": "https:\/\/www.tiktok.com\/@birdieboxgifting",
     "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/birdiebox",
+    "favicon": "shopify:\/\/shop_images\/Submark_400px.png",
     "search_type": "product,page",
     "show_breadcrumbs": true,
     "show_breadcrumbs_collection_link": true,
@@ -119,7 +120,7 @@
           "ece08fc2-aeba-4f01-bae2-a7807c172a06"
         ],
         "settings": {
-          "main_menu_link_list": "main-menu",
+          "main_menu_link_list": "main-menu-2",
           "main_menu_alignment": "left",
           "mega_products": false,
           "header_sticky": true,
@@ -172,7 +173,7 @@
             "type": "promotion",
             "disabled": true,
             "settings": {
-              "enable_image": true,
+              "enable_image": false,
               "title": "Site-wide promotion",
               "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.<\/p>",
               "button_label": "Optional button",
@@ -211,8 +212,8 @@
           "footer-promotions-2"
         ],
         "settings": {
-          "hide_homepage": true,
-          "image_size": "wide"
+          "hide_homepage": false,
+          "image_size": "natural"
         }
       },
       "product-recommendations": {
@@ -246,6 +247,11 @@
         "block_order": [
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae",
           "000ed69f-9904-431a-a2e4-08eb7f6aecb0"
+        ],
+        "custom_css": [
+          "a:link {color: #ffffff; background-color: transparent; text-decoration: underline;}",
+          "a:visited {color: #ffffff; background-color: transparent; text-decoration: underline;}",
+          "a:hover {color: #18c9c9; background-color: transparent; text-decoration: underline;}"
         ],
         "settings": {
           "announcement_center": true,
@@ -291,11 +297,13 @@
           "c296bc3e-1d7f-4750-b993-050176521596"
         ],
         "custom_css": [
-          "a:hover {\/* Color goes here *\/ color: #18c9c9 !important;}"
+          "a:link {color: #ffffff; background-color: transparent; text-decoration: none; font-size: 14px;}",
+          "a:visted {color: #ffffff; background-color: transparent; text-decoration: none;}",
+          "a:hover {color: #18c9c9; background-color: transparent; text-decoration: none;}"
         ],
         "settings": {
           "show_newsletter": true,
-          "newsletter_richtext": "<p>Join the Nest to recieve insights<br\/>new trends, hot items, and  more<\/p>",
+          "newsletter_richtext": "<p>Join the Nest to receive insight on new trends, hot items, and more<\/p>",
           "footer_main_menu": false,
           "show_copyright": true,
           "copyright_text": "",
@@ -365,6 +373,16 @@
           "wsaio_addons_liquid_file": "{% render 'MOQ' %}",
           "wsaio_custom_css_file": ""
         }
+      },
+      "6610233760104865948": {
+        "type": "shopify:\/\/apps\/pushowl-web-push-notifications\/blocks\/pushowl-app-embed-3d2ff2b5\/fa20c3ba-38bf-43e0-ba5c-431f6ae07d95",
+        "disabled": false,
+        "settings": {}
+      },
+      "10714188220973388145": {
+        "type": "shopify:\/\/apps\/bss-product-labels-badges\/blocks\/bss-pl\/91bfe765-b604-49a1-805e-3599fa600b24",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
@@ -1099,5 +1117,15 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "h1 {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}",
+      "h2 {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}",
+      "h3 {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}",
+      "h4 {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}",
+      "body {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}",
+      "button {font-family: Futura, \"Futura\", Arial, Helvetica, sans-serif;}"
+    ]
   }
 }

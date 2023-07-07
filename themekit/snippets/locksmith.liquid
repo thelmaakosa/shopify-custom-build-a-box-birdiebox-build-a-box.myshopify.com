@@ -1,10 +1,9 @@
 {%- comment %}
-  Hey there! This snippet is managed by Locksmith (uselocksmith.com). You can
-  fiddle with what's below, but your changes will be reset the next time that
-  Locksmith interacts with your shop.
+  Hey there! This asset is managed by Locksmith (uselocksmith.com). You can
+  fiddle with what's below, but your changes may be reset the next time that
+  Locksmith interacts with this theme.
 
-  Last updated: Mon, 24 Apr 2023 15:33:05 +0000
-  Integration version: v6.29
+  Last updated: Tue, 13 Jun 2023 09:35:52 -0500 (CDT)
 {% endcomment -%}
 
 {%include 'locksmith-variables', locksmith_scope: nil%}{%if locksmith_access_denied_content == blank%}{%capture locksmith_access_denied_content%}{%if locksmith_manual_lock%}{{content_for_layout}}{%elsif locksmith_server_lock%}<div id="locksmith-content">
@@ -77,7 +76,9 @@
           if (document.querySelectorAll('.locksmith-manual-trigger').length > 0) {
             Locksmith.ping();
           }
-{%endunless%}
+{%endunless%}{%if locksmith_has_timeout%}
+        Locksmith.timeoutMonitor();
+{%endif%}
 
       Locksmith.util.on('submit', 'locksmith-resource-form', function (event) {
         event.preventDefault();
