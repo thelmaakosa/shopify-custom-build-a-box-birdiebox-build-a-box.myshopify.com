@@ -34,14 +34,14 @@
             "title": "",
             "title_size": 70,
             "subheading": "",
-            "link": "",
+            "link": "shopify:\/\/collections\/nest-picks",
             "link_text": "",
             "link_2": "",
             "link_text_2": "",
             "color_accent": "#ffffff",
             "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify:\/\/shop_images\/BABB_-_golf_program_header_1.png",
-            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_header_mobile_6cd3c157-63c9-44b2-bf67-b683d06bc757.png",
+            "image": "shopify:\/\/shop_images\/BABB_-_golf_program_header_4.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_header_mobile_3.png",
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
@@ -60,8 +60,34 @@
         "autoplay_speed": 7
       }
     },
+    "72b772b1-a8ab-4b40-96da-154ef14656ad": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15870886051995__72b772b1-a8ab-4b40-96da-154ef14656ad-16890245646bb6d1ff-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n.accordion {\n  background-color: #18c9c9;\n  color: #ffffff;\n  cursor: pointer;\n  padding: 18px;\n  width: 100%;\n  border: none;\n  text-align: left;\n  outline: none;\n  font-family: futura;\n  font-size: 15px;\n  transition: 0.4s;\n}\n\n.active, .accordion:hover {\n  background-color: #018a8f; \n}\n\n.accordion:after {\n  content: '\\002B';\n  color: #ffffff;\n  font-weight: bold;\n  float: right;\n  margin-left: 5px;\n}\n\n.active:after {\n  content: \"\\2212\";\n}\n\n.panel {\n  padding: 0px;\n  display: none;\n  background-color: white;\n  overflow: hidden;\n}\n<\/style>\n<\/head>\n<body>\n\n<h2>How does it work?<\/h2>\n\n<button class=\"accordion\">Order through my Country Club<\/button>\n<div class=\"panel\">\n<br>\n  <div class=\"grid grid--flush-bottom\"><div class=\"grid__item medium-up--one-half text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/1_1cdff1a7-a341-4c46-bb15-1c857dc24a52_{width}x.png?v=1688670418\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 1:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Determine your budget and find products you love on <a href=\"\/collections\/nest-picks\" title=\"Nest Picks\">ShopBirdieBox.com<\/a><\/p><\/div><\/div><div class=\"grid__item medium-up--one-half text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/2_def14390-3be5-49ba-8558-004053d314e5_{width}x.png?v=1688670435\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 2:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Provide your company logo to your golf shop pro<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/3_266a6717-5ff7-4780-854d-d7a52e37499f_{width}x.png?v=1688670450\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 3:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Place your order through your golf shop pro or <a href=\"https:\/\/form.jotform.com\/231906155918158\" target=\"_blank\">fill out this form<\/a> and capitalize on exclusive discounts<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/4_c56e2204-adbc-4558-84a7-83cdc02cc849_{width}x.png?v=1688670468\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 4:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Receive mockups from your golf shop pro<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/7_0b048c1c-544f-4bd3-82ad-4dab20aeb86f_{width}x.png?v=1688670483\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 5:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Approve your mockups and we'll take care of the rest!\nNeed help or have questions? Reach out to us directly at <a href=\"mailto:customerservice@birdiebox.com\">customerservice@birdiebox.com<\/a> or call us at <a href=\"tel:4692942500\">(469) 294-2500<\/a><\/p><\/div><\/div><\/div>\n  <\/div>\n  <br>\n<\/div>\n\n\n<button class=\"accordion\">Order directly online<\/button>\n<div class=\"panel\">\n<br>\n  <div class=\"grid grid--flush-bottom\"><div class=\"grid__item medium-up--one-half text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/1_1cdff1a7-a341-4c46-bb15-1c857dc24a52_{width}x.png?v=1688670418\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 1:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Determine your budget and find products you love on <a href=\"\/collections\/nest-picks\" title=\"Nest Picks\">ShopBirdieBox.com<\/a><\/p><\/div><\/div><div class=\"grid__item medium-up--one-half text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/8_45a0300b-6b3d-4551-860d-de97de4a8ec0_{width}x.png?v=1689026450\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 2:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Select your personalization preferences and upload your logo or initials<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/9_c08283cd-8ebf-44f5-aaf4-3f48836a33ec_{width}x.png?v=1689026450\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 3:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Place your order online using your credit card<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/4_c56e2204-adbc-4558-84a7-83cdc02cc849_{width}x.png?v=1688670468\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 4:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Receive mockups from BirdieBox for your approval<\/p><\/div><\/div><div class=\"grid__item medium-up--one-third text-center\" ><div style=\"margin: 0 auto; max-width: 80px;\"><div class=\"image-wrap text-spacing\" style=\"height: 0; padding-bottom: 100.0%;\"><img class=\"lazyload\"\n                      data-src=\"\/\/shopbirdiebox.com\/cdn\/shop\/files\/7_0b048c1c-544f-4bd3-82ad-4dab20aeb86f_{width}x.png?v=1688670483\"\n                      data-widths=\"[180, 360, 540, 720, 900, 1080]\"\n                      data-aspectratio=\"1.0\"\n                      data-sizes=\"auto\"\n                      alt=\"\">\n                <\/div><\/div><div class=\"h3 rte--block\">Step 5:<\/div><div class=\"rte-setting rte--block text-spacing\"><p>Approve your mockups and we'll take care of the rest!\n\nNeed help or have questions? Reach out to us directly at <a href=\"mailto:customerservice@birdiebox.com\">customerservice@birdiebox.com<\/a> or call us at <a href=\"tel:4692942500\">(469) 294-2500<\/a><\/p><\/div><\/div><\/div>\n  <\/div>\n  <br>\n<\/div>\n\n<script>\nvar acc = document.getElementsByClassName(\"accordion\");\nvar i;\n\nfor (i = 0; i < acc.length; i++) {\n  acc[i].addEventListener(\"click\", function() {\n    this.classList.toggle(\"active\");\n    var panel = this.nextElementSibling;\n    if (panel.style.display === \"block\") {\n      panel.style.display = \"none\";\n    } else {\n      panel.style.display = \"block\";\n    }\n  });\n}\n<\/script>\n\n<\/body>\n<\/html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15870886051995__72b772b1-a8ab-4b40-96da-154ef14656ad-16890245646bb6d1ff-1"
+      ],
+      "custom_css": [
+        "a:link {color: #18c9c9; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #18c9c9; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #018a8f; background-color: transparent; text-decoration: underline;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": false
+      }
+    },
     "40f814b8-8241-4d18-8f28-759563af7b2c": {
       "type": "text-columns",
+      "disabled": true,
       "blocks": {
         "template--15870886051995__40f814b8-8241-4d18-8f28-759563af7b2c-168867192910d2e125-0": {
           "type": "text_block",
@@ -70,7 +96,7 @@
             "image": "shopify:\/\/shop_images\/1_1cdff1a7-a341-4c46-bb15-1c857dc24a52.png",
             "image_width": 80,
             "title": "Step 1:",
-            "text": "<p>Determine your budget and find products you love online<\/p>",
+            "text": "<p>Determine your budget and find products you love on <a href=\"\/collections\/nest-picks\" title=\"Nest Picks\">ShopBirdieBox.com<\/a><\/p>",
             "button_label": "",
             "button_link": ""
           }
@@ -79,7 +105,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/2_def14390-3be5-49ba-8558-004053d314e5.png",
+            "image": "shopify:\/\/shop_images\/8_45a0300b-6b3d-4551-860d-de97de4a8ec0.png",
             "image_width": 80,
             "title": "Step 2:",
             "text": "<p>Provide your company logo to your golf shop pro<\/p>",
@@ -91,7 +117,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/3_266a6717-5ff7-4780-854d-d7a52e37499f.png",
+            "image": "shopify:\/\/shop_images\/9_c08283cd-8ebf-44f5-aaf4-3f48836a33ec.png",
             "image_width": 80,
             "title": "Step 3:",
             "text": "<p>Place your order through your golf shop pro and capitalize on exclusive discounts<\/p>",
@@ -143,6 +169,11 @@
         "038066a1-6222-486c-ad25-bd0da4185782",
         "adce6257-3066-4a82-93a3-ed20a40550c8",
         "db2bbe7c-4102-4622-8d64-c7b826eabc7a"
+      ],
+      "custom_css": [
+        "a:link {color: #18c9c9; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #18c9c9; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #018a8f; background-color: transparent; text-decoration: underline;}"
       ],
       "settings": {
         "title": "How does it work?",
@@ -203,7 +234,7 @@
         "template--15870886051995__248fb492-679b-4ead-b1a3-4dff49d04852-1688674820ae863e7b-1": {
           "type": "liquid",
           "settings": {
-            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n.button {\n  border: none;\n  padding: 16px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-family: futura;\n  font-weight:bold;\n  margin: 4px 4px;\n  transition-duration: 0.4s;\n  cursor: pointer;\n  height: 50px;\n}\n\n.button1 {\n  background-color: #18c9c9; \n  color: white; \n}\n\n.button1:hover {\n  background-color: #000000;\n}\n\n\n<\/style>\n<\/head>\n<body>\n\n<input class=\"button button1\" onclick=\"location.href='https:\/\/shopbirdiebox.com\/collections\/nest-picks';\" value=\"Start Shopping\" \/>\n\n\n<\/body>\n<\/html>",
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n.button {\n  border: none;\n  padding: 16px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-family: futura;\n  font-weight:bold;\n  margin: 4px 4px;\n  transition-duration: 0.4s;\n  cursor: pointer;\n  height: 50px;\n}\n\n.button1 {\n  background-color: #18c9c9; \n  color: white; \n}\n\n.button1:hover {\n  background-color: #000000;\n}\n\n\n<\/style>\n<\/head>\n<body>\n\n<input class=\"button button1\" onclick=\"location.href='https:\/\/shopbirdiebox.com\/collections\/nest-picks';\" value=\"Tee Off & Start Shopping\" \/>\n\n\n<\/body>\n<\/html>",
             "width": "100%",
             "alignment": "center"
           }
@@ -214,7 +245,7 @@
       ],
       "settings": {
         "full_width": true,
-        "space_around": false
+        "space_around": true
       }
     },
     "e1ffadc6-3ae9-490f-b4f8-c203f7764335": {
@@ -326,7 +357,7 @@
           "type": "text_block",
           "settings": {
             "icon": "gift",
-            "title": "Holidays, anniversaries, and more!",
+            "title": "Holiday, work anniversaries, and retirement",
             "text": ""
           }
         }
@@ -346,6 +377,16 @@
         "button_label": "",
         "button_link": "",
         "divider": false
+      }
+    },
+    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Ready to elevate your corporate gifting program?",
+        "text": "<p><\/p><p>BirdieBox can take your gifting moments from routine gifting to experiences that will leave your recipients with goosebumps. From corporate programs with a custom digital site to client prospecting gifts that get real results. Let us know who to connect with and our experts will take care of the rest!<\/p>",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "none"
       }
     },
     "b9ae9c3a-bf26-4cb0-b811-08793f261427": {
@@ -723,33 +764,24 @@
         "divider": false,
         "color_scheme": "none"
       }
-    },
-    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a": {
-      "type": "contact-form",
-      "settings": {
-        "title": "Ready to elevate your corporate gifting program?",
-        "text": "<p><\/p><p>Birdie Box can take your gifting moments from routine to experiences that will leave the recipient with goosebumps. From corporate programs with a custom digital site to client prospecting gifts that get real results. Let us know who to connect with and our experts will take care of the rest!<\/p>",
-        "show_phone": true,
-        "narrow_column": true,
-        "color_scheme": "3"
-      }
     }
   },
   "order": [
     "main",
     "69c97403-95ee-42bc-9271-ec350de03fa1",
+    "72b772b1-a8ab-4b40-96da-154ef14656ad",
     "40f814b8-8241-4d18-8f28-759563af7b2c",
     "1518b8d3-1a5a-4aa7-bf23-6f1d964271ab",
     "248fb492-679b-4ead-b1a3-4dff49d04852",
     "e1ffadc6-3ae9-490f-b4f8-c203f7764335",
     "98577174-c8b5-4068-a04e-04a172abb391",
     "3aae25d2-95af-4999-a322-69bb1ee6cb29",
+    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a",
     "b9ae9c3a-bf26-4cb0-b811-08793f261427",
     "30870546-0d7d-41ba-9600-32a309fd4c78",
     "a9602bb3-3d35-489f-be71-52273a0ef327",
     "166429489701dbbee1",
     "c3a8b57c-9c65-490e-b882-e52202230aef",
-    "166395357092ee8210",
-    "69d69cf0-5e5c-45f4-ba5e-e9f60d76623a"
+    "166395357092ee8210"
   ]
 }

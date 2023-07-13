@@ -170,6 +170,22 @@
         "max_width": true
       }
     },
+    "ee1f7041-31e0-4cc4-bd08-caeaafdd90fd": {
+      "type": "featured-collection",
+      "custom_css": [
+        "a:link {color: #000000; background-color: transparent; text-decoration: underline;}",
+        "a:visited {color: #000000; background-color: transparent; text-decoration: none;}",
+        "a:hover {color: #18c9c9; background-color: transparent; text-decoration: underline;}"
+      ],
+      "settings": {
+        "title": "Don't forget to add",
+        "home_featured_products": "packaging",
+        "count": 5,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "divider": false
+      }
+    },
     "recommendations": {
       "type": "product-recommendations",
       "custom_css": [
@@ -299,6 +315,7 @@
   "order": [
     "main",
     "sub",
+    "ee1f7041-31e0-4cc4-bd08-caeaafdd90fd",
     "recommendations",
     "more-products-vendor",
     "more-products-collection",

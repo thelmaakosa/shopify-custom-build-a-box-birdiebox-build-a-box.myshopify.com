@@ -141,17 +141,17 @@
         },
         "412bba3b-2531-4f58-9e96-20a88414037f": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "top_subheading": "",
-            "title": "\"BirdieBox helped me so much with my intense order for over 400 people in 16 different states. Thank you for making me look like a hero to my entire team!\"",
+            "title": "\"BirdieBox provides incredible support from beginning to end.\"",
             "title_size": 40,
-            "subheading": "- GINELL PICKRELL, PEPSICO BEVERAGES NORTH AMERICA",
+            "subheading": "- MATTHEW MCINNIS, DALLAS COWBOYS FOOTBALL CLUB",
             "link": "",
             "link_text": "",
             "link_2": "",
             "link_text_2": "",
             "text_position": "right",
+            "image": "shopify:\/\/shop_images\/MadeConcEvent-80.jpg",
             "indent_image": false,
             "focal_point": "center center",
             "color_scheme": "none"

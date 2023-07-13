@@ -123,7 +123,7 @@
     "general": {
       "title": "Cart",
       "remove": "Remove",
-      "note": "Add Custom Kitting Instructions",
+      "note": "Add Notes or Custom Packing Instructions",
       "subtotal": "Subtotal",
       "discounts": "Discounts",
       "savings_html": "You save {{ saved_amount }}",

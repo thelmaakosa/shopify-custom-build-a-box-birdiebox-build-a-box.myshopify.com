@@ -40,8 +40,8 @@
             "link_text_2": "",
             "color_accent": "#ffffff",
             "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify:\/\/shop_images\/BABB_-_golf_program_header_2.png",
-            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_header_mobile_1_076fb4e4-2e84-4a5b-b398-c78cc69b5eb9.png",
+            "image": "shopify:\/\/shop_images\/BABB_-_golf_program_header_3_-2.png",
+            "image_mobile": "shopify:\/\/shop_images\/BABB_-_golf_program_header_mobile_2_-2.png",
             "overlay_opacity": 0,
             "focal_point": "center center"
           }
@@ -106,7 +106,7 @@
             "image": "shopify:\/\/shop_images\/1_1cdff1a7-a341-4c46-bb15-1c857dc24a52.png",
             "image_width": 80,
             "title": "Step 1:",
-            "text": "<p>Member determines their budget and finds products they love online<\/p>",
+            "text": "<p>Member determines their budget and finds products they love on ShopBirdieBox<\/p>",
             "button_label": "",
             "button_link": ""
           }
@@ -261,7 +261,7 @@
           "type": "text_block",
           "settings": {
             "icon": "gift",
-            "title": "Holidays, anniversaries, and more!",
+            "title": "Holiday, work anniversaries, and retirement",
             "text": ""
           }
         }
@@ -291,7 +291,7 @@
           "settings": {
             "heading": "Swing into action! Share program details with your members today!",
             "text": "",
-            "link": "",
+            "link": "shopify:\/\/pages\/corporate-gifting-program",
             "label": "View member page",
             "color_scheme": "1"
           }
@@ -312,7 +312,7 @@
             "height": 500,
             "text_align": "vertical-center horizontal-center",
             "focal_point": "center",
-            "color_accent": "#fff"
+            "color_accent": "#ffffff"
           }
         }
       },
@@ -399,6 +399,16 @@
       "settings": {
         "full_width": true,
         "space_around": false
+      }
+    },
+    "f79f1e13-3198-4429-9fa1-d20e1ae8f0c0": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Want us to handle the order instead?",
+        "text": "<p><\/p><p>Fill out the form below with your member's information and we'll handle the order taking process. We'll still assign the credit to you and your Country Club.<\/p>",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "none"
       }
     },
     "cffdae33-e2fa-43e3-a041-1ef50801371f": {
@@ -725,6 +735,7 @@
     "0d86b0ef-e545-43f9-bf38-0ac189a3102e",
     "b9ae9c3a-bf26-4cb0-b811-08793f261427",
     "6b444044-e11b-4525-b7ab-970e5c589afe",
+    "f79f1e13-3198-4429-9fa1-d20e1ae8f0c0",
     "cffdae33-e2fa-43e3-a041-1ef50801371f",
     "0ea17ed1-c5ac-49ae-9569-d0379a7fb212",
     "30870546-0d7d-41ba-9600-32a309fd4c78",

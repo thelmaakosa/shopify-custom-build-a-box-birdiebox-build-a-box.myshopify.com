@@ -2,11 +2,11 @@
 <script src="{{ 'jquery-3.6.4.min.js' | asset_url }}"></script>
 {% if cart.item_count > 0 %}
   <!-- Add CK CSS file -->
+  <script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}"></script>
   <link rel="stylesheet" href="{{ 'magnific-popup.css' | asset_url }}" />
+  <script src="{{ 'ck-custom.js' | asset_url }}"></script>
   <link rel="stylesheet" href="{{ 'ck-custom.css' | asset_url }}" />
-  
-
-  
+    
   <div id="birdieBox-popup" class="white-popup mfp-hide">
       <div id="ck-loader"></div>
       <p>To better assist with your order, we need to collect some extra information.</p>
@@ -530,11 +530,10 @@
       });
     }
   })
-// File input
+ // File input
 
   </script>
-  <script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}"></script>
-  <script src="{{ 'ck-custom.js' | asset_url }}"></script>
+  
 {% else %}
   {% if cart.attributes.delivery_date and cart.attributes.order_assistant %}
     <script>
