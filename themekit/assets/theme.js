@@ -8967,3 +8967,14 @@ Shopify.Cart.ShippingCalculator.show( {
   customerIsLoggedIn: theme.strings.shippingCalcCustomerIsLoggedIn,
   moneyFormat: theme.strings.shippingCalcMoneyFormat
 } );
+  jQuery(document).ready(function() {
+    console.log("hello");
+    var lazyLoadInstance = new LazyLoad({
+      elements_selector: "img:not([data-no-lazy])",
+      threshold: 500,             // Adjust the threshold (in pixels) for triggering lazy loading as the element approaches the viewport.
+      thresholdInView: 200,       // Adjust the threshold (in pixels) for triggering lazy loading when the element is already in the viewport.
+      show_while_loading: false,  // Set to true if you want to show a loading indicator while the image is being loaded.
+      load_delay: 200,            // Adjust the delay (in milliseconds) before loading an image after it becomes visible.
+      load_delay_mobile: 500,     // Adjust the delay (in milliseconds) before loading an image after it becomes visible on mobile devices.
+    });
+  });

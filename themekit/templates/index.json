@@ -441,6 +441,40 @@
         "divider": false
       }
     },
+    "f2a61f7f-f3dc-472d-9bfb-425873e88b96": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "2d75be8c-d4c2-442e-9bf9-0feffdba67f5": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "Explore more of our partnered brands",
+            "textarea": "",
+            "cta_text1": "Shop All Brands",
+            "cta_link1": "shopify:\/\/collections\/all-brands",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify:\/\/shop_images\/3_8ec28d2e-baf1-4133-82f0-57be35ce47d5.png",
+            "video_url": "",
+            "width": "100",
+            "height": 140,
+            "text_align": "vertical-center horizontal-center",
+            "focal_point": "center",
+            "color_accent": "#18c9c9"
+          }
+        }
+      },
+      "block_order": [
+        "2d75be8c-d4c2-442e-9bf9-0feffdba67f5"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false
+      }
+    },
     "0c4286da-cf1a-4ce9-bb30-087e09fa78b5": {
       "type": "logo-list",
       "disabled": true,
@@ -504,6 +538,35 @@
         "divider": false
       }
     },
+    "60973721-3e10-46b4-be5c-901398f230f8": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--15870885757083__60973721-3e10-46b4-be5c-901398f230f8-liquid-1": {
+          "type": "liquid",
+          "settings": {
+            "code": "<center>\n\n<h2>Explore more of our partnered brands<\/h2>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "d04e35c5-153f-45f2-acc6-0769b2dcee31": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html>\n<head>\n<center>\n<style>\n.button {\n  border: none;\n  padding: 16px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-family: futura;\n  font-weight:bold;\n  margin: 4px 4px;\n  transition-duration: 0.4s;\n  cursor: pointer;\n  height: 50px;\n}\n\n.button1 {\n  background-color: #18c9c9; \n  color: white; \n}\n\n.button1:hover {\n  background-color: #000000;\n}\n\n\n<\/style>\n<\/head>\n<body>\n\n<input class=\"button button1\" onclick=\"location.href='https:\/\/shopbirdiebox.com\/collections\/all-brands';\" value=\"Shop All Brands\" \/>\n\n\n<\/body>\n<\/html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15870885757083__60973721-3e10-46b4-be5c-901398f230f8-liquid-1",
+        "d04e35c5-153f-45f2-acc6-0769b2dcee31"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": false
+      }
+    },
     "5ec1bb1e-2d81-4954-9862-762aa2b1b834": {
       "type": "promo-grid",
       "blocks": {
@@ -523,7 +586,7 @@
             "height": 240,
             "text_align": "vertical-center horizontal-center",
             "focal_point": "center",
-            "color_accent": "#ffffff"
+            "color_accent": "#18c9c9"
           }
         },
         "template--15817136177307__5ec1bb1e-2d81-4954-9862-762aa2b1b834-1686085693617e6732-1": {
@@ -542,7 +605,7 @@
             "height": 240,
             "text_align": "vertical-center horizontal-center",
             "focal_point": "center",
-            "color_accent": "#ffffff"
+            "color_accent": "#18c9c9"
           }
         }
       },
@@ -553,7 +616,7 @@
       "settings": {
         "full_width": true,
         "gutter_size": 0,
-        "space_above": false,
+        "space_above": true,
         "space_below": false
       }
     }
@@ -567,7 +630,9 @@
     "ac30cede-637b-4e53-9aa2-e20265a3ee20",
     "5e842b6b-e777-4b81-abb9-0efe138dd1c9",
     "d88d3546-3355-425c-b42c-af7aa9e0f910",
+    "f2a61f7f-f3dc-472d-9bfb-425873e88b96",
     "0c4286da-cf1a-4ce9-bb30-087e09fa78b5",
+    "60973721-3e10-46b4-be5c-901398f230f8",
     "5ec1bb1e-2d81-4954-9862-762aa2b1b834"
   ]
 }

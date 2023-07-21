@@ -12,7 +12,8 @@
             "alignment": "",
             "textColor": "",
             "starColor": "",
-            "showAllReviews": false
+            "showAllReviews": false,
+            "emptyRatingWidget": false
           }
         },
         "variant_picker": {
@@ -124,7 +125,7 @@
         "image_position": "left",
         "image_container_size": "small",
         "product_image_size": "square",
-        "product_zoom_enable": true,
+        "product_zoom_enable": false,
         "thumbnail_position": "beside",
         "thumbnail_height": "fixed",
         "thumbnail_arrows": true,

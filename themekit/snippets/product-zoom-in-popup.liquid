@@ -1,0 +1,98 @@
+<div class="product-images-zoom-modal" data-product-images-zoom-modal="" >
+  <div class="product-images-zoom-modal__container" data-product-images-zoom-modal-content="">
+    {%- for media in product.media -%}
+      {%- render 'product-zoom-in-popup-media',
+        section_id: section_id,
+        media: media,
+        featured_media: featured_media,
+        loopIndex0: forloop.index0,
+        loopIndex: forloop.index,
+        product_zoom_enable: product_zoom_enable,
+        product_zoom_size: product_zoom_size,
+        image_size: image_size,
+        isModal: isModal,
+        video_looping: video_looping,
+        video_style: video_style
+      -%}
+    {%- endfor -%}
+  </div>
+  <div class="product-images-zoom-modal__actions">
+    <button class="product-images-zoom-modal__close" aria-label="Close Zoom Popup" data-product-images-zoom-close="">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="black"></circle>
+        <path d="M24 16L16 24" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+        <path d="M16 16L24 24" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<script>
+  jQuery('.product-images-zoom-trigger').on('click', function() {
+    let zoom_in_show_image_index = jQuery(this).attr("data-product-images-zoom-trigger");
+    console.log(zoom_in_show_image_index);
+    jQuery('.product-images-zoom-modal__container img').removeClass("active_image");
+    jQuery('.product-images-zoom-modal__container img[data-zoom-in-product-image="' + zoom_in_show_image_index + '"]').addClass("active_image");
+    jQuery('.product-images-zoom-modal').show();
+    jQuery('body').addClass('popup-open');
+  });
+  jQuery('.product__thumbs--scroller a').on('click',function(){
+    let zoom_in_image_index = jQuery(this).attr('data-index');
+    console.log(zoom_in_image_index);
+    jQuery('[data-product-images-zoom-trigger]').attr("data-product-images-zoom-trigger",zoom_in_image_index);
+  })
+  
+  jQuery('.product-images-zoom-modal__close').on('click',function(){
+    jQuery('body').removeClass('popup-open');
+    jQuery('.product-images-zoom-modal').hide();
+    
+  });
+</script>
+<style>
+  body.popup-open {
+    overflow: hidden;
+  }
+  .product-images-zoom-modal {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000000;
+  }
+  .product-images-zoom-modal__container {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .product-images-zoom-modal img {
+    max-width: 1000px;
+    margin: 0 auto 16px;
+    background-color: #F2F2F5;
+  }
+  .product-images-zoom-modal__actions {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1160px;
+    text-align: right;
+  }
+  .product-images-zoom-modal__container .active_image {
+    order: 1 !important;
+  }
+  .product-images-zoom-modal__container img {
+    order: 2;
+  }
+  .product-images-zoom-modal__close {
+    padding-right: 16px;
+  }
+  @media screen and (max-width: 1024px) {
+    .product-images-zoom-modal img {
+      max-width: 100%;
+    }
+  }
+</style>

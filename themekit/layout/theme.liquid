@@ -180,7 +180,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })(window, document, "clarity", "script", "hfqeztbucy");
 </script>
   
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.2.0/lazyload.min.js"></script>
 	{{ shop.metafields.loox["global_html_head"] }}
 </head>
              
@@ -207,6 +207,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <main class="main-content" id="MainContent">
         {{ content_for_layout }}
+        {% if product %}
+          {% render 'product-zoom-in-popup' %}
+      {% endif %}
       </main>
 
       {%- section 'footer-promotions' -%}

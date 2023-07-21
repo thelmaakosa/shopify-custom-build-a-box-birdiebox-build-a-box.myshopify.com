@@ -56,12 +56,12 @@
           class="small--hide"
           src="{{ block.settings.logo | img_url: header_logo_size }}"
           srcset="{{ block.settings.logo | img_url: header_logo_size }} 1x, {{ block.settings.logo | img_url: header_logo_size, scale: 2 }} 2x"
-          alt="{{ block.settings.logo.alt | default: shop.name }}">
+          alt="{{ block.settings.logo.alt | default: shop.name }}" data-no-lazy>
         <img
           class="medium-up--hide"
           src="{{ block.settings.logo | img_url: header_logo_size_mobile }}"
           srcset="{{ block.settings.logo | img_url: header_logo_size_mobile }} 1x, {{ block.settings.logo | img_url: header_logo_size_mobile, scale: 2 }} 2x"
-          alt="{{ block.settings.logo.alt | default: shop.name }}">
+          alt="{{ block.settings.logo.alt | default: shop.name }}" data-no-lazy>
       </a>
       {%- if block.settings.logo-inverted -%}
         <a
@@ -71,12 +71,12 @@
             class="small--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
             srcset="{{ block.settings.logo-inverted | img_url: header_logo_size }} 1x, {{ block.settings.logo-inverted | img_url: header_logo_size, scale: 2 }} 2x"
-            alt="{{ block.settings.logo-inverted.alt | default: shop.name }}">
+            alt="{{ block.settings.logo-inverted.alt | default: shop.name }}" data-no-lazy>
           <img
             class="medium-up--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size_mobile }}"
             srcset="{{ block.settings.logo-inverted | img_url: header_logo_size_mobile }} 1x, {{ block.settings.logo-inverted | img_url: header_logo_size_mobile, scale: 2 }} 2x"
-            alt="{{ block.settings.logo.alt | default: shop.name }}">
+            alt="{{ block.settings.logo.alt | default: shop.name }}" data-no-lazy>
         </a>
       {%- endif -%}
     {%- else -%}

@@ -11,6 +11,7 @@
     <div class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}{% if product.media.size == 0 %} hide{% endif %}">
 
       <div class="product__main-photos" data-product-single-media-group>
+        {% render 'product-zoom-in-button' %}
         <div data-product-photos class="product-slideshow" id="ProductPhotos-{{ section_id }}">
           {%- for media in product.media -%}
             {%- render 'media',
